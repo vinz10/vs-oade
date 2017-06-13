@@ -8,17 +8,17 @@ Language: ENGLISH
 $lang = array();
 
 // TEMPLATE HEADER & MENU
-define("SITE_TITLE", "Swiss Alpin Club");
+define("SITE_TITLE", "VS OADE");
 define("TEMP_LOGIN", "login");
-define("TEMP_REGISTER", "register");
+
 define("TEMP_WELCOME", "Welcome");
 define("TEMP_ACCOUNT", "my account");
 define("TEMP_LOGOUT", "logout");
+
 define("MENU_HOME", "Home");
-define("MENU_HIKESIDEAS", "Hikes Ideas");
-define("MENU_GUIDEDHIKES", "Our Guided Hikes");
-define("MENU_ABOUT", "About us");
-define("MENU_CONTACT", "Contact");
+define("MENU_PROJECT", "Projects");
+define("MENU_MANUAL", "Manual");
+
 define("MENU_ADMIN", "Administration");
 define("FILTER", "Filter");
 define("SEARCH", "Search");
@@ -47,7 +47,7 @@ define("NO_HIKE", "No hike available!");
 define("NO_GUIDEDHIKE", "No guided hike available");
 
 // HOME PAGE
-define("HOME_TITLE", "CAS Home");
+define("HOME_TITLE", "VS-OADE Home");
 
 // LOGIN PAGE
 define("LOGIN_TITLE", "CAS Login");
@@ -95,7 +95,7 @@ define("PAR2", "The section organizes races for his members throughout the year,
 		groups specialized for the young people (ALFA, AJ/OJ), it is all the family that can participate!");
 define("PAR3", "The section has the \"Cabane des Violettes\", situated at the heart of the ski slopes of Crans-Montana. In winter it is the ideal place 
 		for a pleasant break, right in the heart of the ski slopes of Crans-Montana; in summer it is a beautiful stage of the \"Haute Route Bernoise\".");
-define("PAR4", utf8_encode("This section is also the organizer of the \"Défi des Faverges\", the famous race of ski-mountain climbing which takes place 
+define("PAR4", utf8_encode("This section is also the organizer of the \"Dï¿½fi des Faverges\", the famous race of ski-mountain climbing which takes place 
 		every two years in Crans-Montana and counts 1'500 participants. It celebrated in 2014 its 10th edition."));
 define("PAR5", "If you like the mountain and if you have a link with the region of Crans-Montana, do not hesitate to join us.");
 

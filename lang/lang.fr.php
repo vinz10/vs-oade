@@ -8,17 +8,18 @@ Language: FRENCH
 $lang = array();
 
 // TEMPLATE HEADER & MENU
-define("SITE_TITLE", "Club Alpin Suisse");
+define("SITE_TITLE", "VS OADE");
+
 define("TEMP_LOGIN", "connexion");
-define("TEMP_REGISTER", "s'inscrire");
 define("TEMP_WELCOME", "Bienvenue");
 define("TEMP_ACCOUNT", "mon compte");
-define("TEMP_LOGOUT", utf8_encode("déconnexion"));
+
+define("TEMP_LOGOUT", utf8_encode("dï¿½connexion"));
+
 define("MENU_HOME", "Accueil");
-define("MENU_HIKESIDEAS", utf8_encode("Idées de randonnées"));
-define("MENU_GUIDEDHIKES", utf8_encode("Nos randonnées guidées"));
-define("MENU_ABOUT", utf8_encode("À propos"));
-define("MENU_CONTACT", "Contact");
+define("MENU_PROJECT", "Projets");
+define("MENU_MANUAL", utf8_encode("Mode d'emploi"));
+
 define("MENU_ADMIN", "Administration");
 define("FILTER", "Filtrer");
 define("SEARCH", "Rechercher");
@@ -27,27 +28,27 @@ define("SEARCH", "Rechercher");
 define("CONNECTION_FAIL", "Connection failed");
 define("REQUIRED_FIELD", "Un champ obligatoire est vide!");
 define("INCORRECT_UOP", "Email ou mot de passe incorrect!");
-define("USER_EXIST", utf8_encode("L'adresse email existe déjà!"));
-define("REGISTER_SUCCESS", utf8_encode("Inscription réussie!"));
-define("CREATE_SUCCESS", utf8_encode("Creation réussie!"));
+define("USER_EXIST", utf8_encode("L'adresse email existe dï¿½jï¿½!"));
+define("REGISTER_SUCCESS", utf8_encode("Inscription rï¿½ussie!"));
+define("CREATE_SUCCESS", utf8_encode("Creation rï¿½ussie!"));
 define("PASSWORD_NOT_CORRESPOND", "Les mots de passe ne correspondent pas!");
-define("UPDATE_SUCCESS", utf8_encode("Modification effectuée!"));
+define("UPDATE_SUCCESS", utf8_encode("Modification effectuï¿½e!"));
 define("UPDATE_FAIL", "Erreur de modification!");
-define("MODIFICATION_IMPOSSIBLE", utf8_encode("Impossible de changer le type de randonnée de réservation en randonnée"));  
+define("MODIFICATION_IMPOSSIBLE", utf8_encode("Impossible de changer le type de randonnï¿½e de rï¿½servation en randonnï¿½e"));  
 define("NO_FILE", "Pas de fichier!");
 define("UPLOAD_ERROR", utf8_encode("Erreur d'upload!"));
 define("UPLOAD_TYPEFILE", "Type de fichier invalide");
 define("UPLOAD_HEAVY", "trop lourd!");
 define("DELETE_FAIL", "Echec de suppression!");
-define("DELETE_SUCCESS", utf8_encode("Suppression effectuée!"));
+define("DELETE_SUCCESS", utf8_encode("Suppression effectuï¿½e!"));
 define("NO_INSCRIPTION", utf8_encode("Aucune inscription disponible!"));
-define("NO_RATING", utf8_encode("Aucune évaluation disponible!"));
+define("NO_RATING", utf8_encode("Aucune ï¿½valuation disponible!"));
 define("NO_FAVORITE", utf8_encode("Aucun favori disponible!"));
-define("NO_HIKE", utf8_encode("Aucune randonnée disponible!"));
-define("NO_GUIDEDHIKE", utf8_encode("Aucune randonnée guidée disponible!"));
+define("NO_HIKE", utf8_encode("Aucune randonnï¿½e disponible!"));
+define("NO_GUIDEDHIKE", utf8_encode("Aucune randonnï¿½e guidï¿½e disponible!"));
 
 // HOME PAGE
-define("HOME_TITLE", "CAS Accueil");
+define("HOME_TITLE", "VS-OADE Accueil");
 
 // LOGIN PAGE
 define("LOGIN_TITLE", "CAS Connexion");
@@ -59,103 +60,103 @@ define("REGISTER", "S'inscrire");
 // REGISTER PAGE
 define("REGISTER_TITLE", "CAS Inscription");
 define("REGISTRATION", "Inscription");
-define("FIRSTNAME", utf8_encode("Prénom"));
+define("FIRSTNAME", utf8_encode("Prï¿½nom"));
 define("LASTNAME", "Nom");
 define("POSTCODE", "NPA");
-define("LOCALITY", utf8_encode("Localité"));
+define("LOCALITY", utf8_encode("Localitï¿½"));
 define("REGION", "Canton");
 define("ADDRESS", "Adresse");
-define("TELEPHONE", utf8_encode("Téléphone"));
+define("TELEPHONE", utf8_encode("Tï¿½lï¿½phone"));
 define("GENDER", "Genre");
 define("MAN", "Homme");
 define("WOMAN", "Femme");
-define("PREFLANG", utf8_encode("Langue souhaitée"));
+define("PREFLANG", utf8_encode("Langue souhaitï¿½e"));
 define("TOLOGIN", "Se connecter");
 
 // HIKES PAGE
-define("HIKES_TITLE", utf8_encode("CAS Idées de randonnées"));
+define("HIKES_TITLE", utf8_encode("CAS Idï¿½es de randonnï¿½es"));
 
 // HIKE PAGE
 define("REG_FAILED", utf8_encode("Erreur d'inscription!"));
-define("REG_SUCCESS", utf8_encode("Inscription réussie!"));
+define("REG_SUCCESS", utf8_encode("Inscription rï¿½ussie!"));
 define("HIKE_PLACEAVAILABLE", utf8_encode("Place(s) restante(s)"));
-define("HIKE_NOREGIST", utf8_encode("N° d'inscriptions"));
+define("HIKE_NOREGIST", utf8_encode("Nï¿½ d'inscriptions"));
 define("HIKE_REGIST", "Inscriptions");
 define("HIKE_NBREGIST", utf8_encode("Nombre d'inscriptions"));
 define("HIKE_TOTALPRICE", "Prix total");
 
 // GUIDED HIKES PAGE
-define("GUIDEDH_TITLE", utf8_encode("CAS Nos randonnées guidées"));
+define("GUIDEDH_TITLE", utf8_encode("CAS Nos randonnï¿½es guidï¿½es"));
 
 // ABOUT PAGE
-define("ABOUT_TITLE", utf8_encode("Cas À propos"));
-define("PAR1", utf8_encode("Bienvenue à la section Montana-Vermala du Club Alpin Suisse, le club qui regroupe les amateurs de montagne de tous âges
-		qui ont un lien avec la région de Crans-Montana."));
-define("PAR2", utf8_encode("La section organise des courses pour ses membres toute l'année, couvrant un spectre très large de disciplines alpines.
-		Et avec les groupes spécialisés pour les jeunes (ALFA, AJ/OJ), c'est toute la famille qui peut participer!"));
-define("PAR3", utf8_encode("La section possède la Cabane des Violettes, située au coeur du domaine skiable de Crans-Montana. En hiver l'endroit idéal
-		pour une agréable pause, en plein coeur du domaine skiable de Crans-Montana; en été une belle étape de la Haute Route Bernoise."));
-define("PAR4", utf8_encode("Elle est aussi l'organisatrice du Défi des Faverges, la célèbre course de ski-alpinisme qui a lieu tous les deux ans à
-		Crans-Montana et compte près de 1'500 participants. Elle a fêté en 2014 sa 10ème édition."));
-define("PAR5", utf8_encode("Si vous aimez la montagne et si vous avez un lien avec la région de Crans-Montana, n'hésitez pas à nous rejoindre."));
+define("ABOUT_TITLE", utf8_encode("Cas ï¿½ propos"));
+define("PAR1", utf8_encode("Bienvenue ï¿½ la section Montana-Vermala du Club Alpin Suisse, le club qui regroupe les amateurs de montagne de tous ï¿½ges
+		qui ont un lien avec la rï¿½gion de Crans-Montana."));
+define("PAR2", utf8_encode("La section organise des courses pour ses membres toute l'annï¿½e, couvrant un spectre trï¿½s large de disciplines alpines.
+		Et avec les groupes spï¿½cialisï¿½s pour les jeunes (ALFA, AJ/OJ), c'est toute la famille qui peut participer!"));
+define("PAR3", utf8_encode("La section possï¿½de la Cabane des Violettes, situï¿½e au coeur du domaine skiable de Crans-Montana. En hiver l'endroit idï¿½al
+		pour une agrï¿½able pause, en plein coeur du domaine skiable de Crans-Montana; en ï¿½tï¿½ une belle ï¿½tape de la Haute Route Bernoise."));
+define("PAR4", utf8_encode("Elle est aussi l'organisatrice du Dï¿½fi des Faverges, la cï¿½lï¿½bre course de ski-alpinisme qui a lieu tous les deux ans ï¿½
+		Crans-Montana et compte prï¿½s de 1'500 participants. Elle a fï¿½tï¿½ en 2014 sa 10ï¿½me ï¿½dition."));
+define("PAR5", utf8_encode("Si vous aimez la montagne et si vous avez un lien avec la rï¿½gion de Crans-Montana, n'hï¿½sitez pas ï¿½ nous rejoindre."));
 
 // CONTACT PAGE
 define("CONTACT_TITLE", "Cas Contact");
 define("CONTACTUS","Contactez-nous");
 define("MESSAGE","Message");
 define("SEND","Envoyer");
-define("MESSAGE_SEND",utf8_encode("Le message a été envoyé!"));
-define("MESSAGE_NOT_SEND",utf8_encode("Le message n'a pas été envoyé. Veuillez réessayer plus tard!"));
-define("MESSAGE_CONTACT_INVALIDATE", utf8_encode("Vérifiez que tous les champs soient remplis!"));
+define("MESSAGE_SEND",utf8_encode("Le message a ï¿½tï¿½ envoyï¿½!"));
+define("MESSAGE_NOT_SEND",utf8_encode("Le message n'a pas ï¿½tï¿½ envoyï¿½. Veuillez rï¿½essayer plus tard!"));
+define("MESSAGE_CONTACT_INVALIDATE", utf8_encode("Vï¿½rifiez que tous les champs soient remplis!"));
 define("CONTACT_ERROR", "Erreur");
-define("MESSAGE_ERROR", utf8_encode("Malheureusement, votre message n'a pas été envoyé."));
-define("MESSAGE_ERROR2", utf8_encode("Veuillez réessayer à nouveau!"));
-define("RETRY", utf8_encode("Réessayer"));
+define("MESSAGE_ERROR", utf8_encode("Malheureusement, votre message n'a pas ï¿½tï¿½ envoyï¿½."));
+define("MESSAGE_ERROR2", utf8_encode("Veuillez rï¿½essayer ï¿½ nouveau!"));
+define("RETRY", utf8_encode("Rï¿½essayer"));
 define("MESSAGE_CONFIRMATION", "Merci pour votre message!");
-define("MESSAGE_CONFIRMATION2", utf8_encode("Nous vous répondrons dès que possible!"));
-define("CONTACT_SEND", utf8_encode("Vous nous avez contacté!"));
+define("MESSAGE_CONFIRMATION2", utf8_encode("Nous vous rï¿½pondrons dï¿½s que possible!"));
+define("CONTACT_SEND", utf8_encode("Vous nous avez contactï¿½!"));
 define("COPY_MESSAGE", "Copie de CAS Montana");
 
 // ADMINISTRATION PAGES
 define("ADMIN_TITLE", "Cas Administration");
 define("HIKENAME", "Nom");
 define("DESCRIPTION" ,"Description");
-define("DURATION", utf8_encode("Durée"));
+define("DURATION", utf8_encode("Durï¿½e"));
 define("PICTURE", "Photo");
 define("DISTANCE", "Distance");
-define("DIFFICULTY", utf8_encode("Difficulté"));
-define("EASIER", utf8_encode("Très facile"));
+define("DIFFICULTY", utf8_encode("Difficultï¿½"));
+define("EASIER", utf8_encode("Trï¿½s facile"));
 define("EASY", "Facile");
 define("NORMAL", "Normal");
 define("HARD", "Difficile");
-define("HARDER", utf8_encode("Très difficile"));
-define("HEIGHTDIFFERENCE", utf8_encode("Dénivelé"));
+define("HARDER", utf8_encode("Trï¿½s difficile"));
+define("HEIGHTDIFFERENCE", utf8_encode("Dï¿½nivelï¿½"));
 define("DATE", "Date");
-define("STARTDATE", utf8_encode("Date de début"));
+define("STARTDATE", utf8_encode("Date de dï¿½but"));
 define("ENDDATE", "Date de fin");
-define("DEPARTTIME", utf8_encode("Heure de départ"));
-define("ARRIVETIME", utf8_encode("Heure d'arrivée"));
+define("DEPARTTIME", utf8_encode("Heure de dï¿½part"));
+define("ARRIVETIME", utf8_encode("Heure d'arrivï¿½e"));
 define("PRICE", "Prix");
 define("REGISTRATIONMAX", utf8_encode("Maximum d'inscription"));
 define("TYPE", "Type");
-define("HIKE", utf8_encode("Idée"));
-define("HIKEBT", utf8_encode("Idées"));
-define("REGIST", utf8_encode("Randonnée"));
-define("REGISTRATIONBT", utf8_encode("Randonnées"));
+define("HIKE", utf8_encode("Idï¿½e"));
+define("HIKEBT", utf8_encode("Idï¿½es"));
+define("REGIST", utf8_encode("Randonnï¿½e"));
+define("REGISTRATIONBT", utf8_encode("Randonnï¿½es"));
 define("ADMIN_REGISTRATION", "Inscription");
-define("JOURNEY", utf8_encode("Séjour"));
-define("JOURNEYBT", utf8_encode("Séjours"));
-define("CREATE", utf8_encode("Créer"));
-define("RESET", utf8_encode("Réinitialiser"));
+define("JOURNEY", utf8_encode("Sï¿½jour"));
+define("JOURNEYBT", utf8_encode("Sï¿½jours"));
+define("CREATE", utf8_encode("Crï¿½er"));
+define("RESET", utf8_encode("Rï¿½initialiser"));
 define("EDIT", "Modifier");
 define("DELETE", "Supprimer");
 define("HOUR", "Heures");
 define("PEOPLE", "Personnes");
-define("STARTLOCALITY", utf8_encode("Lieu de départ"));
-define("ENDLOCALITY", utf8_encode("Lieu d'arrivée"));
-define("LOCALADDRESS", utf8_encode("Localité/Adresse"));
-define("ADMIN_HIKE", utf8_encode("Randonnées"));
-define("MANAGE_HIKES", utf8_encode("Gestion des Randonnées"));
+define("STARTLOCALITY", utf8_encode("Lieu de dï¿½part"));
+define("ENDLOCALITY", utf8_encode("Lieu d'arrivï¿½e"));
+define("LOCALADDRESS", utf8_encode("Localitï¿½/Adresse"));
+define("ADMIN_HIKE", utf8_encode("Randonnï¿½es"));
+define("MANAGE_HIKES", utf8_encode("Gestion des Randonnï¿½es"));
 define("PERMISSION", "Permission");
 define("ADMIN_PERMISSION", "Permissions");
 define("MANAGE_PERMISSION", "Gestion des Permissions");
@@ -176,6 +177,6 @@ define("MENU_MYFAVORITES", "Mes Favoris");
 define("MENU_MYBOOKING", utf8_encode("Inscriptions"));
 define("MENU_MYINSCRIPTION", utf8_encode("Mes inscriptions"));
 define("MENU_MYRATING", "Evaluations");
-define("MENU_MYNOTES", utf8_encode("Mes évaluations"));
+define("MENU_MYNOTES", utf8_encode("Mes ï¿½valuations"));
 define("NBREHIKERS", utf8_encode("Nombre de randonneurs"));
 ?>
