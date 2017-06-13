@@ -1,0 +1,43 @@
+* {
+	box-sizing: border-box;
+}
+
+.about {
+	margin: 20px auto;
+	padding: 20px;
+	width: 50%;
+	height: 50%;
+	border-radius: 10px;
+	border: 2px solid #273750;
+	background-color: #f1f1f1;
+	color: #273750;
+} 
+
+.div_maps {
+	width: 50%;
+	height: 100%;
+    float: left;
+    margin-left: 2%;
+	border: #273750 solid 1px;
+}
+
+.div_information {
+    float: left;
+    width: 48%;
+    height: 100%;
+    border-right-style: solid;
+    border-color: #273750;
+    padding-right: 10px;
+	text-align:justify;
+	overflow-y: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+#gmap_canvas {
+	height: 100%;
+	width: 100%;
+	overflow:hidden;
+}

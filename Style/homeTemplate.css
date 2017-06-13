@@ -1,0 +1,40 @@
+#propositions{
+    float: left;
+    max-width: 300px;
+    margin-right: 15px;
+}
+@media screen and (max-width: 610px) {
+    #propositions{
+        position: relative;
+        margin: auto 0;
+    }
+}
+
+.hovered:hover {
+    opacity: .5;
+}
+
+#stays{
+    float: left;
+    max-width: 300px;
+    margin-right: 15px;
+}
+
+#admin{
+    float: left;
+    max-width: 300px;
+}
+
+#account{
+    float: left;
+    max-width: 300px;
+}
+
+#infos{
+    float: left;
+    max-width: 300px;
+}
+
+#footer{
+    clear: both;
+}

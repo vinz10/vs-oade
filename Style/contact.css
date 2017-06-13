@@ -1,0 +1,25 @@
+body {
+    font-family: Arial;
+}
+
+.contactFormular {
+    margin: 20px auto;
+    width: 300px;
+    text-align: center;
+    color: #273750;
+}
+
+.formular-screen {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #273750;
+}
+.title {
+    text-align: center;
+    color: #273750;
+}
+.control-group {
+    margin-bottom: 10px;
+}
+

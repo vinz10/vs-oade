@@ -1,0 +1,46 @@
+@CHARSET "ISO-8859-1";
+
+* {
+box-sizing: border-box;
+}
+
+*:focus {
+	outline: none;
+}
+
+body {
+	font-family: Arial;
+}
+
+.login {
+	margin: 20px auto;
+	width: 300px;
+}
+
+.login-screen {
+	padding: 20px;
+	border-radius: 10px;
+	border: 2px solid #273750;
+}
+
+.app-title {
+	text-align: center;
+	color: #273750;
+}
+
+.login-form {
+	text-align: center;
+}
+.control-group {
+	margin-bottom: 10px;
+}
+div ~ form {
+	background-color: #f1f1f1;
+}
+
+.login-link {
+  	font-size: 12px;
+  	color: #273750;
+  	display: block;
+	margin-top: 12px;
+}
