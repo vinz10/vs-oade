@@ -50,27 +50,10 @@ define("NO_GUIDEDHIKE", "No guided hike available");
 define("HOME_TITLE", "VS-OADE Home");
 
 // LOGIN PAGE
-define("LOGIN_TITLE", "CAS Login");
+define("LOGIN_TITLE", "VS-OADE Login");
 define("LOGIN", "Login");
-define("EMAIL", "Email");
+define("COMMUNE", "Town");
 define("PASSWORD", "Password");
-define("REGISTER", "Register");
-
-// REGISTER PAGE
-define("REGISTER_TITLE", "CAS Register");
-define("REGISTRATION", "Register");
-define("FIRSTNAME", "Firstname");
-define("LASTNAME", "Lastname");
-define("POSTCODE", "Postcode");
-define("LOCALITY", "Locality");
-define("REGION", "Region");
-define("ADDRESS", "Address");
-define("TELEPHONE", "Phone");
-define("GENDER", "Gender");
-define("MAN", "Man");
-define("WOMAN", "Woman");
-define("PREFLANG", "Preferred langage");
-define("TOLOGIN", "Login");
 
 // HIKES PAGE
 define("HIKES_TITLE", "CAS Hikes Ideas");
@@ -87,61 +70,6 @@ define("HIKE_TOTALPRICE", "Total price");
 // GUIDED HIKES PAGE
 define("GUIDEDH_TITLE", "CAS Our Guided Hikes");
 
-// ABOUT PAGE
-define("ABOUT_TITLE", "Cas About us");
-define("PAR1", "Welcome to the Montana-Vermala section of the Swiss Alpine Club, the club which includes mountain lovers 
-		of any ages which have a link with the region of Crans-Montana.");
-define("PAR2", "The section organizes races for his members throughout the year, covering a very wide spectre of alpine disciplines. And with the 
-		groups specialized for the young people (ALFA, AJ/OJ), it is all the family that can participate!");
-define("PAR3", "The section has the \"Cabane des Violettes\", situated at the heart of the ski slopes of Crans-Montana. In winter it is the ideal place 
-		for a pleasant break, right in the heart of the ski slopes of Crans-Montana; in summer it is a beautiful stage of the \"Haute Route Bernoise\".");
-define("PAR4", utf8_encode("This section is also the organizer of the \"D�fi des Faverges\", the famous race of ski-mountain climbing which takes place 
-		every two years in Crans-Montana and counts 1'500 participants. It celebrated in 2014 its 10th edition."));
-define("PAR5", "If you like the mountain and if you have a link with the region of Crans-Montana, do not hesitate to join us.");
-
-// CONTACT PAGE
-define("CONTACT_TITLE", "Cas Contact");
-define("CONTACTUS","Contact Us!");
-define("MESSAGE","Message");
-define("SEND","Send");
-define("MESSAGE_SEND","The message was sent!");
-define("MESSAGE_NOT_SEND","The message was not sent. Please try again later!");
-define("MESSAGE_CONTACT_INVALIDATE", "Verify that all the fields are filled!");
-define("CONTACT_ERROR", "Error");
-define("MESSAGE_ERROR", "Unfortunately, your message was not sent.");
-define("MESSAGE_ERROR2", "Please try again!");
-define("RETRY", "Retry");
-define("MESSAGE_CONFIRMATION", "Thank your for your message!");
-define("MESSAGE_CONFIRMATION2", "We'll answer you as soon as possible!");
-define("CONTACT_SEND", "You contacted us!");
-define("COPY_MESSAGE", "Copy From CAS Montana");
-
-// ADMINISTRATION PAGES
-define("ADMIN_TITLE", "Cas Administration");
-define("HIKENAME", "Name");
-define("DESCRIPTION" ,"Description");
-define("DURATION", "Duration");
-define("PICTURE", "Picture");
-define("DISTANCE", "Distance");
-define("DIFFICULTY", "Difficulty");
-define("EASIER", "Easier");
-define("EASY", "Easy");
-define("NORMAL", "Normal");
-define("HARD", "Hard");
-define("HARDER", "Harder");
-define("HEIGHTDIFFERENCE", "Height Difference");
-define("DATE", "Date");
-define("STARTDATE", "Start Date");
-define("ENDDATE", "End Date");
-define("DEPARTTIME", "Departure Time");
-define("ARRIVETIME", "Arrival Time");
-define("PRICE", "Price");
-define("REGISTRATIONMAX", "Maximum Registration");
-define("TYPE", "Type");
-define("HIKE", "Idea");
-define("HIKEBT", "Ideas");
-define("REGIST", "Hike");
-define("REGISTRATIONBT", "Hikes");
 define("ADMIN_REGISTRATION", "Registration");
 define("JOURNEY", "Stay");
 define("JOURNEYBT", "Stay");
@@ -178,4 +106,3 @@ define("MENU_MYINSCRIPTION", "My registration");
 define("MENU_MYRATING", "Ratings");
 define("MENU_MYNOTES", "My Ratings");
 define("NBREHIKERS", "Number of hikers");
-?>
