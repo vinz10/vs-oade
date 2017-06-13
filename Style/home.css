@@ -1,11 +1,11 @@
-#projects{
+#manual{
     float: left;
     max-width: 300px;
     margin-right: 15px;
 }
 
 @media screen and (max-width: 610px) {
-    #projects{
+    #manual{
         position: relative;
         margin: auto 0;
     }
@@ -15,7 +15,7 @@
     opacity: .5;
 }
 
-#manual{
+#projects{
     float: left;
     max-width: 300px;
     margin-right: 15px;

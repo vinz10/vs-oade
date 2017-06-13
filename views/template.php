@@ -18,8 +18,8 @@
                 <button onclick="myFunction()" class="dropbtn"></button>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="<?php echo URL_DIR;?>"><?php echo MENU_HOME; ?></a>
-                    <a href="<?php echo URL_DIR . 'hikes/hikes'; ?>"><?php echo MENU_PROJECT; ?></a>
                     <a href="<?php echo URL_DIR.'guidedhikes/guidedhikes';?>"><?php echo MENU_MANUAL; ?></a> 
+                    <a href="<?php echo URL_DIR . 'hikes/hikes'; ?>"><?php echo MENU_PROJECT; ?></a>
                     <?php
                             $connect = $this->getActiveUser ();
                             if ($connect) {
@@ -32,25 +32,25 @@
                 </div>
             </div>
 
-            <!--  <div class="back">
-                    <input style="width: 30px;" type="image" src="/<?php echo SITE_NAME; ?>/Images/back.png" onclick="history.back();" />
-            </div> -->
-
             <div id="languages">
                 <?php
-                    if (isset ( $_GET ['id'] )) 
-                            echo '<a style="text-decoration: none;" href="' . '?id=' . $_GET ['id'] . '&lang=en">';
-                    else 
-                            echo '<a style="text-decoration: none;" href="?lang=en">';
+                    if (isset ( $_GET ['id'] )) { 
+                        echo '<a style="text-decoration: none;" href="' . '?id=' . $_GET ['id'] . '&lang=en">';
+                    }
+                    else { 
+                        echo '<a style="text-decoration: none;" href="?lang=en">';
+                    }
                 ?>
                 <img src="/<?php echo SITE_NAME; ?>/Images/icon_en_flat.png" />
                 <?php 
                     echo '</a>';
 
-                    if (isset ( $_GET ['id'] )) 
-                            echo '<a style="text-decoration: none;" href="' . '?id=' . $_GET ['id'] . '&lang=fr">';
-                    else
-                            echo '<a style="text-decoration: none;" href="?lang=fr">';
+                    if (isset ( $_GET ['id'] )) { 
+                        echo '<a style="text-decoration: none;" href="' . '?id=' . $_GET ['id'] . '&lang=fr">';
+                    }
+                    else {
+                        echo '<a style="text-decoration: none;" href="?lang=fr">';
+                    }
                 ?>
                 <img src="/<?php echo SITE_NAME; ?>/Images/icon_fr_flat.png" />
                 <?php echo '</a>'?>
@@ -64,8 +64,9 @@
                     echo TEMP_WELCOME . ' ' . $user->getFirstname () . ' ' . $user->getLastname ();
                     echo ' <a href="' . URL_DIR . 'account/account' . '">' . TEMP_ACCOUNT . '</a>';
                     echo ' <a href="' . URL_DIR . 'login/logout' . '">' . TEMP_LOGOUT . '</a>';
-                } else 
+                } else {
                     echo '<a href="' . URL_DIR . 'login/login' . '">' . TEMP_LOGIN . '</a>';
+                }
             ?>
             </div>
         </header>
