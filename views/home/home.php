@@ -11,17 +11,17 @@
 
 <div id="manual">
     <h1><?php echo MENU_MANUAL; ?></h1>
-    
+
     <a href="<?php echo URL_DIR.'hikes/hikes';?>">
-    	<img class="hovered" src="/<?php echo SITE_NAME; ?>/Images/hikes.png" width="300px" height="700px" alt="Hikes Ideas" />
+        <img class="hovered" src="/<?php echo SITE_NAME; ?>/Images/manual.jpg" width="346px" height="346px" alt="Hikes Ideas" />
     </a>
 </div>
-        
+
 <div id="projects">
     <a href="<?php echo URL_DIR . 'guidedhikes/guidedhikes'; ?>">
-            <img class="hovered" src="/<?php echo SITE_NAME; ?>/Images/stay.png" width="300px" height="700px" alt="Our Stays"/>
+            <img class="hovered" src="/<?php echo SITE_NAME; ?>/Images/projects.jpg" width="346px" height="346px" alt="Projects"/>
     </a>
-    
+
     <h1><?php echo MENU_PROJECT; ?></h1>
 </div>
 

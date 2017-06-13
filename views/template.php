@@ -10,7 +10,7 @@
         <header id="container">
             <div id="logo">
                 <a href="<?php echo URL_DIR;?>">
-                        <img src="/<?php echo SITE_NAME; ?>/Images/casmontana.png" />
+                        <img src="/<?php echo SITE_NAME; ?>/Images/vs-oade.png" />
                 </a>
             </div>
 
@@ -65,7 +65,7 @@
                     echo ' <a href="' . URL_DIR . 'account/account' . '">' . TEMP_ACCOUNT . '</a>';
                     echo ' <a href="' . URL_DIR . 'login/logout' . '">' . TEMP_LOGOUT . '</a>';
                 } else {
-                    echo '<a href="' . URL_DIR . 'login/login' . '">' . TEMP_LOGIN . '</a>';
+                    echo '<a style ="font:12px Arial,tahoma,sans-serif;" href="' . URL_DIR . 'login/login' . '">' . TEMP_LOGIN . '</a>';
                 }
             ?>
             </div>
@@ -77,7 +77,7 @@
         </div>
 
         <footer> 
-            <?php echo 'Copyright HES-SO 2017. Vincent Bearpark - Bachelor'; ?>
+            <?php echo "<div style ='font:11px Arial,tahoma,sans-serif;'>Copyright HES-SO 2017. Vincent Bearpark - Bachelor</div>"; ?>
         </footer>
 
         <script>

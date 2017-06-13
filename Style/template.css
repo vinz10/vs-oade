@@ -35,8 +35,8 @@ footer {
 .dropbtn {
 	background: url(../Images/menu_icon.png) no-repeat;
 	color: white;
-	height: 60px;
-	width: 60px;
+	height: 52px;
+	width: 52px;
 	border: none;
 	cursor: pointer;
 	box-shadow: none;
@@ -99,6 +99,7 @@ footer {
 	font-size: 18px;
 	padding-right: 15px;
 	padding-top: 15px;
+        vertical-align: middle;
 }
 
 div#login a:link {
