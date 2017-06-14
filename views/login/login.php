@@ -29,8 +29,8 @@
 
             <div class="login-form">
                 <div class="control-group">
-                    <label for="login-name"><?php echo COMMUNE; ?></label>
-                    <select name="commune" id="commune-name">
+                    <label for="login-name"><?php echo TOWNNAME; ?></label>
+                    <select name="townName" id="townName">
                         <option value="volvo">Chermignon</option>
                         <option value="saab">Lens</option>
                         <option value="mercedes">Grimisuat</option>

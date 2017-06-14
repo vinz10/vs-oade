@@ -52,7 +52,7 @@ define("HOME_TITLE", "VS-OADE Home");
 // LOGIN PAGE
 define("LOGIN_TITLE", "VS-OADE Login");
 define("LOGIN", "Login");
-define("COMMUNE", "Town");
+define("TOWNNAME", "Town");
 define("PASSWORD", "Password");
 
 // HIKES PAGE

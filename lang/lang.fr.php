@@ -53,7 +53,7 @@ define("HOME_TITLE", "VS-OADE Accueil");
 // LOGIN PAGE
 define("LOGIN_TITLE", "VS-OADE Connexion");
 define("LOGIN", "Connexion");
-define("COMMUNE", "Commune");
+define("TOWNNAME", "Commune");
 define("PASSWORD", "Mot de passe");
 
 define("GUIDEDH_TITLE", utf8_encode("CAS Nos randonn�es guid�es"));
