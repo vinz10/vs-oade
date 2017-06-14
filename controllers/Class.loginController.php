@@ -62,4 +62,13 @@ class loginController extends Controller {
         session_destroy();
         $this->redirect('', '');
     }
+    
+    /**
+    // @method getAllTowns()
+    // @desc Method that return all Towns
+    // @return Towns
+    */
+    public static function getAllTowns() {
+        return Town::getAllTown();
+    } 
 }
