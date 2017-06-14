@@ -12,37 +12,37 @@ class loginController extends Controller {
 
         // Get data posted by the form
         $townName = $_POST['townName'];
-        $pwd = $_POST['password'];
+        $password = $_POST['password'];
 
         // Check if the data are valid
-        if(empty($email) or empty($pwd)){
+        if(empty($townName) or empty($password)){
             $_SESSION['msg'] = REQUIRED_FIELD;
             $this->redirect('login', 'login');
         }
         else {		
-            // Load user from DB if exists
-            $result = User::connect($email, $pwd);
-
-            // Put the user in the session if exists or return error msg
+            // Load login from DB if exists
+            $result = Town::connect($townName, $password);
+                
+            // Put the login in the session if exists or return error msg
             if(!$result){			
-                $_SESSION['msg'] = INCORRECT_UOP;	
+                $_SESSION['msg'] = INCORRECT_PWD;	
                 $this->redirect('login', 'login');
             }
             else{
-                $_SESSION['user'] = $result;
+                $_SESSION['login'] = $result;
                 $this->redirect('', '');
             }
         }	
     }
 
     /**
-     * //@method login()
-     * @desc Method for the login of a user
+     // @method login()
+     // @desc Method for the login
      */
     function login() {
 
-        // If a user is active he cannot re-login
-        if($this->getActiveUser()){
+        // If a login is active, no re-login
+        if($this->getLogin()){
             $this->redirect('', '');
             exit;
         }
@@ -53,8 +53,8 @@ class loginController extends Controller {
     }
 
     /**
-     * //@method logout()
-     * @desc Method for the logout of a user
+     //@method logout()
+     // @desc Method for the logout of a user
      */
     function logout() {
         

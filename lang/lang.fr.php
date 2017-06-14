@@ -11,10 +11,10 @@ $lang = array();
 define("SITE_TITLE", "VS OADE");
 
 define("TEMP_LOGIN", "connexion");
-define("TEMP_WELCOME", "Bienvenue");
+define("TEMP_CONNECT", "Connecté sur");
 define("TEMP_ACCOUNT", "mon compte");
 
-define("TEMP_LOGOUT", utf8_encode("d�connexion"));
+define("TEMP_LOGOUT", "déconnexion");
 
 define("MENU_HOME", "Accueil");
 define("MENU_PROJECT", "Projets");
@@ -27,7 +27,7 @@ define("SEARCH", "Rechercher");
 // MESSAGES
 define("CONNECTION_FAIL", "Connection failed");
 define("REQUIRED_FIELD", "Un champ obligatoire est vide!");
-define("INCORRECT_UOP", "Email ou mot de passe incorrect!");
+define("INCORRECT_PWD", "Mot de passe incorrect!");
 define("USER_EXIST", utf8_encode("L'adresse email existe d�j�!"));
 define("REGISTER_SUCCESS", utf8_encode("Inscription r�ussie!"));
 define("CREATE_SUCCESS", utf8_encode("Creation r�ussie!"));

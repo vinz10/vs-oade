@@ -31,10 +31,10 @@
                 <div class="control-group">
                     <label for="login-name"><?php echo TOWNNAME; ?></label>
                     <select name="townName" id="townName">
-                        <option value="volvo">Chermignon</option>
-                        <option value="saab">Lens</option>
-                        <option value="mercedes">Grimisuat</option>
-                        <option value="audi">Sierre</option>
+                        <option value="Chermignon">Chermignon</option>
+                        <option value="Lens">Lens</option>
+                        <option value="Grimisuat">Grimisuat</option>
+                        <option value="Sierre">Sierre</option>
                     </select>
                 </div>
 

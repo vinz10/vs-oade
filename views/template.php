@@ -10,7 +10,7 @@
         <header id="container">
             <div id="logo">
                 <a href="<?php echo URL_DIR;?>">
-                        <img src="/<?php echo SITE_NAME; ?>/Images/vs-oade.png" />
+                    <img src="/<?php echo SITE_NAME; ?>/Images/vs-oade.png" alt="logo" />
                 </a>
             </div>
 
@@ -20,15 +20,15 @@
                     <a href="<?php echo URL_DIR;?>"><?php echo MENU_HOME; ?></a>
                     <a href="<?php echo URL_DIR.'guidedhikes/guidedhikes';?>"><?php echo MENU_MANUAL; ?></a> 
                     <a href="<?php echo URL_DIR . 'hikes/hikes'; ?>"><?php echo MENU_PROJECT; ?></a>
-                    <?php
-                            $connect = $this->getActiveUser ();
+                    <!--<?php
+                            $connect = $this->getLogin();
                             if ($connect) {
-                                    $user = $_SESSION ['user'];
-                                    if ($user->isAdmin ( $user->getEmail () )) {
+                                    $login = $_SESSION ['login'];
+                                    /*if ($user->isAdmin ( $user->getEmail () )) {
                                             echo '<a href="' . URL_DIR . 'administration/hikesManager' . '">' . MENU_ADMIN . '</a>';
-                                    }
+                                    }*/
                             }
-                    ?>
+                    ?>-->
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
                         echo '<a style="text-decoration: none;" href="?lang=en">';
                     }
                 ?>
-                <img src="/<?php echo SITE_NAME; ?>/Images/icon_en_flat.png" />
+                <img src="/<?php echo SITE_NAME; ?>/Images/icon_en_flat.png" alt="en" />
                 <?php 
                     echo '</a>';
 
@@ -52,18 +52,18 @@
                         echo '<a style="text-decoration: none;" href="?lang=fr">';
                     }
                 ?>
-                <img src="/<?php echo SITE_NAME; ?>/Images/icon_fr_flat.png" />
+                <img src="/<?php echo SITE_NAME; ?>/Images/icon_fr_flat.png" alt="fr" />
                 <?php echo '</a>'?>
             </div>
 
             <div id="login">
             <?php
-                $connect = $this->getActiveUser ();
+                $connect = $this->getLogin();
                 if ($connect) {
-                    $user = $_SESSION ['user'];
-                    echo TEMP_WELCOME . ' ' . $user->getFirstname () . ' ' . $user->getLastname ();
-                    echo ' <a href="' . URL_DIR . 'account/account' . '">' . TEMP_ACCOUNT . '</a>';
-                    echo ' <a href="' . URL_DIR . 'login/logout' . '">' . TEMP_LOGOUT . '</a>';
+                    $login = $_SESSION ['login'];
+                    echo "<div style ='font:11px Arial,tahoma,sans-serif;'>" . TEMP_CONNECT . ' ' . $login->getTownName() . "</div>";
+                    echo ' <a style ="font:12px Arial,tahoma,sans-serif;" href="' . URL_DIR . 'account/account' . '">' . TEMP_ACCOUNT . '</a>';
+                    echo ' <a style ="font:12px Arial,tahoma,sans-serif;" href="' . URL_DIR . 'login/logout' . '">' . TEMP_LOGOUT . '</a>';
                 } else {
                     echo '<a style ="font:12px Arial,tahoma,sans-serif;" href="' . URL_DIR . 'login/login' . '">' . TEMP_LOGIN . '</a>';
                 }

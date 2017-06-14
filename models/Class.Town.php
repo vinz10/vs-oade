@@ -4,19 +4,19 @@
  * Class Login
  */
 class Town {
-    private $idTown;
     private $townName;
     private $password;
     private $electedPassword;
-
+    private $idTown;
+    
     /**
      * Constructor
-     * @param int $idTown
      * @param string $townName
      * @param string $password
-     * @param string $electedPassword;
+     * @param string $electedPassword
+     * @param int $idTown
      */
-    public function __construct($idTown=null, $townName, $password, $electedPassword){
+    public function __construct($townName, $password, $electedPassword, $idTown = null){
         $this->setId($idTown);
         $this->setTownName($townName);
         $this->setPassword($password);
@@ -91,8 +91,8 @@ class Town {
         $rows = $result->fetchAll();
 
         foreach($rows as $row) {
-            $town = new Town($row['idTown'], $row['townName'], $row['password'], $row['electedPassword']);
-
+            $town = new Town($row['name'], $row['password'], $row['electedPassword'], $row['idTown']);
+                
             $Towns[] = $town;
         }
 
@@ -100,11 +100,14 @@ class Town {
     }
 	
     public static function connect($townName, $password){
-        $query = "SELECT * FROM town WHERE townName='$townName' AND password='$password'";
+        $query = "SELECT * FROM town WHERE name='$townName' AND password='$password'";
         $result = SqlConnection::getInstance()->selectDB($query);
         $row = $result->fetch();
-        if(!$row) return false;
+        
+        if(!$row) {
+            return false;
+        }
 
-        return new Town($row['idTown'], $row['townName'], $row['password'], $row['electedPassword']);
+        return new Town($row['name'], $row['password'], $row['electedPassword'], $row['idTown']);
     }
 }

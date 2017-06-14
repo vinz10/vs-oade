@@ -11,7 +11,7 @@ $lang = array();
 define("SITE_TITLE", "VS OADE");
 define("TEMP_LOGIN", "login");
 
-define("TEMP_WELCOME", "Welcome");
+define("TEMP_CONNECT", "Logged in on ");
 define("TEMP_ACCOUNT", "my account");
 define("TEMP_LOGOUT", "logout");
 
@@ -26,7 +26,7 @@ define("SEARCH", "Search");
 // MESSAGES
 define("CONNECTION_FAIL", "Connection failed");
 define("REQUIRED_FIELD", "A required field is empty!");
-define("INCORRECT_UOP", "Email or password incorrect!");
+define("INCORRECT_PWD", "Password incorrect!");
 define("USER_EXIST", "Email exists already!");
 define("REGISTER_SUCCESS", "Registration successful!");
 define("CREATE_SUCCESS", "Creation successful!");
