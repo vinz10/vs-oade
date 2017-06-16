@@ -2028,7 +2028,7 @@ h2.typoh2 {
 /*-- Booking --*/
 
 .reg {
-	padding: 100px 0;
+	padding: 150px 0;
 	background: #2980b9;/*url("../images/booking.jpg");*/
 	background-repeat: no-repeat;
 	background-position: center;
@@ -2050,8 +2050,8 @@ h2.typoh2 {
 	/*--w3layouts--*/
 	/*--agileits--*/
 	font-weight: 600;
-	text-align: left;
-	margin-bottom: 50px;
+	text-align: center;
+	margin-bottom: 40px;
 }
 
 .reg h4 {
@@ -2110,7 +2110,7 @@ li.li2 {
 }
 
 .submit {
-	margin-top: 50px;
+	margin-top: 30px;
 	/*--w3layouts--*/
 	/*--agileits--*/
 	text-align: center;
