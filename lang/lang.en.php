@@ -9,15 +9,17 @@ $lang = array();
 
 // TEMPLATE HEADER & MENU
 define("SITE_TITLE", "VS OADE");
-define("TEMP_LOGIN", "login");
+define("TEMP_LOGIN", "LOGIN");
 
 define("TEMP_CONNECT", "Logged in on ");
 define("TEMP_ACCOUNT", "my account");
 define("TEMP_LOGOUT", "logout");
 
-define("MENU_HOME", "Home");
-define("MENU_PROJECT", "Projects");
-define("MENU_MANUAL", "Manual");
+define("MENU_HOME", "HOME");
+define("MENU_PROJECT", "PROJECTS");
+define("MENU_MANUAL", "MANUAL");
+define("MENU_FRENCH", "FRENCH");
+define("MENU_ENGLISH", "ENGLISH");
 
 define("MENU_ADMIN", "Administration");
 define("FILTER", "Filter");
@@ -48,12 +50,49 @@ define("NO_GUIDEDHIKE", "No guided hike available");
 
 // HOME PAGE
 define("HOME_TITLE", "VS-OADE Home");
+define("HOME_MANUAL", "Manual");
+define("HOME_SURVEY", "Survey");
+define("HOME_CAPITAL_GAIN", "Capital Gain");
+define("HOME_CONFLICT", "Potential Conflicts");
+define("HOME_WEIGHTING", "Weighting");
+define("HOME_CONSISTENCY", "Consistency");
+define("HOME_OPTIMIZATION", "Optimization");
+define("HOME_PROJECTS", "Projects");
+define("HOME_PROJECTS_LIST", "List of projects");
+define("HOME_PROJECTS_DESC", "Create new projects or modify current projects.");
+define("HOME_PROJECTS_ACCESS", "Reach the projects");
+
 
 // LOGIN PAGE
 define("LOGIN_TITLE", "VS-OADE Login");
 define("LOGIN", "Login");
 define("TOWNNAME", "Town");
 define("PASSWORD", "Password");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HIKES PAGE
 define("HIKES_TITLE", "CAS Hikes Ideas");

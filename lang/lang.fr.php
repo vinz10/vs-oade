@@ -10,15 +10,17 @@ $lang = array();
 // TEMPLATE HEADER & MENU
 define("SITE_TITLE", "VS OADE");
 
-define("TEMP_LOGIN", "connexion");
+define("TEMP_LOGIN", "CONNEXION");
 define("TEMP_CONNECT", "Connecté sur");
 define("TEMP_ACCOUNT", "mon compte");
 
 define("TEMP_LOGOUT", "déconnexion");
 
-define("MENU_HOME", "Accueil");
-define("MENU_PROJECT", "Projets");
-define("MENU_MANUAL", utf8_encode("Mode d'emploi"));
+define("MENU_HOME", "ACCUEIL");
+define("MENU_PROJECT", "PROJETS");
+define("MENU_MANUAL", utf8_encode("MODE D'EMPLOI"));
+define("MENU_FRENCH", "FRANCAIS");
+define("MENU_ENGLISH", "ANGLAIS");
 
 define("MENU_ADMIN", "Administration");
 define("FILTER", "Filtrer");
@@ -49,12 +51,56 @@ define("NO_GUIDEDHIKE", utf8_encode("Aucune randonn�e guid�e disponible!"));
 
 // HOME PAGE
 define("HOME_TITLE", "VS-OADE Accueil");
+define("HOME_MANUAL", "Mode d'emploi");
+define("HOME_SURVEY", "Questionnaire");
+define("HOME_CAPITAL_GAIN", "Plus-value");
+define("HOME_CONFLICT", "Conflits potentiels");
+define("HOME_WEIGHTING", "Pondération");
+define("HOME_CONSISTENCY", "Cohérence");
+define("HOME_OPTIMIZATION", "Optimisation");
+define("HOME_PROJECTS", "Projets");
+define("HOME_PROJECTS_LIST", "Liste des projets");
+define("HOME_PROJECTS_DESC", "Créer de nouveaux projets ou modifier des projets en cours.");
+define("HOME_PROJECTS_ACCESS", "Accéder aux projets");
+
 
 // LOGIN PAGE
 define("LOGIN_TITLE", "VS-OADE Connexion");
 define("LOGIN", "Connexion");
 define("TOWNNAME", "Commune");
 define("PASSWORD", "Mot de passe");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 define("GUIDEDH_TITLE", utf8_encode("CAS Nos randonn�es guid�es"));
 

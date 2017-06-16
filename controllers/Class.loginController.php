@@ -45,7 +45,7 @@ class loginController extends Controller {
         if($this->getLogin()){
             $this->redirect('', '');
             exit;
-        }
+        } 
 
         // Initialization of variables
         $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
