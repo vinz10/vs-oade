@@ -19,7 +19,7 @@
                 <div id="myDropdown" class="dropdown-content">
                     <a href="<?php echo URL_DIR;?>"><?php echo MENU_HOME; ?></a>
                     <a href="<?php echo URL_DIR.'guidedhikes/guidedhikes';?>"><?php echo MENU_MANUAL; ?></a> 
-                    <a href="<?php echo URL_DIR . 'hikes/hikes'; ?>"><?php echo MENU_PROJECT; ?></a>
+                    <a href="<?php echo URL_DIR . 'projects/projects'; ?>"><?php echo MENU_PROJECT; ?></a>
                     <!--<?php
                             $connect = $this->getLogin();
                             if ($connect) {

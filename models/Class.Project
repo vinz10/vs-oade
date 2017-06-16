@@ -1,0 +1,118 @@
+<?php
+
+/**
+ * Class Project
+ */
+class Project {
+    private $name;
+    private $poLastname;
+    private $poFirstname;
+    private $town_idTown;
+    private $idProject
+    
+    /**
+     * Constructor
+     * @param string $townName
+     * @param string $password
+     * @param string $electedPassword
+     * @param int $idTown
+     */
+    public function __construct($name, $poLastname, $poFirstname, $town_idTown, $idProject = null){
+        $this->setId($idProject);
+        $this->setName($name);
+        $this->setPoLastname($poLastname);
+        $this->setPoFirstname($poFirstname);
+        $this->setTownId($town_idTown);
+    }	
+	
+    /**
+     * @return idProject
+     */
+    public function getId(){
+        return $this->idProject;
+    }
+
+    /**
+     * @param int $idProject
+     */
+    public function setId($idProject){
+        $this->idProject = $idProject;
+    }
+	
+    /**
+     * @return name
+     */
+    public function getName(){
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name){
+        $this->name = $name;
+    }
+	
+    /**
+     * @return poLastname
+     */
+    public function getPoLastname(){
+            return $this->poLastname;
+    }
+
+    /**
+     * @param string $poLastname
+     */
+    public function setPoLastname($poLastname){
+        $this->poLastname = $poLastname;
+    }
+    
+    /**
+     * @return poFirstname
+     */
+    public function getPoFirstname(){
+        return $this->poFirstname;
+    }
+
+    /**
+     * @param string $poFirstname
+     */
+    public function setPoFirstname($poFirstname){
+        $this->poFirstname = $poFirstname;
+    }
+    
+    /**
+     * @return town_idTown
+     */
+    public function getTownId(){
+        return $this->town_idTown;
+    }
+
+    /**
+     * @param int $town_idTown
+     */
+    public function setTownId($town_idTown){
+        $this->town_idTown = $town_idTown;
+    }
+	
+    /**
+     // @method getProjectsByIdTown()
+     // @desc Method that get all the projects by the idTown from the DB
+     // @return Towns[]
+     */
+    public static function getProjectsByIdTown($idTown) {
+        $query = "SELECT * FROM project WHERE town_idTown='$idTown';";
+        $result = SqlConnection::getInstance()->selectDB($query);
+        $Projects = array();
+        $rows = $result->fetchAll();
+
+        foreach($rows as $row) {
+            $project = new Project($row['name'], $row['poLastname'], $row['poFirstname'], $row['town_idTown'], $row['idProject']);
+                
+            $Projects[] = $project;
+        }
+
+        return $Projects;
+    }
+}
+

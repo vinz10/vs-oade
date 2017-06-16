@@ -18,7 +18,7 @@
 </div>
 
 <div id="projects">
-    <a href="<?php echo URL_DIR . 'guidedhikes/guidedhikes'; ?>">
+    <a href="<?php echo URL_DIR . 'projects/projects'; ?>">
         <img class="hovered" src="/<?php echo SITE_NAME; ?>/Images/projects.jpg" width="346px" height="346px" alt="Projects"/>
     </a>
 

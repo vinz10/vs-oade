@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class Login
+ * Class Town
  */
 class Town {
     private $townName;
