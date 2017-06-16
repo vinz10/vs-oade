@@ -51,7 +51,7 @@
 
                     <div id="navbar" class="navbar-collapse agileits w3layouts navbar-right collapse">
                         <ul class="nav agileits w3layouts navbar-nav">
-                            <li class="active"><a href="<?php echo URL_DIR;?>"><?php echo MENU_HOME; ?></a></li>
+                            <li><a href="<?php echo URL_DIR;?>"><?php echo MENU_HOME; ?></a></li>
                             <li><a href="<?php echo URL_DIR.'guidedhikes/guidedhikes';?>"><?php echo MENU_MANUAL; ?></a></li>
                             <li><a href="<?php echo URL_DIR . 'projects/projects'; ?>"><?php echo MENU_PROJECT; ?></a></li>
                             <li>

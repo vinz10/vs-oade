@@ -27,7 +27,6 @@ define("SEARCH", "Search");
 
 // MESSAGES
 define("CONNECTION_FAIL", "Connection failed");
-define("REQUIRED_FIELD", "A required field is empty!");
 define("INCORRECT_PWD", "Password incorrect!");
 define("USER_EXIST", "Email exists already!");
 define("REGISTER_SUCCESS", "Registration successful!");
@@ -47,6 +46,7 @@ define("NO_RATING", "No rating available!");
 define("NO_FAVORITE", "No favorite available!");
 define("NO_HIKE", "No hike available!");
 define("NO_GUIDEDHIKE", "No guided hike available");
+define("MSG_CONNECT_TO_SHOW_PROJECTS", "Please connect you on a town to reach its projects!");
 
 // HOME PAGE
 define("HOME_TITLE", "VS-OADE Home");
@@ -62,15 +62,25 @@ define("HOME_PROJECTS_LIST", "List of projects");
 define("HOME_PROJECTS_DESC", "Create new projects or modify current projects.");
 define("HOME_PROJECTS_ACCESS", "Reach the projects");
 
-
 // LOGIN PAGE
 define("LOGIN_TITLE", "VS-OADE Login");
 define("LOGIN", "Login");
 define("TOWNNAME", "Town");
 define("PASSWORD", "Password");
 
+// PROJECTS PAGE
+define("PROJECTS_TITLE", "VS-OADE Projects");
+define("PROJECTS_PROJECT", "Projects");
+define("PROJECTS_NEW_PROJECT", "New Project");
 
-
+// PROJECTS PHASE 0
+define("PHASE0_TITLE", "VS-OADE Phase 0");
+define("PHASE0_PROJECT_INFO", "Information on the project");
+define("PHASE0_PROJECT_NAME", "Name of the project");
+define("PHASE0_PROJECT_POLASTNAME", "Project Owner lastname");
+define("PHASE0_PROJECT_POFIRSTNAME", "Project Owner firstname");
+define("PHASE0_PROJECT_CREATE", "Create project");
+define("PHASE0_PROJECT_CANCEL", "Cancel");
 
 
 

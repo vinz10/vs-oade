@@ -28,7 +28,6 @@ define("SEARCH", "Rechercher");
 
 // MESSAGES
 define("CONNECTION_FAIL", "Connection failed");
-define("REQUIRED_FIELD", "Un champ obligatoire est vide!");
 define("INCORRECT_PWD", "Mot de passe incorrect!");
 define("USER_EXIST", utf8_encode("L'adresse email existe d�j�!"));
 define("REGISTER_SUCCESS", utf8_encode("Inscription r�ussie!"));
@@ -48,6 +47,7 @@ define("NO_RATING", utf8_encode("Aucune �valuation disponible!"));
 define("NO_FAVORITE", utf8_encode("Aucun favori disponible!"));
 define("NO_HIKE", utf8_encode("Aucune randonn�e disponible!"));
 define("NO_GUIDEDHIKE", utf8_encode("Aucune randonn�e guid�e disponible!"));
+define("MSG_CONNECT_TO_SHOW_PROJECTS", "Veuillez vous connecter sur une commune pour accéder à ses projets!");
 
 // HOME PAGE
 define("HOME_TITLE", "VS-OADE Accueil");
@@ -63,12 +63,25 @@ define("HOME_PROJECTS_LIST", "Liste des projets");
 define("HOME_PROJECTS_DESC", "Créer de nouveaux projets ou modifier des projets en cours.");
 define("HOME_PROJECTS_ACCESS", "Accéder aux projets");
 
-
 // LOGIN PAGE
 define("LOGIN_TITLE", "VS-OADE Connexion");
 define("LOGIN", "Connexion");
 define("TOWNNAME", "Commune");
 define("PASSWORD", "Mot de passe");
+
+// PROJECTS PAGE
+define("PROJECTS_TITLE", "VS-OADE Projets");
+define("PROJECTS_PROJECT", "Projets");
+define("PROJECTS_NEW_PROJECT", "Nouveau Projet");
+
+// PROJECTS PHASE 0
+define("PHASE0_TITLE", "VS-OADE Phase 0");
+define("PHASE0_PROJECT_INFO", "Informations sur le projet");
+define("PHASE0_PROJECT_NAME", "Nom du projet");
+define("PHASE0_PROJECT_POLASTNAME", "Nom du porteur de projet");
+define("PHASE0_PROJECT_POFIRSTNAME", "Prénom du porteur de projet");
+define("PHASE0_PROJECT_CREATE", "Créer projet");
+define("PHASE0_PROJECT_CANCEL", "Annuler");
 
 
 

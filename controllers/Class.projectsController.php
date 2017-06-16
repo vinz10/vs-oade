@@ -13,4 +13,10 @@ class projectsController extends Controller {
         // Initialization of variables
         $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
     }	
+    
+    function phase0() {
+
+        // Initialization of variables
+        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+    }	
 }
