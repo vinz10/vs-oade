@@ -54,8 +54,6 @@
                         <h4><?php echo PASSWORD; ?></h4>
                         <div class="dropdown-button agileits w3layouts">
                             <input type="password" name="password" id="login-pass" class="dropdown agileits w3layouts" required="">
-                    
-                            <!-- Typography -->
                             <?php 
                                 if(!empty($msg)) :
                             ?>

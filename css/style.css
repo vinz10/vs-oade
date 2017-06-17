@@ -439,7 +439,7 @@ ul.callbacks_tabs li {
 /*-- Principles --*/
 
 .manual {
-    padding: 100px 0 300px;
+    padding: 150px 0 100px;
     position: relative;
     background-color: #EEE;
 }
@@ -2033,7 +2033,7 @@ h2.typoh2 {
 
 .reg {
     padding: 150px 0;
-    background: #2980b9;/*url("../images/booking.jpg");*/
+    background: #2980b9;/*url("../images/background.png");*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

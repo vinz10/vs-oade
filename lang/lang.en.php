@@ -33,6 +33,7 @@ define("MSG_WARNING", "Warning!");
 define("MSG_PROJECT_EXIST", "The project already exists.");
 define("MSG_INFO", "Information!");
 define("MSG_CONNECT_TO_SHOW_PROJECTS", "Please connect you on a town to reach its projects.");
+define("MSG_NO_PROJECT", "There is no existing project for this town.");
 
 // HOME PAGE
 define("HOME_TITLE", "VS-OADE Home");
@@ -58,6 +59,10 @@ define("PASSWORD", "Password");
 define("PROJECTS_TITLE", "VS-OADE Projects");
 define("PROJECTS_PROJECT", "Projects");
 define("PROJECTS_NEW_PROJECT", "New Project");
+define("PROJECTS_READ_MORE", "Read More");
+
+// PROJECTS PAGE
+define("PROJECT_ACCESS", "Access");
 
 // PROJECTS PHASE 0
 define("PHASE0_TITLE", "VS-OADE Phase 0");
@@ -69,76 +74,6 @@ define("PHASE0_PROJECT_POFIRSTNAME", "Project Owner firstname");
 define("PHASE0_PROJECT_CREATE", "Create project");
 define("PHASE0_PROJECT_CANCEL", "Cancel");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// HIKES PAGE
-define("HIKES_TITLE", "CAS Hikes Ideas");
-
-// HIKE PAGE
-define("REG_FAILED", "Error of registration!");
-define("REG_SUCCESS", "Successful registration!");
-define("HIKE_PLACEAVAILABLE", "Remaining place(s)");
-define("HIKE_NOREGIST", "No. of registration");
-define("HIKE_REGIST", "Registrations");
-define("HIKE_NBREGIST", "Number of registrations");
-define("HIKE_TOTALPRICE", "Total price");
-
-// GUIDED HIKES PAGE
-define("GUIDEDH_TITLE", "CAS Our Guided Hikes");
-
-define("ADMIN_REGISTRATION", "Registration");
-define("JOURNEY", "Stay");
-define("JOURNEYBT", "Stay");
-define("CREATE", "Create");
-define("RESET", "Reset");
-define("EDIT", "Edit");
-define("DELETE", "Delete");
-define("HOUR", "Hours");
-define("PEOPLE", "People");
-define("STARTLOCALITY", "Start Place");
-define("ENDLOCALITY", "End Place");
-define("LOCALADDRESS", "Locality/Address");
-define("ADMIN_HIKE", "Hikes");
-define("MANAGE_HIKES", "Hikes Management");
-define("PERMISSION", "Permission");
-define("ADMIN_PERMISSION", "Permission");
-define("MANAGE_PERMISSION", "Permission Management");
-define("DESC_PERMISSION", "Administrative rights");
-
-// ACCOUNT PAGE
-define("ACCOUNT_TITLE", "CAS My Account");
-define("FAVORITE_TITLE", "CAS My Favorites");
-define("BOOKING_TITLE", "CAS My Registration");
-define("RATING_TITLE", "CAS My Ratings");
-define("INFORMATION", "My information");
-define("CONFIRMPW", "Confirm Password");
-define("MODIFY", "Modify");
-define("CANCEL", "Cancel");
-define("MENU_MYACCOUNT", "My Account");
-define("MENU_FAVORITES", "Favorites");
-define("MENU_MYFAVORITES", "My Favorites");
-define("MENU_MYBOOKING", "Registration");
-define("MENU_MYINSCRIPTION", "My registration");
-define("MENU_MYRATING", "Ratings");
-define("MENU_MYNOTES", "My Ratings");
-define("NBREHIKERS", "Number of hikers");
+// PROJECTS PHASE 1
+define("PHASE1_SURVEY", "Preliminary questionnaire");
+define("PHASE1_VALIDATE", "Validate");

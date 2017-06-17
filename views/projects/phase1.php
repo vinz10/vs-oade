@@ -20,7 +20,8 @@
     // Initialization of variables
     $msg = $this->vars['msg'];
     $persistence = $this->vars['persistence'];
-    $title = PHASE0_TITLE;
+    $project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);	
+    $title = $project->getName();
     $towns = loginController::getAllTowns();
     $login = $_SESSION ['login'];
 
@@ -35,69 +36,60 @@
 
         <div class="register agileits w3layouts">
 
-            <h2><?php echo PHASE0_PROJECT_INFO; ?></h2>
+            <h2><?php echo PHASE1_SURVEY; ?></h2>
             
-            <form action="<?php echo URL_DIR . 'projects/newproject'; ?>" method="post">
+            <form action="<?php echo URL_DIR . '#'; ?>" method="post">
                 
                 <div class="members wow agileits w3layouts slideInLeft">
                     <div class="adult agileits w3layouts">
-                        <h4><?php echo PHASE0_PROJECT_NAME; ?></h4>
+                        <h4>Question 1.1</h4>
+                        <div class="well agileits w3layouts">
+                            Quel est l'objectif principal poursuivi par le projet ?
+                        </div>
                         <div class="dropdown-button agileits w3layouts">
-                            <input type="text" name="name" id="name" class="dropdown agileits w3layouts" required="" value="<?php echo $persistence[0];?>">
+                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="Réponse" required=""><?php echo $persistence[1];?></textarea>
                         </div>
                     </div>  
                 </div>
                 
                 <div class="members wow agileits w3layouts slideInLeft">
                     <div class="adult agileits w3layouts">
-                        <h4><?php echo PHASE0_PROJECT_DESCRIPTION; ?></h4>
+                        <h4>Question 1.2</h4>
+                        <div class="well agileits w3layouts">
+                            Quels sont les objectifs secondaires poursuivis par le projet ?
+                        </div>
                         <div class="dropdown-button agileits w3layouts">
-                            <textarea name="description" id="description" class="dropdown agileits w3layouts" required=""><?php echo $persistence[1];?></textarea>
+                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="Réponse" required=""><?php echo $persistence[1];?></textarea>
                         </div>
                     </div>  
                 </div>
                 
                 <div class="members wow agileits w3layouts slideInLeft">
                     <div class="adult agileits w3layouts">
-                        <h4><?php echo PHASE0_PROJECT_POLASTNAME; ?></h4>
+                        <h4>Question 1.3</h4>
+                        <div class="well agileits w3layouts">
+                            Quels sont les effets souhaités ?
+                        </div>
                         <div class="dropdown-button agileits w3layouts">
-                            <input type="text" name="poLastname" id="poLastname" class="dropdown agileits w3layouts" required="" value="<?php echo $persistence[2];?>">
+                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="Réponse" required=""><?php echo $persistence[1];?></textarea>
                         </div>
                     </div>  
                 </div>
                 
                 <div class="members wow agileits w3layouts slideInLeft">
                     <div class="adult agileits w3layouts">
-                        <h4><?php echo PHASE0_PROJECT_POFIRSTNAME; ?></h4>
+                        <h4>Question 1.4</h4>
+                        <div class="well agileits w3layouts">
+                            Le projet risque-t-il d'avoir des effets secondaires non désirés ?
+                        </div>
                         <div class="dropdown-button agileits w3layouts">
-                            <input type="text" name="poFirstname" id="poFirstname" class="dropdown agileits w3layouts" required="" value="<?php echo $persistence[3];?>">
+                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="Réponse" required=""><?php echo $persistence[1];?></textarea>
                         </div>
                     </div>  
                 </div>
-                
-                <div class="place wow agileits w3layouts slideInLeft">
-                    <div class="dropdown-button agileits w3layouts">
-                        <h4><?php echo TOWNNAME; ?></h4>
-                        <div class="dropdown-button agileits w3layouts">
-                            <input type="text" name="townId" id="townId" class="dropdown agileits w3layouts" disabled="disabled" value="<?php echo $login->getTownName(); ?>" required="">
-                        </div>
-                    </div>
-                </div>
-                
-                <?php 
-                    if(!empty($msg)) :
-                ?>
-                <div class="members wow agileits w3layouts slideInLeft">
-                    <div class="alert agileits w3layouts alert-warning" role="alert">
-                        <strong><?php echo MSG_WARNING; ?></strong> <?php echo MSG_PROJECT_EXIST; ?>
-                    </div>
-                </div>
-                <?php 
-                    endif;
-                ?>
 
                 <div class="submit wow agileits w3layouts slideInLeft">
-                    <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo PHASE0_PROJECT_CREATE; ?>">
+                    <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo PHASE1_VALIDATE; ?>">
                     <input type="submit" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="history.back();" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
                 </div>
             </form>

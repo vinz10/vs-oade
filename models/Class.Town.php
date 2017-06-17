@@ -16,7 +16,7 @@ class Town {
      * @param string $electedPassword
      * @param int $idTown
      */
-    public function __construct($townName, $password, $electedPassword, $idTown = null){
+    public function __construct($idTown = null, $townName, $password, $electedPassword){
         $this->setId($idTown);
         $this->setTownName($townName);
         $this->setPassword($password);
@@ -91,7 +91,7 @@ class Town {
         $rows = $result->fetchAll();
 
         foreach($rows as $row) {
-            $town = new Town($row['name'], $row['password'], $row['electedPassword'], $row['idTown']);
+            $town = new Town($row['idTown'], $row['name'], $row['password'], $row['electedPassword']);
                 
             $Towns[] = $town;
         }
@@ -108,6 +108,6 @@ class Town {
             return false;
         }
 
-        return new Town($row['name'], $row['password'], $row['electedPassword'], $row['idTown']);
+        return new Town($row['idTown'], $row['name'], $row['password'], $row['electedPassword']);
     }
 }

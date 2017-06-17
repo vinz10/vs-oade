@@ -68,13 +68,24 @@
                     <h4><?php echo $project->getName(); ?></h4>
                     <div class="h4-underline wow agileits w3layouts slideInLeft"></div>
                     <p><?php echo $project->getDescription(); ?></p>
-                    <a class="wow slideInLeft" href="about.html">Read More <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                    <a class="wow slideInLeft" href="<?php echo URL_DIR.'projects/project?id=' . $project->getId(); ?>"><?php echo PROJECTS_READ_MORE; ?> <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
                 </div>
             <?php 
                 endforeach; 
                 else:
-                    echo '<p>No project' . MSG_CONNECT_TO_SHOW_PROJECTS . '</p>';
-                endif; 
+                    $connect = $this->getLogin();
+                    if ($connect) :
+            ?>
+                <div class="services-grids agileits w3layouts">
+                    <div class="col-md-6 col-sm-6 services-grid agileits w3layouts services-grid1 wow slideInLeft">
+                        <div class="alert agileits w3layouts alert-info" role="alert">
+                            <strong><?php echo MSG_INFO; ?></strong> <?php echo MSG_NO_PROJECT; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php 
+                    endif;
+                endif;
             ?>
             <div class="clearfix"></div>
         </div>

@@ -14,12 +14,72 @@ class projectsController extends Controller {
         $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
     }	
     
+    /**
+     // @method project()
+     // @desc Method to load the project.php page with the right Project (by the id).
+     */
+    function project(){
+        
+        // Get the id of the project
+        if (isset($_GET['id'])) {
+            $id_Project = intval($_GET['id']);
+            if ($id_Project != 0) {
+                $project = Project::getProjectById($id_Project);
+                if($project){
+                    $this->data['idProject'] = $project->getId();
+                    $this->data['name'] = $project->getName();
+                    $this->data['description'] = $project->getDescription();
+                    $this->data['poLastname'] = $project->getPoLastname();
+                    $this->data['poFirstname'] = $project->getPoFirstname();
+                    $this->data['town_idTown'] = $project->getTownId();
+                }
+                else {
+                    $this->redirect('error', 'http404');
+                }
+            }
+        }
+    }
+    
+    /**
+     // @method phase0()
+     // @desc Method for the phase 0
+     */
     function phase0() {
 
         // Initialization of variables
         $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
         $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
     }	
+    
+    /**
+     // @method phase1()
+     // @desc Method for the phase 1
+     */
+    function phase1(){
+        
+        // Initialization of variables
+        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+        $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
+        
+        // Get the id of the project
+        if (isset($_GET['id'])) {
+            $id_Project = intval($_GET['id']);
+            if ($id_Project != 0) {
+                $project = Project::getProjectById($id_Project);
+                if($project){
+                    $this->data['idProject'] = $project->getId();
+                    $this->data['name'] = $project->getName();
+                    $this->data['description'] = $project->getDescription();
+                    $this->data['poLastname'] = $project->getPoLastname();
+                    $this->data['poFirstname'] = $project->getPoFirstname();
+                    $this->data['town_idTown'] = $project->getTownId();
+                }
+                else {
+                    $this->redirect('error', 'http404');
+                }
+            }
+        }
+    }
     
     /**
      // @method newproject()
@@ -41,7 +101,7 @@ class projectsController extends Controller {
         $project = new Project($name, $description, $poLastname, $poFirstname, $townId);
         
         // Check if the project already exists
-        if ($project->existProject($name)) {
+        if ($project->existProject($name, $townId)) {
             $_SESSION['msg'] = MSG_PROJECT_EXIST;
             $_SESSION['persistence'] = array($name, $description, $poLastname, $poFirstname);
             $this->redirect('projects', 'phase0');

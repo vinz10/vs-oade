@@ -4,23 +4,23 @@
  * Class Project
  */
 class Project {
+    private $idProject;
     private $name;
     private $description;
     private $poLastname;
     private $poFirstname;
     private $town_idTown;
-    private $idProject;
     
     /**
      * Constructor
+     * @param int $idProject
      * @param string $name
      * @param string $description
      * @param string $poLastname
      * @param string $poFirstname
      * @param int $town_idTown
-     * @param int $idProject
      */
-    public function __construct($name, $description, $poLastname, $poFirstname, $town_idTown, $idProject = null){
+    public function __construct($idProject = null, $name, $description, $poLastname, $poFirstname, $town_idTown){
         $this->setId($idProject);
         $this->setName($name);
         $this->setDescription($description);
@@ -112,26 +112,6 @@ class Project {
     public function setTownId($town_idTown){
         $this->town_idTown = $town_idTown;
     }
-	
-    /**
-     // @method getProjectsByIdTown()
-     // @desc Method that get all the projects by the idTown from the DB
-     // @return Towns[]
-     */
-    public static function getProjectsByIdTown($idTown) {
-        $query = "SELECT * FROM project WHERE town_idTown='$idTown';";
-        $result = SqlConnection::getInstance()->selectDB($query);
-        $Projects = array();
-        $rows = $result->fetchAll();
-
-        foreach($rows as $row) {
-            $project = new Project($row['name'], $row['description'], $row['poLastname'], $row['poFirstname'], $row['town_idTown'], $row['idProject']);
-                
-            $Projects[] = $project;
-        }
-
-        return $Projects;
-    }
     
     /**
      // @method insertProject()
@@ -151,6 +131,45 @@ class Project {
 
         return  $sql->executeQuery($query);
     }
+	
+    /**
+     // @method getProjectById()
+     // @desc Method that get a project by the id from the DB
+     // @return Towns[]
+     */
+    public static function getProjectById($idProject) {
+        
+        $query = "SELECT * FROM project WHERE idProject='$idProject';";
+	$result = SqlConnection::getInstance()->selectDB($query);
+	$row = $result->fetch();
+	if (!$row) {
+            return false;
+        }
+
+        $project = new Project($row['idProject'], $row['name'], $row['description'], $row['poLastname'], $row['poFirstname'], $row['town_idTown']);
+        
+        return $project;
+    }
+    
+    /**
+     // @method getProjectsByIdTown()
+     // @desc Method that get all the projects by the idTown from the DB
+     // @return Towns[]
+     */
+    public static function getProjectsByIdTown($idTown) {
+        $query = "SELECT * FROM project WHERE town_idTown='$idTown';";
+        $result = SqlConnection::getInstance()->selectDB($query);
+        $Projects = array();
+        $rows = $result->fetchAll();
+
+        foreach($rows as $row) {
+            $project = new Project($row['idProject'], $row['name'], $row['description'], $row['poLastname'], $row['poFirstname'], $row['town_idTown']);
+                
+            $Projects[] = $project;
+        }
+
+        return $Projects;
+    }
     
     /**
      // @method existProject()
@@ -158,12 +177,12 @@ class Project {
      // @param string $name
      // @return boolean
      */
-    public static function existProject($name) {
+    public static function existProject($name, $idTown) {
         
         $sql = SqlConnection::getInstance();
         
         $query = "SELECT * FROM project WHERE name=";
-        $query .= $sql->getConn()->quote($name) . ';';
+        $query .= $sql->getConn()->quote($name) . " AND town_idTown='$idTown';";
         
         $result = SqlConnection::getInstance()->selectDB($query);
         $row = $result->fetch();
