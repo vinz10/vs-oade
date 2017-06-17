@@ -27,27 +27,13 @@ define("FILTER", "Filtrer");
 define("SEARCH", "Rechercher");
 
 // MESSAGES
-define("CONNECTION_FAIL", "Connection failed");
-define("INCORRECT_PWD", "Mot de passe incorrect!");
-define("USER_EXIST", utf8_encode("L'adresse email existe d�j�!"));
-define("REGISTER_SUCCESS", utf8_encode("Inscription r�ussie!"));
-define("CREATE_SUCCESS", utf8_encode("Creation r�ussie!"));
-define("PASSWORD_NOT_CORRESPOND", "Les mots de passe ne correspondent pas!");
-define("UPDATE_SUCCESS", utf8_encode("Modification effectu�e!"));
-define("UPDATE_FAIL", "Erreur de modification!");
-define("MODIFICATION_IMPOSSIBLE", utf8_encode("Impossible de changer le type de randonn�e de r�servation en randonn�e"));  
-define("NO_FILE", "Pas de fichier!");
-define("UPLOAD_ERROR", utf8_encode("Erreur d'upload!"));
-define("UPLOAD_TYPEFILE", "Type de fichier invalide");
-define("UPLOAD_HEAVY", "trop lourd!");
-define("DELETE_FAIL", "Echec de suppression!");
-define("DELETE_SUCCESS", utf8_encode("Suppression effectu�e!"));
-define("NO_INSCRIPTION", utf8_encode("Aucune inscription disponible!"));
-define("NO_RATING", utf8_encode("Aucune �valuation disponible!"));
-define("NO_FAVORITE", utf8_encode("Aucun favori disponible!"));
-define("NO_HIKE", utf8_encode("Aucune randonn�e disponible!"));
-define("NO_GUIDEDHIKE", utf8_encode("Aucune randonn�e guid�e disponible!"));
-define("MSG_CONNECT_TO_SHOW_PROJECTS", "Veuillez vous connecter sur une commune pour accéder à ses projets!");
+define("MSG_CONNECTION_FAIL", "Connection failed");
+define("MSG_ERROR", "Erreur!");
+define("MSG_INCORRECT_PWD", "Mot de passe incorrect.");
+define("MSG_WARNING", "Attention!");
+define("MSG_PROJECT_EXIST", "Le projet existe déjà.");
+define("MSG_INFO", "Information!");
+define("MSG_CONNECT_TO_SHOW_PROJECTS", "Veuillez vous connecter sur une commune pour accéder à ses projets.");
 
 // HOME PAGE
 define("HOME_TITLE", "VS-OADE Accueil");
@@ -78,6 +64,7 @@ define("PROJECTS_NEW_PROJECT", "Nouveau Projet");
 define("PHASE0_TITLE", "VS-OADE Phase 0");
 define("PHASE0_PROJECT_INFO", "Informations sur le projet");
 define("PHASE0_PROJECT_NAME", "Nom du projet");
+define("PHASE0_PROJECT_DESCRIPTION", "Description du projet");
 define("PHASE0_PROJECT_POLASTNAME", "Nom du porteur de projet");
 define("PHASE0_PROJECT_POFIRSTNAME", "Prénom du porteur de projet");
 define("PHASE0_PROJECT_CREATE", "Créer projet");

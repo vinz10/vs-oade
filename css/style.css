@@ -316,7 +316,8 @@ ul.callbacks_tabs li {
 }
 
 .services h2 {
-    margin-bottom: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .services-grid1 p {
@@ -363,7 +364,9 @@ ul.callbacks_tabs li {
     color: #777;
     line-height: 30px;
     padding-right: 75px;
-    margin-bottom: 30px
+    margin-bottom: 30px;
+    height: 120px;
+    overflow: hidden;
 }
 
 .services a {
@@ -2070,6 +2073,19 @@ select.dropdown, input.dropdown, input#datepicker1, input#datepicker2 {
     border: none;
 }
 
+textarea.dropdown {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    height: 100px;
+    background-color: #FFF;
+    color: #000;
+    outline: none;
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
 .book-pag-frm1, .book-pag-frm2 {
     width: 50%;
     float: left;
@@ -2736,9 +2752,10 @@ p.contact-p {
     padding: 10px 15px;
     margin-bottom: 20px;
     outline: none;
-    background-color: #111;
+    background-color:#111;
     border: none;
     color: #FFF;
+    font-weight: 500;
     font-family: 'Montserrat', sans-serif;
 }
 

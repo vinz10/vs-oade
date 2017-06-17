@@ -3,15 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/administration/hikesmanager.php</file>
+            <file>file:/C:/xampp/htdocs/vs-oade/models/Class.Project</file>
+            <file>file:/C:/xampp/htdocs/vs-oade/views/projects/projects.php</file>
             <file>file:/C:/xampp/htdocs/vs-oade/views/home/home.php</file>
+            <file>file:/C:/xampp/htdocs/vs-oade/views/guidedhikes/guidedhikes.php</file>
             <file>file:/C:/xampp/htdocs/vs-oade/lang/lang.en.php</file>
             <file>file:/C:/xampp/htdocs/vs-oade/lang/lang.fr.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/models/Class.Town.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/controllers/Class.loginController.php</file>
+            <file>file:/C:/xampp/htdocs/vs-oade/views/projects/phase0.php</file>
+            <file>file:/C:/xampp/htdocs/vs-oade/css/style.css</file>
             <file>file:/C:/xampp/htdocs/vs-oade/views/login/login.php</file>
+            <file>file:/C:/xampp/htdocs/vs-oade/controllers/Class.loginController.php</file>
             <file>file:/C:/xampp/htdocs/vs-oade/views/template.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/controllers/Class.Controller.php</file>
+            <file>file:/C:/xampp/htdocs/vs-oade/controllers/Class.projectsController.php</file>
         </group>
     </open-files>
 </project-private>

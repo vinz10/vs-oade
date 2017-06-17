@@ -22,7 +22,7 @@ class SqlConnection {
             $this->_conn = new PDO('mysql:host=' . self::HOST . ';port=' . self::PORT . ';dbname=' . self::DATABASE, self::USER, self::PWD, 
                                 array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") );
         } catch (PDOException $e) {
-            die(CONNECTION_FAIL . ' : ' . $e->getMessage());
+            die(MSG_CONNECTION_FAIL . ' : ' . $e->getMessage());
         }
     }
 
@@ -58,7 +58,7 @@ class SqlConnection {
         $e = $this->_conn->errorInfo();
         if ($e [1] != null) {
             if ($e [1] == 1062) {
-                return USER_EXIST;
+                return MSG_PROJECT_EXIST;
             }
             else {
                 die(print_r($this->_conn->errorInfo(), true));

@@ -17,14 +17,13 @@
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700" type="text/css">
 
 <?php
-// Initialization of variables
-$msg = $this->vars['msg'];
-$msgSuccess = $this->vars['msgSuccess'];
-$title = LOGIN_TITLE;
-$towns = loginController::getAllTowns();
+    // Initialization of variables
+    $msg = $this->vars['msg'];
+    $title = LOGIN_TITLE;
+    $towns = loginController::getAllTowns();
 
-// Template CSS
-ob_start();
+    // Template CSS
+    ob_start();
 ?>
 
 
@@ -56,13 +55,16 @@ ob_start();
                         <div class="dropdown-button agileits w3layouts">
                             <input type="password" name="password" id="login-pass" class="dropdown agileits w3layouts" required="">
                     
-                            <div class="success-msg">
-                                <?php echo $msgSuccess; ?>
+                            <!-- Typography -->
+                            <?php 
+                                if(!empty($msg)) :
+                            ?>
+                            <div class="alert agileits w3layouts alert-danger" role="alert">
+                                <strong><?php echo MSG_ERROR; ?></strong><?php echo ' ' . $msg; ?>
                             </div>
-
-                            <div class="error-msg">
-                                <?php echo '<h4>' . $msg . '</h4>' ?>
-                            </div>
+                            <?php 
+                                endif;
+                            ?>
                         </div>
                     </div>  
                 </div>
@@ -79,59 +81,58 @@ ob_start();
 
 <!-- Custom-JavaScript-File-Links -->
 
-            <!-- Default-JavaScript -->	  
-            <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
-            <!-- Bootstrap-JavaScript --> 
-            <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<!-- Default-JavaScript -->	  
+<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+<!-- Bootstrap-JavaScript --> 
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 
-            <!-- Animate.CSS-JavaScript -->
-            <script src="../js/wow.min.js"></script>
-            <script>new WOW().init();</script>
+<!-- Animate.CSS-JavaScript -->
+<script src="../js/wow.min.js"></script>
+<script>new WOW().init();</script>
 
-            <!-- Slider-JavaScript -->
-            <script src="../js/responsiveslides.min.js"></script>
-            <script>
-                $(function () {
-                    $("#slider1, #slider2, #slider3, #slider4").responsiveSlides({
-                        auto: true,
-                        nav: true,
-                        speed: 1500,
-                        namespace: "callbacks",
-                        pager: true,
-                    });
-                });
-            </script>
-            
-            <!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    var defaults = {
-                        containerID: 'toTop', // fading element id
-                        containerHoverID: 'toTopHover', // fading element hover id
-                        scrollSpeed: 100,
-                        easingType: 'linear'
-                    };
-                    $().UItoTop({ easingType: 'easeOutQuart' });
-                });
-            </script>
-            <a href="#" id="toTop" class="agileits w3layouts" style="display: block;"> <span id="toTopHover" style="opacity: 0;"> </span></a>
-            
-            <!-- Smooth-Scrolling-JavaScript -->
-            <script type="text/javascript" src="../js/move-top.js"></script>
-            <script type="text/javascript" src="../js/easing.js"></script>
-            <script type="text/javascript">
-                jQuery(document).ready(function($) {
-                    $(".scroll, .navbar li a, .footer li a").click(function(event){
-                        $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-                    });
-                });
-            </script>
+<!-- Slider-JavaScript -->
+<script src="../js/responsiveslides.min.js"></script>
+<script>
+    $(function () {
+        $("#slider1, #slider2, #slider3, #slider4").responsiveSlides({
+            auto: true,
+            nav: true,
+            speed: 1500,
+            namespace: "callbacks",
+            pager: true,
+        });
+    });
+</script>
+
+<!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 100,
+            easingType: 'linear'
+        };
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+</script>
+<a href="#" id="toTop" class="agileits w3layouts" style="display: block;"> <span id="toTopHover" style="opacity: 0;"> </span></a>
+
+<!-- Smooth-Scrolling-JavaScript -->
+<script type="text/javascript" src="../js/move-top.js"></script>
+<script type="text/javascript" src="../js/easing.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll, .navbar li a, .footer li a").click(function(event){
+            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+        });
+    });
+</script>
 
 <?php
-// Unset variables
-unset($_SESSION['msg']);
-unset($_SESSION['msgSuccess']);
+    // Unset variables
+    unset($_SESSION['msg']);
 
-// Template CSS
-$content = ob_get_clean();
-require 'views/template.php';
+    // Template CSS
+    $content = ob_get_clean();
+    require 'views/template.php';

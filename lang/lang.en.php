@@ -26,27 +26,13 @@ define("FILTER", "Filter");
 define("SEARCH", "Search");
 
 // MESSAGES
-define("CONNECTION_FAIL", "Connection failed");
-define("INCORRECT_PWD", "Password incorrect!");
-define("USER_EXIST", "Email exists already!");
-define("REGISTER_SUCCESS", "Registration successful!");
-define("CREATE_SUCCESS", "Creation successful!");
-define("PASSWORD_NOT_CORRESPOND", "Password are not corresponding!");
-define("UPDATE_SUCCESS", "Modification done!");
-define("UPDATE_FAIL", "Modification fail!");
-define("MODIFICATION_IMPOSSIBLE", "Impossible to switch the type from registration to hike !");  
-define("NO_FILE", "No file!");
-define("UPLOAD_ERROR", "Upload Error!");
-define("UPLOAD_TYPEFILE", "Type of file invalid !");
-define("UPLOAD_HEAVY", "too heavy!");
-define("DELETE_FAIL", "Delete fail!");
-define("DELETE_SUCCESS", "Delete done!");
-define("NO_INSCRIPTION", "No registration available!");
-define("NO_RATING", "No rating available!");
-define("NO_FAVORITE", "No favorite available!");
-define("NO_HIKE", "No hike available!");
-define("NO_GUIDEDHIKE", "No guided hike available");
-define("MSG_CONNECT_TO_SHOW_PROJECTS", "Please connect you on a town to reach its projects!");
+define("MSG_CONNECTION_FAIL", "Connection failed");
+define("MSG_ERROR", "Error!");
+define("MSG_INCORRECT_PWD", "Password incorrect.");
+define("MSG_WARNING", "Warning!");
+define("MSG_PROJECT_EXIST", "The project already exists.");
+define("MSG_INFO", "Information!");
+define("MSG_CONNECT_TO_SHOW_PROJECTS", "Please connect you on a town to reach its projects.");
 
 // HOME PAGE
 define("HOME_TITLE", "VS-OADE Home");
@@ -77,6 +63,7 @@ define("PROJECTS_NEW_PROJECT", "New Project");
 define("PHASE0_TITLE", "VS-OADE Phase 0");
 define("PHASE0_PROJECT_INFO", "Information on the project");
 define("PHASE0_PROJECT_NAME", "Name of the project");
+define("PHASE0_PROJECT_DESCRIPTION", "Description of the project");
 define("PHASE0_PROJECT_POLASTNAME", "Project Owner lastname");
 define("PHASE0_PROJECT_POFIRSTNAME", "Project Owner firstname");
 define("PHASE0_PROJECT_CREATE", "Create project");

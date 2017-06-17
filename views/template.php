@@ -168,52 +168,52 @@
         
         <!-- Custom-JavaScript-File-Links -->
 
-            <!-- Default-JavaScript -->	  
-            <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-            <!-- Bootstrap-JavaScript --> 
-            <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- Default-JavaScript -->	  
+        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+        <!-- Bootstrap-JavaScript --> 
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-            <!-- Animate.CSS-JavaScript -->
-            <script src="js/wow.min.js"></script>
-            <script>new WOW().init();</script>
+        <!-- Animate.CSS-JavaScript -->
+        <script src="js/wow.min.js"></script>
+        <script>new WOW().init();</script>
 
-            <!-- Slider-JavaScript -->
-            <script src="js/responsiveslides.min.js"></script>
-            <script>
-                $(function () {
-                    $("#slider1, #slider2, #slider3, #slider4").responsiveSlides({
-                        auto: true,
-                        nav: true,
-                        speed: 1500,
-                        namespace: "callbacks",
-                        pager: true,
-                    });
+        <!-- Slider-JavaScript -->
+        <script src="js/responsiveslides.min.js"></script>
+        <script>
+            $(function () {
+                $("#slider1, #slider2, #slider3, #slider4").responsiveSlides({
+                    auto: true,
+                    nav: true,
+                    speed: 1500,
+                    namespace: "callbacks",
+                    pager: true,
                 });
-            </script>
-            
-            <!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    var defaults = {
-                        containerID: 'toTop', // fading element id
-                        containerHoverID: 'toTopHover', // fading element hover id
-                        scrollSpeed: 100,
-                        easingType: 'linear'
-                    };
-                    $().UItoTop({ easingType: 'easeOutQuart' });
+            });
+        </script>
+
+        <!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var defaults = {
+                    containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 100,
+                    easingType: 'linear'
+                };
+                $().UItoTop({ easingType: 'easeOutQuart' });
+            });
+        </script>
+        <a href="#" id="toTop" class="agileits w3layouts" style="display: block;"> <span id="toTopHover" style="opacity: 0;"> </span></a>
+
+        <!-- Smooth-Scrolling-JavaScript -->
+        <script type="text/javascript" src="js/move-top.js"></script>
+        <script type="text/javascript" src="js/easing.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $(".scroll, .navbar li a, .footer li a").click(function(event){
+                    $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
                 });
-            </script>
-            <a href="#" id="toTop" class="agileits w3layouts" style="display: block;"> <span id="toTopHover" style="opacity: 0;"> </span></a>
-            
-            <!-- Smooth-Scrolling-JavaScript -->
-            <script type="text/javascript" src="js/move-top.js"></script>
-            <script type="text/javascript" src="js/easing.js"></script>
-            <script type="text/javascript">
-                jQuery(document).ready(function($) {
-                    $(".scroll, .navbar li a, .footer li a").click(function(event){
-                        $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-                    });
-                });
-            </script>
+            });
+        </script>
     </body>
 </html>
