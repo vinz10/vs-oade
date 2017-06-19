@@ -35,6 +35,22 @@
 
         <div class="register agileits w3layouts">
 
+            <div class="register agileits w3layouts">
+                <div class="page">
+                    <ul class="pagination agileits w3layouts">
+                        <li class="agileits w3layouts"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                        <li><a href="#">0</a></li>
+                        <li class="active agileits w3layouts"><a href="#">1 <span class="sr-only agileits w3layouts">(current)</span></a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            
             <h2><?php echo PHASE0_PROJECT_INFO; ?></h2>
             
             <form action="<?php echo URL_DIR . 'projects/newproject'; ?>" method="post">

@@ -77,3 +77,5 @@ define("PHASE0_PROJECT_CANCEL", "Cancel");
 // PROJECTS PHASE 1
 define("PHASE1_SURVEY", "Preliminary questionnaire");
 define("PHASE1_VALIDATE", "Validate");
+define("PHASE1_QUESTION", "Question");
+define("PHASE1_ANSWER", "Answer");
