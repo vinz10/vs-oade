@@ -39,10 +39,10 @@
                 <ul class="pagination agileits w3layouts">
                     <li class="agileits w3layouts"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
                     <li><a href="#">0</a></li>
-                    <li class="active agileits w3layouts"><a href="#">1<span class="sr-only agileits w3layouts">(current)</span></a></li>
+                    <li><a href="#">1</a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
+                    <li class="active agileits w3layouts"><a href="#">4<span class="sr-only agileits w3layouts">(current)</span></a></li>                 
                     <li><a href="#">5</a></li>
                     <li><a href="#">6</a></li>
                     <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
@@ -52,12 +52,34 @@
 
         <div class="register agileits w3layouts">
 
-            <h2><?php echo PHASE1_SURVEY; ?></h2>
+            <h2><?php echo PHASE4_WEIGHTING; ?></h2>
             
             <form action="<?php echo URL_DIR . '#'; ?>" method="post">
                 
+                <h4><?php echo PHASE4_ASSETS; ?></h4>
                 <?php
-                    $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=1');
+                    $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=4');
+                    $app_questions = json_decode($app_questions, true);
+                    
+                foreach ($app_questions as $question): ?>
+                
+                <div class="members wow agileits w3layouts slideInLeft">
+                    <div class="adult agileits w3layouts">
+                        <h4><?php echo PHASE1_QUESTION . ' '. $question["id"] ?></h4>
+                        <div class="well agileits w3layouts">
+                            <?php echo $question["question"] ?>
+                        </div>
+                        <div class="dropdown-button agileits w3layouts">
+                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php echo $persistence[1];?></textarea>
+                        </div>
+                    </div>  
+                </div>
+
+                <?php endforeach; ?>
+                
+                <h4><?php echo PHASE4_CONFLICTS; ?></h4>
+                <?php
+                    $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=5');
                     $app_questions = json_decode($app_questions, true);
                     
                 foreach ($app_questions as $question): ?>
@@ -144,4 +166,6 @@
     // Template CSS
     $content = ob_get_clean();
     require 'views/template.php';
+
+
 

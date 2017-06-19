@@ -38,9 +38,9 @@
             <div class="register agileits w3layouts">
                 <div class="page">
                     <ul class="pagination agileits w3layouts">
-                        <li class="agileits w3layouts"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                        <li><a href="#">0</a></li>
-                        <li class="active agileits w3layouts"><a href="#">1 <span class="sr-only agileits w3layouts">(current)</span></a></li>
+                        <li class="disabled agileits w3layouts"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                        <li class="active agileits w3layouts"><a href="#">0<span class="sr-only agileits w3layouts">(current)</span></a></li>
+                        <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>

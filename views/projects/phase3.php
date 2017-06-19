@@ -39,9 +39,9 @@
                 <ul class="pagination agileits w3layouts">
                     <li class="agileits w3layouts"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
                     <li><a href="#">0</a></li>
-                    <li class="active agileits w3layouts"><a href="#">1<span class="sr-only agileits w3layouts">(current)</span></a></li>
+                    <li><a href="#">1</a></li>
                     <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
+                    <li class="active agileits w3layouts"><a href="#">3<span class="sr-only agileits w3layouts">(current)</span></a></li>
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>
                     <li><a href="#">6</a></li>
@@ -52,12 +52,12 @@
 
         <div class="register agileits w3layouts">
 
-            <h2><?php echo PHASE1_SURVEY; ?></h2>
+            <h2><?php echo PHASE3_CONFLICT; ?></h2>
             
             <form action="<?php echo URL_DIR . '#'; ?>" method="post">
                 
                 <?php
-                    $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=1');
+                    $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=3');
                     $app_questions = json_decode($app_questions, true);
                     
                 foreach ($app_questions as $question): ?>
@@ -144,4 +144,6 @@
     // Template CSS
     $content = ob_get_clean();
     require 'views/template.php';
+
+
 

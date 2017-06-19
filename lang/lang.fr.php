@@ -80,3 +80,24 @@ define("PHASE1_SURVEY", "Questionnaire préalable");
 define("PHASE1_VALIDATE", "Valider");
 define("PHASE1_QUESTION", "Question");
 define("PHASE1_ANSWER", "Réponse");
+
+// PROJECTS PHASE 2
+define("PHASE2_CAPITAL_GAIN", "Plus-value");
+
+// PROJECTS PHASE 3
+define("PHASE3_CONFLICT", "Analyse des conflits potentiels");
+
+// PROJECTS PHASE 4
+define("PHASE4_WEIGHTING", "Pondération");
+define("PHASE4_ASSETS", "Principaux atouts");
+define("PHASE4_CONFLICTS", "Principaux conflits");
+
+// PROJECTS PHASE 5
+define("PHASE5_CONSISTENCY", "Cohérence");
+define("PHASE5_SOCIAL", "Projet de société");
+define("PHASE5_TERRITORY", "Projet de territoire");
+
+// PROJECTS PHASE 6
+define("PHASE6_OPTIMIZATION_SUGGESTION", "Suggestions, Optimisation");
+define("PHASE6_SUGGESTION", "Améliorations, suggestions");
+define("PHASE6_OPTIMIZATION", "Optimisation");

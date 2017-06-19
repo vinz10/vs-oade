@@ -65,7 +65,7 @@
                             <span class="glyphicon agileits w3layouts glyphicon-signal icon" aria-hidden="true"></span>
                         </div>
                         <h4 class="mission agileits w3layouts"><?php echo HOME_CAPITAL_GAIN; ?></h4>
-                        <p class="description agileits w3layouts"><a href="about.html"><?php echo PROJECT_ACCESS; ?></a></p>
+                        <p class="description agileits w3layouts"><a href="<?php echo URL_DIR.'projects/phase2?id=' . $project->getId(); ?>"><?php echo PROJECT_ACCESS; ?></a></p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
@@ -74,7 +74,7 @@
                             <span class="glyphicon agileits w3layouts glyphicon-exclamation-sign icon" aria-hidden="true"></span>
                         </div>
                         <h4 class="mission agileits w3layouts"><?php echo HOME_CONFLICT; ?></h4>
-                        <p class="description agileits w3layouts"><a href="about.html"><?php echo PROJECT_ACCESS; ?></a></p>
+                        <p class="description agileits w3layouts"><a href="<?php echo URL_DIR.'projects/phase3?id=' . $project->getId(); ?>"><?php echo PROJECT_ACCESS; ?></a></p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
@@ -83,7 +83,7 @@
                             <span class="glyphicon agileits w3layouts glyphicon-pencil icon" aria-hidden="true"></span>
                         </div>
                         <h4 class="mission agileits w3layouts"><?php echo HOME_WEIGHTING; ?></h4>
-                        <p class="description agileits w3layouts"><a href="about.html"><?php echo PROJECT_ACCESS; ?></a></p>
+                        <p class="description agileits w3layouts"><a href="<?php echo URL_DIR.'projects/phase4?id=' . $project->getId(); ?>"><?php echo PROJECT_ACCESS; ?></a></p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
@@ -92,7 +92,7 @@
                             <span class="glyphicon agileits w3layouts glyphicon-adjust icon" aria-hidden="true"></span>
                         </div>
                         <h4 class="mission agileits w3layouts"><?php echo HOME_CONSISTENCY; ?></h4>
-                        <p class="description agileits w3layouts"><a href="about.html"><?php echo PROJECT_ACCESS; ?></a></p>
+                        <p class="description agileits w3layouts"><a href="<?php echo URL_DIR.'projects/phase5?id=' . $project->getId(); ?>"><?php echo PROJECT_ACCESS; ?></a></p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
@@ -101,7 +101,7 @@
                             <span class="glyphicon agileits w3layouts glyphicon-plus-sign icon" aria-hidden="true"></span>
                         </div>
                         <h4 class="mission agileits w3layouts"><?php echo HOME_OPTIMIZATION; ?></h4>
-                        <p class="description agileits w3layouts"><a href="about.html"><?php echo PROJECT_ACCESS; ?></a></p>
+                        <p class="description agileits w3layouts"><a href="<?php echo URL_DIR.'projects/phase6?id=' . $project->getId(); ?>"><?php echo PROJECT_ACCESS; ?></a></p>
                     </div>
                 </div>
                 <div class="clearfix"></div>
