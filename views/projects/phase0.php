@@ -21,7 +21,6 @@
     $msg = $this->vars['msg'];
     $persistence = $this->vars['persistence'];
     $title = PHASE0_TITLE;
-    $towns = loginController::getAllTowns();
     $login = $_SESSION ['login'];
 
     // Template CSS

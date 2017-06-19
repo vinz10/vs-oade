@@ -80,9 +80,15 @@ define("PHASE1_SURVEY", "Questionnaire préalable");
 define("PHASE1_VALIDATE", "Valider");
 define("PHASE1_QUESTION", "Question");
 define("PHASE1_ANSWER", "Réponse");
+define("PHASE1_PROJECT", "Le projet...");
 
 // PROJECTS PHASE 2
 define("PHASE2_CAPITAL_GAIN", "Plus-value");
+define("PHASE2_0", "le projet est parfaitement dans la cible");
+define("PHASE2_1", "le projet est intéressant et s'approche de la cible");
+define("PHASE2_2", "le projet montre des lacunes à améliorer");
+define("PHASE2_3", "le projet est loin de la cible ou compromet la réalisation de l'objectif indiqué");
+define("PHASE2_4", "le projet est hors sujet");
 
 // PROJECTS PHASE 3
 define("PHASE3_CONFLICT", "Analyse des conflits potentiels");

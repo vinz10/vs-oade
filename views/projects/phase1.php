@@ -1,5 +1,5 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        
+
 <!-- Custom-Stylesheet-Links -->
 <!-- Bootstrap-CSS -->  
 <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" media="all">
@@ -22,7 +22,6 @@
     $persistence = $this->vars['persistence'];
     $project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);	
     $title = $project->getName();
-    $towns = loginController::getAllTowns();
     $login = $_SESSION ['login'];
 
     // Template CSS

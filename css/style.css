@@ -2067,6 +2067,12 @@ reg ul {
     width: 100%;
 }
 
+#myChart {
+    height: 100%;
+    width: 100%;
+    min-height: 250px;
+}
+
 .reg h4 {
     color: #EEE;
     text-align: left;
