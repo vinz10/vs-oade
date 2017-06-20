@@ -62,8 +62,9 @@ define("PROJECTS_PROJECT", "Projets");
 define("PROJECTS_NEW_PROJECT", "Nouveau Projet");
 define("PROJECTS_READ_MORE", "En Savoir Plus");
 
-// PROJECTS PAGE
+// PROJECT PAGE
 define("PROJECT_ACCESS", "Accéder");
+define("PROJECT_PROJECT", "Projet");
 
 // PROJECTS PHASE 0
 define("PHASE0_TITLE", "VS-OADE Phase 0");

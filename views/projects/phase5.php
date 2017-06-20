@@ -34,6 +34,10 @@
 <div class="reg agileits w3layouts">
     <div class="container">
          
+        <div class="submit wow agileits w3layouts">
+            <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
+        </div>   
+        
         <div class="register agileits w3layouts">
             <div class="page">
                 <ul class="pagination agileits w3layouts">

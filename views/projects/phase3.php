@@ -34,6 +34,10 @@
 <div class="reg agileits w3layouts">
     <div class="container">
          
+        <div class="submit wow agileits w3layouts">
+            <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
+        </div>   
+        
         <div class="register agileits w3layouts">
             <div class="page">
                 <ul class="pagination agileits w3layouts">
@@ -54,13 +58,14 @@
 
             <h2><?php echo PHASE3_CONFLICT; ?></h2>
             
-            <form action="<?php echo URL_DIR . '#'; ?>" method="post">
+            <form action="<?php echo URL_DIR . 'projects/validatePhase3?id=' . $project->getId(); ?>" method="post">
                 
                 <?php
-                    $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=3');
-                    $app_questions = json_decode($app_questions, true);
-                    
-                foreach ($app_questions as $question): ?>
+                $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=3');
+                $app_questions = json_decode($questions, true);
+                $i = 0;
+                
+                foreach ($app_questions as $question): $i++; ?>
                 
                 <div class="members wow agileits w3layouts slideInLeft">
                     <div class="adult agileits w3layouts">
@@ -69,7 +74,12 @@
                             <?php echo $question["question"] ?>
                         </div>
                         <div class="dropdown-button agileits w3layouts">
-                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php echo $persistence[1];?></textarea>
+                            <textarea name="<?php echo 'answer' . $i; ?>" <?php echo ' id="answer' . $i . '" '?> class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php 
+                                $survey = surveyController::getAnswerByQuestionId($question["id"], $project->getId());
+                                if($survey) {
+                                    echo $survey->getAnswer();
+                                }
+                            ?></textarea>
                         </div>
                     </div>  
                 </div>
@@ -78,7 +88,7 @@
 
                 <div class="submit wow agileits w3layouts slideInLeft">
                     <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo PHASE1_VALIDATE; ?>">
-                    <input type="submit" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="history.back();" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
+                    <input type="button" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
                 </div>
             </form>
 
