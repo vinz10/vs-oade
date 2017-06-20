@@ -53,13 +53,14 @@
 
             <h2><?php echo PHASE1_SURVEY; ?></h2>
             
-            <form action="<?php echo URL_DIR . '#'; ?>" method="post">
+            <form action="<?php echo URL_DIR . 'projects/validatePhase1?id=' . $project->getId(); ?>" method="post">
                 
                 <?php
                     $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=1');
                     $app_questions = json_decode($app_questions, true);
+                    $i = 0;
                     
-                foreach ($app_questions as $question): ?>
+                foreach ($app_questions as $question): $i++; ?>
                 
                 <div class="members wow agileits w3layouts slideInLeft">
                     <div class="adult agileits w3layouts">
@@ -68,7 +69,7 @@
                             <?php echo $question["question"] ?>
                         </div>
                         <div class="dropdown-button agileits w3layouts">
-                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php echo $persistence[1];?></textarea>
+                            <textarea name="<?php echo 'answer' . $i; ?>" <?php echo ' id="answer' . $i . '" '?> class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php echo $persistence[1];?></textarea>
                         </div>
                     </div>  
                 </div>

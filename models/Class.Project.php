@@ -135,7 +135,7 @@ class Project {
     /**
      // @method getProjectById()
      // @desc Method that get a project by the id from the DB
-     // @return Towns[]
+     // @return $project
      */
     public static function getProjectById($idProject) {
         
@@ -154,7 +154,7 @@ class Project {
     /**
      // @method getProjectsByIdTown()
      // @desc Method that get all the projects by the idTown from the DB
-     // @return Towns[]
+     // @return Projects[]
      */
     public static function getProjectsByIdTown($idTown) {
         $query = "SELECT * FROM project WHERE town_idTown='$idTown';";
@@ -175,16 +175,16 @@ class Project {
      // @method existProject()
      // @desc Method that check if a project already exists
      // @param string $name
+     // @param string $idTown
      // @return boolean
      */
     public static function existProject($name, $idTown) {
         
         $sql = SqlConnection::getInstance();
         
-        $query = "SELECT * FROM project WHERE name=";
-        $query .= $sql->getConn()->quote($name) . " AND town_idTown='$idTown';";
+        $query = "SELECT * FROM project WHERE name='$name' AND town_idTown='$idTown';";
         
-        $result = SqlConnection::getInstance()->selectDB($query);
+        $result = $sql->selectDB($query);
         $row = $result->fetch();
         if(!$row) { 
             return false;

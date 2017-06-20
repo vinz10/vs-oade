@@ -51,7 +51,7 @@ class projectsController extends Controller {
         $townId = $login->getId();
 
         // Create the new project
-        $project = new Project($name, $description, $poLastname, $poFirstname, $townId);
+        $project = new Project(null, $name, $description, $poLastname, $poFirstname, $townId);
         
         // Check if the project already exists
         if ($project->existProject($name, $townId)) {
@@ -78,6 +78,57 @@ class projectsController extends Controller {
         $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
         
         $this->getProject();
+    }
+    
+    /**
+     // @method validatePhase1()
+     // @desc Method for the insertion of phase 1
+     */
+    function validatePhase1() {
+        
+        // Get the project id
+        $projectId = intval($_GET['id']);
+        
+        // Initialization of variables
+        $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=1');
+        $app_questions = json_decode($app_questions, true);
+        $i = 0;     
+                    
+        foreach ($app_questions as $question):
+                
+            $i++;
+        
+            // Get data posted by the form
+            $answer = $_POST['answer' . $i];
+
+            // Create the new survey
+            $survey = new Survey(null, $question["id"], $answer, null, null, null, $projectId);
+            
+            // Check if the survey already exists
+            if ($survey->existSurvey($question["id"], $projectId)) {
+                // Update the new survey
+                $survey->updateSurvey();
+            }
+            else {
+                // Insert the new survey
+                $survey->insertSurvey();
+            }
+
+        endforeach;
+
+/*
+        // Check if the project already exists
+        if ($project->existProject($name, $townId)) {
+            $_SESSION['msg'] = MSG_PROJECT_EXIST;
+            $_SESSION['persistence'] = array($name, $description, $poLastname, $poFirstname);
+            $this->redirect('projects', 'phase0');
+        }
+        else {
+            // Save new project into the db
+            $project->insertProject();
+            unset($_SESSION['persistence']);
+            $this->redirect('projects', 'projects');
+        }*/
     }
     
     /**
