@@ -83,6 +83,7 @@ define("PHASE1_PROJECT", "The project...");
 
 // PROJECTS PHASE 2
 define("PHASE2_CAPITAL_GAIN", "Capital Gain");
+define("PHASE2_GRADE", "Grade");
 define("PHASE2_0", "the project is perfectly in the target");
 define("PHASE2_1", "the project is interesting and approaches the target");
 define("PHASE2_2", "the project shows gaps to be improved");

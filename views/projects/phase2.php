@@ -27,6 +27,10 @@
     $login = $_SESSION ['login'];
     $towns = loginController::getAllTowns();
     $labels = array();
+    $valuesSocial = array();
+    $valuesEconomy = array();
+    $valuesEnvironment = array();
+    $allValues = array();
 
     // Template CSS
     ob_start();
@@ -57,15 +61,34 @@
 
             <h2><?php echo PHASE2_CAPITAL_GAIN; ?></h2>
 
-            <form action="<?php echo URL_DIR . '#'; ?>" method="post">
+            <form action="<?php echo URL_DIR . 'projects/validatePhase2?id=' . $project->getId(); ?>" method="post">
 
                 <?php
-                $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
-                $app_questions = json_decode($app_questions, true);
-
+                $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
+                $app_questions = json_decode($questions, true);
+                $i = 0;
+                
                 foreach ($app_questions as $question):
                     $labels[] = $question["questionComment"];
-                    ?>
+                    $i++;
+                    $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
+                    $allValues[] = $grade->getGrade();
+                    if($i <= 3) {
+                        $valuesSocial[] = $grade->getGrade();
+                        $valuesEconomy[] = null;
+                        $valuesEnvironment[] = null;
+                    }
+                    elseif($i <= 6) {
+                        $valuesSocial[] = null;
+                        $valuesEconomy[] = $grade->getGrade();
+                        $valuesEnvironment[] = null;
+                    }
+                    elseif($i <= 9) {
+                        $valuesSocial[] = null;
+                        $valuesEconomy[] = null;
+                        $valuesEnvironment[] = $grade->getGrade();
+                    }
+                ?>
 
                     <div class="members wow agileits w3layouts slideInLeft">
                         <div class="adult agileits w3layouts">
@@ -73,18 +96,76 @@
                             <div class="well agileits w3layouts">
                                 <?php echo $question["question"] . '</br><br/>'; ?>
                                 <?php echo '<b>' . PHASE1_ANSWER . '</b><br/>'; ?>
-                                <?php echo 'réponse..........' . '<br/><br/>'; ?>
+                                <?php 
+                                $survey = surveyController::getAnswerByQuestionId($question["id"], $project->getId());
+                                if($survey) {
+                                    echo $survey->getAnswer();
+                                }
+                                echo '<br/><br/>';
+                                ?>
                                 <?php echo PHASE1_PROJECT . '<br/>'; ?>
                                 <?php echo '<b>' . $question["questionComment"] . '</b>'; ?>
                             </div>
-
-                            <select class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
-                                <option value=""></option>
-                                <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                <option value="4">4 <?php echo PHASE2_4; ?></option>
+                            
+                            <select name="<?php echo 'grade' . $i; ?>" <?php echo ' id="grade' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                                <?php 
+                                if(!$grade) : ?>
+                                    <option selected="selected" value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                    <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                    <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                    <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                    <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                    <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                <?php 
+                                else : 
+                                    if($grade->getGrade()==0) :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                        <option selected="selected" value="0">0 <?php echo PHASE2_0; ?></option>
+                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <?php
+                                    elseif($grade->getGrade()==1) :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                        <option selected="selected" value="1">1 <?php echo PHASE2_1; ?></option>
+                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <?php
+                                    elseif($grade->getGrade()==2) :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                        <option selected="selected" value="2">2 <?php echo PHASE2_2; ?></option>
+                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <?php
+                                    elseif($grade->getGrade()==3) :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                        <option selected="selected" value="3">3 <?php echo PHASE2_3; ?></option>
+                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <?php
+                                    else :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                        <option selected="selected" value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <?php
+                                    endif;
+                                endif;
+                                ?>
                             </select>
                         </div>  
                     </div>
@@ -93,7 +174,7 @@
 
                 <div class="submit wow agileits w3layouts slideInLeft">
                     <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo PHASE1_VALIDATE; ?>">
-                    <input type="submit" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="history.back();" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
+                    <input type="button" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
                 </div>     
             </form>    
         </div>
@@ -101,10 +182,14 @@
 </div>
 
 <div id='myChart'></div>
-<!--<div id='myChart1'></div>-->
+<div id='myChart1'></div>
 
 <script>
     var my_labels = <?php echo json_encode($labels); ?>;
+    var my_valuesSocial = <?php echo json_encode($valuesSocial); ?>;
+    var my_valuesEconomy = <?php echo json_encode($valuesEconomy); ?>;
+    var my_valuesEnvironment = <?php echo json_encode($valuesEnvironment); ?>;
+    var my_allValues = <?php echo json_encode($allValues); ?>;
     var myConfig = {
         "type": "radar",
         "plot": {
@@ -115,7 +200,7 @@
         },
         "series": [
             {
-                "values": [0, 3, 2, , , , , , ],
+                "values": my_valuesSocial,
                 "marker": {
                     "type": "circle",
                     "background-color": "#ff0000",
@@ -123,7 +208,7 @@
                 }
             },
             {
-                "values": [, , , 1, 1, 4, , , ],
+                "values": my_valuesEconomy,
                 "marker": {
                     "type": "triangle",
                     "background-color": "#0000ff",
@@ -131,7 +216,7 @@
                 }
             },
             {
-                "values": [, , , , , , 3, 1, 1],
+                "values": my_valuesEnvironment,
                 "marker": {
                     "type": "square",
                     "background-color": "#00ff00",
@@ -161,7 +246,7 @@
         },
         "series": [
             {
-                "values": [0, 1, 2, 3, 1, 2, 3, 2, 1],
+                "values": my_allValues,
                 "text": "Première évaluation"
             }
         ]

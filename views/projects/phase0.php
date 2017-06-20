@@ -67,7 +67,7 @@
                     <div class="adult agileits w3layouts">
                         <h4><?php echo PHASE0_PROJECT_DESCRIPTION; ?></h4>
                         <div class="dropdown-button agileits w3layouts">
-                            <textarea name="description" id="description" class="dropdown agileits w3layouts" required=""><?php echo $persistence[1];?></textarea>
+                            <textarea name="description" id="test" class="dropdown agileits w3layouts" required=""><?php echo $persistence[1];?></textarea>
                         </div>
                     </div>  
                 </div>

@@ -90,45 +90,33 @@ class projectsController extends Controller {
         $projectId = intval($_GET['id']);
         
         // Initialization of variables
-        $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=1');
-        $app_questions = json_decode($app_questions, true);
+        $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=1');
+        $app_questions = json_decode($questions, true);
         $i = 0;     
                     
         foreach ($app_questions as $question):
-                
-            $i++;
         
             // Get data posted by the form
+            $i++;
             $answer = $_POST['answer' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], $answer, null, null, null, $projectId);
+            $survey = new Survey(null, $question["id"], $answer, -1, null, null, $projectId);
             
             // Check if the survey already exists
             if ($survey->existSurvey($question["id"], $projectId)) {
-                // Update the new survey
-                $survey->updateSurvey();
+                // Update the answer
+                $survey->updateAnswer($projectId, $question["id"]);
             }
             else {
                 // Insert the new survey
                 $survey->insertSurvey();
             }
+            
+            // Redirection
+            $this->redirect('projects', 'phase2?id=' . $projectId);
 
         endforeach;
-
-/*
-        // Check if the project already exists
-        if ($project->existProject($name, $townId)) {
-            $_SESSION['msg'] = MSG_PROJECT_EXIST;
-            $_SESSION['persistence'] = array($name, $description, $poLastname, $poFirstname);
-            $this->redirect('projects', 'phase0');
-        }
-        else {
-            // Save new project into the db
-            $project->insertProject();
-            unset($_SESSION['persistence']);
-            $this->redirect('projects', 'projects');
-        }*/
     }
     
     /**
@@ -142,6 +130,38 @@ class projectsController extends Controller {
         $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
         
         $this->getProject();
+    }
+    
+    /**
+     // @method validatePhase2()
+     // @desc Method for the insertion of phase 2
+     */
+    function validatePhase2() {
+        
+        // Get the project id
+        $projectId = intval($_GET['id']);
+        
+        // Initialization of variables
+        $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
+        $app_questions = json_decode($questions, true);
+        $i = 0;     
+                    
+        foreach ($app_questions as $question):
+        
+            // Get data posted by the form
+            $i++;
+            $grade = $_POST['grade' . $i];
+
+            // Create the new survey
+            $survey = new Survey(null, $question["id"], $answer, $grade, null, null, $projectId);
+            
+            // Update the grade
+            $survey->updateGrade($projectId, $question["id"]);
+            
+            // Redirection
+            $this->redirect('projects', 'phase3?id=' . $projectId);
+
+        endforeach;
     }
     
     /**
@@ -221,6 +241,7 @@ class projectsController extends Controller {
     /**
     // @method getProjectsByIdTown()
     // @desc Method that return all projects By townId
+    // @param int $idTown
     // @return Projects
     */
     public static function getProjectsByIdTown($idTown) {
