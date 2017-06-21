@@ -1,78 +1,83 @@
+<!-- Custom-X-JavaScript -->
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         
+<!-- Custom-JavaScript-File-Link-Graph -->
 <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
 
 <!-- Custom-Stylesheet-Links -->
-<!-- Bootstrap-CSS -->  
-<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" media="all">
-<!-- Index-Page-CSS --> 
+<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" media="all"> 
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
-<!-- Animate.CSS -->    
 <link rel="stylesheet" href="../css/animate.css" type="text/css" media="all">
 
-<!-- Fonts -->
-<!-- Body-Font -->	 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" type="text/css">
-<!-- Logo-Font -->	 
+<!-- Fonts -->	 
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" type="text/css"> 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Cinzel+Decorative:400,900,700" type="text/css">
-<!-- Navbar-Font --> 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700" type="text/css">
 
 <?php
-    // Initialization of variables
-    $msg = $this->vars['msg'];
-    $persistence = $this->vars['persistence'];
-    $project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);	
-    $title = $project->getName();
-    $towns = loginController::getAllTowns();
-    $login = $_SESSION ['login'];
-    
-    $valuesSocial2 = array();
-    $valuesEconomy2 = array();
-    $valuesEnvironment2 = array();
-    $allValues2 = array();
-    
-    $labels = array();
-    $valuesSocial4 = array();
-    $valuesEconomy4 = array();
-    $valuesEnvironment4 = array();
-    $allValues4 = array();
-    
-    // Template CSS
-    ob_start();
+// Initialization of variables
+$msg = $this->vars['msg'];
+$msgSuccess = $this->vars['msgSuccess'];
+$project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);	
+$title = $project->getName();
+$login = $_SESSION ['login'];
+
+$valuesSocial2 = array();
+$valuesEconomy2 = array();
+$valuesEnvironment2 = array();
+$allValues2 = array();
+
+$labels = array();
+$valuesSocial4 = array();
+$valuesEconomy4 = array();
+$valuesEnvironment4 = array();
+$allValues4 = array();
+
+// Template CSS
+ob_start();
 ?>
 
-<!-- Booking -->
+<!-- Phase 4 - Weighting -->
 <div class="reg agileits w3layouts">
     <div class="container">
-         
-        <div class="submit wow agileits w3layouts">
-            <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
-        </div>   
-        
         <div class="register agileits w3layouts">
-            <div class="page">
-                <ul class="pagination agileits w3layouts">
-                    <li class="agileits w3layouts"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                    <li><a href="#">0</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li class="active agileits w3layouts"><a href="#">4<span class="sr-only agileits w3layouts">(current)</span></a></li>                 
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                </ul>
+            
+            <!-- Menu -->
+            <div class="submit wow agileits w3layouts">
+                <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
+            </div>   
+
+            <div class="register agileits w3layouts">
+                <div class="page">
+                    <ul class="pagination agileits w3layouts">
+                        <li class="agileits w3layouts"><a href="<?php echo URL_DIR . 'projects/phase3?id=' . $project->getId(); ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                        <li><a href="<?php echo URL_DIR . 'projects/phase0?id=' . $project->getId(); ?>">0</a></li>
+                        <li><a href="<?php echo URL_DIR . 'projects/phase1?id=' . $project->getId(); ?>">1</a></li>
+                        <li><a href="<?php echo URL_DIR . 'projects/phase2?id=' . $project->getId(); ?>">2</a></li>
+                        <li><a href="<?php echo URL_DIR . 'projects/phase3?id=' . $project->getId(); ?>">3</a></li>
+                        <li class="active agileits w3layouts"><a href="#">4<span class="sr-only agileits w3layouts">(current)</span></a></li>                 
+                        <li><a href="<?php echo URL_DIR . 'projects/phase5?id=' . $project->getId(); ?>">5</a></li>
+                        <li><a href="<?php echo URL_DIR . 'projects/phase6?id=' . $project->getId(); ?>">6</a></li>
+                        <li><a href="<?php echo URL_DIR . 'projects/phase5?id=' . $project->getId(); ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        <div class="register agileits w3layouts">
-
+            <!-- Weighting -->
             <h2><?php echo PHASE4_WEIGHTING; ?></h2>
             
             <form action="<?php echo URL_DIR . 'projects/validatePhase4?id=' . $project->getId(); ?>" method="post">
                 
-                <h4><?php echo PHASE4_ASSETS; ?></h4>
+                <!-- Alert Message -->
+                <?php if (!empty($msgSuccess)) : ?>
+                    <div class="members wow agileits w3layouts slideInLeft">
+                        <div class="alert agileits w3layouts alert-success" role="alert">
+                            <strong><?php echo MSG_SUCCESS; ?></strong> <?php echo ' ' . $msgSuccess; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                
+                <h4 class="members wow agileits w3layouts slideInLeft"><?php echo PHASE4_ASSETS; ?></h4>
                 <?php
                 $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=4');
                 $app_questions = json_decode($questions, true);
@@ -108,79 +113,79 @@
                     }
                 ?>
 
-                    <div class="members wow agileits w3layouts slideInLeft">
-                        <div class="adult agileits w3layouts">
-                            <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
-                            <div class="well agileits w3layouts">
-                                <?php echo '<b>' . $question["question"] . '</b>'; ?>
-                            </div>
-                            
-                            <select name="<?php echo 'grade' . $i; ?>" <?php echo ' id="grade' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
-                                <?php 
-                                if(!$grade) : ?>
-                                    <option selected="selected" value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                    <option value="0">0 <?php echo PHASE2_0; ?></option>
+                <div class="members wow agileits w3layouts slideInLeft">
+                    <div class="adult agileits w3layouts">
+                        <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
+                        <div class="well agileits w3layouts">
+                            <?php echo '<b>' . $question["question"] . '</b>'; ?>
+                        </div>
+
+                        <select name="<?php echo 'grade' . $i; ?>" <?php echo ' id="grade' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                            <?php 
+                            if(!$grade) : ?>
+                                <option selected="selected" value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                <option value="4">4 <?php echo PHASE2_4; ?></option>
+                            <?php 
+                            else : 
+                                if($grade->getGrade()==0) :
+                                    ?>
+                                    <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                    <option selected="selected" value="0">0 <?php echo PHASE2_0; ?></option>
                                     <option value="1">1 <?php echo PHASE2_1; ?></option>
                                     <option value="2">2 <?php echo PHASE2_2; ?></option>
                                     <option value="3">3 <?php echo PHASE2_3; ?></option>
                                     <option value="4">4 <?php echo PHASE2_4; ?></option>
-                                <?php 
-                                else : 
-                                    if($grade->getGrade()==0) :
-                                        ?>
-                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                        <option selected="selected" value="0">0 <?php echo PHASE2_0; ?></option>
-                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
-                                        <?php
-                                    elseif($grade->getGrade()==1) :
-                                        ?>
-                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                        <option selected="selected" value="1">1 <?php echo PHASE2_1; ?></option>
-                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
-                                        <?php
-                                    elseif($grade->getGrade()==2) :
-                                        ?>
-                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                        <option selected="selected" value="2">2 <?php echo PHASE2_2; ?></option>
-                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
-                                        <?php
-                                    elseif($grade->getGrade()==3) :
-                                        ?>
-                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                        <option selected="selected" value="3">3 <?php echo PHASE2_3; ?></option>
-                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
-                                        <?php
-                                    else :
-                                        ?>
-                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                        <option selected="selected" value="4">4 <?php echo PHASE2_4; ?></option>
-                                        <?php
-                                    endif;
+                                    <?php
+                                elseif($grade->getGrade()==1) :
+                                    ?>
+                                    <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                    <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                    <option selected="selected" value="1">1 <?php echo PHASE2_1; ?></option>
+                                    <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                    <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                    <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                    <?php
+                                elseif($grade->getGrade()==2) :
+                                    ?>
+                                    <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                    <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                    <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                    <option selected="selected" value="2">2 <?php echo PHASE2_2; ?></option>
+                                    <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                    <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                    <?php
+                                elseif($grade->getGrade()==3) :
+                                    ?>
+                                    <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                    <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                    <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                    <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                    <option selected="selected" value="3">3 <?php echo PHASE2_3; ?></option>
+                                    <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                    <?php
+                                else :
+                                    ?>
+                                    <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                    <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                    <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                    <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                    <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                    <option selected="selected" value="4">4 <?php echo PHASE2_4; ?></option>
+                                    <?php
                                 endif;
-                                ?>
-                            </select>
-                        </div>  
-                    </div>
+                            endif;
+                            ?>
+                        </select>
+                    </div>  
+                </div>
 
                 <?php endforeach; ?>
                 
-                <h4><?php echo PHASE4_CONFLICTS; ?></h4>
+                <h4 class="members wow agileits w3layouts slideInLeft"><?php echo PHASE4_CONFLICTS; ?></h4>
                 <?php
                 $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=5');
                 $app_questions = json_decode($questions, true);
@@ -192,61 +197,61 @@
                     $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
                 ?>
 
-                    <div class="members wow agileits w3layouts slideInLeft">
-                        <div class="adult agileits w3layouts">
-                            <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
-                            <div class="well agileits w3layouts">
-                                <?php echo $question["question"]; ?>
-                            </div>
-                            
-                            <select name="<?php echo 'grade' . $i; ?>" <?php echo ' id="grade' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
-                                <?php 
-                                if(!$grade) : ?>
-                                    <option selected="selected" value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
-                                    <option value="1">1 <?php echo PHASE4_1; ?></option>
+                <div class="members wow agileits w3layouts slideInLeft">
+                    <div class="adult agileits w3layouts">
+                        <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
+                        <div class="well agileits w3layouts">
+                            <?php echo $question["question"]; ?>
+                        </div>
+
+                        <select name="<?php echo 'grade' . $i; ?>" <?php echo ' id="grade' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                            <?php 
+                            if(!$grade) : ?>
+                                <option selected="selected" value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
+                                <option value="1">1 <?php echo PHASE4_1; ?></option>
+                                <option value="2">2 <?php echo PHASE4_2; ?></option>
+                                <option value="3">3 <?php echo PHASE4_3; ?></option>
+                                <option value="4">4 <?php echo PHASE4_4; ?></option>
+                            <?php 
+                            else : 
+                                if($grade->getGrade()==1) :
+                                    ?>
+                                    <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
+                                    <option selected="selected" value="1">1 <?php echo PHASE4_1; ?></option>
                                     <option value="2">2 <?php echo PHASE4_2; ?></option>
                                     <option value="3">3 <?php echo PHASE4_3; ?></option>
                                     <option value="4">4 <?php echo PHASE4_4; ?></option>
-                                <?php 
-                                else : 
-                                    if($grade->getGrade()==1) :
-                                        ?>
-                                        <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
-                                        <option selected="selected" value="1">1 <?php echo PHASE4_1; ?></option>
-                                        <option value="2">2 <?php echo PHASE4_2; ?></option>
-                                        <option value="3">3 <?php echo PHASE4_3; ?></option>
-                                        <option value="4">4 <?php echo PHASE4_4; ?></option>
-                                        <?php
-                                    elseif($grade->getGrade()==2) :
-                                        ?>
-                                        <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
-                                        <option value="1">1 <?php echo PHASE4_1; ?></option>
-                                        <option selected="selected" value="2">2 <?php echo PHASE4_2; ?></option>
-                                        <option value="3">3 <?php echo PHASE4_3; ?></option>
-                                        <option value="4">4 <?php echo PHASE4_4; ?></option>
-                                        <?php
-                                    elseif($grade->getGrade()==3) :
-                                        ?>
-                                        <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
-                                        <option value="1">1 <?php echo PHASE4_1; ?></option>
-                                        <option value="2">2 <?php echo PHASE4_2; ?></option>
-                                        <option selected="selected" value="3">3 <?php echo PHASE4_3; ?></option>
-                                        <option value="4">4 <?php echo PHASE4_4; ?></option>
-                                        <?php
-                                    else :
-                                        ?>
-                                        <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
-                                        <option value="1">1 <?php echo PHASE4_1; ?></option>
-                                        <option value="2">2 <?php echo PHASE4_2; ?></option>
-                                        <option value="3">3 <?php echo PHASE4_3; ?></option>
-                                        <option selected="selected" value="4">4 <?php echo PHASE4_4; ?></option>
-                                        <?php
-                                    endif;
+                                    <?php
+                                elseif($grade->getGrade()==2) :
+                                    ?>
+                                    <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
+                                    <option value="1">1 <?php echo PHASE4_1; ?></option>
+                                    <option selected="selected" value="2">2 <?php echo PHASE4_2; ?></option>
+                                    <option value="3">3 <?php echo PHASE4_3; ?></option>
+                                    <option value="4">4 <?php echo PHASE4_4; ?></option>
+                                    <?php
+                                elseif($grade->getGrade()==3) :
+                                    ?>
+                                    <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
+                                    <option value="1">1 <?php echo PHASE4_1; ?></option>
+                                    <option value="2">2 <?php echo PHASE4_2; ?></option>
+                                    <option selected="selected" value="3">3 <?php echo PHASE4_3; ?></option>
+                                    <option value="4">4 <?php echo PHASE4_4; ?></option>
+                                    <?php
+                                else :
+                                    ?>
+                                    <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
+                                    <option value="1">1 <?php echo PHASE4_1; ?></option>
+                                    <option value="2">2 <?php echo PHASE4_2; ?></option>
+                                    <option value="3">3 <?php echo PHASE4_3; ?></option>
+                                    <option selected="selected" value="4">4 <?php echo PHASE4_4; ?></option>
+                                    <?php
                                 endif;
-                                ?>
-                            </select>
-                        </div>  
-                    </div>
+                            endif;
+                            ?>
+                        </select>
+                    </div>  
+                </div>
 
                 <?php endforeach; ?>
 
@@ -255,9 +260,7 @@
                     <input type="button" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
                 </div>
             </form>
-
         </div>
-
     </div>
 </div>
 
@@ -458,15 +461,9 @@ endforeach;
 
 </script>
 
-
 <!-- Custom-JavaScript-File-Links -->
-
-<!-- Default-JavaScript -->	  
 <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
-<!-- Bootstrap-JavaScript --> 
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-
-<!-- Animate.CSS-JavaScript -->
 <script src="../js/wow.min.js"></script>
 <script>new WOW().init();</script>
 
@@ -510,12 +507,10 @@ endforeach;
 </script>
 
 <?php
-    // Unset variables
-    unset($_SESSION['msg']);
+// Unset variables
+unset($_SESSION['msg']);
+unset($_SESSION['msgSuccess']);
 
-    // Template CSS
-    $content = ob_get_clean();
-    require 'views/template.php';
-
-
-
+// Template CSS
+$content = ob_get_clean();
+require 'views/template.php';

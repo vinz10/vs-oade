@@ -329,6 +329,28 @@ class Survey {
 
         return true;
     }
+    
+    /**
+     // @method existGrade()
+     // @desc Method that check if a grade already exists
+     // @param int $idQuestion
+     // @param int $idProject
+     // @return boolean
+     */
+    public static function existGrade($idQuestion, $idProject) {
+        
+        $sql = SqlConnection::getInstance();
+        
+        $query = "SELECT * FROM survey WHERE questionId='$idQuestion' AND project_idProject='$idProject' AND grade <> -1;";
+        
+        $result = $sql->selectDB($query);
+        $row = $result->fetch();
+        if(!$row) { 
+            return false;
+        }
+
+        return true;
+    }
 }
 
 

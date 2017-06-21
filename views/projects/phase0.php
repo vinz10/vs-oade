@@ -12,41 +12,49 @@
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700" type="text/css">
 
 <?php
-    // Initialization of variables
-    $msg = $this->vars['msg'];
-    $msgSuccess = $this->vars['msgSuccess'];
-    $title = PHASE0_TITLE;
-    $project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);
-    $login = $_SESSION ['login'];
+// Initialization of variables
+$msg = $this->vars['msg'];
+$msgSuccess = $this->vars['msgSuccess'];
+$title = PHASE0_TITLE;
+$project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);
+$login = $_SESSION ['login'];
 
-    // Template CSS
-    ob_start();
+// Template CSS
+ob_start();
 ?>
 
 
-<!-- Phase 0 -->
+<!-- Phase 0 - Project Information -->
 <div class="reg agileits w3layouts">
     <div class="container">
         <div class="register agileits w3layouts">
 
             <!-- Menu -->
             <?php if ($project->getId() != null) : ?>
+                <div class="submit wow agileits w3layouts">
+                    <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
+                </div> 
+            
                 <div class="register agileits w3layouts">
                     <div class="page">
                         <ul class="pagination agileits w3layouts">
                             <li class="disabled agileits w3layouts"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
                             <li class="active agileits w3layouts"><a href="#">0<span class="sr-only agileits w3layouts">(current)</span></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">6</a></li>
-                            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                            <li><a href="<?php echo URL_DIR . 'projects/phase1?id=' . $project->getId(); ?>">1</a></li>
+                            <li><a href="<?php echo URL_DIR . 'projects/phase2?id=' . $project->getId(); ?>">2</a></li>
+                            <li><a href="<?php echo URL_DIR . 'projects/phase3?id=' . $project->getId(); ?>">3</a></li>
+                            <li><a href="<?php echo URL_DIR . 'projects/phase4?id=' . $project->getId(); ?>">4</a></li>
+                            <li><a href="<?php echo URL_DIR . 'projects/phase5?id=' . $project->getId(); ?>">5</a></li>
+                            <li><a href="<?php echo URL_DIR . 'projects/phase6?id=' . $project->getId(); ?>">6</a></li>
+                            <li><a href="<?php echo URL_DIR . 'projects/phase1?id=' . $project->getId(); ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
                         </ul>
                     </div>
                 </div>
             <?php else : ?>
+                <div class="submit wow agileits w3layouts">
+                    <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/projects'; ?>'" value="<?php echo PROJECTS_PROJECT; ?>">
+                </div> 
+                
                 <div class="register agileits w3layouts">
                     <div class="page">
                         <ul class="pagination agileits w3layouts">
@@ -64,10 +72,10 @@
                 </div>
             <?php endif; ?>
 
-            <!-- Information -->
+            <!-- Project Information -->
             <h2><?php echo PHASE0_PROJECT_INFO; ?></h2>
 
-            <form action="<?php echo URL_DIR . 'projects/newproject?id=' . $project->getId(); ?>" method="post">
+            <form action="<?php echo URL_DIR . 'projects/validatePhase0?id=' . $project->getId(); ?>" method="post">
 
                 <!-- Alert Message -->
                 <?php if (!empty($msg)) : ?>
@@ -186,10 +194,10 @@
 </script>
 
 <?php
-    // Unset variables
-    unset($_SESSION['msg']);
-    unset($_SESSION['msgSuccess']);
+// Unset variables
+unset($_SESSION['msg']);
+unset($_SESSION['msgSuccess']);
 
-    // Template CSS
-    $content = ob_get_clean();
-    require 'views/template.php';
+// Template CSS
+$content = ob_get_clean();
+require 'views/template.php';

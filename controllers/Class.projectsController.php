@@ -6,42 +6,49 @@ class projectsController extends Controller {
 
     /**
      // @method projects()
-     // @desc Method that controls the page 'projects.php'
+     // @desc Method to load the page 'projects.php'
      */
     function projects() {
-
+        
         // Initialization of variables
         $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
     }	
+    
+    /**
+    // @method getProjectsByIdTown()
+    // @desc Method that return all projects By townId
+    // @param int $idTown
+    // @return Projects
+    */
+    public static function getProjectsByIdTown($idTown) {
+        return Project::getProjectsByIdTown($idTown);
+    } 
     
     /**
      // @method project()
      // @desc Method to load the project.php page with the right Project (by the id).
      */
-    function project(){
+    function project() {
         
+        // Get the project
         $this->getProject();
     }
     
     /**
      // @method phase0()
-     // @desc Method for the phase 0
+     // @desc Method to load the page 'phase0.php'
      */
     function phase0() {
-
-        // Initialization of variables
-        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-        $this->vars['msgSuccess'] = isset($_SESSION['msgSuccess']) ? $_SESSION['msgSuccess'] : '';
-        $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
         
-        $this->getProject();
+        // Initialization 
+        $this->init();
     }	
     
     /**
-     // @method newproject()
-     // @desc Method for the registration of a user
+     // @method validatePhase0()
+     // @desc Method for the validation of phase 0
      */
-    function newproject() {
+    function validatePhase0() {
 
         // Get data posted by the form
         $name = $_POST['name'];
@@ -67,14 +74,11 @@ class projectsController extends Controller {
         // Check if the name of the project already exists
         if ($project->existProject($idProject, $name, $townId)) {
             if ($idProject == null) {
-                
                 $_SESSION['msg'] = MSG_PROJECT_EXIST;
-                $_SESSION['persistence'] = array($name, $description, $poLastname, $poFirstname);
                 $this->redirect('projects', 'phase0');
                 
             }
             else {
-                
                 // Update the project
                 $project->updateProject($idProject);
                 $_SESSION['msgSuccess'] = MSG_MODIF;
@@ -82,34 +86,20 @@ class projectsController extends Controller {
             }
         }
         else {
-            /*// Check if the project is a new one or exists already
-            if ($idProject == null) {
-                // Save new project into the db
-                $project->insertProject();
-            }
-            else {
-                // Insert the new survey
-                $project->updateProject($idProject);
-            }*/
             // Save new project into the db
             $project->insertProject();
-            
-            unset($_SESSION['persistence']);
             $this->redirect('projects', 'projects');
         }
     }
     
     /**
      // @method phase1()
-     // @desc Method for the phase 1
+     // @desc Method to load the page 'phase1.php'
      */
-    function phase1(){
+    function phase1() {   
         
-        // Initialization of variables
-        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-        $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
-        
-        $this->getProject();
+        // Initialization 
+        $this->init();
     }
     
     /**
@@ -127,7 +117,7 @@ class projectsController extends Controller {
         $i = 0;     
                     
         foreach ($app_questions as $question):
-        
+            
             // Get data posted by the form
             $i++;
             $answer = $_POST['answer' . $i];
@@ -139,29 +129,26 @@ class projectsController extends Controller {
             if ($survey->existSurvey($question["id"], $projectId)) {
                 // Update the answer
                 $survey->updateAnswer($projectId, $question["id"]);
+                $_SESSION['msgSuccess'] = MSG_MODIF;
+                $this->redirect('projects', 'phase1?id=' . $projectId);
             }
             else {
                 // Insert the new survey
                 $survey->insertSurvey();
+                $this->redirect('projects', 'phase2?id=' . $projectId);
             }
 
         endforeach;
-        
-        // Redirection
-        $this->redirect('projects', 'phase2?id=' . $projectId);
     }
     
     /**
      // @method phase2()
-     // @desc Method for the phase 2
+     // @desc Method to load the page 'phase2.php'
      */
-    function phase2(){
+    function phase2() {
         
-        // Initialization of variables
-        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-        $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
-        
-        $this->getProject();
+        // Initialization 
+        $this->init();
     }
     
     /**
@@ -187,26 +174,30 @@ class projectsController extends Controller {
             // Create the new survey
             $survey = new Survey(null, $question["id"], $answer, $grade, null, null, $projectId);
             
-            // Update the grade
-            $survey->updateGrade($projectId, $question["id"]);
-
+            // Check if the grade already exists
+            if ($survey->existGrade($question["id"], $projectId)) {
+                // Update the grade
+                $survey->updateGrade($projectId, $question["id"]);
+                $_SESSION['msgSuccess'] = MSG_MODIF;
+                $this->redirect('projects', 'phase2?id=' . $projectId);
+            }
+            else {
+                // Update the grade
+                $survey->updateGrade($projectId, $question["id"]);
+                $this->redirect('projects', 'phase3?id=' . $projectId);
+            }
+            
         endforeach;
-        
-        // Redirection
-        $this->redirect('projects', 'phase3?id=' . $projectId);
     }
     
     /**
      // @method phase3()
-     // @desc Method for the phase 3
+     // @desc Method to load the page 'phase3.php'
      */
-    function phase3(){
+    function phase3() { 
         
-        // Initialization of variables
-        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-        $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
-        
-        $this->getProject();
+        // Initialization 
+        $this->init();
     }
     
     /**
@@ -236,29 +227,26 @@ class projectsController extends Controller {
             if ($survey->existSurvey($question["id"], $projectId)) {
                 // Update the answer
                 $survey->updateAnswer($projectId, $question["id"]);
+                $_SESSION['msgSuccess'] = MSG_MODIF;
+                $this->redirect('projects', 'phase3?id=' . $projectId);
             }
             else {
                 // Insert the new survey
                 $survey->insertSurvey();
+                $this->redirect('projects', 'phase4?id=' . $projectId);
             }
 
         endforeach;
-        
-        // Redirection
-        $this->redirect('projects', 'phase4?id=' . $projectId);
     }
     
     /**
      // @method phase4()
-     // @desc Method for the phase 4
+     // @desc Method to load the page 'phase4.php'
      */
-    function phase4(){
+    function phase4() {
         
-        // Initialization of variables
-        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-        $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
-        
-        $this->getProject();
+        // Initialization 
+        $this->init();
     }
     
     /**
@@ -288,10 +276,13 @@ class projectsController extends Controller {
             if ($survey->existSurvey($question["id"], $projectId)) {
                 // Update the grade
                 $survey->updateGrade($projectId, $question["id"]);
+                $_SESSION['msgSuccess'] = MSG_MODIF;
+                $this->redirect('projects', 'phase4?id=' . $projectId);
             }
             else {
                 // Insert the new survey
                 $survey->insertSurvey();
+                $this->redirect('projects', 'phase5?id=' . $projectId);
             }
 
         endforeach;
@@ -314,29 +305,26 @@ class projectsController extends Controller {
             if ($survey->existSurvey($question["id"], $projectId)) {
                 // Update the grade
                 $survey->updateGrade($projectId, $question["id"]);
+                $_SESSION['msgSuccess'] = MSG_MODIF;
+                $this->redirect('projects', 'phase4?id=' . $projectId);
             }
             else {
                 // Insert the new survey
                 $survey->insertSurvey();
+                $this->redirect('projects', 'phase5?id=' . $projectId);
             }
 
         endforeach;
-        
-        // Redirection
-        $this->redirect('projects', 'phase5?id=' . $projectId);
     }
     
     /**
      // @method phase5()
-     // @desc Method for the phase 5
+     // @desc Method to load the page 'phase5.php'
      */
-    function phase5(){
+    function phase5() {  
         
-        // Initialization of variables
-        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-        $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
-        
-        $this->getProject();
+        // Initialization 
+        $this->init();
     }
     
     /**
@@ -366,10 +354,13 @@ class projectsController extends Controller {
             if ($survey->existSurvey($question["id"], $projectId)) {
                 // Update the answer
                 $survey->updateAnswer($projectId, $question["id"]);
+                $_SESSION['msgSuccess'] = MSG_MODIF;
+                $this->redirect('projects', 'phase5?id=' . $projectId);
             }
             else {
                 // Insert the new survey
                 $survey->insertSurvey();
+                $this->redirect('projects', 'phase6?id=' . $projectId);
             }
 
         endforeach;
@@ -392,29 +383,26 @@ class projectsController extends Controller {
             if ($survey->existSurvey($question["id"], $projectId)) {
                 // Update the answer
                 $survey->updateAnswer($projectId, $question["id"]);
+                $_SESSION['msgSuccess'] = MSG_MODIF;
+                $this->redirect('projects', 'phase5?id=' . $projectId);
             }
             else {
                 // Insert the new survey
                 $survey->insertSurvey();
+                $this->redirect('projects', 'phase6?id=' . $projectId);
             }
 
         endforeach;
-        
-        // Redirection
-        $this->redirect('projects', 'phase6?id=' . $projectId);
     }
     
     /**
      // @method phase6()
-     // @desc Method for the phase 6
+     // @desc Method to load the page 'phase6.php'
      */
-    function phase6(){
+    function phase6() {  
         
-        // Initialization of variables
-        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-        $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
-        
-        $this->getProject();
+        // Initialization
+        $this->init();
     }
     
     /**
@@ -444,10 +432,13 @@ class projectsController extends Controller {
             if ($survey->existSurvey($question["id"], $projectId)) {
                 // Update the comment
                 $survey->updateComment($projectId, $question["id"]);
+                $_SESSION['msgSuccess'] = MSG_MODIF;
+                $this->redirect('projects', 'phase6?id=' . $projectId);
             }
             else {
                 // Insert the new survey
                 $survey->insertSurvey();
+                $this->redirect('projects', 'project?id=' . $projectId);
             }
 
         endforeach;
@@ -470,10 +461,13 @@ class projectsController extends Controller {
             if ($survey->existSurvey($question["id"], $projectId)) {
                 // Update the comment
                 $survey->updateComment($projectId, $question["id"]);
+                $_SESSION['msgSuccess'] = MSG_MODIF;
+                $this->redirect('projects', 'phase6?id=' . $projectId);
             }
             else {
                 // Insert the new survey
                 $survey->insertSurvey();
+                $this->redirect('projects', 'project?id=' . $projectId);
             }
 
         endforeach;
@@ -481,7 +475,7 @@ class projectsController extends Controller {
         // Initialization of variables
         $i = 100;     
                     
-        for($j = 0; $j < 4; $j++) :
+        for ($j = 0; $j < 4; $j++) :
         
             // Get data posted by the form
             $i++;
@@ -496,18 +490,34 @@ class projectsController extends Controller {
             if ($survey->existSurvey($idQuestion, $projectId)) {
                 // Update the survey
                 $survey->updateSurvey($projectId, $idQuestion);
+                $_SESSION['msgSuccess'] = MSG_MODIF;
+                $this->redirect('projects', 'phase6?id=' . $projectId);
             }
             else {
                 // Insert the new survey
                 $survey->insertSurvey();
+                $this->redirect('projects', 'project?id=' . $projectId);
             }
 
         endfor;
-        
-        // Redirection
-        $this->redirect('projects', 'project?id=' . $projectId);
     }
     
+    /**
+    // @method init()
+    // @desc Method that initializes the variables
+    */
+    private function init() {
+        
+        // Initialization of variables
+        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+        $this->vars['msgSuccess'] = isset($_SESSION['msgSuccess']) ? $_SESSION['msgSuccess'] : '';
+        $this->getProject();
+    }
+    
+    /**
+    // @method getProject()
+    // @desc Method that get the project if exist
+    */
     private function getProject() {
         
         // Get the id of the project
@@ -537,14 +547,4 @@ class projectsController extends Controller {
             $this->data['town_idTown'] = null;
         }
     }
-    
-    /**
-    // @method getProjectsByIdTown()
-    // @desc Method that return all projects By townId
-    // @param int $idTown
-    // @return Projects
-    */
-    public static function getProjectsByIdTown($idTown) {
-        return Project::getProjectsByIdTown($idTown);
-    } 
 }
