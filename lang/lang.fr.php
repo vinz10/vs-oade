@@ -99,11 +99,20 @@ define("PHASE3_CONFLICT", "Analyse des conflits potentiels");
 define("PHASE4_WEIGHTING", "Pondération");
 define("PHASE4_ASSETS", "Principaux atouts");
 define("PHASE4_CONFLICTS", "Principaux conflits");
+define("PHASE4_IMPORTANCE", "Importance");
+define("PHASE4_1", "importance très élevée");
+define("PHASE4_2", "importance élevée");
+define("PHASE4_3", "faible importance");
+define("PHASE4_4", "très faible importance");
 
 // PROJECTS PHASE 5
 define("PHASE5_CONSISTENCY", "Cohérence");
 define("PHASE5_SOCIAL", "Projet de société");
 define("PHASE5_TERRITORY", "Projet de territoire");
+define("PHASE5_ANSWER", "Réponse");
+define("PHASE5_1", "Oui");
+define("PHASE5_2", "Partiellement");
+define("PHASE5_3", "Non");
 
 // PROJECTS PHASE 6
 define("PHASE6_OPTIMIZATION_SUGGESTION", "Suggestions, Optimisation");

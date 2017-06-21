@@ -1,5 +1,7 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
 <!-- Custom-Stylesheet-Links -->
 <!-- Bootstrap-CSS -->  
 <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" media="all">
@@ -25,10 +27,20 @@
     $towns = loginController::getAllTowns();
     $login = $_SESSION ['login'];
     
+    $valuesSocial2 = array();
+    $valuesEconomy2 = array();
+    $valuesEnvironment2 = array();
+    $allValues2 = array();
+    
+    $labels = array();
+    $valuesSocial4 = array();
+    $valuesEconomy4 = array();
+    $valuesEnvironment4 = array();
+    $allValues4 = array();
+    
     // Template CSS
     ob_start();
 ?>
-
 
 <!-- Booking -->
 <div class="reg agileits w3layouts">
@@ -67,9 +79,33 @@
                 $i = 0;
                 
                 foreach ($app_questions as $question):
-                   
+                    $labels[] = $question["question"];
                     $i++;
                     $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
+                    if($grade) {
+                        $allValues4[] = $grade->getGrade();
+                        if($i <= 3) {
+                            $valuesSocial4[] = $grade->getGrade();
+                            $valuesEconomy4[] = null;
+                            $valuesEnvironment4[] = null;
+                        }
+                        elseif($i <= 6) {
+                            $valuesSocial4[] = null;
+                            $valuesEconomy4[] = $grade->getGrade();
+                            $valuesEnvironment4[] = null;
+                        }
+                        elseif($i <= 9) {
+                            $valuesSocial4[] = null;
+                            $valuesEconomy4[] = null;
+                            $valuesEnvironment4[] = $grade->getGrade();
+                        }
+                    }
+                    else {
+                        $allValues4[] = null;
+                        $valuesSocial4[] = null;
+                        $valuesEconomy4[] = null;
+                        $valuesEnvironment4[] = null;
+                    }
                 ?>
 
                     <div class="members wow agileits w3layouts slideInLeft">
@@ -166,58 +202,44 @@
                             <select name="<?php echo 'grade' . $i; ?>" <?php echo ' id="grade' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
                                 <?php 
                                 if(!$grade) : ?>
-                                    <option selected="selected" value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                    <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                    <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                    <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                    <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                    <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                    <option selected="selected" value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
+                                    <option value="1">1 <?php echo PHASE4_1; ?></option>
+                                    <option value="2">2 <?php echo PHASE4_2; ?></option>
+                                    <option value="3">3 <?php echo PHASE4_3; ?></option>
+                                    <option value="4">4 <?php echo PHASE4_4; ?></option>
                                 <?php 
                                 else : 
-                                    if($grade->getGrade()==0) :
+                                    if($grade->getGrade()==1) :
                                         ?>
-                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                        <option selected="selected" value="0">0 <?php echo PHASE2_0; ?></option>
-                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
-                                        <?php
-                                    elseif($grade->getGrade()==1) :
-                                        ?>
-                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                        <option selected="selected" value="1">1 <?php echo PHASE2_1; ?></option>
-                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
+                                        <option selected="selected" value="1">1 <?php echo PHASE4_1; ?></option>
+                                        <option value="2">2 <?php echo PHASE4_2; ?></option>
+                                        <option value="3">3 <?php echo PHASE4_3; ?></option>
+                                        <option value="4">4 <?php echo PHASE4_4; ?></option>
                                         <?php
                                     elseif($grade->getGrade()==2) :
                                         ?>
-                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                        <option selected="selected" value="2">2 <?php echo PHASE2_2; ?></option>
-                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
+                                        <option value="1">1 <?php echo PHASE4_1; ?></option>
+                                        <option selected="selected" value="2">2 <?php echo PHASE4_2; ?></option>
+                                        <option value="3">3 <?php echo PHASE4_3; ?></option>
+                                        <option value="4">4 <?php echo PHASE4_4; ?></option>
                                         <?php
                                     elseif($grade->getGrade()==3) :
                                         ?>
-                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                        <option selected="selected" value="3">3 <?php echo PHASE2_3; ?></option>
-                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
+                                        <option value="1">1 <?php echo PHASE4_1; ?></option>
+                                        <option value="2">2 <?php echo PHASE4_2; ?></option>
+                                        <option selected="selected" value="3">3 <?php echo PHASE4_3; ?></option>
+                                        <option value="4">4 <?php echo PHASE4_4; ?></option>
                                         <?php
                                     else :
                                         ?>
-                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                        <option selected="selected" value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <option value="-1"><?php echo PHASE4_IMPORTANCE; ?></option>
+                                        <option value="1">1 <?php echo PHASE4_1; ?></option>
+                                        <option value="2">2 <?php echo PHASE4_2; ?></option>
+                                        <option value="3">3 <?php echo PHASE4_3; ?></option>
+                                        <option selected="selected" value="4">4 <?php echo PHASE4_4; ?></option>
                                         <?php
                                     endif;
                                 endif;
@@ -238,6 +260,204 @@
 
     </div>
 </div>
+
+<?php
+$questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
+$app_questions = json_decode($questions, true);
+$i = 0;
+
+foreach ($app_questions as $question):
+    $i++;
+    $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
+    if($grade) {
+        $allValues2[] = $grade->getGrade();
+        if($i <= 3) {
+            $valuesSocial2[] = $grade->getGrade();
+            $valuesEconomy2[] = null;
+            $valuesEnvironment2[] = null;
+        }
+        elseif($i <= 6) {
+            $valuesSocial2[] = null;
+            $valuesEconomy2[] = $grade->getGrade();
+            $valuesEnvironment2[] = null;
+        }
+        elseif($i <= 9) {
+            $valuesSocial2[] = null;
+            $valuesEconomy2[] = null;
+            $valuesEnvironment2[] = $grade->getGrade();
+        }
+    }
+    else {
+        $allValues2[] = null;
+        $valuesSocial2[] = null;
+        $valuesEconomy2[] = null;
+        $valuesEnvironment2[] = null;
+    }
+endforeach;
+?>
+
+<h1>Graph a phase 2</h1>
+<div id='myChartPhase2a'></div>
+<h1>Graph b phase 2</h1>
+<div id='myChartPhase2b'></div>
+
+
+<h1>Graph a phase 4</h1>
+<div id='myChartPhase4a'></div>
+<h1>Graph b phase 4</h1>
+<div id='myChartPhase4b'></div>
+
+<script>
+    var my_labels = <?php echo json_encode($labels); ?>;
+    var my_valuesSocial2 = <?php echo json_encode($valuesSocial2); ?>;
+    var my_valuesEconomy2 = <?php echo json_encode($valuesEconomy2); ?>;
+    var my_valuesEnvironment2 = <?php echo json_encode($valuesEnvironment2); ?>;
+    var my_allValues2 = <?php echo json_encode($allValues2); ?>;
+    var my_valuesSocial4 = <?php echo json_encode($valuesSocial4); ?>;
+    var my_valuesEconomy4 = <?php echo json_encode($valuesEconomy4); ?>;
+    var my_valuesEnvironment4 = <?php echo json_encode($valuesEnvironment4); ?>;
+    var my_allValues4 = <?php echo json_encode($allValues4); ?>;
+    
+    var myConfigPhase2a = {
+        "type": "radar",
+        "plot": {
+            "aspect": "dots"
+        },
+        "scaleK": {
+            labels: my_labels,
+        },
+        "series": [
+            {
+                "values": my_valuesSocial2,
+                "marker": {
+                    "type": "circle",
+                    "background-color": "#ff0000",
+                    "border-color": "#ff0000"
+                }
+            },
+            {
+                "values": my_valuesEconomy2,
+                "marker": {
+                    "type": "triangle",
+                    "background-color": "#0000ff",
+                    "border-color": "#0000ff"
+                }
+            },
+            {
+                "values": my_valuesEnvironment2,
+                "marker": {
+                    "type": "square",
+                    "background-color": "#00ff00",
+                    "border-color": "#00ff00"
+                }
+            }
+        ]
+    };
+
+    zingchart.render({
+        id: 'myChartPhase2a',
+        data: myConfigPhase2a,
+        height: '100%',
+        width: '100%'
+    });
+
+    var myConfigPhase2b = {
+        "type": "radar",
+        "plot": {
+            "aspect": "line",
+            "tooltip": {
+                "text": "%t: %v"
+            }
+        },
+        "scaleK": {
+            labels: my_labels,
+        },
+        "series": [
+            {
+                "values": my_allValues2,
+                "text": "Première évaluation"
+            }
+        ]
+    };
+
+    zingchart.render({
+        id: 'myChartPhase2b',
+        data: myConfigPhase2b,
+        height: '100%',
+        width: '100%'
+    });
+    
+    var myConfigPhase4a = {
+        "type": "radar",
+        "plot": {
+            "aspect": "dots"
+        },
+        "scaleK": {
+            labels: my_labels,
+        },
+        "series": [
+            {
+                "values": my_valuesSocial4,
+                "marker": {
+                    "type": "circle",
+                    "background-color": "#ff0000",
+                    "border-color": "#ff0000"
+                }
+            },
+            {
+                "values": my_valuesEconomy4,
+                "marker": {
+                    "type": "triangle",
+                    "background-color": "#0000ff",
+                    "border-color": "#0000ff"
+                }
+            },
+            {
+                "values": my_valuesEnvironment4,
+                "marker": {
+                    "type": "square",
+                    "background-color": "#00ff00",
+                    "border-color": "#00ff00"
+                }
+            }
+        ]
+    };
+
+    zingchart.render({
+        id: 'myChartPhase4a',
+        data: myConfigPhase4a,
+        height: '100%',
+        width: '100%'
+    });
+
+    var myConfigPhase4b = {
+        "type": "radar",
+        "plot": {
+            "aspect": "line",
+            "tooltip": {
+                "text": "%t: %v"
+            }
+        },
+        "scaleK": {
+            labels: my_labels,
+        },
+        "series": [
+            {
+                "values": my_allValues4,
+                "text": "Deuxième évaluation"
+            }
+        ]
+    };
+
+    zingchart.render({
+        id: 'myChartPhase4b',
+        data: myConfigPhase4b,
+        height: '100%',
+        width: '100%'
+    });
+
+</script>
+
 
 <!-- Custom-JavaScript-File-Links -->
 
