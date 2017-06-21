@@ -27,6 +27,8 @@ define("SEARCH", "Search");
 
 // MESSAGES
 define("MSG_CONNECTION_FAIL", "Connection failed");
+define("MSG_SUCCESS", "Success!");
+define("MSG_MODIF", "Modification done correctly.");
 define("MSG_ERROR", "Error!");
 define("MSG_INCORRECT_PWD", "Password incorrect.");
 define("MSG_WARNING", "Warning!");

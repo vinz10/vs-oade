@@ -25,25 +25,28 @@
     ob_start();
 ?>
 
-<!-- Manual -->
+<!-- Project -->
 <div class="manual agileits w3layouts">
     <div class="container">
 
-        <div class="col-md-6 col-sm-6 manual-grids manual-grids2 agileits w3layouts wow slideInRight">
+        <a href="<?php echo URL_DIR . 'projects/phase0?id=' . $project->getId(); ?>">
+            <div class="col-md-6 col-sm-6 manual-grids manual-grids2 agileits w3layouts wow slideInRight">
 
-            <h3><?php echo $project->getName(); ?></h3>
+                <h3><?php echo $project->getName(); ?></h3>
 
-            <!-- Slider4 -->
-            <div class="slider-4 agileits w3layouts">
-                <ul class="rslides agileits w3layouts" id="slider4">
-                    <li>
-                        <p><?php echo $project->getDescription(); ?></p>
-                        <h4><?php echo $project->getPoLastname() . ' ' . $project->getPoFirstname(); ?></h4>
-                    </li>
-                </ul>
+                <!-- Slider4 -->
+                <div class="slider-4 agileits w3layouts">
+                    <ul class="rslides agileits w3layouts" id="slider4">
+                        <li>
+                            <p><?php echo $project->getDescription(); ?></p>
+                            <h4><?php echo $project->getPoLastname() . ' ' . $project->getPoFirstname(); ?></h4>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //Slider4 -->
             </div>
-            <!-- //Slider4 -->
-        </div>
+        </a>
+
 
         <div class="col-md-6 col-sm-6 manual-grids manual-grids1 agileits w3layouts wow slideInLeft">
 

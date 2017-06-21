@@ -31,7 +31,10 @@ class projectsController extends Controller {
 
         // Initialization of variables
         $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+        $this->vars['msgSuccess'] = isset($_SESSION['msgSuccess']) ? $_SESSION['msgSuccess'] : '';
         $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
+        
+        $this->getProject();
     }	
     
     /**
@@ -49,19 +52,48 @@ class projectsController extends Controller {
         // Get the town Id
         $login = $_SESSION ['login'];
         $townId = $login->getId();
-
-        // Create the new project
-        $project = new Project(null, $name, $description, $poLastname, $poFirstname, $townId);
         
-        // Check if the project already exists
-        if ($project->existProject($name, $townId)) {
-            $_SESSION['msg'] = MSG_PROJECT_EXIST;
-            $_SESSION['persistence'] = array($name, $description, $poLastname, $poFirstname);
-            $this->redirect('projects', 'phase0');
+        // Get the id of the project
+        if (isset($_GET['id'])) {
+            $idProject = intval($_GET['id']);
         }
         else {
+            $idProject = null;
+        }
+
+        // Create the new project
+        $project = new Project($idProject, $name, $description, $poLastname, $poFirstname, $townId);
+        
+        // Check if the name of the project already exists
+        if ($project->existProject($idProject, $name, $townId)) {
+            if ($idProject == null) {
+                
+                $_SESSION['msg'] = MSG_PROJECT_EXIST;
+                $_SESSION['persistence'] = array($name, $description, $poLastname, $poFirstname);
+                $this->redirect('projects', 'phase0');
+                
+            }
+            else {
+                
+                // Update the project
+                $project->updateProject($idProject);
+                $_SESSION['msgSuccess'] = MSG_MODIF;
+                $this->redirect('projects', 'phase0?id=' . $idProject);
+            }
+        }
+        else {
+            /*// Check if the project is a new one or exists already
+            if ($idProject == null) {
+                // Save new project into the db
+                $project->insertProject();
+            }
+            else {
+                // Insert the new survey
+                $project->updateProject($idProject);
+            }*/
             // Save new project into the db
             $project->insertProject();
+            
             unset($_SESSION['persistence']);
             $this->redirect('projects', 'projects');
         }
@@ -495,6 +527,14 @@ class projectsController extends Controller {
                     $this->redirect('error', 'http404');
                 }
             }
+        }
+        else {
+            $this->data['idProject'] = null;
+            $this->data['name'] = null;
+            $this->data['description'] = null;
+            $this->data['poLastname'] = null;
+            $this->data['poFirstname'] = null;
+            $this->data['town_idTown'] = null;
         }
     }
     

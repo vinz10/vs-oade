@@ -131,6 +131,25 @@ class Project {
 
         return  $sql->executeQuery($query);
     }
+    
+    /**
+     // @method updateProject()
+     // @desc Method that update a project into the DB
+     // @param int $idProject
+     // @return PDOStatement
+     */
+    public function updateProject($idProject){
+        
+        $sql = SqlConnection::getInstance();
+
+        $query = 'UPDATE project SET name = ' . $sql->getConn()->quote($this->name);
+        $query .= ', description = ' . $sql->getConn()->quote($this->description);
+        $query .= ', poLastname = ' . $sql->getConn()->quote($this->poLastname);
+        $query .= ', poFirstname = ' . $sql->getConn()->quote($this->poFirstname);
+        $query .= ', town_idTown = ' . $sql->getConn()->quote($this->town_idTown) . ' WHERE idProject = ' . $idProject . ';';
+        
+        return  $sql->executeQuery($query);
+    }
 	
     /**
      // @method getProjectById()
@@ -174,15 +193,21 @@ class Project {
     /**
      // @method existProject()
      // @desc Method that check if a project already exists
+     // @param int $idProject
      // @param string $name
-     // @param string $idTown
+     // @param int $idTown
      // @return boolean
      */
-    public static function existProject($name, $idTown) {
+    public static function existProject($idProject, $name, $idTown) {
         
         $sql = SqlConnection::getInstance();
         
-        $query = "SELECT * FROM project WHERE name='$name' AND town_idTown='$idTown';";
+        if($idProject != null) {
+            $query = "SELECT * FROM project WHERE idProject='$idProject' AND town_idTown='$idTown';";
+        }
+        else {
+            $query = "SELECT * FROM project WHERE name='$name' AND town_idTown='$idTown';";
+        }
         
         $result = $sql->selectDB($query);
         $row = $result->fetch();

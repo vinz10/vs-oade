@@ -28,6 +28,8 @@ define("SEARCH", "Rechercher");
 
 // MESSAGES
 define("MSG_CONNECTION_FAIL", "Connection failed");
+define("MSG_SUCCESS", "Succès!");
+define("MSG_MODIF", "Modification effectuée correctement.");
 define("MSG_ERROR", "Erreur!");
 define("MSG_INCORRECT_PWD", "Mot de passe incorrect.");
 define("MSG_WARNING", "Attention!");
