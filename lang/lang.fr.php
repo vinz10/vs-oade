@@ -118,3 +118,6 @@ define("PHASE5_3", "Non");
 define("PHASE6_OPTIMIZATION_SUGGESTION", "Suggestions, Optimisation");
 define("PHASE6_SUGGESTION", "Améliorations, suggestions");
 define("PHASE6_OPTIMIZATION", "Optimisation");
+define("PHASE6_OPENQUESTION", "Questions ouvertes");
+define("PHASE6_COMMENT", "Commentaire");
+define("PHASE6_QUESTION", "Question");

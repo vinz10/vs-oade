@@ -205,10 +205,28 @@ class Survey {
         
         return  $sql->executeQuery($query);
     }
+    
+    /**
+     // @method updateComment()
+     // @desc Method that update the comment of the Survey into the DB
+     // @param int $idProject
+     // @param int $idQuestion
+     // @return PDOStatement
+     */
+    public function updateComment($idProject, $idQuestion){
+        
+        $sql = SqlConnection::getInstance();
+
+        $query = 'UPDATE survey SET comment = ' . $sql->getConn()->quote($this->comment);
+        $query .= ' WHERE project_idProject = ' . $idProject;
+        $query .= ' AND questionId = ' . $idQuestion . ';';
+        
+        return  $sql->executeQuery($query);
+    }
 	
     /**
      // @method getGradeByQuestionId()
-     // @desc Method that get a survey by the questionId from the DB
+     // @desc Method that get a survey by the questionId from the DB (Check Grade)
      // @param int $idQuestion
      // @param int $idProject
      // @return survey
@@ -229,7 +247,7 @@ class Survey {
     
     /**
      // @method getAnswerByQuestionId()
-     // @desc Method that get a survey by the questionId from the DB
+     // @desc Method that get a survey by the questionId from the DB (Check Answer)
      // @param int $idQuestion
      // @param int $idProject
      // @return survey
@@ -237,6 +255,48 @@ class Survey {
     public static function getAnswerByQuestionId($idQuestion, $idProject) {
         
         $query = "SELECT * FROM survey WHERE questionId='$idQuestion' AND project_idProject='$idProject' AND answer <> '';";
+	$result = SqlConnection::getInstance()->selectDB($query);
+	$row = $result->fetch();
+	if (!$row) {
+            return false;
+        }
+
+        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
+        
+        return $survey;
+    }
+    
+    /**
+     // @method getCommentByQuestionId()
+     // @desc Method that get a survey by the questionId from the DB (Check Comment)
+     // @param int $idQuestion
+     // @param int $idProject
+     // @return survey
+     */
+    public static function getCommentByQuestionId($idQuestion, $idProject) {
+        
+        $query = "SELECT * FROM survey WHERE questionId='$idQuestion' AND project_idProject='$idProject' AND comment <> '';";
+	$result = SqlConnection::getInstance()->selectDB($query);
+	$row = $result->fetch();
+	if (!$row) {
+            return false;
+        }
+
+        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
+        
+        return $survey;
+    }
+    
+    /**
+     // @method getQuestionByQuestionId()
+     // @desc Method that get a survey by the questionId from the DB (Check Question)
+     // @param int $idQuestion
+     // @param int $idProject
+     // @return survey
+     */
+    public static function getQuestionByQuestionId($idQuestion, $idProject) {
+        
+        $query = "SELECT * FROM survey WHERE questionId='$idQuestion' AND project_idProject='$idProject' AND openQuestion <> '';";
 	$result = SqlConnection::getInstance()->selectDB($query);
 	$row = $result->fetch();
 	if (!$row) {

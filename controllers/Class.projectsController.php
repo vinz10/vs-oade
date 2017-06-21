@@ -328,7 +328,7 @@ class projectsController extends Controller {
             $answer = $_POST['answer' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], $answer, null, null, null, $projectId);
+            $survey = new Survey(null, $question["id"], $answer, -1, null, null, $projectId);
             
             // Check if the survey already exists
             if ($survey->existSurvey($question["id"], $projectId)) {
@@ -354,7 +354,7 @@ class projectsController extends Controller {
             $answer = $_POST['answer' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], $answer, null, null, null, $projectId);
+            $survey = new Survey(null, $question["id"], $answer, -1, null, null, $projectId);
             
             // Check if the survey already exists
             if ($survey->existSurvey($question["id"], $projectId)) {
@@ -383,6 +383,97 @@ class projectsController extends Controller {
         $this->vars['persistence'] = isset($_SESSION['persistence']) ? $_SESSION['persistence'] : array('','','','');
         
         $this->getProject();
+    }
+    
+    /**
+     // @method validatePhase6()
+     // @desc Method for the insertion of phase 6
+     */
+    function validatePhase6() {
+        
+        // Get the project id
+        $projectId = intval($_GET['id']);
+        
+        // Initialization of variables
+        $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=8');
+        $app_questions = json_decode($questions, true);
+        $i = 0;     
+                    
+        foreach ($app_questions as $question):
+        
+            // Get data posted by the form
+            $i++;
+            $comment = $_POST['comment' . $i];
+
+            // Create the new survey
+            $survey = new Survey(null, $question["id"], null, -1, null, $comment, $projectId);
+            
+            // Check if the survey already exists
+            if ($survey->existSurvey($question["id"], $projectId)) {
+                // Update the comment
+                $survey->updateComment($projectId, $question["id"]);
+            }
+            else {
+                // Insert the new survey
+                $survey->insertSurvey();
+            }
+
+        endforeach;
+        
+        // Initialization of variables
+        $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=9');
+        $app_questions = json_decode($questions, true);
+        $i = 50;     
+                    
+        foreach ($app_questions as $question):
+        
+            // Get data posted by the form
+            $i++;
+            $comment = $_POST['comment' . $i];
+
+            // Create the new survey
+            $survey = new Survey(null, $question["id"], null, -1, null, $comment, $projectId);
+            
+            // Check if the survey already exists
+            if ($survey->existSurvey($question["id"], $projectId)) {
+                // Update the comment
+                $survey->updateComment($projectId, $question["id"]);
+            }
+            else {
+                // Insert the new survey
+                $survey->insertSurvey();
+            }
+
+        endforeach;
+        
+        // Initialization of variables
+        $i = 100;     
+                    
+        for($j = 0; $j < 4; $j++) :
+        
+            // Get data posted by the form
+            $i++;
+            $question = $_POST['question' . $i];
+            $comment = $_POST['comment' . $i];
+            $idQuestion = '10.' . ($j+1);
+
+            // Create the new survey
+            $survey = new Survey(null, $idQuestion, null, -1, $question, $comment, $projectId);
+            
+            // Check if the survey already exists
+            if ($survey->existSurvey($idQuestion, $projectId)) {
+                // Update the survey
+                $survey->updateSurvey($projectId, $idQuestion);
+            }
+            else {
+                // Insert the new survey
+                $survey->insertSurvey();
+            }
+
+        endfor;
+        
+        // Redirection
+        $this->redirect('projects', 'project?id=' . $projectId);
     }
     
     private function getProject() {

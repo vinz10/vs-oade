@@ -58,14 +58,15 @@
 
             <h2><?php echo PHASE6_OPTIMIZATION_SUGGESTION; ?></h2>
             
-            <form action="<?php echo URL_DIR . '#'; ?>" method="post">
+            <form action="<?php echo URL_DIR . 'projects/validatePhase6?id=' . $project->getId(); ?>" method="post">
                 
                 <h4><?php echo PHASE6_SUGGESTION; ?></h4>
                 <?php
-                    $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=8');
-                    $app_questions = json_decode($app_questions, true);
+                $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=8');
+                $app_questions = json_decode($app_questions, true);
+                $i = 0;
                     
-                foreach ($app_questions as $question): ?>
+                foreach ($app_questions as $question): $i++; ?>
                 
                 <div class="members wow agileits w3layouts slideInLeft">
                     <div class="adult agileits w3layouts">
@@ -74,7 +75,12 @@
                             <?php echo $question["question"] ?>
                         </div>
                         <div class="dropdown-button agileits w3layouts">
-                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php echo $persistence[1];?></textarea>
+                            <textarea name="<?php echo 'comment' . $i; ?>" <?php echo ' id="comment' . $i . '" '?> class="dropdown agileits w3layouts" placeholder="<?php echo PHASE6_COMMENT; ?>"><?php 
+                                $survey = surveyController::getCommentByQuestionId($question["id"], $project->getId());
+                                if($survey) {
+                                    echo $survey->getComment();
+                                }
+                            ?></textarea>
                         </div>
                     </div>  
                 </div>
@@ -83,10 +89,11 @@
                 
                 <h4><?php echo PHASE6_OPTIMIZATION; ?></h4>
                 <?php
-                    $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=9');
-                    $app_questions = json_decode($app_questions, true);
+                $app_questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=9');
+                $app_questions = json_decode($app_questions, true);
+                $i = 50;
                     
-                foreach ($app_questions as $question): ?>
+                foreach ($app_questions as $question): $i++; ?>
                 
                 <div class="members wow agileits w3layouts slideInLeft">
                     <div class="adult agileits w3layouts">
@@ -95,16 +102,54 @@
                             <?php echo $question["question"] ?>
                         </div>
                         <div class="dropdown-button agileits w3layouts">
-                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php echo $persistence[1];?></textarea>
+                            <textarea name="<?php echo 'comment' . $i; ?>" <?php echo ' id="comment' . $i . '" '?> class="dropdown agileits w3layouts" placeholder="<?php echo PHASE6_COMMENT; ?>"><?php 
+                                $survey = surveyController::getCommentByQuestionId($question["id"], $project->getId());
+                                if($survey) {
+                                    echo $survey->getComment();
+                                }
+                            ?></textarea>
                         </div>
                     </div>  
                 </div>
 
                 <?php endforeach; ?>
+                
+                <h4><?php echo PHASE6_OPENQUESTION; ?></h4>
+                <?php
+                $i = 100;
+                    
+                for($j = 0; $j < 4; $j++) : 
+                    $i++; 
+                    $idQuestion = '10.' . ($j+1);
+                ?>
+                
+                <div class="members wow agileits w3layouts slideInLeft">
+                    <div class="adult agileits w3layouts">
+                        <h4><?php echo PHASE1_QUESTION . ' ' . $idQuestion; ?></h4>
+                        <div class="dropdown-button agileits w3layouts">
+                            <textarea name="<?php echo 'question' . $i; ?>" <?php echo ' id="question' . $i . '" '?> class="dropdown agileits w3layouts" placeholder="<?php echo PHASE6_QUESTION; ?>"><?php 
+                                $survey = surveyController::getQuestionByQuestionId($idQuestion, $project->getId());
+                                if($survey) {
+                                    echo $survey->getOpenQuestion();
+                                }
+                            ?></textarea>
+                        </div>
+                        <div class="dropdown-button agileits w3layouts">
+                            <textarea name="<?php echo 'comment' . $i; ?>" <?php echo ' id="comment' . $i . '" '?> class="dropdown agileits w3layouts" placeholder="<?php echo PHASE6_COMMENT; ?>"><?php 
+                                $survey = surveyController::getCommentByQuestionId($idQuestion, $project->getId());
+                                if($survey) {
+                                    echo $survey->getComment();
+                                }
+                            ?></textarea>
+                        </div>
+                    </div>  
+                </div>
+
+                <?php endfor; ?>
 
                 <div class="submit wow agileits w3layouts slideInLeft">
                     <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo PHASE1_VALIDATE; ?>">
-                    <input type="submit" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="history.back();" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
+                    <input type="button" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
                 </div>
             </form>
 
