@@ -66,16 +66,41 @@ ob_start();
             <!-- Weighting -->
             <h2><?php echo PHASE4_WEIGHTING; ?></h2>
             
-            <form action="<?php echo URL_DIR . 'projects/validatePhase4?id=' . $project->getId(); ?>" method="post">
-                
-                <!-- Alert Message -->
-                <?php if (!empty($msgSuccess)) : ?>
-                    <div class="members wow agileits w3layouts slideInLeft">
-                        <div class="alert agileits w3layouts alert-success" role="alert">
-                            <strong><?php echo MSG_SUCCESS; ?></strong> <?php echo ' ' . $msgSuccess; ?>
-                        </div>
+            <!-- Alert Message -->
+            <?php if (!empty($msgSuccess)) : ?>
+                <div class="members wow agileits w3layouts slideInLeft">
+                    <div class="alert agileits w3layouts alert-success" role="alert">
+                        <strong><?php echo MSG_SUCCESS; ?></strong> <?php echo ' ' . $msgSuccess; ?>
                     </div>
-                <?php endif; ?>
+                </div>
+            <?php endif; ?>
+            
+            <?php
+            $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
+            $app_questions = json_decode($questions, true);
+            $i = 0;
+
+            foreach ($app_questions as $question):
+                $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
+                if($grade) : ?>
+                    <div style="margin-bottom: 20px;" id='myChartComparison'></div>
+                    <div class="members wow agileits w3layouts slideInRight" style="margin-bottom: 20px;" id='myChartPhase2'></div>
+                <?php endif;
+            endforeach;?>
+                    
+            <?php
+            $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=4');
+            $app_questions = json_decode($questions, true);
+            $i = 0;
+
+            foreach ($app_questions as $question):
+                $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
+                if($grade) : ?>
+                    <div class="members wow agileits w3layouts slideInRight" style="margin-bottom: 20px;" id='myChartPhase4'></div>
+                <?php endif;
+            endforeach;?>
+            
+            <form action="<?php echo URL_DIR . 'projects/validatePhase4?id=' . $project->getId(); ?>" method="post">
                 
                 <h4 class="members wow agileits w3layouts slideInLeft"><?php echo PHASE4_ASSETS; ?></h4>
                 <?php
@@ -299,20 +324,6 @@ foreach ($app_questions as $question):
 endforeach;
 ?>
 
-<h1>Graph a phase 2</h1>
-<div id='myChartPhase2a'></div>
-<h1>Graph b phase 2</h1>
-<div id='myChartPhase2b'></div>
-
-
-<h1>Graph a phase 4</h1>
-<div id='myChartPhase4a'></div>
-<h1>Graph b phase 4</h1>
-<div id='myChartPhase4b'></div>
-
-<h1>Graph Comparison</h1>
-<div id='myChartComparison'></div>
-
 <script>
     var my_labels = <?php echo json_encode($labels); ?>;
     var my_valuesSocial2 = <?php echo json_encode($valuesSocial2); ?>;
@@ -323,14 +334,28 @@ endforeach;
     var my_valuesEconomy4 = <?php echo json_encode($valuesEconomy4); ?>;
     var my_valuesEnvironment4 = <?php echo json_encode($valuesEnvironment4); ?>;
     var my_allValues4 = <?php echo json_encode($allValues4); ?>;
+    var text1 = <?php echo json_encode(PHASE2_SOCIAL); ?>;
+    var text2 = <?php echo json_encode(PHASE2_ECONOMY); ?>;
+    var text3 = <?php echo json_encode(PHASE2_ENVIRONMENT); ?>;
+    var textState = <?php echo json_encode(PHASE2_STATE); ?>;
+    var textStateDesired = <?php echo json_encode(PHASE4_STATE); ?>;
     
-    var myConfigPhase2a = {
+    var myConfigPhase2 = {
         "type": "radar",
+        "legend":{
+            "vertical-align":"bottom"
+        },
+        "title": {
+            "text": textState
+        },
         "plot": {
-            "aspect": "dots"
+            "aspect": "mixed"
         },
         "scaleK": {
-            labels: my_labels,
+            "labels": my_labels,
+            "item": {
+                "font-size": 8
+            }
         },
         "series": [
             {
@@ -339,10 +364,12 @@ endforeach;
                     parseInt(my_valuesSocial2[3]), parseInt(my_valuesSocial2[4]), parseInt(my_valuesSocial2[5]), 
                     parseInt(my_valuesSocial2[6]), parseInt(my_valuesSocial2[7]), parseInt(my_valuesSocial2[8])
                 ],
+                "aspect": "dots",
+                "text": text1,
                 "marker": {
                     "type": "circle",
-                    "background-color": "#ff0000",
-                    "border-color": "#ff0000"
+                    "background-color": "#0000ff",
+                    "border-color": "#0000ff"
                 }
             },
             {
@@ -351,10 +378,12 @@ endforeach;
                     parseInt(my_valuesEconomy2[3]), parseInt(my_valuesEconomy2[4]), parseInt(my_valuesEconomy2[5]), 
                     parseInt(my_valuesEconomy2[6]), parseInt(my_valuesEconomy2[7]), parseInt(my_valuesEconomy2[8])
                 ],
+                "aspect": "dots",
+                "text": text2,
                 "marker": {
                     "type": "triangle",
-                    "background-color": "#0000ff",
-                    "border-color": "#0000ff"
+                    "background-color": "#ff0000",
+                    "border-color": "#ff0000"
                 }
             },
             {
@@ -363,59 +392,49 @@ endforeach;
                     parseInt(my_valuesEnvironment2[3]), parseInt(my_valuesEnvironment2[4]), parseInt(my_valuesEnvironment2[5]), 
                     parseInt(my_valuesEnvironment2[6]), parseInt(my_valuesEnvironment2[7]), parseInt(my_valuesEnvironment2[8])
                 ],
+                "aspect": "dots",
+                "text": text3,
                 "marker": {
                     "type": "square",
                     "background-color": "#00ff00",
                     "border-color": "#00ff00"
                 }
-            }
-        ]
-    };
-
-    zingchart.render({
-        id: 'myChartPhase2a',
-        data: myConfigPhase2a,
-        height: '100%',
-        width: '100%'
-    });
-
-    var myConfigPhase2b = {
-        "type": "radar",
-        "plot": {
-            "aspect": "line",
-            "tooltip": {
-                "text": "%t: %v"
-            }
-        },
-        "scaleK": {
-            labels: my_labels,
-        },
-        "series": [
+            },
             {
                 "values": [
                     parseInt(my_allValues2[0]), parseInt(my_allValues2[1]), parseInt(my_allValues2[2]), 
                     parseInt(my_allValues2[3]), parseInt(my_allValues2[4]), parseInt(my_allValues2[5]), 
                     parseInt(my_allValues2[6]), parseInt(my_allValues2[7]), parseInt(my_allValues2[8])
                 ],
-                "text": "Première évaluation"
+                "aspect": "line",
+                "text": textState
             }
         ]
     };
 
     zingchart.render({
-        id: 'myChartPhase2b',
-        data: myConfigPhase2b,
-        height: '100%',
+        id: 'myChartPhase2',
+        data: myConfigPhase2,
+        height: '50%',
         width: '100%'
     });
     
-    var myConfigPhase4a = {
+    var myConfigPhase4 = {
         "type": "radar",
+        "legend":{
+            "vertical-align":"bottom"
+        },
+        "title": {
+            "text": textStateDesired
+        },
         "plot": {
-            "aspect": "dots"
+            "aspect": "mixed"
         },
         "scaleK": {
-            labels: my_labels,
+            "labels": my_labels,
+            "item": {
+                "font-size": 8
+            }
         },
         "series": [
             {
@@ -424,10 +443,12 @@ endforeach;
                     parseInt(my_valuesSocial4[3]), parseInt(my_valuesSocial4[4]), parseInt(my_valuesSocial4[5]), 
                     parseInt(my_valuesSocial4[6]), parseInt(my_valuesSocial4[7]), parseInt(my_valuesSocial4[8])
                 ],
+                "aspect": "dots",
+                "text": text1,
                 "marker": {
                     "type": "circle",
-                    "background-color": "#ff0000",
-                    "border-color": "#ff0000"
+                    "background-color": "#0000ff",
+                    "border-color": "#0000ff"
                 }
             },
             {
@@ -436,10 +457,12 @@ endforeach;
                     parseInt(my_valuesEconomy4[3]), parseInt(my_valuesEconomy4[4]), parseInt(my_valuesEconomy4[5]), 
                     parseInt(my_valuesEconomy4[6]), parseInt(my_valuesEconomy4[7]), parseInt(my_valuesEconomy4[8])
                 ],
+                "aspect": "dots",
+                "text": text2,
                 "marker": {
                     "type": "triangle",
-                    "background-color": "#0000ff",
-                    "border-color": "#0000ff"
+                    "background-color": "#ff0000",
+                    "border-color": "#ff0000"
                 }
             },
             {
@@ -448,60 +471,45 @@ endforeach;
                     parseInt(my_valuesEnvironment4[3]), parseInt(my_valuesEnvironment4[4]), parseInt(my_valuesEnvironment4[5]), 
                     parseInt(my_valuesEnvironment4[6]), parseInt(my_valuesEnvironment4[7]), parseInt(my_valuesEnvironment4[8])
                 ],
+                "aspect": "dots",
+                "text": text3,
                 "marker": {
                     "type": "square",
                     "background-color": "#00ff00",
                     "border-color": "#00ff00"
                 }
-            }
-        ]
-    };
-
-    zingchart.render({
-        id: 'myChartPhase4a',
-        data: myConfigPhase4a,
-        height: '100%',
-        width: '100%'
-    });
-
-    var myConfigPhase4b = {
-        "type": "radar",
-        "plot": {
-            "aspect": "line",
-            "tooltip": {
-                "text": "%t: %v"
-            }
-        },
-        "scaleK": {
-            labels: my_labels,
-        },
-        "series": [
+            },
             {
                 "values": [
                     parseInt(my_allValues4[0]), parseInt(my_allValues4[1]), parseInt(my_allValues4[2]), 
                     parseInt(my_allValues4[3]), parseInt(my_allValues4[4]), parseInt(my_allValues4[5]), 
                     parseInt(my_allValues4[6]), parseInt(my_allValues4[7]), parseInt(my_allValues4[8])
                 ],
-                "text": "Deuxième évaluation"
+                "aspect": "line",
+                "text": textStateDesired
             }
         ]
     };
 
     zingchart.render({
-        id: 'myChartPhase4b',
-        data: myConfigPhase4b,
-        height: '100%',
+        id: 'myChartPhase4',
+        data: myConfigPhase4,
+        height: '50%',
         width: '100%'
     });
     
     var myConfigComparison = {
       type : 'radar',
+      "legend":{
+            "align":"center",
+            "vertical-align":"top"
+        },
       plot : {
         aspect : 'area',
         animation: {
           effect:3,
           sequence:1,
-          speed:700
+          speed:4000
         }
       },
       scaleV : {
@@ -510,13 +518,8 @@ endforeach;
       scaleK : {  
         values : '0:8:1',
         labels : my_labels,
-        item : {
-          fontColor : '#607D8B',
-          backgroundColor : "white",
-          borderColor : "#aeaeae",
-          borderWidth : 1,
-          padding : '5 10',
-          borderRadius : 10
+        "item": {
+            "font-size": 8
         },
         refLine : {
           lineColor : '#c10000'
@@ -541,7 +544,7 @@ endforeach;
                     parseInt(my_allValues2[3]), parseInt(my_allValues2[4]), parseInt(my_allValues2[5]), 
                     parseInt(my_allValues2[6]), parseInt(my_allValues2[7]), parseInt(my_allValues2[8])
                 ],
-          text:'Première évaluation'
+          text: textState
         },
         {
           values : [
@@ -549,7 +552,7 @@ endforeach;
                     parseInt(my_allValues4[3]), parseInt(my_allValues4[4]), parseInt(my_allValues4[5]), 
                     parseInt(my_allValues4[6]), parseInt(my_allValues4[7]), parseInt(my_allValues4[8])
                 ],
-          text:'Deuxième évaluation',
+          text: textStateDesired,
           lineColor : '#53a534',
           backgroundColor : '#689F38'
         }
@@ -559,7 +562,7 @@ endforeach;
     zingchart.render({ 
             id : 'myChartComparison', 
             data : myConfigComparison, 
-            height: '100%', 
+            height: '50%', 
             width: '100%' 
     });
 

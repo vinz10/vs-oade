@@ -87,6 +87,10 @@ define("PHASE1_PROJECT", "Le projet...");
 
 // PROJECTS PHASE 2
 define("PHASE2_CAPITAL_GAIN", "Plus-value");
+define("PHASE2_SOCIAL", "société");
+define("PHASE2_ECONOMY", "économie");
+define("PHASE2_ENVIRONMENT", "environnement");
+define("PHASE2_STATE", "état d'analyse initiale");
 define("PHASE2_GRADE", "Note");
 define("PHASE2_0", "le projet est parfaitement dans la cible");
 define("PHASE2_1", "le projet est intéressant et s'approche de la cible");
@@ -106,6 +110,7 @@ define("PHASE4_1", "importance très élevée");
 define("PHASE4_2", "importance élevée");
 define("PHASE4_3", "faible importance");
 define("PHASE4_4", "très faible importance");
+define("PHASE4_STATE", "état souhaité par la commune");
 
 // PROJECTS PHASE 5
 define("PHASE5_CONSISTENCY", "Cohérence");

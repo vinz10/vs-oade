@@ -59,9 +59,21 @@ ob_start();
 
             <!-- Capital Gain -->
             <h2><?php echo PHASE2_CAPITAL_GAIN; ?></h2>
+            
+            <?php
+            $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
+            $app_questions = json_decode($questions, true);
+            $i = 0;
+
+            foreach ($app_questions as $question):
+                $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
+                if($grade) : ?>
+                    <div class="members wow agileits w3layouts slideInRight" style="margin-bottom: 20px;" id='myChartPhase2'></div>
+                <?php endif;
+            endforeach;?>
 
             <form action="<?php echo URL_DIR . 'projects/validatePhase2?id=' . $project->getId(); ?>" method="post">
-
+                
                 <!-- Alert Message -->
                 <?php if (!empty($msgSuccess)) : ?>
                     <div class="members wow agileits w3layouts slideInLeft">
@@ -197,23 +209,33 @@ ob_start();
     </div>
 </div>
 
-<div id='myChartPhase2a'></div>
-<div id='myChartPhase2b'></div>
-
 <script>
     var my_labels = <?php echo json_encode($labels); ?>;
     var my_valuesSocial = <?php echo json_encode($valuesSocial); ?>;
     var my_valuesEconomy = <?php echo json_encode($valuesEconomy); ?>;
     var my_valuesEnvironment = <?php echo json_encode($valuesEnvironment); ?>;
     var my_allValues = <?php echo json_encode($allValues); ?>;
+    var text1 = <?php echo json_encode(PHASE2_SOCIAL); ?>;
+    var text2 = <?php echo json_encode(PHASE2_ECONOMY); ?>;
+    var text3 = <?php echo json_encode(PHASE2_ENVIRONMENT); ?>;
+    var textState = <?php echo json_encode(PHASE2_STATE); ?>;
     
-    var myConfigPhase2a = {
+    var myConfigPhase2 = {
         "type": "radar",
+        "legend":{
+            "vertical-align":"bottom"
+        },
+        "title": {
+            "text": textState
+        },
         "plot": {
-            "aspect": "dots"
+            "aspect": "mixed"
         },
         "scaleK": {
-            labels: my_labels,
+            "labels": my_labels,
+            "item": {
+                "font-size": 8
+            }
         },
         "series": [
             {
@@ -222,10 +244,12 @@ ob_start();
                     parseInt(my_valuesSocial[3]), parseInt(my_valuesSocial[4]), parseInt(my_valuesSocial[5]), 
                     parseInt(my_valuesSocial[6]), parseInt(my_valuesSocial[7]), parseInt(my_valuesSocial[8])
                 ],
+                "aspect": "dots",
+                "text": text1,
                 "marker": {
                     "type": "circle",
-                    "background-color": "#ff0000",
-                    "border-color": "#ff0000"
+                    "background-color": "#0000ff",
+                    "border-color": "#0000ff"
                 }
             },
             {
@@ -234,10 +258,12 @@ ob_start();
                     parseInt(my_valuesEconomy[3]), parseInt(my_valuesEconomy[4]), parseInt(my_valuesEconomy[5]), 
                     parseInt(my_valuesEconomy[6]), parseInt(my_valuesEconomy[7]), parseInt(my_valuesEconomy[8])
                 ],
+                "aspect": "dots",
+                "text": text2,
                 "marker": {
                     "type": "triangle",
-                    "background-color": "#0000ff",
-                    "border-color": "#0000ff"
+                    "background-color": "#ff0000",
+                    "border-color": "#ff0000"
                 }
             },
             {
@@ -246,52 +272,32 @@ ob_start();
                     parseInt(my_valuesEnvironment[3]), parseInt(my_valuesEnvironment[4]), parseInt(my_valuesEnvironment[5]), 
                     parseInt(my_valuesEnvironment[6]), parseInt(my_valuesEnvironment[7]), parseInt(my_valuesEnvironment[8])
                 ],
+                "aspect": "dots",
+                "text": text3,
                 "marker": {
                     "type": "square",
                     "background-color": "#00ff00",
                     "border-color": "#00ff00"
                 }
-            }
-        ]
-    };
-
-    zingchart.render({
-        id: 'myChartPhase2a',
-        data: myConfigPhase2a,
-        height: '100%',
-        width: '100%'
-    });
-
-    var myConfigPhase2b = {
-        "type": "radar",
-        "plot": {
-            "aspect": "line",
-            "tooltip": {
-                "text": "%t: %v"
-            }
-        },
-        "scaleK": {
-            labels: my_labels,
-        },
-        "series": [
+            },
             {
                 "values": [
                     parseInt(my_allValues[0]), parseInt(my_allValues[1]), parseInt(my_allValues[2]), 
                     parseInt(my_allValues[3]), parseInt(my_allValues[4]), parseInt(my_allValues[5]), 
                     parseInt(my_allValues[6]), parseInt(my_allValues[7]), parseInt(my_allValues[8])
                 ],
-                "text": "Première évaluation"
+                "aspect": "line",
+                "text": textState
             }
         ]
     };
 
     zingchart.render({
-        id: 'myChartPhase2b',
-        data: myConfigPhase2b,
-        height: '100%',
+        id: 'myChartPhase2',
+        data: myConfigPhase2,
+        height: '50%',
         width: '100%'
     });
-
 </script>
 
 <!-- Custom-JavaScript-File-Links -->	  
