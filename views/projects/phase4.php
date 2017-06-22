@@ -310,6 +310,9 @@ endforeach;
 <h1>Graph b phase 4</h1>
 <div id='myChartPhase4b'></div>
 
+<h1>Graph Comparison</h1>
+<div id='myChartComparison'></div>
+
 <script>
     var my_labels = <?php echo json_encode($labels); ?>;
     var my_valuesSocial2 = <?php echo json_encode($valuesSocial2); ?>;
@@ -331,7 +334,11 @@ endforeach;
         },
         "series": [
             {
-                "values": my_valuesSocial2,
+                "values": [
+                    parseInt(my_valuesSocial2[0]), parseInt(my_valuesSocial2[1]), parseInt(my_valuesSocial2[2]), 
+                    parseInt(my_valuesSocial2[3]), parseInt(my_valuesSocial2[4]), parseInt(my_valuesSocial2[5]), 
+                    parseInt(my_valuesSocial2[6]), parseInt(my_valuesSocial2[7]), parseInt(my_valuesSocial2[8])
+                ],
                 "marker": {
                     "type": "circle",
                     "background-color": "#ff0000",
@@ -339,7 +346,11 @@ endforeach;
                 }
             },
             {
-                "values": my_valuesEconomy2,
+                "values": [
+                    parseInt(my_valuesEconomy2[0]), parseInt(my_valuesEconomy2[1]), parseInt(my_valuesEconomy2[2]), 
+                    parseInt(my_valuesEconomy2[3]), parseInt(my_valuesEconomy2[4]), parseInt(my_valuesEconomy2[5]), 
+                    parseInt(my_valuesEconomy2[6]), parseInt(my_valuesEconomy2[7]), parseInt(my_valuesEconomy2[8])
+                ],
                 "marker": {
                     "type": "triangle",
                     "background-color": "#0000ff",
@@ -347,7 +358,11 @@ endforeach;
                 }
             },
             {
-                "values": my_valuesEnvironment2,
+                "values": [
+                    parseInt(my_valuesEnvironment2[0]), parseInt(my_valuesEnvironment2[1]), parseInt(my_valuesEnvironment2[2]), 
+                    parseInt(my_valuesEnvironment2[3]), parseInt(my_valuesEnvironment2[4]), parseInt(my_valuesEnvironment2[5]), 
+                    parseInt(my_valuesEnvironment2[6]), parseInt(my_valuesEnvironment2[7]), parseInt(my_valuesEnvironment2[8])
+                ],
                 "marker": {
                     "type": "square",
                     "background-color": "#00ff00",
@@ -377,7 +392,11 @@ endforeach;
         },
         "series": [
             {
-                "values": my_allValues2,
+                "values": [
+                    parseInt(my_allValues2[0]), parseInt(my_allValues2[1]), parseInt(my_allValues2[2]), 
+                    parseInt(my_allValues2[3]), parseInt(my_allValues2[4]), parseInt(my_allValues2[5]), 
+                    parseInt(my_allValues2[6]), parseInt(my_allValues2[7]), parseInt(my_allValues2[8])
+                ],
                 "text": "Première évaluation"
             }
         ]
@@ -400,7 +419,11 @@ endforeach;
         },
         "series": [
             {
-                "values": my_valuesSocial4,
+                "values": [
+                    parseInt(my_valuesSocial4[0]), parseInt(my_valuesSocial4[1]), parseInt(my_valuesSocial4[2]), 
+                    parseInt(my_valuesSocial4[3]), parseInt(my_valuesSocial4[4]), parseInt(my_valuesSocial4[5]), 
+                    parseInt(my_valuesSocial4[6]), parseInt(my_valuesSocial4[7]), parseInt(my_valuesSocial4[8])
+                ],
                 "marker": {
                     "type": "circle",
                     "background-color": "#ff0000",
@@ -408,7 +431,11 @@ endforeach;
                 }
             },
             {
-                "values": my_valuesEconomy4,
+                "values": [
+                    parseInt(my_valuesEconomy4[0]), parseInt(my_valuesEconomy4[1]), parseInt(my_valuesEconomy4[2]), 
+                    parseInt(my_valuesEconomy4[3]), parseInt(my_valuesEconomy4[4]), parseInt(my_valuesEconomy4[5]), 
+                    parseInt(my_valuesEconomy4[6]), parseInt(my_valuesEconomy4[7]), parseInt(my_valuesEconomy4[8])
+                ],
                 "marker": {
                     "type": "triangle",
                     "background-color": "#0000ff",
@@ -416,7 +443,11 @@ endforeach;
                 }
             },
             {
-                "values": my_valuesEnvironment4,
+                "values": [
+                    parseInt(my_valuesEnvironment4[0]), parseInt(my_valuesEnvironment4[1]), parseInt(my_valuesEnvironment4[2]), 
+                    parseInt(my_valuesEnvironment4[3]), parseInt(my_valuesEnvironment4[4]), parseInt(my_valuesEnvironment4[5]), 
+                    parseInt(my_valuesEnvironment4[6]), parseInt(my_valuesEnvironment4[7]), parseInt(my_valuesEnvironment4[8])
+                ],
                 "marker": {
                     "type": "square",
                     "background-color": "#00ff00",
@@ -446,7 +477,11 @@ endforeach;
         },
         "series": [
             {
-                "values": my_allValues4,
+                "values": [
+                    parseInt(my_allValues4[0]), parseInt(my_allValues4[1]), parseInt(my_allValues4[2]), 
+                    parseInt(my_allValues4[3]), parseInt(my_allValues4[4]), parseInt(my_allValues4[5]), 
+                    parseInt(my_allValues4[6]), parseInt(my_allValues4[7]), parseInt(my_allValues4[8])
+                ],
                 "text": "Deuxième évaluation"
             }
         ]
@@ -457,6 +492,75 @@ endforeach;
         data: myConfigPhase4b,
         height: '100%',
         width: '100%'
+    });
+    
+    var myConfigComparison = {
+      type : 'radar',
+      plot : {
+        aspect : 'area',
+        animation: {
+          effect:3,
+          sequence:1,
+          speed:700
+        }
+      },
+      scaleV : {
+        visible : false
+      },
+      scaleK : {  
+        values : '0:8:1',
+        labels : my_labels,
+        item : {
+          fontColor : '#607D8B',
+          backgroundColor : "white",
+          borderColor : "#aeaeae",
+          borderWidth : 1,
+          padding : '5 10',
+          borderRadius : 10
+        },
+        refLine : {
+          lineColor : '#c10000'
+        },
+        tick : {
+          lineColor : '#59869c',
+          lineWidth : 2,
+          lineStyle : 'dotted',
+          size : 20
+        },
+        guide : {
+          lineColor : "#607D8B",
+          lineStyle : 'solid',
+          alpha : 0.3,
+          backgroundColor : "#c5c5c5 #718eb4"
+        }
+      },
+      series : [
+        {
+          values : [
+                    parseInt(my_allValues2[0]), parseInt(my_allValues2[1]), parseInt(my_allValues2[2]), 
+                    parseInt(my_allValues2[3]), parseInt(my_allValues2[4]), parseInt(my_allValues2[5]), 
+                    parseInt(my_allValues2[6]), parseInt(my_allValues2[7]), parseInt(my_allValues2[8])
+                ],
+          text:'Première évaluation'
+        },
+        {
+          values : [
+                    parseInt(my_allValues4[0]), parseInt(my_allValues4[1]), parseInt(my_allValues4[2]), 
+                    parseInt(my_allValues4[3]), parseInt(my_allValues4[4]), parseInt(my_allValues4[5]), 
+                    parseInt(my_allValues4[6]), parseInt(my_allValues4[7]), parseInt(my_allValues4[8])
+                ],
+          text:'Deuxième évaluation',
+          lineColor : '#53a534',
+          backgroundColor : '#689F38'
+        }
+      ]
+    };
+
+    zingchart.render({ 
+            id : 'myChartComparison', 
+            data : myConfigComparison, 
+            height: '100%', 
+            width: '100%' 
     });
 
 </script>

@@ -217,7 +217,11 @@ ob_start();
         },
         "series": [
             {
-                "values": my_valuesSocial,
+                "values": [
+                    parseInt(my_valuesSocial[0]), parseInt(my_valuesSocial[1]), parseInt(my_valuesSocial[2]), 
+                    parseInt(my_valuesSocial[3]), parseInt(my_valuesSocial[4]), parseInt(my_valuesSocial[5]), 
+                    parseInt(my_valuesSocial[6]), parseInt(my_valuesSocial[7]), parseInt(my_valuesSocial[8])
+                ],
                 "marker": {
                     "type": "circle",
                     "background-color": "#ff0000",
@@ -225,7 +229,11 @@ ob_start();
                 }
             },
             {
-                "values": my_valuesEconomy,
+                "values": [
+                    parseInt(my_valuesEconomy[0]), parseInt(my_valuesEconomy[1]), parseInt(my_valuesEconomy[2]), 
+                    parseInt(my_valuesEconomy[3]), parseInt(my_valuesEconomy[4]), parseInt(my_valuesEconomy[5]), 
+                    parseInt(my_valuesEconomy[6]), parseInt(my_valuesEconomy[7]), parseInt(my_valuesEconomy[8])
+                ],
                 "marker": {
                     "type": "triangle",
                     "background-color": "#0000ff",
@@ -233,7 +241,11 @@ ob_start();
                 }
             },
             {
-                "values": my_valuesEnvironment,
+                "values": [
+                    parseInt(my_valuesEnvironment[0]), parseInt(my_valuesEnvironment[1]), parseInt(my_valuesEnvironment[2]), 
+                    parseInt(my_valuesEnvironment[3]), parseInt(my_valuesEnvironment[4]), parseInt(my_valuesEnvironment[5]), 
+                    parseInt(my_valuesEnvironment[6]), parseInt(my_valuesEnvironment[7]), parseInt(my_valuesEnvironment[8])
+                ],
                 "marker": {
                     "type": "square",
                     "background-color": "#00ff00",
@@ -263,7 +275,11 @@ ob_start();
         },
         "series": [
             {
-                "values": my_allValues,
+                "values": [
+                    parseInt(my_allValues[0]), parseInt(my_allValues[1]), parseInt(my_allValues[2]), 
+                    parseInt(my_allValues[3]), parseInt(my_allValues[4]), parseInt(my_allValues[5]), 
+                    parseInt(my_allValues[6]), parseInt(my_allValues[7]), parseInt(my_allValues[8])
+                ],
                 "text": "Première évaluation"
             }
         ]
