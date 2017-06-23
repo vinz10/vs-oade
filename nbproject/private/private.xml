@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/home/home.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/projects/phase0.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/projects/project.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/controllers/Class.errorController.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/controllers/Class.projectsController.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/error/http404.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
