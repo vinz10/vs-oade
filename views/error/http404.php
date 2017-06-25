@@ -13,7 +13,7 @@
 
 <?php
 // Initialization of variables
-$title = '404 not found';
+$title = 'VS-OADE 404 not found';
 
 // Template CSS
 ob_start();
