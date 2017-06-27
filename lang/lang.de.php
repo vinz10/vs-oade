@@ -83,9 +83,6 @@ define("PHASE1_PROJECT", "Das Projekt...");
 
 // PROJECTS PHASE 2
 define("PHASE2_CAPITAL_GAIN", "Wertzuwachs");
-define("PHASE2_SOCIAL", "Gesellschaft");
-define("PHASE2_ECONOMY", "Wirtschaft");
-define("PHASE2_ENVIRONMENT", "Umwelt");
 define("PHASE2_STATE", "Zustand Erstprüfung");
 define("PHASE2_GRADE", "Notiz");
 define("PHASE2_0", "Das Projekt ist perfekt im Ziel");

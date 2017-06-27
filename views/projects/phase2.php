@@ -22,11 +22,6 @@ $project = new Project($this->data ['idProject'], $this->data ['name'], $this->d
 $title = $project->getName();
 $login = $_SESSION['login'];
 $lang = $_SESSION['lang'];
-$labels = array();
-$valuesSocial = array();
-$valuesEconomy = array();
-$valuesEnvironment = array();
-$allValues = array();
 
 // Template CSS
 ob_start();
@@ -89,39 +84,9 @@ ob_start();
                 $app_questions = json_decode($questions, true);
                 $i = 0;
                 
-                foreach ($app_questions as $question):
-                    if ($lang == 'fr') {
-                        $labels[] = $question["questionCommentFR"];
-                    }
-                    elseif ($lang == 'de') {
-                        $labels[] = $question["questionCommentDE"];
-                    }
-                    $i++;
+                foreach ($app_questions as $question): 
+                    $i++; 
                     $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
-                    if($grade) {
-                        $allValues[] = $grade->getGrade();
-                        if($i <= 3) {
-                            $valuesSocial[] = $grade->getGrade();
-                            $valuesEconomy[] = null;
-                            $valuesEnvironment[] = null;
-                        }
-                        elseif($i <= 6) {
-                            $valuesSocial[] = null;
-                            $valuesEconomy[] = $grade->getGrade();
-                            $valuesEnvironment[] = null;
-                        }
-                        elseif($i <= 9) {
-                            $valuesSocial[] = null;
-                            $valuesEconomy[] = null;
-                            $valuesEnvironment[] = $grade->getGrade();
-                        }
-                    }
-                    else {
-                        $allValues[] = null;
-                        $valuesSocial[] = null;
-                        $valuesEconomy[] = null;
-                        $valuesEnvironment[] = null;
-                    }
                 ?>
 
                 <div class="members wow agileits w3layouts slideInLeft">
@@ -227,20 +192,152 @@ ob_start();
     </div>
 </div>
 
+<?php
+$labels = array();
+$valuesAxe1 = array();
+$valuesAxe2 = array();
+$valuesAxe3 = array();
+$valuesAxe4 = array();
+$valuesAxe5 = array();
+$valuesAxe6 = array();
+$allValues = array();
+$axe1 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=1'), true);
+$axe2 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=2'), true);
+$axe3 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=3'), true);
+$axe4 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=4'), true);
+$axe5 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=5'), true);
+$axe6 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=6'), true);
+if ($lang == 'fr') {
+    $text1 = $axe1['nameFR'];
+    $text2 = $axe2['nameFR'];
+    $text3 = $axe3['nameFR'];
+    $text4 = $axe4['nameFR'];
+    $text5 = $axe5['nameFR'];
+    $text6 = $axe6['nameFR'];
+}
+elseif ($lang == 'de') {
+    $text1 = $axe1['nameDE'];
+    $text2 = $axe2['nameDE'];
+    $text3 = $axe3['nameDE'];
+    $text4 = $axe4['nameDE'];
+    $text5 = $axe5['nameDE'];
+    $text6 = $axe6['nameDE'];
+}
+$axes = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axes'), true);
+$nbrAxes = count($axes);
+$questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
+$app_questions = json_decode($questions, true);
+
+foreach ($app_questions as $question):
+    if ($lang == 'fr') {
+        $labels[] = $question["questionCommentFR"];
+    }
+    elseif ($lang == 'de') {
+        $labels[] = $question["questionCommentDE"];
+    }
+    $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
+    if($grade) {
+        $idAxe = $question["axes_idAxe"];
+        $allValues[] = $grade->getGrade();
+        switch ($idAxe) {
+            case 1:
+                $valuesAxe1[] = $grade->getGrade();
+                $valuesAxe2[] = null;
+                $valuesAxe3[] = null;
+                $valuesAxe4[] = null;
+                $valuesAxe5[] = null;
+                $valuesAxe6[] = null;
+                break;
+            case 2:
+                $valuesAxe1[] = null;
+                $valuesAxe2[] = $grade->getGrade();
+                $valuesAxe3[] = null;
+                $valuesAxe4[] = null;
+                $valuesAxe5[] = null;
+                $valuesAxe6[] = null;
+                break;
+            case 3:
+                $valuesAxe1[] = null;
+                $valuesAxe2[] = null;
+                $valuesAxe3[] = $grade->getGrade();
+                $valuesAxe4[] = null;
+                $valuesAxe5[] = null;
+                $valuesAxe6[] = null;
+                break;
+            case 4:
+                $valuesAxe1[] = null;
+                $valuesAxe2[] = null;
+                $valuesAxe3[] = null;
+                $valuesAxe4[] = $grade->getGrade();
+                $valuesAxe5[] = null;
+                $valuesAxe6[] = null;
+                break;
+            case 5:
+                $valuesAxe1[] = null;
+                $valuesAxe2[] = null;
+                $valuesAxe3[] = null;
+                $valuesAxe4[] = null;
+                $valuesAxe5[] = $grade->getGrade();
+                $valuesAxe6[] = null;
+                break;
+            case 6:
+                $valuesAxe1[] = null;
+                $valuesAxe2[] = null;
+                $valuesAxe3[] = null;
+                $valuesAxe4[] = null;
+                $valuesAxe5[] = null;
+                $valuesAxe6[] = $grade->getGrade();
+                break;
+            default:
+                break;
+        }
+    }
+    else {
+        $allValues[] = null;
+        $valuesAxe1[] = null;
+        $valuesAxe2[] = null;
+        $valuesAxe3[] = null;
+        $valuesAxe4[] = null;
+        $valuesAxe5[] = null;
+        $valuesAxe6[] = null;
+    }
+endforeach;
+?>
+
 <script>
-    var my_labels = <?php echo json_encode($labels); ?>;
-    var my_valuesSocial = <?php echo json_encode($valuesSocial); ?>;
-    var my_valuesEconomy = <?php echo json_encode($valuesEconomy); ?>;
-    var my_valuesEnvironment = <?php echo json_encode($valuesEnvironment); ?>;
-    var my_allValues = <?php echo json_encode($allValues); ?>;
-    var text1 = <?php echo json_encode(PHASE2_SOCIAL); ?>;
-    var text2 = <?php echo json_encode(PHASE2_ECONOMY); ?>;
-    var text3 = <?php echo json_encode(PHASE2_ENVIRONMENT); ?>;
+    var axes = <?php echo json_encode($axes); ?>;
+    var nbrAxes = <?php echo json_encode($nbrAxes); ?>;
+    var nbrQuestions = <?php echo json_encode($i); ?>;
+    var labels = <?php echo json_encode($labels); ?>;
+    var valuesAxe1 = <?php echo json_encode($valuesAxe1); ?>;
+    var valuesAxe2 = <?php echo json_encode($valuesAxe2); ?>;
+    var valuesAxe3 = <?php echo json_encode($valuesAxe3); ?>;
+    var valuesAxe4 = <?php echo json_encode($valuesAxe4); ?>;
+    var valuesAxe5 = <?php echo json_encode($valuesAxe5); ?>;
+    var valuesAxe6 = <?php echo json_encode($valuesAxe6); ?>;
+    var allValues = <?php echo json_encode($allValues); ?>;
+    var text1 = <?php echo json_encode($text1); ?>;
+    var text2 = <?php echo json_encode($text2); ?>;
+    var text3 = <?php echo json_encode($text3); ?>;
+    var text4 = <?php echo json_encode($text4); ?>;
+    var text5 = <?php echo json_encode($text5); ?>;
+    var text6 = <?php echo json_encode($text6); ?>;
     var textState = <?php echo json_encode(PHASE2_STATE); ?>;
+    
+    for(var i = 0; i < nbrQuestions; i++) {
+        valuesAxe1[i] = parseInt(valuesAxe1[i]);
+        valuesAxe2[i] = parseInt(valuesAxe2[i]);
+        valuesAxe3[i] = parseInt(valuesAxe3[i]);
+        valuesAxe4[i] = parseInt(valuesAxe4[i]);
+        valuesAxe5[i] = parseInt(valuesAxe5[i]);
+        valuesAxe6[i] = parseInt(valuesAxe6[i]);
+        allValues[i] = parseInt(allValues[i]);
+    }
     
     var myConfigPhase2 = {
         "type": "radar",
         "legend":{
+            "toggle-action":"remove",
             "vertical-align":"bottom"
         },
         "title": {
@@ -250,63 +347,19 @@ ob_start();
             "aspect": "mixed"
         },
         "scaleK": {
-            "labels": my_labels,
+            "labels": labels,
             "item": {
                 "font-size": 8
             }
         },
-        "series": [
-            {
-                "values": [
-                    parseInt(my_valuesSocial[0]), parseInt(my_valuesSocial[1]), parseInt(my_valuesSocial[2]), 
-                    parseInt(my_valuesSocial[3]), parseInt(my_valuesSocial[4]), parseInt(my_valuesSocial[5]), 
-                    parseInt(my_valuesSocial[6]), parseInt(my_valuesSocial[7]), parseInt(my_valuesSocial[8])
-                ],
-                "aspect": "dots",
-                "text": text1,
-                "marker": {
-                    "type": "circle",
-                    "background-color": "#0000ff",
-                    "border-color": "#0000ff"
-                }
-            },
-            {
-                "values": [
-                    parseInt(my_valuesEconomy[0]), parseInt(my_valuesEconomy[1]), parseInt(my_valuesEconomy[2]), 
-                    parseInt(my_valuesEconomy[3]), parseInt(my_valuesEconomy[4]), parseInt(my_valuesEconomy[5]), 
-                    parseInt(my_valuesEconomy[6]), parseInt(my_valuesEconomy[7]), parseInt(my_valuesEconomy[8])
-                ],
-                "aspect": "dots",
-                "text": text2,
-                "marker": {
-                    "type": "triangle",
-                    "background-color": "#ff0000",
-                    "border-color": "#ff0000"
-                }
-            },
-            {
-                "values": [
-                    parseInt(my_valuesEnvironment[0]), parseInt(my_valuesEnvironment[1]), parseInt(my_valuesEnvironment[2]), 
-                    parseInt(my_valuesEnvironment[3]), parseInt(my_valuesEnvironment[4]), parseInt(my_valuesEnvironment[5]), 
-                    parseInt(my_valuesEnvironment[6]), parseInt(my_valuesEnvironment[7]), parseInt(my_valuesEnvironment[8])
-                ],
-                "aspect": "dots",
-                "text": text3,
-                "marker": {
-                    "type": "square",
-                    "background-color": "#00ff00",
-                    "border-color": "#00ff00"
-                }
-            },
-            {
-                "values": [
-                    parseInt(my_allValues[0]), parseInt(my_allValues[1]), parseInt(my_allValues[2]), 
-                    parseInt(my_allValues[3]), parseInt(my_allValues[4]), parseInt(my_allValues[5]), 
-                    parseInt(my_allValues[6]), parseInt(my_allValues[7]), parseInt(my_allValues[8])
-                ],
-                "aspect": "line",
-                "text": textState
-            }
+        "series": [ 
+            { "values": allValues, "aspect": "line", "text": textState },
+            { "values": valuesAxe1, "aspect": "dots", "text": text1, "marker": { "type": "circle" } },
+            { "values": valuesAxe2, "aspect": "dots", "text": text2, "marker": { "type": "rpoly4" } },
+            { "values": valuesAxe3, "aspect": "dots", "text": text3, "marker": { "type": "star7" } },
+            { "values": valuesAxe4, "aspect": "dots", "text": text4, "marker": { "type": "square" } },
+            { "values": valuesAxe5, "aspect": "dots", "text": text5, "marker": { "type": "triangle" } },
+            { "values": valuesAxe6, "aspect": "dots", "text": text6, "marker": { "type": "star4" } }  
         ]
     };
 
