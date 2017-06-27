@@ -20,7 +20,8 @@ $msg = $this->vars['msg'];
 $msgSuccess = $this->vars['msgSuccess'];
 $project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);	
 $title = $project->getName();
-$login = $_SESSION ['login'];
+$login = $_SESSION['login'];
+$lang = $_SESSION['lang'];
 
 $valuesSocial2 = array();
 $valuesEconomy2 = array();
@@ -109,7 +110,12 @@ ob_start();
                 $i = 0;
                 
                 foreach ($app_questions as $question):
-                    $labels[] = $question["question"];
+                    if ($lang == 'fr') {
+                        $labels[] = $question["questionFR"];
+                    }
+                    elseif ($lang == 'de') {
+                        $labels[] = $question["questionDE"];
+                    }
                     $i++;
                     $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
                     if($grade) {
@@ -142,7 +148,13 @@ ob_start();
                     <div class="adult agileits w3layouts">
                         <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
                         <div class="well agileits w3layouts">
-                            <?php echo '<b>' . $question["question"] . '</b>'; ?>
+                            <?php if ($lang == 'fr') {
+                                echo '<b>' . $question["questionFR"] . '</b>';
+                            }
+                            elseif ($lang == 'de') {
+                                echo '<b>' . $question["questionDE"] . '</b>';
+                            }
+                            ?>
                         </div>
 
                         <select name="<?php echo 'grade' . $i; ?>" <?php echo ' id="grade' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
@@ -226,7 +238,13 @@ ob_start();
                     <div class="adult agileits w3layouts">
                         <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
                         <div class="well agileits w3layouts">
-                            <?php echo $question["question"]; ?>
+                            <?php if ($lang == 'fr') {
+                                echo $question["questionFR"]; 
+                            }
+                            elseif ($lang == 'de') {
+                                echo $question["questionDE"];
+                            }
+                            ?>
                         </div>
 
                         <select name="<?php echo 'grade' . $i; ?>" <?php echo ' id="grade' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>

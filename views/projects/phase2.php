@@ -20,7 +20,8 @@ $msg = $this->vars['msg'];
 $msgSuccess = $this->vars['msgSuccess'];
 $project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);
 $title = $project->getName();
-$login = $_SESSION ['login'];
+$login = $_SESSION['login'];
+$lang = $_SESSION['lang'];
 $labels = array();
 $valuesSocial = array();
 $valuesEconomy = array();
@@ -89,7 +90,12 @@ ob_start();
                 $i = 0;
                 
                 foreach ($app_questions as $question):
-                    $labels[] = $question["questionComment"];
+                    if ($lang == 'fr') {
+                        $labels[] = $question["questionCommentFR"];
+                    }
+                    elseif ($lang == 'de') {
+                        $labels[] = $question["questionCommentDE"];
+                    }
                     $i++;
                     $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
                     if($grade) {
@@ -122,7 +128,13 @@ ob_start();
                     <div class="adult agileits w3layouts">
                         <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
                         <div class="well agileits w3layouts">
-                            <?php echo $question["question"] . '</br><br/>'; ?>
+                            <?php if ($lang == 'fr') {
+                                echo $question["questionFR"] . '</br><br/>';
+                            }
+                            elseif ($lang == 'de') {
+                                echo $question["questionDE"] . '</br><br/>';
+                            }
+                            ?>
                             <?php echo '<b>' . PHASE1_ANSWER . '</b><br/>'; ?>
                             <?php 
                             $survey = surveyController::getAnswerByQuestionId($question["id"], $project->getId());
@@ -132,7 +144,13 @@ ob_start();
                             echo '<br/><br/>';
                             ?>
                             <?php echo PHASE1_PROJECT . '<br/>'; ?>
-                            <?php echo '<b>' . $question["questionComment"] . '</b>'; ?>
+                            <?php if ($lang == 'fr') {
+                                echo '<b>' . $question["questionCommentFR"] . '</b>';
+                            }
+                            elseif ($lang == 'de') {
+                                echo '<b>' . $question["questionCommentDE"] . '</b>';
+                            }
+                            ?>
                         </div>
 
                         <select name="<?php echo 'grade' . $i; ?>" <?php echo ' id="grade' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>

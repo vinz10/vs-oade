@@ -103,7 +103,7 @@ define("PHASE4_ASSETS", "Haupt-Assets");
 define("PHASE4_CONFLICTS", "Grosse Konflikte");
 define("PHASE4_IMPORTANCE", "Bedeutung");
 define("PHASE4_1", "sehr hohe Bedeutung");
-define("PHASE4_2", "importance élevée");
+define("PHASE4_2", "hohe Bedeutung");
 define("PHASE4_3", "geringe Bedeutung");
 define("PHASE4_4", "sehr geringe Bedeutung");
 define("PHASE4_STATE", "Zustand, der durch die gemeinsame gewünschten");

@@ -17,7 +17,8 @@ $msg = $this->vars['msg'];
 $msgSuccess = $this->vars['msgSuccess'];
 $project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);	
 $title = $project->getName();
-$login = $_SESSION ['login'];
+$login = $_SESSION['login'];
+$lang = $_SESSION['lang'];
 
 // Template CSS
 ob_start();
@@ -75,7 +76,13 @@ ob_start();
                     <div class="adult agileits w3layouts">
                         <h4><?php echo PHASE1_QUESTION . ' '. $question["id"] ?></h4>
                         <div class="well agileits w3layouts">
-                            <?php echo $question["question"] ?>
+                            <?php if ($lang == 'fr') {
+                                echo $question["questionFR"]; 
+                            }
+                            elseif ($lang == 'de') {
+                                echo $question["questionDE"];
+                            }
+                            ?>
                         </div>
                         <div class="dropdown-button agileits w3layouts">
                             <textarea name="<?php echo 'answer' . $i; ?>" <?php echo ' id="answer' . $i . '" '?> class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php 
