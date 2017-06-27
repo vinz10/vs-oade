@@ -57,12 +57,12 @@
                             <li>
                             <?php
                                 if (isset ( $_GET ['id'] )) { 
-                                    echo '<a href="' . '?id=' . $_GET ['id'] . '&lang=en">';
+                                    echo '<a href="' . '?id=' . $_GET ['id'] . '&lang=de">';
                                 }
                                 else { 
-                                    echo '<a href="?lang=en">';
+                                    echo '<a href="?lang=de">';
                                 }
-                                echo MENU_ENGLISH . '</a>';
+                                echo MENU_DEUTSCH . '</a>';
                             ?>
                             </li>
                             <li>

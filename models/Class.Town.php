@@ -4,23 +4,26 @@
  * Class Town
  */
 class Town {
+    private $idTown;
     private $townName;
     private $password;
     private $electedPassword;
-    private $idTown;
+    private $adminPassword;
     
     /**
      * Constructor
+     * @param int $idTown
      * @param string $townName
      * @param string $password
      * @param string $electedPassword
-     * @param int $idTown
+     * @param string $adminPassword
      */
-    public function __construct($idTown = null, $townName, $password, $electedPassword){
+    public function __construct($idTown = null, $townName, $password, $electedPassword, $adminPassword){
         $this->setId($idTown);
         $this->setTownName($townName);
         $this->setPassword($password);
         $this->setElectedPassword($electedPassword);
+        $this->setAdminPassword($adminPassword);
     }	
 	
     /**
@@ -78,6 +81,20 @@ class Town {
     public function setElectedPassword($electedPassword){
         $this->electedPassword = $electedPassword;
     }
+    
+    /**
+     * @return adminPassword
+     */
+    public function getAdminPassword(){
+        return $this->adminPassword;
+    }
+
+    /**
+     * @param string $adminPassword
+     */
+    public function setAdminPassword($adminPassword){
+        $this->adminPassword = $adminPassword;
+    }
 	
     /**
      // @method getAllTown()
@@ -91,7 +108,7 @@ class Town {
         $rows = $result->fetchAll();
 
         foreach($rows as $row) {
-            $town = new Town($row['idTown'], $row['name'], $row['password'], $row['electedPassword']);
+            $town = new Town($row['idTown'], $row['name'], $row['password'], $row['electedPassword'], $row['adminPassword']);
                 
             $Towns[] = $town;
         }
@@ -108,6 +125,6 @@ class Town {
             return false;
         }
 
-        return new Town($row['idTown'], $row['name'], $row['password'], $row['electedPassword']);
+        return new Town($row['idTown'], $row['name'], $row['password'], $row['electedPassword'], $row['adminPassword']);
     }
 }

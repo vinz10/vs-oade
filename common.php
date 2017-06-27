@@ -24,12 +24,13 @@
     // By default put the site in french
     else {
         $lang = 'fr';
+        $_SESSION['lang'] = $lang;
     }
 
     // Switch the file to read by the lang defined before
     switch ($lang) {
-        case 'en':
-            $lang_file = 'lang.en.php';
+        case 'de':
+            $lang_file = 'lang.de.php';
             break;
         case 'fr':
             $lang_file = 'lang.fr.php';

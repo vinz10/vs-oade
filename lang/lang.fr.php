@@ -18,13 +18,9 @@ define("TEMP_LOGOUT", "déconnexion");
 
 define("MENU_HOME", "ACCUEIL");
 define("MENU_PROJECT", "PROJETS");
-define("MENU_MANUAL", utf8_encode("MODE D'EMPLOI"));
+define("MENU_MANUAL", "PROCESSUS D'ÉVALUATION");
 define("MENU_FRENCH", "FRANCAIS");
-define("MENU_ENGLISH", "ANGLAIS");
-
-define("MENU_ADMIN", "Administration");
-define("FILTER", "Filtrer");
-define("SEARCH", "Rechercher");
+define("MENU_DEUTSCH", "ALLEMAND");
 
 // MESSAGES
 define("MSG_CONNECTION_FAIL", "Connection failed");
@@ -40,7 +36,7 @@ define("MSG_NO_PROJECT", "Il n'y a aucun projet existant sur cette commune.");
 
 // HOME PAGE
 define("HOME_TITLE", "VS-OADE Accueil");
-define("HOME_MANUAL", "Mode d'emploi");
+define("HOME_MANUAL", "Processus d'évaluation");
 define("HOME_SURVEY", "Questionnaire");
 define("HOME_CAPITAL_GAIN", "Plus-value");
 define("HOME_CONFLICT", "Conflits potentiels");
