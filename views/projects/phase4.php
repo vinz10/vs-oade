@@ -73,8 +73,12 @@ ob_start();
             foreach ($app_questions as $question):
                 $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
                 if($grade) : ?>
+                <a href="" data-toggle="modal" data-target="#myModal">
                     <div style="margin-bottom: 20px;" id='myChartComparison'></div>
+                </a>
+                <a href="" data-toggle="modal" data-target="#myModal1">
                     <div class="members wow agileits w3layouts slideInRight" style="margin-bottom: 20px;" id='myChartPhase2'></div>
+                </a>
                 <?php endif;
             endforeach;?>
                     
@@ -86,7 +90,9 @@ ob_start();
             foreach ($app_questions as $question):
                 $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
                 if($grade) : ?>
+                <a href="" data-toggle="modal" data-target="#myModal2">
                     <div class="members wow agileits w3layouts slideInRight" style="margin-bottom: 20px;" id='myChartPhase4'></div>
+                </a>
                 <?php endif;
             endforeach;?>
             
@@ -264,6 +270,53 @@ ob_start();
             </form>
         </div>
     </div>
+</div>
+
+<!-- Modal Graph -->
+<div class="tooltip-content agileits w3layouts">
+    <div class="modal fade agileits w3layouts details-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog agileits w3layouts modal-lg">
+            <div class="modal-content agileits w3layouts">
+                <div class="modal-header agileits w3layouts">
+                    <h4 class="modal-title agileits w3layouts"><?php echo PHASE4_COMPARISON; ?></h4>
+                    <button type="button" class="close agileits w3layouts" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body agileits w3layouts">
+                    <div id='myChartComparisonBig'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade agileits w3layouts details-modal" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog agileits w3layouts modal-lg">
+            <div class="modal-content agileits w3layouts">
+                <div class="modal-header agileits w3layouts">
+                    <h4 class="modal-title agileits w3layouts"><?php echo PHASE2_STATE; ?></h4>
+                    <button type="button" class="close agileits w3layouts" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body agileits w3layouts">
+                    <div id='myChartPhase2Big'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade agileits w3layouts details-modal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog agileits w3layouts modal-lg">
+            <div class="modal-content agileits w3layouts">
+                <div class="modal-header agileits w3layouts">
+                    <h4 class="modal-title agileits w3layouts"><?php echo PHASE4_STATE; ?></h4>
+                    <button type="button" class="close agileits w3layouts" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body agileits w3layouts">
+                    <div id='myChartPhase4Big'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script> $('#myModal').modal(''); </script>
 </div>
 
 <!-- GRAPHS -->
@@ -541,6 +594,37 @@ endforeach;
         width: '100%'
     });
     
+    var myConfigPhase2Big = {
+        "type": "radar",
+        "legend":{
+            "toggle-action":"remove",
+            "align":"center",
+            "vertical-align":"top"
+        },
+        "plot": {
+            "aspect": "mixed"
+        },
+        "scaleK": {
+            "labels": labels,
+        },
+        "series": [ 
+            { "values": allValues2, "aspect": "line", "text": textState },
+            { "values": values2Axe1, "aspect": "dots", "text": text1, "marker": { "type": "circle" } },
+            { "values": values2Axe2, "aspect": "dots", "text": text2, "marker": { "type": "rpoly4" } },
+            { "values": values2Axe3, "aspect": "dots", "text": text3, "marker": { "type": "star7" } },
+            { "values": values2Axe4, "aspect": "dots", "text": text4, "marker": { "type": "square" } },
+            { "values": values2Axe5, "aspect": "dots", "text": text5, "marker": { "type": "triangle" } },
+            { "values": values2Axe6, "aspect": "dots", "text": text6, "marker": { "type": "star4" } }  
+        ]
+    };
+    
+    zingchart.render({
+        id: 'myChartPhase2Big',
+        data: myConfigPhase2Big,
+        height: '100%',
+        width: '100%'
+    });
+    
     var myConfigPhase4 = {
         "type": "radar",
         "legend":{
@@ -574,6 +658,37 @@ endforeach;
         id: 'myChartPhase4',
         data: myConfigPhase4,
         height: '50%',
+        width: '100%'
+    });
+    
+    var myConfigPhase4Big = {
+        "type": "radar",
+        "legend":{
+            "toggle-action":"remove",
+            "align":"center",
+            "vertical-align":"top"
+        },
+        "plot": {
+            "aspect": "mixed"
+        },
+        "scaleK": {
+            "labels": labels,
+        },
+        "series": [ 
+            { "values": allValues4, "aspect": "line", "text": textStateDesired },
+            { "values": values4Axe1, "aspect": "dots", "text": text1, "marker": { "type": "circle" } },
+            { "values": values4Axe2, "aspect": "dots", "text": text2, "marker": { "type": "rpoly4" } },
+            { "values": values4Axe3, "aspect": "dots", "text": text3, "marker": { "type": "star7" } },
+            { "values": values4Axe4, "aspect": "dots", "text": text4, "marker": { "type": "square" } },
+            { "values": values4Axe5, "aspect": "dots", "text": text5, "marker": { "type": "triangle" } },
+            { "values": values4Axe6, "aspect": "dots", "text": text6, "marker": { "type": "star4" } }  
+        ]
+    };
+
+    zingchart.render({
+        id: 'myChartPhase4Big',
+        data: myConfigPhase4Big,
+        height: '100%',
         width: '100%'
     });
     
@@ -631,10 +746,67 @@ endforeach;
     };
 
     zingchart.render({ 
-            id : 'myChartComparison', 
-            data : myConfigComparison, 
-            height: '50%', 
-            width: '100%' 
+        id : 'myChartComparison', 
+        data : myConfigComparison, 
+        height: '50%', 
+        width: '100%' 
+    });
+    
+    var myConfigComparisonBig = {
+      type : 'radar',
+      "legend":{
+            "align":"center",
+            "vertical-align":"top"
+        },
+      plot : {
+        aspect : 'area',
+        animation: {
+          effect:3,
+          sequence:1,
+          speed:4000
+        }
+      },
+      scaleV : {
+        visible : false
+      },
+      scaleK : {  
+        values : '0:8:1',
+        labels : labels,
+        refLine : {
+          lineColor : '#c10000'
+        },
+        tick : {
+          lineColor : '#59869c',
+          lineWidth : 2,
+          lineStyle : 'dotted',
+          size : 20
+        },
+        guide : {
+          lineColor : "#607D8B",
+          lineStyle : 'solid',
+          alpha : 0.3,
+          backgroundColor : "#c5c5c5 #718eb4"
+        }
+      },
+      series : [
+        {
+          values : allValues2,
+          text: textState
+        },
+        {
+          values : allValues4,
+          text: textStateDesired,
+          lineColor : '#53a534',
+          backgroundColor : '#689F38'
+        }
+      ]
+    };
+
+    zingchart.render({ 
+        id : 'myChartComparisonBig', 
+        data : myConfigComparisonBig, 
+        height: '100%', 
+        width: '100%' 
     });
 
 </script>

@@ -104,6 +104,7 @@ define("PHASE4_2", "hohe Bedeutung");
 define("PHASE4_3", "geringe Bedeutung");
 define("PHASE4_4", "sehr geringe Bedeutung");
 define("PHASE4_STATE", "Zustand, der durch die gemeinsame gewünschten");
+define("PHASE4_COMPARISON", "Vergleich");
 
 // PROJECTS PHASE 5
 define("PHASE5_CONSISTENCY", "Kohärenz");

@@ -104,6 +104,7 @@ define("PHASE4_2", "importance élevée");
 define("PHASE4_3", "faible importance");
 define("PHASE4_4", "très faible importance");
 define("PHASE4_STATE", "état souhaité par la commune");
+define("PHASE4_COMPARISON", "Comparaison");
 
 // PROJECTS PHASE 5
 define("PHASE5_CONSISTENCY", "Cohérence");

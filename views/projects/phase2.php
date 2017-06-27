@@ -64,7 +64,9 @@ ob_start();
             foreach ($app_questions as $question):
                 $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
                 if($grade) : ?>
-                    <div class="members wow agileits w3layouts slideInRight" style="margin-bottom: 20px;" id='myChartPhase2'></div>
+                    <a href="" data-toggle="modal" data-target="#myModal">
+                        <div class="members wow agileits w3layouts slideInRight" style="margin-bottom: 20px;" id='myChartPhase2'></div>
+                    </a>
                 <?php endif;
             endforeach;?>
 
@@ -190,6 +192,25 @@ ob_start();
             </form>    
         </div>
     </div>
+</div>
+
+<!-- Modal Graph -->
+<div class="tooltip-content agileits w3layouts">
+    <div class="modal fade agileits w3layouts details-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog agileits w3layouts modal-lg">
+            <div class="modal-content agileits w3layouts">
+                <div class="modal-header agileits w3layouts">
+                    <h4 class="modal-title agileits w3layouts"><?php echo PHASE2_STATE; ?></h4>
+                    <button type="button" class="close agileits w3layouts" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body agileits w3layouts">
+                    <div id='myChartPhase2Big'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script> $('#myModal').modal(''); </script>
 </div>
 
 <?php
@@ -367,6 +388,37 @@ endforeach;
         id: 'myChartPhase2',
         data: myConfigPhase2,
         height: '50%',
+        width: '100%'
+    });
+    
+    var myConfigPhase2Big = {
+        "type": "radar",
+        "legend":{
+            "toggle-action":"remove",
+            "align": "center",
+            "vertical-align":"top"
+        },
+        "plot": {
+            "aspect": "mixed"
+        },
+        "scaleK": {
+            "labels": labels,
+        },
+        "series": [ 
+            { "values": allValues, "aspect": "line", "text": textState },
+            { "values": valuesAxe1, "aspect": "dots", "text": text1, "marker": { "type": "circle" } },
+            { "values": valuesAxe2, "aspect": "dots", "text": text2, "marker": { "type": "rpoly4" } },
+            { "values": valuesAxe3, "aspect": "dots", "text": text3, "marker": { "type": "star7" } },
+            { "values": valuesAxe4, "aspect": "dots", "text": text4, "marker": { "type": "square" } },
+            { "values": valuesAxe5, "aspect": "dots", "text": text5, "marker": { "type": "triangle" } },
+            { "values": valuesAxe6, "aspect": "dots", "text": text6, "marker": { "type": "star4" } }  
+        ]
+    };
+    
+    zingchart.render({
+        id: 'myChartPhase2Big',
+        data: myConfigPhase2Big,
+        height: '100%',
         width: '100%'
     });
 </script>
