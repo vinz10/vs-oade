@@ -51,9 +51,17 @@ class Controller {
      // @return User
      */
     function getLogin(){
-    	if(isset($_SESSION['login']))
+    	if(isset($_SESSION['login'])) {
             return $_SESSION['login'];
-    	else
+        }
+    	elseif(isset($_SESSION['login1'])) {
+            return $_SESSION['login1'];
+        } 
+        elseif(isset($_SESSION['login2'])) {
+            return $_SESSION['login2'];
+        } 
+        else {
             return false;
+        }
     }
 }

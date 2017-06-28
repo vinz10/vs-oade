@@ -116,8 +116,53 @@ class Town {
         return $Towns;
     }
 	
+    /**
+     // @method connect()
+     // @desc Method that connect a normal user
+     // @param string townName
+     // @param string password
+     // @return Town
+     */
     public static function connect($townName, $password){
         $query = "SELECT * FROM town WHERE name='$townName' AND password='$password'";
+        $result = SqlConnection::getInstance()->selectDB($query);
+        $row = $result->fetch();
+        
+        if(!$row) {
+            return false;
+        }
+
+        return new Town($row['idTown'], $row['name'], $row['password'], $row['electedPassword'], $row['adminPassword']);
+    }
+    
+    /**
+     // @method connect1()
+     // @desc Method that connect an elected user
+     // @param string townName
+     // @param string password
+     // @return Town
+     */
+    public static function connect1($townName, $password){
+        $query = "SELECT * FROM town WHERE name='$townName' AND electedPassword='$password'";
+        $result = SqlConnection::getInstance()->selectDB($query);
+        $row = $result->fetch();
+        
+        if(!$row) {
+            return false;
+        }
+
+        return new Town($row['idTown'], $row['name'], $row['password'], $row['electedPassword'], $row['adminPassword']);
+    }
+    
+    /**
+     // @method connect2()
+     // @desc Method that connect an administrator
+     // @param string townName
+     // @param string password
+     // @return Town
+     */
+    public static function connect2($townName, $password){
+        $query = "SELECT * FROM town WHERE name='$townName' AND adminPassword='$password'";
         $result = SqlConnection::getInstance()->selectDB($query);
         $row = $result->fetch();
         

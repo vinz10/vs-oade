@@ -17,24 +17,33 @@
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700" type="text/css">
 
 <?php
-    // Initialization of variables
-    $project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);	
-    $title = $project->getName();
+// Initialization of variables
+$project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);	
+$title = $project->getName();
+$msg = isset($_SESSION['msgError']) ? $_SESSION['msgError'] : '';
 
-    // Template CSS
-    ob_start();
+// Template CSS
+ob_start();
 ?>
 
 <!-- Project -->
 <div class="manual agileits w3layouts">
     <div class="container">
+        
+        <!-- Alert Message -->
+        <?php if (!empty($msg)) : ?>
+            <div class="members wow agileits w3layouts slideInLeft">
+                <div class="alert agileits w3layouts alert-warning" role="alert">
+                    <strong><?php echo MSG_WARNING; ?></strong> <?php echo $msg; ?>
+                </div>
+            </div>
+        <?php endif; ?>
 
         <a href="<?php echo URL_DIR . 'projects/phase0?id=' . $project->getId(); ?>">
             <div class="col-md-6 col-sm-6 manual-grids manual-grids2 agileits w3layouts wow slideInRight">
 
                 <h3><?php echo $project->getName(); ?></h3>
 
-                <!-- Slider4 -->
                 <div class="slider-4 agileits w3layouts">
                     <ul class="rslides agileits w3layouts" id="slider4">
                         <li>
@@ -43,7 +52,6 @@
                         </li>
                     </ul>
                 </div>
-                <!-- //Slider4 -->
             </div>
         </a>
 
@@ -165,9 +173,12 @@
 </script>
 
 <?php
-    // Template CSS
-    $content = ob_get_clean();
-    require 'views/template.php';
+// Unset variables
+unset($_SESSION['msgError']);
+
+// Template CSS
+$content = ob_get_clean();
+require 'views/template.php';
 
 
 

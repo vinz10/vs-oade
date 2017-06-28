@@ -19,79 +19,57 @@
 <?php
     // Initialization of variables
     $msg = $this->vars['msg'];
-    $title = PROJECTS_TITLE;
-
+    $title = LOGIN_TITLE;
+    
     // Template CSS
     ob_start();
 ?>
 
 
-<!-- Services -->
-<div class="services agileits w3layouts">
+<!-- LOGIN -->
+<div class="team agileits w3layouts">
     <div class="container">
 
-        <div class="services-grids agileits w3layouts">
-            <div class="col-md-6 col-sm-6 services-grid agileits w3layouts services-grid1 wow slideInLeft">
-                <h2><?php echo PROJECTS_PROJECT; ?></h2>
-                <?php 
-                    $connect = $this->getLogin();
-                    if (!$connect) :
-                ?>
-                <div class="alert agileits w3layouts alert-info" role="alert">
-                    <strong><?php echo MSG_INFO; ?></strong> <?php echo MSG_CONNECT_TO_SHOW_PROJECTS; ?>
-                </div>
-                <?php 
-                    endif;
-                ?>
-            </div>
+        <h3><?php echo LOGIN; ?></h3>
 
-            <div class="col-md-6 col-sm-6 services-grid agileits w3layouts services-grid2 wow slideInRight">
-                <?php 
-                $connect = $this->getLogin();
-                if ($connect) {
-                    echo '<a class="wow slideInLeft" href="'. URL_DIR . 'projects/phase0'. '">'. PROJECTS_NEW_PROJECT . ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>';
-                    $projects = projectsController::getProjectsByIdTown($connect->getId());
-                }
-                ?>
-            </div>
+        <div class="team-grids agileits w3layouts grid">
+            <a href="<?php echo URL_DIR . 'login/login'; ?>">
+                <div class="col-md-4 col-sm-4 team-grid agileits w3layouts team-grid1 wow slideInUp">
+                    <figure class="effect-zoe agileits w3layouts">
+                        <img src="../images/user.jpg" alt="Agileits W3layouts"/>
+                        <figcaption>
+                            <h4><?php echo USER; ?></h4>
+                            <p class="description agileits w3layouts"><?php echo USER_TEXT; ?></p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </a>
+            <a href="<?php echo URL_DIR . 'login/login1'; ?>">
+                <div class="col-md-4 col-sm-4 team-grid agileits w3layouts team-grid2 wow slideInUp">
+                    <figure class="effect-zoe agileits w3layouts">
+                        <img src="../images/electeduser.jpg" alt="Agileits W3layouts"/>
+                        <figcaption>
+                            <h4><?php echo USER_ELECTED; ?></h4>
+                            <p class="description agileits w3layouts"><?php echo USER_ELECTED_TEXT; ?></p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </a>
+            <a href="<?php echo URL_DIR . 'login/login2'; ?>">
+                <div class="col-md-4 col-sm-4 team-grid agileits w3layouts team-grid3 wow slideInUp">
+                    <figure class="effect-zoe agileits w3layouts">
+                        <img src="../images/adminuser.jpg" alt="Agileits W3layouts"/>
+                        <figcaption>
+                            <h4><?php echo ADMIN; ?></h4>
+                            <p class="description agileits w3layouts"><?php echo ADMIN_TEXT; ?></p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </a>
             <div class="clearfix"></div>
         </div>
-        
-        <div class="service-info-grids agileits w3layouts">
-            <?php 
-                if (!empty($projects)): 
-                foreach ($projects as $project): 
-            ?>
-                <div class="col-md-4 col-sm-4 service-info agileits w3layouts service-info wow fadeInUp">
-                    <img src="../images/project.png" alt="Agileits W3layouts">
-                    <h4><?php echo $project->getName(); ?></h4>
-                    <div class="h4-underline wow agileits w3layouts slideInLeft"></div>
-                    <p><?php echo $project->getDescription(); ?></p>
-                    <a class="wow slideInLeft" href="<?php echo URL_DIR.'projects/project?id=' . $project->getId(); ?>"><?php echo PROJECTS_READ_MORE; ?> <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
-                </div>
-            <?php 
-                endforeach; 
-                else:
-                    $connect = $this->getLogin();
-                    if ($connect) :
-            ?>
-                <div class="services-grids agileits w3layouts">
-                    <div class="col-md-6 col-sm-6 services-grid agileits w3layouts services-grid1 wow slideInLeft">
-                        <div class="alert agileits w3layouts alert-info" role="alert">
-                            <strong><?php echo MSG_INFO; ?></strong> <?php echo MSG_NO_PROJECT; ?>
-                        </div>
-                    </div>
-                </div>
-            <?php 
-                    endif;
-                endif;
-            ?>
-            <div class="clearfix"></div>
-        </div>
-        
     </div>
 </div>
-<!-- //Services -->
 
 <!-- Custom-JavaScript-File-Links -->
 

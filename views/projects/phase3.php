@@ -17,7 +17,6 @@ $msg = $this->vars['msg'];
 $msgSuccess = $this->vars['msgSuccess'];
 $project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);	
 $title = $project->getName();
-$login = $_SESSION['login'];
 $lang = $_SESSION['lang'];
 
 // Template CSS

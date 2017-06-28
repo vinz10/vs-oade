@@ -48,11 +48,31 @@ define("HOME_PROJECTS_LIST", "Liste der Projekte");
 define("HOME_PROJECTS_DESC", "Erstellen Sie neue Projekte oder bestehende Projekte bearbeiten.");
 define("HOME_PROJECTS_ACCESS", "Zugang zu Projekten");
 
+// INITLOGIN PAGE
+define("USER", "Projektleiter");
+define("USER_TEXT", "Der Projektleiter absolvierte einen vorläufigen Fragebogen über das Projekt.");
+define("USER_ELECTED", "Gewählt Gemeinschafts");
+define("USER_ELECTED_TEXT", "Die kommunale gewählt analysiert das Projekt von Fragen mit Gewichtungskriterien zu beantworten.");
+define("ADMIN", "Administrator");
+define("ADMIN_TEXT", "Der Gemeinschafts Administrator verwaltet Einstellungen und Projekte seiner Stadt.");
+
 // LOGIN PAGE
 define("LOGIN_TITLE", "VS-OADE Verbindung");
 define("LOGIN", "Verbindung");
 define("TOWNNAME", "Stadt");
 define("PASSWORD", "Passwort");
+
+// LOGIN1 PAGE
+define("LOGIN1_TITLE", "VS-OADE Verbindung");
+define("LOGIN1", "Verbindung (Gewählte Gemeinde)");
+define("LOGIN1_TOWNNAME", "Stadt");
+define("LOGIN1_PASSWORD", "Passwort (Gewählte Gemeinde)");
+
+// LOGIN2 PAGE
+define("LOGIN2_TITLE", "VS-OADE Verbindung");
+define("LOGIN2", "Verbindung (Verwalter)");
+define("LOGIN2_TOWNNAME", "Stadt");
+define("LOGIN2_PASSWORD", "Passwort (Verwalter)");
 
 // PROJECTS PAGE
 define("PROJECTS_TITLE", "VS-OADE Projekte");
@@ -63,6 +83,7 @@ define("PROJECTS_READ_MORE", "Erfahren Sie mehr");
 // PROJECT PAGE
 define("PROJECT_ACCESS", "Zugang");
 define("PROJECT_PROJECT", "Projekt");
+define("MSG_NO_RIGHTS", "Sie haben keine Berechtigung, um die gewünschte Seite zu gelangen.");
 
 // PROJECTS PHASE 0
 define("PHASE0_TITLE", "VS-OADE Phase 0");

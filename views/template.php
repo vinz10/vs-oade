@@ -80,11 +80,10 @@
                             <?php
                                 $connect = $this->getLogin();
                                 if ($connect) {
-                                    $login = $_SESSION ['login'];
-                                    echo "<div style='font:11px Arial,tahoma,sans-serif;'>" . TEMP_CONNECT . ' ' . $login->getTownName();
+                                    echo "<div style='font:11px Arial,tahoma,sans-serif;'>" . TEMP_CONNECT . ' ' . $connect->getTownName();
                                     echo ' <a href="' . URL_DIR . 'login/logout' . '">' . TEMP_LOGOUT . '</a></div>';
                                 } else {
-                                    echo '<a href="' . URL_DIR . 'login/login' . '">' . TEMP_LOGIN . '</a>';
+                                    echo '<a href="' . URL_DIR . 'login/initlogin' . '">' . TEMP_LOGIN . '</a>';
                                 }
                             ?>    
                             </li>

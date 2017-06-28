@@ -1,9 +1,13 @@
 <?php 
-    // Initialization title
-    $title = HOME_TITLE;
+// Initialization title
+$title = HOME_TITLE;
 
-    // Template CSS
-    ob_start(); 
+$login = isset($_SESSION['login']) ? $_SESSION['login'] : null;
+$login1 = isset($_SESSION['login1']) ? $_SESSION['login1'] : null;
+$login2 = isset($_SESSION['login2']) ? $_SESSION['login2'] : null;
+
+// Template CSS
+ob_start(); 
 ?>
 
 <!-- Manual -->
@@ -174,6 +178,53 @@
 
     </div>
 </div>
+
+<!-- LOGIN -->
+<?php if (!$login && !$login1 && !$login2) : ?>
+    <div class="team agileits w3layouts">
+        <div class="container">
+
+            <h3><?php echo LOGIN; ?></h3>
+
+            <div class="team-grids agileits w3layouts grid">
+                <a href="<?php echo URL_DIR . 'login/login'; ?>">
+                    <div class="col-md-4 col-sm-4 team-grid agileits w3layouts team-grid1 wow slideInUp">
+                        <figure class="effect-zoe agileits w3layouts">
+                            <img src="images/user.jpg" alt="Agileits W3layouts"/>
+                            <figcaption>
+                                <h4><?php echo USER; ?></h4>
+                                <p class="description agileits w3layouts"><?php echo USER_TEXT; ?></p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </a>
+                <a href="<?php echo URL_DIR . 'login/login1'; ?>">
+                    <div class="col-md-4 col-sm-4 team-grid agileits w3layouts team-grid2 wow slideInUp">
+                        <figure class="effect-zoe agileits w3layouts">
+                            <img src="images/electeduser.jpg" alt="Agileits W3layouts"/>
+                            <figcaption>
+                                <h4><?php echo USER_ELECTED; ?></h4>
+                                <p class="description agileits w3layouts"><?php echo USER_ELECTED_TEXT; ?></p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </a>
+                <a href="<?php echo URL_DIR . 'login/login2'; ?>">
+                    <div class="col-md-4 col-sm-4 team-grid agileits w3layouts team-grid3 wow slideInUp">
+                        <figure class="effect-zoe agileits w3layouts">
+                            <img src="images/adminuser.jpg" alt="Agileits W3layouts"/>
+                            <figcaption>
+                                <h4><?php echo ADMIN; ?></h4>
+                                <p class="description agileits w3layouts"><?php echo ADMIN_TEXT; ?></p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 
 <?php
     // Template CSS

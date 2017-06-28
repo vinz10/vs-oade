@@ -30,6 +30,7 @@ define("MSG_ERROR", "Erreur!");
 define("MSG_INCORRECT_PWD", "Mot de passe incorrect.");
 define("MSG_WARNING", "Attention!");
 define("MSG_PROJECT_EXIST", "Le projet existe déjà.");
+define("MSG_NO_RIGHTS", "Vous n'avez pas les droits pour accéder à la page souhaitée.");
 define("MSG_INFO", "Information!");
 define("MSG_CONNECT_TO_SHOW_PROJECTS", "Veuillez vous connecter sur une commune pour accéder à ses projets.");
 define("MSG_NO_PROJECT", "Il n'y a aucun projet existant sur cette commune.");
@@ -48,11 +49,31 @@ define("HOME_PROJECTS_LIST", "Liste des projets");
 define("HOME_PROJECTS_DESC", "Créer de nouveaux projets ou modifier des projets en cours.");
 define("HOME_PROJECTS_ACCESS", "Accéder aux projets");
 
+// INITLOGIN PAGE
+define("USER", "Porteur de Projet");
+define("USER_TEXT", "Le porteur de projet rempli un questionnaire préalable sur le projet.");
+define("USER_ELECTED", "Élu Communal");
+define("USER_ELECTED_TEXT", "L'élu communal analyse le projet en répondant à des questions avec des critères de pondération.");
+define("ADMIN", "Administrateur");
+define("ADMIN_TEXT", "L'administrateur communal gère les paramètres et les projets de sa commune.");
+
 // LOGIN PAGE
 define("LOGIN_TITLE", "VS-OADE Connexion");
 define("LOGIN", "Connexion");
 define("TOWNNAME", "Commune");
 define("PASSWORD", "Mot de passe");
+
+// LOGIN1 PAGE
+define("LOGIN1_TITLE", "VS-OADE Connexion");
+define("LOGIN1", "Connexion (Élu Communal)");
+define("LOGIN1_TOWNNAME", "Commune");
+define("LOGIN1_PASSWORD", "Mot de passe (Élu Communal)");
+
+// LOGIN2 PAGE
+define("LOGIN2_TITLE", "VS-OADE Connexion");
+define("LOGIN2", "Connexion (Administrateur)");
+define("LOGIN2_TOWNNAME", "Commune");
+define("LOGIN2_PASSWORD", "Mot de passe (Administrateur)");
 
 // PROJECTS PAGE
 define("PROJECTS_TITLE", "VS-OADE Projets");

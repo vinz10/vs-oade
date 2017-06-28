@@ -19,79 +19,63 @@
 <?php
     // Initialization of variables
     $msg = $this->vars['msg'];
-    $title = PROJECTS_TITLE;
+    $title = LOGIN1_TITLE;
+    $towns = loginController::getAllTowns();
 
     // Template CSS
     ob_start();
 ?>
 
 
-<!-- Services -->
-<div class="services agileits w3layouts">
+<!-- LOGIN -->
+<div class="reg agileits w3layouts">
     <div class="container">
 
-        <div class="services-grids agileits w3layouts">
-            <div class="col-md-6 col-sm-6 services-grid agileits w3layouts services-grid1 wow slideInLeft">
-                <h2><?php echo PROJECTS_PROJECT; ?></h2>
-                <?php 
-                    $connect = $this->getLogin();
-                    if (!$connect) :
-                ?>
-                <div class="alert agileits w3layouts alert-info" role="alert">
-                    <strong><?php echo MSG_INFO; ?></strong> <?php echo MSG_CONNECT_TO_SHOW_PROJECTS; ?>
-                </div>
-                <?php 
-                    endif;
-                ?>
-            </div>
+        <div class="register agileits w3layouts">
 
-            <div class="col-md-6 col-sm-6 services-grid agileits w3layouts services-grid2 wow slideInRight">
-                <?php 
-                $connect = $this->getLogin();
-                if ($connect) {
-                    echo '<a class="wow slideInLeft" href="'. URL_DIR . 'projects/phase0'. '">'. PROJECTS_NEW_PROJECT . ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>';
-                    $projects = projectsController::getProjectsByIdTown($connect->getId());
-                }
-                ?>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        
-        <div class="service-info-grids agileits w3layouts">
-            <?php 
-                if (!empty($projects)): 
-                foreach ($projects as $project): 
-            ?>
-                <div class="col-md-4 col-sm-4 service-info agileits w3layouts service-info wow fadeInUp">
-                    <img src="../images/project.png" alt="Agileits W3layouts">
-                    <h4><?php echo $project->getName(); ?></h4>
-                    <div class="h4-underline wow agileits w3layouts slideInLeft"></div>
-                    <p><?php echo $project->getDescription(); ?></p>
-                    <a class="wow slideInLeft" href="<?php echo URL_DIR.'projects/project?id=' . $project->getId(); ?>"><?php echo PROJECTS_READ_MORE; ?> <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
-                </div>
-            <?php 
-                endforeach; 
-                else:
-                    $connect = $this->getLogin();
-                    if ($connect) :
-            ?>
-                <div class="services-grids agileits w3layouts">
-                    <div class="col-md-6 col-sm-6 services-grid agileits w3layouts services-grid1 wow slideInLeft">
-                        <div class="alert agileits w3layouts alert-info" role="alert">
-                            <strong><?php echo MSG_INFO; ?></strong> <?php echo MSG_NO_PROJECT; ?>
-                        </div>
+            <h2><?php echo LOGIN1; ?></h2>
+            
+            <form action="<?php echo URL_DIR . 'login/connection1'; ?>" method="post">
+                <div class="place wow agileits w3layouts slideInLeft">
+                    <div class="dropdown-button agileits w3layouts">
+                        <h4><?php echo LOGIN1_TOWNNAME; ?></h4>
+                        <select name="townName" id="townName" class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                            <?php
+                            foreach ($towns as $town) {
+                                echo '<option value=' . $town->getTownName() . '>' . $town->getTownName() . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                 </div>
-            <?php 
-                    endif;
-                endif;
-            ?>
-            <div class="clearfix"></div>
+
+                <div class="members wow agileits w3layouts slideInLeft">
+                    <div class="adult agileits w3layouts">
+                        <h4><?php echo LOGIN1_PASSWORD; ?></h4>
+                        <div class="dropdown-button agileits w3layouts">
+                            <input type="password" name="password" id="login-pass" class="dropdown agileits w3layouts" required="">
+                            <?php 
+                                if(!empty($msg)) :
+                            ?>
+                            <div class="alert agileits w3layouts alert-danger" role="alert">
+                                <strong><?php echo MSG_ERROR; ?></strong><?php echo ' ' . $msg; ?>
+                            </div>
+                            <?php 
+                                endif;
+                            ?>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class="submit wow agileits w3layouts slideInLeft">
+                    <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo LOGIN; ?>">
+                </div>
+            </form>
+
         </div>
-        
+
     </div>
 </div>
-<!-- //Services -->
 
 <!-- Custom-JavaScript-File-Links -->
 

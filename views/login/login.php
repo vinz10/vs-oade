@@ -27,12 +27,12 @@
 ?>
 
 
-<!-- Booking -->
+<!-- LOGIN -->
 <div class="reg agileits w3layouts">
     <div class="container">
 
         <div class="register agileits w3layouts">
-
+            
             <h2><?php echo LOGIN; ?></h2>
             
             <form action="<?php echo URL_DIR . 'login/connection'; ?>" method="post">

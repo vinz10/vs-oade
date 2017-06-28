@@ -17,7 +17,7 @@ $msg = $this->vars['msg'];
 $msgSuccess = $this->vars['msgSuccess'];
 $title = PHASE0_TITLE;
 $project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);
-$login = $_SESSION ['login'];
+$login = $this->getLogin();
 
 // Template CSS
 ob_start();

@@ -149,6 +149,9 @@ class projectsController extends Controller {
         
         // Initialization 
         $this->init();
+        
+        // Check Rights
+        $this->checkRights();
     }
     
     /**
@@ -198,6 +201,9 @@ class projectsController extends Controller {
         
         // Initialization 
         $this->init();
+        
+        // Check Rights
+        $this->checkRights();
     }
     
     /**
@@ -247,6 +253,9 @@ class projectsController extends Controller {
         
         // Initialization 
         $this->init();
+        
+        // Check Rights
+        $this->checkRights();
     }
     
     /**
@@ -325,6 +334,9 @@ class projectsController extends Controller {
         
         // Initialization 
         $this->init();
+        
+        // Check Rights
+        $this->checkRights();
     }
     
     /**
@@ -403,6 +415,9 @@ class projectsController extends Controller {
         
         // Initialization
         $this->init();
+        
+        // Check Rights
+        $this->checkRights();
     }
     
     /**
@@ -512,6 +527,23 @@ class projectsController extends Controller {
         $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
         $this->vars['msgSuccess'] = isset($_SESSION['msgSuccess']) ? $_SESSION['msgSuccess'] : '';
         $this->getProject();
+    }
+    
+    /**
+    // @method checkRights()
+    // @desc Method that check the user rights
+    */
+    private function checkRights() {
+        
+        // Get the project id
+        $projectId = intval($_GET['id']);
+        
+        $login = isset($_SESSION['login']) ? $_SESSION['login'] : null;
+        
+        if ($login) {
+            $_SESSION['msgError'] = MSG_NO_RIGHTS;
+            $this->redirect('projects', 'project?id=' . $projectId);
+        }
     }
     
     /**
