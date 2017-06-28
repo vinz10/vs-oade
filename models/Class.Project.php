@@ -176,7 +176,7 @@ class Project {
      // @return Projects[]
      */
     public static function getProjectsByIdTown($idTown) {
-        $query = "SELECT * FROM project WHERE town_idTown='$idTown';";
+        $query = "SELECT * FROM project WHERE town_idTown='$idTown' ORDER BY idProject DESC;";
         $result = SqlConnection::getInstance()->selectDB($query);
         $Projects = array();
         $rows = $result->fetchAll();

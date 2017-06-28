@@ -75,6 +75,23 @@ define("LOGIN2", "Connexion (Administrateur)");
 define("LOGIN2_TOWNNAME", "Commune");
 define("LOGIN2_PASSWORD", "Mot de passe (Administrateur)");
 
+// MANUAL PAGE
+define("MANUAL_TITLE", "VS-OADE Processus d'évalutation");
+define("MANUAL_MANUAL", "Processus d'évalutation");
+define("MANUAL_PHASES", "Phases");
+define("MANUAL_P1", "Chaque projet soumis au Conseil communal passe par la \"machine développement durable\". Il s'agit de parcourir le processus indiqué ci-dessou de gauche à droite. Quatre phases et deux acteurs sont distingués:");
+define("MANUAL_P2", "1.) Phase de préparation par le porteur du projet");
+define("MANUAL_P3", "2.) Phase d'analyse critique en vue d'un développement durable par le Conseil communal (1 séance de discussion)");
+define("MANUAL_P4", "3.) Phase d'examen d'adéquation du projet quant aux lignes directrices de la commune (Conseil communal)");
+define("MANUAL_P5", "4.) Phase de mise en application (Porteur du projet, éventuellement par l'intermédiaire d'un expert développement durable)");
+define("MANUAL_REMARK", "Remarque préalable: Ces évaluations ne permettent pas de dire si nous sommes dans une situation durable ou non, mais de nous indiquer si le projet nous mène dans la bonne direction. ");
+define("MANUAL_PHASE1", "Après avoir créé un projet, le porteur de projet remplit un questionnaire préalable sur l’idée de projet qu’il va ensuite remettre au conseil communal.");
+define("MANUAL_PHASE2", "Le conseil communal analyse ces questions sous un point de vue « développement durable » et exécute une pondération sur ces questions à l’aide d’une grille prédéterminée pour arriver sur une première évaluation nommée analyse initiale (radar sur un schéma).");
+define("MANUAL_PHASE3", "Un deuxième filtre est présenté au conseil avec des questions principalement axées sur l’analyse des conflits potentiels.");
+define("MANUAL_PHASE4", "Un troisième filtre est présenté au conseil pour pouvoir évaluer le projet en fonction de la politique communale toujours en mettant des pondérations sur les différents critères.");
+define("MANUAL_PHASE5", "Ces pondérations vont nous permettre de comparer une analyse initiale et un état souhaité par la commune en fonction des pondérations qu’ils ont effectuées.");
+define("MANUAL_PHASE6", "Une partie annexe est proposée au conseil sous forme de questions ouvertes afin de suggérer des améliorations et optimisations au porteur de projet et une autre partie est également disponible pour avoir un filtre sur la cohérence du projet.");
+
 // PROJECTS PAGE
 define("PROJECTS_TITLE", "VS-OADE Projets");
 define("PROJECTS_PROJECT", "Projets");

@@ -5,6 +5,12 @@
 class projectsController extends Controller {
 
     /**
+     // @method manual()
+     // @desc Method to load the page 'manual.php'
+     */
+    function manual() {}	
+    
+    /**
      // @method projects()
      // @desc Method to load the page 'projects.php'
      */
@@ -135,7 +141,13 @@ class projectsController extends Controller {
             else {
                 // Insert the new survey
                 $survey->insertSurvey();
-                $this->redirect('projects', 'phase2?id=' . $projectId);
+                $login = isset($_SESSION['login']) ? $_SESSION['login'] : null;
+                if ($login) {
+                    $_SESSION['msgSuccess'] = MSG_MODIF;
+                    $this->redirect('projects', 'phase1?id=' . $projectId); 
+                } else {
+                    $this->redirect('projects', 'phase2?id=' . $projectId);
+                }
             }
 
         endforeach;
@@ -585,6 +597,8 @@ class projectsController extends Controller {
     // @desc Method that delete a project
     */
     function delete() {
+        
+        
         
         // Get the project id
         $idProject = intval($_GET['id']);

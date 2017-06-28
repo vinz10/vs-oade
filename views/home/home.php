@@ -22,27 +22,27 @@ ob_start();
             <div class="slider-4 agileits w3layouts">
                 <ul class="rslides agileits w3layouts" id="slider4">
                     <li>
-                        <p>Le porteur de projet remplit un questionnaire préalable sur l’idée de projet qu’il va ensuite remettre au conseil communal.</p>
+                        <p><?php echo MANUAL_PHASE1; ?></p>
                         <h4>Phase 1</h4>
                     </li>
                     <li>
-                        <p>Le conseil communal analyse ces questions sous un point de vue « développement durable » et exécute une pondération sur ces questions à l’aide d’une grille prédéterminée pour arriver sur une première évaluation nommée analyse initiale (radar sur un schéma).</p>
+                        <p><?php echo MANUAL_PHASE2; ?></p></p>
                         <h4>Phase 2</h4>
                     </li>
                     <li>
-                        <p>Un deuxième filtre est présenté au conseil avec des questions principalement axées sur l’analyse des conflits potentiels.</p>
+                        <p><?php echo MANUAL_PHASE3; ?></p></p>
                         <h4>Phase 3</h4>
                     </li>
                     <li>
-                        <p>Un troisième filtre est présenté au conseil pour pouvoir évaluer le projet en fonction de la politique communale toujours en mettant des pondérations sur les différents critères.</p>
+                        <p><?php echo MANUAL_PHASE4; ?></p></p>
                         <h4>Phase 4</h4>
                     </li>
                     <li>
-                        <p>Ces pondérations vont nous permettre de comparer une analyse initiale et un état souhaité par la commune en fonction des pondérations qu’ils ont effectuées.</p>
+                        <p><?php echo MANUAL_PHASE5; ?></p></p>
                         <h4>Phase 5</h4>
                     </li>
                     <li>
-                        <p>Une partie annexe est proposée au conseil sous forme de questions ouvertes afin de suggérer des améliorations et optimisations au porteur de projet et une autre partie est également disponible pour avoir un filtre sur la cohérence du projet.</p>
+                        <p><?php echo MANUAL_PHASE6; ?></p></p>
                         <h4>Phase 6</h4>
                     </li>
                 </ul>
@@ -61,7 +61,7 @@ ob_start();
                             <span class="glyphicon agileits w3layouts glyphicon-question-sign icon" aria-hidden="true"></span>
                         </div>
                         <h4 class="mission agileits w3layouts"><?php echo HOME_SURVEY; ?></h4>
-                        <p class="description agileits w3layouts"><a href="test/test"><?php echo PROJECT_ACCESS; ?></a></p>
+                        <p class="description agileits w3layouts"><a href="projects/manual"><?php echo PROJECT_ACCESS; ?></a></p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
@@ -70,7 +70,7 @@ ob_start();
                             <span class="glyphicon agileits w3layouts glyphicon-signal icon" aria-hidden="true"></span>
                         </div>
                         <h4 class="mission agileits w3layouts"><?php echo HOME_CAPITAL_GAIN; ?></h4>
-                        <p class="description agileits w3layouts"><a href="test/test"><?php echo PROJECT_ACCESS; ?></a></p>
+                        <p class="description agileits w3layouts"><a href="projects/manual"><?php echo PROJECT_ACCESS; ?></a></p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
@@ -79,7 +79,7 @@ ob_start();
                             <span class="glyphicon agileits w3layouts glyphicon-exclamation-sign icon" aria-hidden="true"></span>
                         </div>
                         <h4 class="mission agileits w3layouts"><?php echo HOME_CONFLICT; ?></h4>
-                        <p class="description agileits w3layouts"><a href="test/test"><?php echo PROJECT_ACCESS; ?></a></p>
+                        <p class="description agileits w3layouts"><a href="projects/manual"><?php echo PROJECT_ACCESS; ?></a></p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
@@ -88,7 +88,7 @@ ob_start();
                             <span class="glyphicon agileits w3layouts glyphicon-pencil icon" aria-hidden="true"></span>
                         </div>
                         <h4 class="mission agileits w3layouts"><?php echo HOME_WEIGHTING; ?></h4>
-                        <p class="description agileits w3layouts"><a href="test/test"><?php echo PROJECT_ACCESS; ?></a></p>
+                        <p class="description agileits w3layouts"><a href="projects/manual"><?php echo PROJECT_ACCESS; ?></a></p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
@@ -97,7 +97,7 @@ ob_start();
                             <span class="glyphicon agileits w3layouts glyphicon-adjust icon" aria-hidden="true"></span>
                         </div>
                         <h4 class="mission agileits w3layouts"><?php echo HOME_CONSISTENCY; ?></h4>
-                        <p class="description agileits w3layouts"><a href="test/test"><?php echo PROJECT_ACCESS; ?></a></p>
+                        <p class="description agileits w3layouts"><a href="projects/manual"><?php echo PROJECT_ACCESS; ?></a></p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
@@ -106,7 +106,7 @@ ob_start();
                             <span class="glyphicon agileits w3layouts glyphicon-plus-sign icon" aria-hidden="true"></span>
                         </div>
                         <h4 class="mission agileits w3layouts"><?php echo HOME_OPTIMIZATION; ?></h4>
-                        <p class="description agileits w3layouts"><a href="test/test"><?php echo PROJECT_ACCESS; ?></a></p>
+                        <p class="description agileits w3layouts"><a href="projects/manual"><?php echo PROJECT_ACCESS; ?></a></p>
                     </div>
                 </div>
                 <div class="clearfix"></div>

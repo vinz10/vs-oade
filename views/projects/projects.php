@@ -57,7 +57,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        
+
         <div class="service-info-grids agileits w3layouts">
             <?php 
                 if (!empty($projects)): 
@@ -72,9 +72,8 @@
                     <?php if ($login2) : ?>
                     <br/><br/><br/>
                     <div class="deleteProject">
-                        <a class="wow slideInLeft" href="" data-toggle="modal" data-target="#myModal"><?php echo PROJECTS_DELETE; ?> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                        <a class="wow slideInLeft" href="<?php echo URL_DIR.'projects/delete?id=' . $project->getId(); ?>"><?php echo PROJECTS_DELETE; ?> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                     </div>
-                    <!-- Modal Graph -->
                     <?php endif; ?>
                 </div>
             <?php 
@@ -98,32 +97,6 @@
         </div>
         
     </div>
-</div>
-
-<div class="tooltip-content agileits w3layouts">
-    <div class="modal fade agileits w3layouts details-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog agileits w3layouts modal-lg">
-            <div class="modal-content agileits w3layouts">
-                <div class="modal-header agileits w3layouts">
-                    <h4 class="modal-title agileits w3layouts"><?php echo PROJECTS_DELETE . ' ' . $project->getName(); ?></h4>
-                    <button type="button" class="close agileits w3layouts" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body agileits w3layouts">
-                    <div class="well agileits w3layouts">
-                        <?php echo '<b>' . PROJECTS_DELETE_QUESTION . '</b>'; ?>
-                        <p class="confirm">
-                            <a class="confirm" href="<?php echo URL_DIR.'projects/delete?id=' . $project->getId(); ?>"><?php echo PROJECTS_CONFIRM; ?> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
-                        </p>
-                        <div class="cancel">
-                            <a class="cancel" href="" data-dismiss="modal"><?php echo PROJECTS_CANCEL; ?> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script> $('#myModal').modal(''); </script>
 </div>
 
 <!-- Custom-JavaScript-File-Links -->
