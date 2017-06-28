@@ -80,6 +80,10 @@ define("PROJECTS_TITLE", "VS-OADE Projets");
 define("PROJECTS_PROJECT", "Projets");
 define("PROJECTS_NEW_PROJECT", "Nouveau Projet");
 define("PROJECTS_READ_MORE", "En Savoir Plus");
+define("PROJECTS_DELETE", "Supprimer");
+define("PROJECTS_CONFIRM", "Confirmer");
+define("PROJECTS_CANCEL", "Annuler");
+define("PROJECTS_DELETE_QUESTION", "Voulez-vous supprimer définitivement ce projet?");
 
 // PROJECT PAGE
 define("PROJECT_ACCESS", "Accéder");

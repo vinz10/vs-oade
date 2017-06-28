@@ -79,6 +79,9 @@ define("PROJECTS_TITLE", "VS-OADE Projekte");
 define("PROJECTS_PROJECT", "Projekte");
 define("PROJECTS_NEW_PROJECT", "Neues Projekt");
 define("PROJECTS_READ_MORE", "Erfahren Sie mehr");
+define("PROJECTS_DELETE", "Entfernen");
+define("PROJECTS_CONFIRM", "Bestätigen");
+define("PROJECTS_CANCEL", "Stornieren");
 
 // PROJECT PAGE
 define("PROJECT_ACCESS", "Zugang");
@@ -94,6 +97,7 @@ define("PHASE0_PROJECT_POLASTNAME", "Projektleiter Name");
 define("PHASE0_PROJECT_POFIRSTNAME", "Projektleiter Vorname");
 define("PHASE0_PROJECT_CREATE", "Projekt anlegen");
 define("PHASE0_PROJECT_CANCEL", "Stornieren");
+define("PROJECTS_DELETE_QUESTION", "Wollen Sie dieses Projekt endgültig löschen?");
 
 // PROJECTS PHASE 1
 define("PHASE1_SURVEY", "Vorläufiger Fragebogen");

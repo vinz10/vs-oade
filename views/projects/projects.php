@@ -20,6 +20,7 @@
     // Initialization of variables
     $msg = $this->vars['msg'];
     $title = PROJECTS_TITLE;
+    $login2 = isset($_SESSION['login2']) ? $_SESSION['login2'] : null;
 
     // Template CSS
     ob_start();
@@ -49,7 +50,7 @@
                 <?php 
                 $connect = $this->getLogin();
                 if ($connect) {
-                    echo '<a class="wow slideInLeft" href="'. URL_DIR . 'projects/phase0'. '">'. PROJECTS_NEW_PROJECT . ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>';
+                    echo '<div class="newProject"><a class="wow slideInLeft" href="'. URL_DIR . 'projects/phase0'. '">'. PROJECTS_NEW_PROJECT . ' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></div>';
                     $projects = projectsController::getProjectsByIdTown($connect->getId());
                 }
                 ?>
@@ -68,6 +69,13 @@
                     <div class="h4-underline wow agileits w3layouts slideInLeft"></div>
                     <p><?php echo $project->getDescription(); ?></p>
                     <a class="wow slideInLeft" href="<?php echo URL_DIR.'projects/project?id=' . $project->getId(); ?>"><?php echo PROJECTS_READ_MORE; ?> <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                    <?php if ($login2) : ?>
+                    <br/><br/><br/>
+                    <div class="deleteProject">
+                        <a class="wow slideInLeft" href="" data-toggle="modal" data-target="#myModal"><?php echo PROJECTS_DELETE; ?> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                    </div>
+                    <!-- Modal Graph -->
+                    <?php endif; ?>
                 </div>
             <?php 
                 endforeach; 
@@ -91,7 +99,32 @@
         
     </div>
 </div>
-<!-- //Services -->
+
+<div class="tooltip-content agileits w3layouts">
+    <div class="modal fade agileits w3layouts details-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog agileits w3layouts modal-lg">
+            <div class="modal-content agileits w3layouts">
+                <div class="modal-header agileits w3layouts">
+                    <h4 class="modal-title agileits w3layouts"><?php echo PROJECTS_DELETE . ' ' . $project->getName(); ?></h4>
+                    <button type="button" class="close agileits w3layouts" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body agileits w3layouts">
+                    <div class="well agileits w3layouts">
+                        <?php echo '<b>' . PROJECTS_DELETE_QUESTION . '</b>'; ?>
+                        <p class="confirm">
+                            <a class="confirm" href="<?php echo URL_DIR.'projects/delete?id=' . $project->getId(); ?>"><?php echo PROJECTS_CONFIRM; ?> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                        </p>
+                        <div class="cancel">
+                            <a class="cancel" href="" data-dismiss="modal"><?php echo PROJECTS_CANCEL; ?> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script> $('#myModal').modal(''); </script>
+</div>
 
 <!-- Custom-JavaScript-File-Links -->
 

@@ -57,7 +57,7 @@ class projectsController extends Controller {
         $poFirstname = $_POST['poFirstname'];
         
         // Get the town Id
-        $login = $_SESSION ['login'];
+        $login = $this->getLogin();
         $townId = $login->getId();
         
         // Get the id of the project
@@ -578,5 +578,19 @@ class projectsController extends Controller {
             $this->data['poFirstname'] = null;
             $this->data['town_idTown'] = null;
         }
+    }
+    
+    /**
+    // @method delete()
+    // @desc Method that delete a project
+    */
+    function delete() {
+        
+        // Get the project id
+        $idProject = intval($_GET['id']);
+        
+        Project::deleteProject($idProject);
+        
+        $this->redirect('projects', 'projects');
     }
 }

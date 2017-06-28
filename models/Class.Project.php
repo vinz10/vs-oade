@@ -217,5 +217,20 @@ class Project {
 
         return true;
     }
+    
+    /**
+     // @method deleteProject()
+     // @desc Method that delete a project by its id
+     // @param int $idProject
+     */
+    public static function deleteProject($idProject) {
+        
+        // Delete the survey for this project
+        Survey::deleteSurvey($idProject);
+        
+        $query = "DELETE FROM project WHERE idProject='$idProject'";
+
+        return SqlConnection::getInstance()->deleteDB($query);
+    }
 }
 

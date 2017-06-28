@@ -298,6 +298,61 @@ ul.callbacks_tabs li {
     background-color: #1dc8d9;
     color: #FFF;
 }
+
+.newProject a {
+    font-weight: 600;
+    color: #1ABC9C;
+    padding: 10px 30px;
+    border: 1px solid #1ABC9C;
+    border-right: none;
+    margin-left: 30px;
+}
+
+.newProject a:hover {
+    background-color: #1ABC9C;
+    color: #FFF;
+}
+
+.confirm a {
+    font-weight: 600;
+    color: #1ABC9C;
+    border: 1px solid #1ABC9C;
+    border-right: none;
+    padding: 10px 30px;
+}
+
+.confirm a:hover {
+    background-color: #1ABC9C;
+    color: #FFF;
+}
+
+.deleteProject a {
+    font-weight: 600;
+    color: #fa6e6f;
+    padding: 10px 30px;
+    border: 1px solid #fa6e6f;
+    border-right: none;
+    margin-left: 30px;
+}
+
+.deleteProject a:hover {
+    background-color: #fa6e6f;
+    color: #FFF;
+}
+
+.cancel a {
+    font-weight: 600;
+    color: #fa6e6f;
+    padding: 10px 30px;
+    border: 1px solid #fa6e6f;
+    border-right: none;
+}
+
+.cancel a:hover {
+    background-color: #fa6e6f;
+    color: #FFF;
+}
+
 /*--w3layouts--*/
 /*--agileits--*/
 .projects-grid .glyphicon {

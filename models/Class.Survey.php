@@ -351,6 +351,17 @@ class Survey {
 
         return true;
     }
+    
+    /**
+     // @method deleteSurvey()
+     // @desc Method that survey by the idProject
+     // @param int $idProject
+     */
+    public static function deleteSurvey($idProject) {
+        $query = "DELETE FROM survey WHERE project_idProject='$idProject'";
+
+        return SqlConnection::getInstance()->deleteDB($query);
+    }
 }
 
 
