@@ -2,19 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/projects/projects.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/projects/phase1.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/projects/phase2.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/home/home.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/projects/manual.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/lang/lang.fr.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/models/Class.Project.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/projects/phase0.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/projects/project.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/controllers/Class.projectsController.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/views/template.php</file>
-            <file>file:/C:/xampp/htdocs/vs-oade/lang/lang.de.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
