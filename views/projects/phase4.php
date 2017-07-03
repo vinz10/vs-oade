@@ -709,7 +709,6 @@ endforeach;
         visible : false
       },
       scaleK : {  
-        values : '0:8:1',
         labels : labels,
         "item": {
             "font-size": 8
@@ -769,7 +768,6 @@ endforeach;
         visible : false
       },
       scaleK : {  
-        values : '0:8:1',
         labels : labels,
         refLine : {
           lineColor : '#c10000'
