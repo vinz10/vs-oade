@@ -129,7 +129,7 @@ class projectsController extends Controller {
             $answer = $_POST['answer' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], $answer, -1, null, null, $projectId);
+            $survey = new Survey(null, $question["id"], $answer, -1, -1, null, null, $projectId);
             
             // Check if the survey already exists
             if ($survey->existSurvey($question["id"], $projectId)) {
@@ -187,18 +187,18 @@ class projectsController extends Controller {
             $grade = $_POST['grade' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], $answer, $grade, null, null, $projectId);
+            $survey = new Survey(null, $question["id"], $answer, $grade, -1, null, null, $projectId);
             
-            // Check if the grade already exists
-            if ($survey->existGrade($question["id"], $projectId)) {
-                // Update the grade
-                $survey->updateGrade($projectId, $question["id"]);
+            // Check if the grade1 already exists
+            if ($survey->existGrade1($question["id"], $projectId)) {
+                // Update the grade1
+                $survey->updateGrade1($projectId, $question["id"]);
                 $_SESSION['msgSuccess'] = MSG_MODIF;
                 $this->redirect('projects', 'phase2?id=' . $projectId);
             }
             else {
-                // Update the grade
-                $survey->updateGrade($projectId, $question["id"]);
+                // Update the grade1
+                $survey->updateGrade1($projectId, $question["id"]);
                 $this->redirect('projects', 'phase3?id=' . $projectId);
             }
             
@@ -239,7 +239,7 @@ class projectsController extends Controller {
             $answer = $_POST['answer' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], $answer, -1, null, null, $projectId);
+            $survey = new Survey(null, $question["id"], $answer, -1, -1, null, null, $projectId);
             
             // Check if the survey already exists
             if ($survey->existSurvey($question["id"], $projectId)) {
@@ -291,18 +291,18 @@ class projectsController extends Controller {
             $grade = $_POST['grade' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], null, $grade, null, null, $projectId);
+            $survey = new Survey(null, $question["id"], null, -1, $grade, null, null, $projectId);
             
-            // Check if the survey already exists
-            if ($survey->existSurvey($question["id"], $projectId)) {
-                // Update the grade
-                $survey->updateGrade($projectId, $question["id"]);
+            // Check if the grade2 already exists
+            if ($survey->existGrade2($question["id"], $projectId)) {
+                // Update the grade2
+                $survey->updateGrade2($projectId, $question["id"]);
                 $_SESSION['msgSuccess'] = MSG_MODIF;
                 $this->redirect('projects', 'phase4?id=' . $projectId);
             }
             else {
-                // Insert the new survey
-                $survey->insertSurvey();
+                // Update the grade2
+                $survey->updateGrade2($projectId, $question["id"]);
                 $this->redirect('projects', 'phase5?id=' . $projectId);
             }
 
@@ -320,12 +320,12 @@ class projectsController extends Controller {
             $grade = $_POST['grade' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], null, $grade, null, null, $projectId);
+            $survey = new Survey(null, $question["id"], null, $grade, -1, null, null, $projectId);
             
             // Check if the survey already exists
             if ($survey->existSurvey($question["id"], $projectId)) {
-                // Update the grade
-                $survey->updateGrade($projectId, $question["id"]);
+                // Update the grade1
+                $survey->updateGrade1($projectId, $question["id"]);
                 $_SESSION['msgSuccess'] = MSG_MODIF;
                 $this->redirect('projects', 'phase4?id=' . $projectId);
             }
@@ -372,7 +372,7 @@ class projectsController extends Controller {
             $answer = $_POST['answer' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], $answer, -1, null, null, $projectId);
+            $survey = new Survey(null, $question["id"], $answer, -1, -1, null, null, $projectId);
             
             // Check if the survey already exists
             if ($survey->existSurvey($question["id"], $projectId)) {
@@ -401,7 +401,7 @@ class projectsController extends Controller {
             $answer = $_POST['answer' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], $answer, -1, null, null, $projectId);
+            $survey = new Survey(null, $question["id"], $answer, -1, -1, null, null, $projectId);
             
             // Check if the survey already exists
             if ($survey->existSurvey($question["id"], $projectId)) {
@@ -453,7 +453,7 @@ class projectsController extends Controller {
             $comment = $_POST['comment' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], null, -1, null, $comment, $projectId);
+            $survey = new Survey(null, $question["id"], null, -1, -1, null, $comment, $projectId);
             
             // Check if the survey already exists
             if ($survey->existSurvey($question["id"], $projectId)) {
@@ -482,7 +482,7 @@ class projectsController extends Controller {
             $comment = $_POST['comment' . $i];
 
             // Create the new survey
-            $survey = new Survey(null, $question["id"], null, -1, null, $comment, $projectId);
+            $survey = new Survey(null, $question["id"], null, -1, -1, null, $comment, $projectId);
             
             // Check if the survey already exists
             if ($survey->existSurvey($question["id"], $projectId)) {
@@ -511,7 +511,7 @@ class projectsController extends Controller {
             $idQuestion = '10.' . ($j+1);
 
             // Create the new survey
-            $survey = new Survey(null, $idQuestion, null, -1, $question, $comment, $projectId);
+            $survey = new Survey(null, $idQuestion, null, -1, -1, $question, $comment, $projectId);
             
             // Check if the survey already exists
             if ($survey->existSurvey($idQuestion, $projectId)) {
@@ -597,9 +597,6 @@ class projectsController extends Controller {
     // @desc Method that delete a project
     */
     function delete() {
-        
-        
-        
         // Get the project id
         $idProject = intval($_GET['id']);
         

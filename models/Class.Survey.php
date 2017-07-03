@@ -7,7 +7,8 @@ class Survey {
     private $idSurvey;
     private $questionId;
     private $answer;
-    private $grade;
+    private $grade1;
+    private $grade2;
     private $openQuestion;
     private $comment;
     private $project_idProject;
@@ -17,16 +18,18 @@ class Survey {
      * @param int $idSurvey
      * @param string $questionId
      * @param string $answer
-     * @param int $grade
+     * @param int $grade1
+     * @param int $grade2
      * @param string $openQuestion
      * @param string $comment
      * @param int $project_idProject
      */
-    public function __construct($idSurvey = null, $questionId, $answer, $grade, $openQuestion, $comment, $project_idProject){
+    public function __construct($idSurvey = null, $questionId, $answer, $grade1, $grade2, $openQuestion, $comment, $project_idProject){
         $this->setId($idSurvey);
         $this->setQuestionId($questionId);
         $this->setAnswer($answer);
-        $this->setGrade($grade);
+        $this->setGrade1($grade1);
+        $this->setGrade2($grade2);
         $this->setOpenQuestion($openQuestion);
         $this->setComment($comment);
         $this->setProjectId($project_idProject);
@@ -75,17 +78,31 @@ class Survey {
     }
 	
     /**
-     * @return grade
+     * @return grade1
      */
-    public function getGrade(){
-            return $this->grade;
+    public function getGrade1(){
+            return $this->grade1;
     }
 
     /**
-     * @param int $grade
+     * @param int $grade1
      */
-    public function setGrade($grade){
-        $this->grade = $grade;
+    public function setGrade1($grade1){
+        $this->grade1 = $grade1;
+    }
+    
+    /**
+     * @return grade2
+     */
+    public function getGrade2(){
+            return $this->grade2;
+    }
+
+    /**
+     * @param int $grade2
+     */
+    public function setGrade2($grade2){
+        $this->grade2 = $grade2;
     }
     
     /**
@@ -139,10 +156,11 @@ class Survey {
         
         $sql = SqlConnection::getInstance();
 
-        $query = "INSERT into survey(questionId, answer, grade, openQuestion, comment, project_idProject) VALUES(";
+        $query = "INSERT into survey(questionId, answer, grade1, grade2, openQuestion, comment, project_idProject) VALUES(";
         $query .= $sql->getConn()->quote($this->questionId) . ', ';
         $query .= $sql->getConn()->quote($this->answer) . ', ';
-        $query .= $sql->getConn()->quote($this->grade) . ', ';
+        $query .= $sql->getConn()->quote($this->grade1) . ', ';
+        $query .= $sql->getConn()->quote($this->grade2) . ', ';
         $query .= $sql->getConn()->quote($this->openQuestion) . ', ';
         $query .= $sql->getConn()->quote($this->comment) . ', ';
         $query .= $sql->getConn()->quote($this->project_idProject) . ');';
@@ -162,7 +180,8 @@ class Survey {
 
         $query = 'UPDATE survey SET questionId = ' . $sql->getConn()->quote($this->questionId);
         $query .= ', answer = ' . $sql->getConn()->quote($this->answer);
-        $query .= ', grade = ' . $sql->getConn()->quote($this->grade);
+        $query .= ', grade1 = ' . $sql->getConn()->quote($this->grade1);
+        $query .= ', grade2 = ' . $sql->getConn()->quote($this->grade2);
         $query .= ', openQuestion = ' . $sql->getConn()->quote($this->openQuestion);
         $query .= ', comment = ' . $sql->getConn()->quote($this->comment);
         $query .= ', project_idProject = ' . $sql->getConn()->quote($this->project_idProject) . ' WHERE project_idProject = ' . $idProject .' AND questionId = ' . $this->questionId . ';';
@@ -189,17 +208,35 @@ class Survey {
     }
     
     /**
-     // @method updateGrade()
-     // @desc Method that update the grade of the Survey into the DB
+     // @method updateGrade1()
+     // @desc Method that update the grade1 of the Survey into the DB
      // @param int $idProject
      // @param int $idQuestion
      // @return PDOStatement
      */
-    public function updateGrade($idProject, $idQuestion){
+    public function updateGrade1($idProject, $idQuestion){
         
         $sql = SqlConnection::getInstance();
 
-        $query = 'UPDATE survey SET grade = ' . $sql->getConn()->quote($this->grade);
+        $query = 'UPDATE survey SET grade1 = ' . $sql->getConn()->quote($this->grade1);
+        $query .= ' WHERE project_idProject = ' . $idProject;
+        $query .= ' AND questionId = ' . $idQuestion . ';';
+        
+        return  $sql->executeQuery($query);
+    }
+    
+    /**
+     // @method updateGrade2()
+     // @desc Method that update the grade2 of the Survey into the DB
+     // @param int $idProject
+     // @param int $idQuestion
+     // @return PDOStatement
+     */
+    public function updateGrade2($idProject, $idQuestion){
+        
+        $sql = SqlConnection::getInstance();
+
+        $query = 'UPDATE survey SET grade2 = ' . $sql->getConn()->quote($this->grade2);
         $query .= ' WHERE project_idProject = ' . $idProject;
         $query .= ' AND questionId = ' . $idQuestion . ';';
         
@@ -225,22 +262,43 @@ class Survey {
     }
 	
     /**
-     // @method getGradeByQuestionId()
-     // @desc Method that get a survey by the questionId from the DB (Check Grade)
+     // @method getGrade1ByQuestionId()
+     // @desc Method that get a survey by the questionId from the DB (Check Grade1)
      // @param int $idQuestion
      // @param int $idProject
      // @return survey
      */
-    public static function getGradeByQuestionId($idQuestion, $idProject) {
+    public static function getGrade1ByQuestionId($idQuestion, $idProject) {
         
-        $query = "SELECT * FROM survey WHERE questionId='$idQuestion' AND project_idProject='$idProject' AND grade <> -1;";
+        $query = "SELECT * FROM survey WHERE questionId='$idQuestion' AND project_idProject='$idProject' AND grade1 <> -1;";
 	$result = SqlConnection::getInstance()->selectDB($query);
 	$row = $result->fetch();
 	if (!$row) {
             return false;
         }
 
-        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
+        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade1'], $row['grade2'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
+
+        return $survey;
+    }
+    
+    /**
+     // @method getGrade2ByQuestionId()
+     // @desc Method that get a survey by the questionId from the DB (Check Grade2)
+     // @param int $idQuestion
+     // @param int $idProject
+     // @return survey
+     */
+    public static function getGrade2ByQuestionId($idQuestion, $idProject) {
+        
+        $query = "SELECT * FROM survey WHERE questionId='$idQuestion' AND project_idProject='$idProject' AND grade2 <> -1;";
+	$result = SqlConnection::getInstance()->selectDB($query);
+	$row = $result->fetch();
+	if (!$row) {
+            return false;
+        }
+
+        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade1'], $row['grade2'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
 
         return $survey;
     }
@@ -261,8 +319,8 @@ class Survey {
             return false;
         }
 
-        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
-        
+        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade1'], $row['grade2'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
+
         return $survey;
     }
     
@@ -282,8 +340,8 @@ class Survey {
             return false;
         }
 
-        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
-        
+        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade1'], $row['grade2'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
+
         return $survey;
     }
     
@@ -303,8 +361,8 @@ class Survey {
             return false;
         }
 
-        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
-        
+        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade1'], $row['grade2'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
+
         return $survey;
     }
     
@@ -331,17 +389,39 @@ class Survey {
     }
     
     /**
-     // @method existGrade()
-     // @desc Method that check if a grade already exists
+     // @method existGrade1()
+     // @desc Method that check if a grade1 already exists
      // @param int $idQuestion
      // @param int $idProject
      // @return boolean
      */
-    public static function existGrade($idQuestion, $idProject) {
+    public static function existGrade1($idQuestion, $idProject) {
         
         $sql = SqlConnection::getInstance();
         
-        $query = "SELECT * FROM survey WHERE questionId='$idQuestion' AND project_idProject='$idProject' AND grade <> -1;";
+        $query = "SELECT * FROM survey WHERE questionId='$idQuestion' AND project_idProject='$idProject' AND grade1 <> -1;";
+        
+        $result = $sql->selectDB($query);
+        $row = $result->fetch();
+        if(!$row) { 
+            return false;
+        }
+
+        return true;
+    }
+    
+    /**
+     // @method existGrade2()
+     // @desc Method that check if a grade2 already exists
+     // @param int $idQuestion
+     // @param int $idProject
+     // @return boolean
+     */
+    public static function existGrade2($idQuestion, $idProject) {
+        
+        $sql = SqlConnection::getInstance();
+        
+        $query = "SELECT * FROM survey WHERE questionId='$idQuestion' AND project_idProject='$idProject' AND grade2 <> -1;";
         
         $result = $sql->selectDB($query);
         $row = $result->fetch();

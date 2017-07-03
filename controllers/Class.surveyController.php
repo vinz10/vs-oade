@@ -16,14 +16,25 @@ class surveyController extends Controller {
     }
     
     /**
-     // @method getGradeByQuestionId()
-     // @desc Method that get a survey by the questionId from the DB (check Grade)
+     // @method getGrade1ByQuestionId()
+     // @desc Method that get a survey by the questionId from the DB (check Grade1)
      // @param int $idQuestion
      // @param int $idProject
      // @return survey
      */
-    public static function getGradeByQuestionId($idQuestion, $idProject) {
-        return Survey::getGradeByQuestionId($idQuestion, $idProject);
+    public static function getGrade1ByQuestionId($idQuestion, $idProject) {
+        return Survey::getGrade1ByQuestionId($idQuestion, $idProject);
+    }
+    
+    /**
+     // @method getGrade2ByQuestionId()
+     // @desc Method that get a survey by the questionId from the DB (check Grade2)
+     // @param int $idQuestion
+     // @param int $idProject
+     // @return survey
+     */
+    public static function getGrade2ByQuestionId($idQuestion, $idProject) {
+        return Survey::getGrade2ByQuestionId($idQuestion, $idProject);
     }
     
     /**

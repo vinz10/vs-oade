@@ -61,7 +61,7 @@ ob_start();
             $i = 0;
 
             foreach ($app_questions as $question):
-                $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
+                $grade = surveyController::getGrade1ByQuestionId($question["id"], $project->getId());
                 if($grade) : ?>
                     <a href="" data-toggle="modal" data-target="#myModal">
                         <div class="members wow agileits w3layouts slideInRight" style="margin-bottom: 20px;" id='myChartPhase2'></div>
@@ -87,7 +87,7 @@ ob_start();
                 
                 foreach ($app_questions as $question): 
                     $i++; 
-                    $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
+                    $grade = surveyController::getGrade1ByQuestionId($question["id"], $project->getId());
                 ?>
 
                 <div class="members wow agileits w3layouts slideInLeft">
@@ -130,7 +130,7 @@ ob_start();
                                 <option value="4">4 <?php echo PHASE2_4; ?></option>
                             <?php 
                             else : 
-                                if($grade->getGrade()==0) :
+                                if($grade->getGrade1()==0) :
                                     ?>
                                     <option value="-1"><?php echo PHASE2_GRADE; ?></option>
                                     <option selected="selected" value="0">0 <?php echo PHASE2_0; ?></option>
@@ -139,7 +139,7 @@ ob_start();
                                     <option value="3">3 <?php echo PHASE2_3; ?></option>
                                     <option value="4">4 <?php echo PHASE2_4; ?></option>
                                     <?php
-                                elseif($grade->getGrade()==1) :
+                                elseif($grade->getGrade1()==1) :
                                     ?>
                                     <option value="-1"><?php echo PHASE2_GRADE; ?></option>
                                     <option value="0">0 <?php echo PHASE2_0; ?></option>
@@ -148,7 +148,7 @@ ob_start();
                                     <option value="3">3 <?php echo PHASE2_3; ?></option>
                                     <option value="4">4 <?php echo PHASE2_4; ?></option>
                                     <?php
-                                elseif($grade->getGrade()==2) :
+                                elseif($grade->getGrade1()==2) :
                                     ?>
                                     <option value="-1"><?php echo PHASE2_GRADE; ?></option>
                                     <option value="0">0 <?php echo PHASE2_0; ?></option>
@@ -157,7 +157,7 @@ ob_start();
                                     <option value="3">3 <?php echo PHASE2_3; ?></option>
                                     <option value="4">4 <?php echo PHASE2_4; ?></option>
                                     <?php
-                                elseif($grade->getGrade()==3) :
+                                elseif($grade->getGrade1()==3) :
                                     ?>
                                     <option value="-1"><?php echo PHASE2_GRADE; ?></option>
                                     <option value="0">0 <?php echo PHASE2_0; ?></option>
@@ -255,13 +255,13 @@ foreach ($app_questions as $question):
     elseif ($lang == 'de') {
         $labels[] = $question["questionCommentDE"];
     }
-    $grade = surveyController::getGradeByQuestionId($question["id"], $project->getId());
+    $grade = surveyController::getGrade1ByQuestionId($question["id"], $project->getId());
     if($grade) {
         $idAxe = $question["axes_idAxe"];
-        $allValues[] = $grade->getGrade();
+        $allValues[] = $grade->getGrade1();
         switch ($idAxe) {
             case 1:
-                $valuesAxe1[] = $grade->getGrade();
+                $valuesAxe1[] = $grade->getGrade1();
                 $valuesAxe2[] = null;
                 $valuesAxe3[] = null;
                 $valuesAxe4[] = null;
@@ -270,7 +270,7 @@ foreach ($app_questions as $question):
                 break;
             case 2:
                 $valuesAxe1[] = null;
-                $valuesAxe2[] = $grade->getGrade();
+                $valuesAxe2[] = $grade->getGrade1();
                 $valuesAxe3[] = null;
                 $valuesAxe4[] = null;
                 $valuesAxe5[] = null;
@@ -279,7 +279,7 @@ foreach ($app_questions as $question):
             case 3:
                 $valuesAxe1[] = null;
                 $valuesAxe2[] = null;
-                $valuesAxe3[] = $grade->getGrade();
+                $valuesAxe3[] = $grade->getGrade1();
                 $valuesAxe4[] = null;
                 $valuesAxe5[] = null;
                 $valuesAxe6[] = null;
@@ -288,7 +288,7 @@ foreach ($app_questions as $question):
                 $valuesAxe1[] = null;
                 $valuesAxe2[] = null;
                 $valuesAxe3[] = null;
-                $valuesAxe4[] = $grade->getGrade();
+                $valuesAxe4[] = $grade->getGrade1();
                 $valuesAxe5[] = null;
                 $valuesAxe6[] = null;
                 break;
@@ -297,7 +297,7 @@ foreach ($app_questions as $question):
                 $valuesAxe2[] = null;
                 $valuesAxe3[] = null;
                 $valuesAxe4[] = null;
-                $valuesAxe5[] = $grade->getGrade();
+                $valuesAxe5[] = $grade->getGrade1();
                 $valuesAxe6[] = null;
                 break;
             case 6:
@@ -306,7 +306,7 @@ foreach ($app_questions as $question):
                 $valuesAxe3[] = null;
                 $valuesAxe4[] = null;
                 $valuesAxe5[] = null;
-                $valuesAxe6[] = $grade->getGrade();
+                $valuesAxe6[] = $grade->getGrade1();
                 break;
             default:
                 break;
