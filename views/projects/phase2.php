@@ -221,34 +221,81 @@ $valuesAxe4 = array();
 $valuesAxe5 = array();
 $valuesAxe6 = array();
 $allValues = array();
-$axe1 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=1'), true);
-$axe2 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=2'), true);
-$axe3 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=3'), true);
-$axe4 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=4'), true);
-$axe5 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=5'), true);
-$axe6 = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axe_by_id&id=6'), true);
-if ($lang == 'fr') {
-    $text1 = $axe1['nameFR'];
-    $text2 = $axe2['nameFR'];
-    $text3 = $axe3['nameFR'];
-    $text4 = $axe4['nameFR'];
-    $text5 = $axe5['nameFR'];
-    $text6 = $axe6['nameFR'];
-}
-elseif ($lang == 'de') {
-    $text1 = $axe1['nameDE'];
-    $text2 = $axe2['nameDE'];
-    $text3 = $axe3['nameDE'];
-    $text4 = $axe4['nameDE'];
-    $text5 = $axe5['nameDE'];
-    $text6 = $axe6['nameDE'];
-}
+
 $axes = json_decode(file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_axes'), true);
 $nbrAxes = count($axes);
 $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
 $app_questions = json_decode($questions, true);
+$i = 0;
+$idAxe1 = 0; $idAxe2 = 0; $idAxe3 = 0; $idAxe4 = 0; $idAxe5 = 0; $idAxe6 = 0;
+$text1 = ""; $text2 = ""; $text3= ""; $text4 = ""; $text5 = ""; $text6 = "";
+
+foreach ($axes as $axe) {
+    $i++;
+    switch ($i) {
+        case 1:
+            $idAxe1 = $axe["id"];
+            if ($lang == 'fr') {
+                $text1 = $axe['nameFR'];
+            }
+            elseif ($lang == 'de') {
+                $text1 = $axe['nameDE'];
+            }
+            break;
+        case 2:
+            $idAxe2 = $axe["id"];
+            if ($lang == 'fr') {
+                $text2 = $axe['nameFR'];
+            }
+            elseif ($lang == 'de') {
+                $text2 = $axe['nameDE'];
+            }
+            break;
+        case 3:
+            $idAxe3 = $axe["id"];
+            if ($lang == 'fr') {
+                $text3 = $axe['nameFR'];
+            }
+            elseif ($lang == 'de') {
+                $text3 = $axe['nameDE'];
+            }
+            break;
+        case 4:
+            $idAxe4 = $axe["id"];
+            if ($lang == 'fr') {
+                $text4 = $axe['nameFR'];
+            }
+            elseif ($lang == 'de') {
+                $text4 = $axe['nameDE'];
+            }
+            break;
+        case 5:
+            $idAxe5 = $axe["id"];
+            if ($lang == 'fr') {
+                $text5 = $axe['nameFR'];
+            }
+            elseif ($lang == 'de') {
+                $text5 = $axe['nameDE'];
+            }
+            break;
+        case 6:
+            $idAxe6 = $axe["id"];
+            if ($lang == 'fr') {
+                $text6 = $axe['nameFR'];
+            }
+            elseif ($lang == 'de') {
+                $text6 = $axe['nameDE'];
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+$i = 0;
 
 foreach ($app_questions as $question):
+    $i++;
     if ($lang == 'fr') {
         $labels[] = $question["questionCommentFR"];
     }
@@ -260,7 +307,7 @@ foreach ($app_questions as $question):
         $idAxe = $question["axes_idAxe"];
         $allValues[] = $grade->getGrade1();
         switch ($idAxe) {
-            case 1:
+            case $idAxe1:
                 $valuesAxe1[] = $grade->getGrade1();
                 $valuesAxe2[] = null;
                 $valuesAxe3[] = null;
@@ -268,7 +315,7 @@ foreach ($app_questions as $question):
                 $valuesAxe5[] = null;
                 $valuesAxe6[] = null;
                 break;
-            case 2:
+            case $idAxe2:
                 $valuesAxe1[] = null;
                 $valuesAxe2[] = $grade->getGrade1();
                 $valuesAxe3[] = null;
@@ -276,7 +323,7 @@ foreach ($app_questions as $question):
                 $valuesAxe5[] = null;
                 $valuesAxe6[] = null;
                 break;
-            case 3:
+            case $idAxe3:
                 $valuesAxe1[] = null;
                 $valuesAxe2[] = null;
                 $valuesAxe3[] = $grade->getGrade1();
@@ -284,7 +331,7 @@ foreach ($app_questions as $question):
                 $valuesAxe5[] = null;
                 $valuesAxe6[] = null;
                 break;
-            case 4:
+            case $idAxe4:
                 $valuesAxe1[] = null;
                 $valuesAxe2[] = null;
                 $valuesAxe3[] = null;
@@ -292,7 +339,7 @@ foreach ($app_questions as $question):
                 $valuesAxe5[] = null;
                 $valuesAxe6[] = null;
                 break;
-            case 5:
+            case $idAxe5:
                 $valuesAxe1[] = null;
                 $valuesAxe2[] = null;
                 $valuesAxe3[] = null;
@@ -300,7 +347,7 @@ foreach ($app_questions as $question):
                 $valuesAxe5[] = $grade->getGrade1();
                 $valuesAxe6[] = null;
                 break;
-            case 6:
+            case $idAxe6:
                 $valuesAxe1[] = null;
                 $valuesAxe2[] = null;
                 $valuesAxe3[] = null;
