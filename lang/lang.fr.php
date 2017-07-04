@@ -175,3 +175,6 @@ define("PHASE6_QUESTION", "Question");
 define("ADMIN_TITLE", "VS-OADE Admin");
 define("ADMIN_ARCHIVES", "Archives");
 define("ADMIN_ACCESS", "Accès utilisateur");
+define("ADMIN_ARCHIVE", "Archive");
+define("ADMIN_PO", "Porteur de projet");
+define("ADMIN_QUESTIONCOMMENT", "Commentaire de la question");

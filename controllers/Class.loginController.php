@@ -172,6 +172,43 @@ class loginController extends Controller {
     }
     
     /**
+     // @method access()
+     // @desc Method for the access
+     */
+    function access() {
+
+        // Initialization of variables
+        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+    }
+    
+    /**
+     // @method modifAccess()
+     // @desc Method for modifying the password
+     */
+    function modifAccess() {
+
+        // Get data posted by the form
+        $password = $_POST['password'];
+        $electedPassword = $_POST['electedPassword'];
+        $adminPassword = $_POST['adminPassword'];
+        
+        // Get the town Id
+        $login2 = isset($_SESSION['login2']) ? $_SESSION['login2'] : null;
+        
+        $idTown = $login2->getId();
+        $townName = $login2->getTownName();
+        
+        // Create the new town
+        $town = new Town($idTown, $townName, $password, $electedPassword, $adminPassword);
+        
+        // Update the town
+        $town->updateTown($idTown);
+        $_SESSION['msg'] = MSG_MODIF;
+        $_SESSION['login2'] = $town;
+        $this->redirect('login', 'access');
+    }
+    
+    /**
     // @method getAllTowns()
     // @desc Method that return all Towns
     // @return Towns
@@ -179,6 +216,16 @@ class loginController extends Controller {
     public static function getAllTowns() {
         return Town::getAllTown();
     } 
+    
+    /**
+     // @method getTownById()
+     // @desc Method that get a town by the id from the DB
+     // @param string $idTown
+     // @return $town
+     */
+    public static function getTownById($idTown) {
+        return Town::getTownById($idTown);
+    }
     
     /**
     // @method existArchive()

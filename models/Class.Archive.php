@@ -18,6 +18,8 @@ class Archive {
     private $comment;
     private $projectId;
     private $townId;
+    private $question;
+    private $questionComment;
     
     /**
      * Constructor
@@ -35,9 +37,11 @@ class Archive {
      * @param string $comment
      * @param int $projectId
      * @param int $townId
+     * @param string $question;
+     * @param string $questionComment;
      */
     public function __construct($idArchive = null, $townName, $projectName, $projectDescription, $projectPoLastname, $projectPoFirstname, 
-            $questionId, $answer, $grade1, $grade2, $openQuestion, $comment, $projectId, $townId){
+            $questionId, $answer, $grade1, $grade2, $openQuestion, $comment, $projectId, $townId, $question, $questionComment){
         $this->setId($idArchive);
         $this->setTownName($townName);
         $this->setProjectName($projectName);
@@ -52,6 +56,8 @@ class Archive {
         $this->setComment($comment);
         $this->setProjectId($projectId);
         $this->setTownId($townId);
+        $this->setQuestion($question);
+        $this->setQuestionComment($questionComment);
     }	
 	
     /**
@@ -251,6 +257,34 @@ class Archive {
     }
     
     /**
+     * @return question
+     */
+    public function getQuestion(){
+        return $this->question;
+    }
+
+    /**
+     * @param int $question
+     */
+    public function setQuestion($question){
+        $this->question = $question;
+    }
+    
+    /**
+     * @return questionComment
+     */
+    public function getQuestionComment(){
+        return $this->questionComment;
+    }
+
+    /**
+     * @param int $questionComment
+     */
+    public function setQuestionComment($questionComment){
+        $this->questionComment = $questionComment;
+    }
+    
+    /**
      // @method insertArchive()
      // @desc Method that insert a new Archive into the DB
      // @return PDOStatement
@@ -260,7 +294,7 @@ class Archive {
         $sql = SqlConnection::getInstance();
 
         $query = "INSERT into archive(townName, projectName, projectDescription, projectPoLastname, projectPoFirstname, "
-                . "questionId, answer, grade1, grade2, openQuestion, comment, projectId, townId) VALUES(";
+                . "questionId, answer, grade1, grade2, openQuestion, comment, projectId, townId, question, questionComment) VALUES(";
         $query .= $sql->getConn()->quote($this->townName) . ', ';
         $query .= $sql->getConn()->quote($this->projectName) . ', ';
         $query .= $sql->getConn()->quote($this->projectDescription) . ', ';
@@ -273,30 +307,11 @@ class Archive {
         $query .= $sql->getConn()->quote($this->openQuestion) . ', ';
         $query .= $sql->getConn()->quote($this->comment) . ', ';
         $query .= $sql->getConn()->quote($this->projectId) . ', ';
-        $query .= $sql->getConn()->quote($this->townId) . ');';
+        $query .= $sql->getConn()->quote($this->townId) . ', ';
+        $query .= $sql->getConn()->quote($this->question) . ', ';
+        $query .= $sql->getConn()->quote($this->questionComment) . ');';
 
         return  $sql->executeQuery($query);
-    }
-    
-    /**
-     // @method getQuestionByQuestionId()
-     // @desc Method that get a survey by the questionId from the DB (Check Question)
-     // @param int $idQuestion
-     // @param int $idProject
-     // @return survey
-     */
-    public static function getQuestionByQuestionId($idQuestion, $idProject) {
-        
-        $query = "SELECT * FROM survey WHERE questionId='$idQuestion' AND project_idProject='$idProject' AND openQuestion <> '';";
-	$result = SqlConnection::getInstance()->selectDB($query);
-	$row = $result->fetch();
-	if (!$row) {
-            return false;
-        }
-
-        $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade1'], $row['grade2'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
-
-        return $survey;
     }
     
     /**
@@ -323,6 +338,7 @@ class Archive {
     /**
      // @method getArchiveProjectsByIdTown()
      // @desc Method that get all the archive projects by the idTown from the DB
+     // @param int $idTown
      // @return Projects[]
      */
     public static function getArchiveProjectsByIdTown($idTown) {
@@ -334,7 +350,30 @@ class Archive {
         foreach($rows as $row) {
             $project = new Archive($row['idArchive'], $row['townName'], $row['projectName'], $row['projectDescription'], $row['projectPoLastname'], 
                     $row['projectPoFirstname'], $row['questionId'], $row['answer'], $row['grade1'], $row['grade2'], $row['openQuestion'], $row['comment'], 
-                    $row['projectId'], $row['townId']);
+                    $row['projectId'], $row['townId'], $row['question'], $row['questionComment']);
+                
+            $Projects[] = $project;
+        }
+
+        return $Projects;
+    }
+    
+    /**
+     // @method getArchiveProjectsByIdTown()
+     // @desc Method that get all the archive projects by the idTown from the DB
+     // @param int $idProject
+     // @return Projects[]
+     */
+    public static function getArchiveProjectsByIdProject($idProject) {
+        $query = "SELECT * FROM archive WHERE projectId='$idProject';";
+        $result = SqlConnection::getInstance()->selectDB($query);
+        $Projects = array();
+        $rows = $result->fetchAll();
+
+        foreach($rows as $row) {
+            $project = new Archive($row['idArchive'], $row['townName'], $row['projectName'], $row['projectDescription'], $row['projectPoLastname'], 
+                    $row['projectPoFirstname'], $row['questionId'], $row['answer'], $row['grade1'], $row['grade2'], $row['openQuestion'], $row['comment'], 
+                    $row['projectId'], $row['townId'], $row['question'], $row['questionComment']);
                 
             $Projects[] = $project;
         }

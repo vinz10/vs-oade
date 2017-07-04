@@ -95,6 +95,24 @@ class Town {
     public function setAdminPassword($adminPassword){
         $this->adminPassword = $adminPassword;
     }
+    
+    /**
+     // @method updateTown()
+     // @desc Method that update a town into the DB
+     // @param int $idTown
+     // @return PDOStatement
+     */
+    public function updateTown($idTown){
+        
+        $sql = SqlConnection::getInstance();
+
+        $query = 'UPDATE town SET name = ' . $sql->getConn()->quote($this->townName);
+        $query .= ', password = ' . $sql->getConn()->quote($this->password);
+        $query .= ', electedPassword = ' . $sql->getConn()->quote($this->electedPassword);
+        $query .= ', adminPassword = ' . $sql->getConn()->quote($this->adminPassword) . ' WHERE idTown = ' . $idTown . ';';
+        
+        return  $sql->executeQuery($query);
+    }
 	
     /**
      // @method getAllTown()

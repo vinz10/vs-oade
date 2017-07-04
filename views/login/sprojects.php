@@ -34,7 +34,7 @@
             <ol class="breadcrumb agileits w3layouts">
                 <li class="active agileits w3layouts"><?php echo PROJECTS_PROJECT; ?></li>
                 <li><a href="<?php echo URL_DIR.'login/archives'; ?>"><?php echo ADMIN_ARCHIVES; ?></a></li>
-                <li><a href="<?php echo URL_DIR.'login/archives'; ?>"><?php echo ADMIN_ACCESS; ?></a></li>
+                <li><a href="<?php echo URL_DIR.'login/access'; ?>"><?php echo ADMIN_ACCESS; ?></a></li>
             </ol>
         </div>
         
@@ -66,16 +66,19 @@
                         <p><?php echo $project->getDescription(); ?></p>
                         <hr/>
                         <?php if (loginController::existArchive($project->getId())) : ?>
-                        <a href="<?php echo URL_DIR.'archives/archive?id=' . $project->getId(); ?>" style="color: #9095AA; pointer-events: none; cursor: default;">
+                        <a href="#" style="color: #9095AA; pointer-events: none; cursor: default;">
                             <?php echo PROJECTS_SAVE; ?> 
                             <span class="glyphicon glyphicon-save" aria-hidden="true"></span></a>
+                        &nbsp;&nbsp;
+                        <b><a href="<?php echo URL_DIR.'archives/project?id=' . $project->getId(); ?>" style="color: #ffc107;"><?php echo PROJECTS_SAVE_ACCESS; ?> 
+                            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a></b>
                         <?php else : ?>
                         <b><a href="<?php echo URL_DIR.'archives/archive?id=' . $project->getId(); ?>" style="color: #0bb46d;"><?php echo PROJECTS_SAVE; ?> 
                                 <span class="glyphicon glyphicon-save" aria-hidden="true"></span></a></b>   
-                        <?php endif; ?>
                         &nbsp;&nbsp;
-                        <b><a href="#" style="color: #ffc107;"><?php echo PROJECTS_SAVE_ACCESS; ?> 
-                            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a></b>
+                        <a href="#" style="color: #9095AA; pointer-events: none; cursor: default;"><?php echo PROJECTS_SAVE_ACCESS; ?> 
+                            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                        <?php endif; ?>
                         &nbsp;&nbsp;
                         <b><a href="<?php echo URL_DIR.'projects/delete?id=' . $project->getId(); ?>" style="color: #d9534f;"><?php echo PROJECTS_DELETE; ?> 
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></b>
@@ -103,7 +106,7 @@
                                 <?php echo PROJECTS_SAVE; ?> 
                                 <span class="glyphicon glyphicon-save" aria-hidden="true"></span></a>
                             &nbsp;&nbsp;
-                            <b><a href="#" style="color: #ffc107;"><?php echo PROJECTS_SAVE_ACCESS; ?> 
+                            <b><a href="<?php echo URL_DIR.'archives/project?id=' . $project->getProjectId(); ?>" style="color: #ffc107;"><?php echo PROJECTS_SAVE_ACCESS; ?> 
                                 <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a></b>
                             &nbsp;&nbsp;
                             <a href="#" style="color: #9095AA; pointer-events: none; cursor: default;">

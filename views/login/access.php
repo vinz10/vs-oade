@@ -33,8 +33,8 @@
         <div class="grid_3 agileits w3layouts grid_5">
             <ol class="breadcrumb agileits w3layouts">
                 <li><a href="<?php echo URL_DIR.'login/sprojects'; ?>"><?php echo PROJECTS_PROJECT; ?></a></li>
-                <li class="active agileits w3layouts"><?php echo ADMIN_ARCHIVES; ?></li>
-                <li><a href="<?php echo URL_DIR.'login/access'; ?>"><?php echo ADMIN_ACCESS; ?></a></li>
+                <li><a href="<?php echo URL_DIR.'login/archives'; ?>"><?php echo ADMIN_ARCHIVES; ?></a></li>
+                <li class="active agileits w3layouts"><?php echo ADMIN_ACCESS; ?></li>
             </ol>
         </div>
         
@@ -48,35 +48,43 @@
         <?php endif; ?>
         
         <div class="grid_3 agileits w3layouts grid_5">
-            <h3 class="hdg agileits w3layouts"><?php echo ADMIN_ARCHIVES; ?></h3>
+            <h3 class="hdg agileits w3layouts"><?php echo ADMIN_ACCESS; ?></h3>
             
             <?php 
-            $connect = $this->getLogin();
-            if ($connect) {
-                $archiveProjects = archivesController::getArchiveProjectsByIdTown($connect->getId());
-            }
+            $login2 = isset($_SESSION['login2']) ? $_SESSION['login2'] : null;
+            
+            if (!empty($login2)): ?>
+            <div class="members wow agileits w3layouts slideInLeft">
+                <div class="well agileits w3layouts">
+                    <form action="<?php echo URL_DIR . 'login/modifAccess'; ?>" method="post">
 
-            if (!empty($archiveProjects)): 
-                foreach ($archiveProjects as $project): ?>
-                    <div class="members wow agileits w3layouts slideInLeft">
-                        <div class="well agileits w3layouts">
-                            <h4><?php echo $project->getProjectName(); ?></h4>
-                            <p><?php echo $project->getProjectDescription(); ?></p>
-                            <hr/>
-                            <b><a href="<?php echo URL_DIR.'archives/project?id=' . $project->getProjectId(); ?>" style="color: #ffc107;"><?php echo PROJECT_ACCESS; ?> 
-                                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a></b>
-                            &nbsp;&nbsp;
-                            <b><a href="<?php echo URL_DIR.'archives/delete?id=' . $project->getProjectId(); ?>" style="color: #d9534f;"><?php echo PROJECTS_DELETE; ?> 
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></b>
+                        <div class="adult agileits w3layouts">
+                            <h4><?php echo PASSWORD; ?></h4>
+                            <div class="dropdown-button agileits w3layouts">
+                                <input type="text" name="password" id="password" class="dropdown agileits w3layouts" required="" value="<?php echo $login2->getPassword(); ?>">
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; 
-            else : ?>
-                <div class="members wow agileits w3layouts slideInLeft">
-                    <div class="alert agileits w3layouts alert-info" role="alert">
-                        <strong><?php echo MSG_INFO; ?></strong> <?php echo MSG_NO_ARCHIVES; ?>
-                    </div>
+                        
+                        <div class="adult agileits w3layouts">
+                            <h4><?php echo LOGIN1_PASSWORD; ?></h4>
+                            <div class="dropdown-button agileits w3layouts">
+                                <input type="text" name="electedPassword" id="electedPassword" class="dropdown agileits w3layouts" required="" value="<?php echo $login2->getElectedPassword(); ?>">
+                            </div>
+                        </div>  
+                        
+                        <div class="adult agileits w3layouts">
+                            <h4><?php echo LOGIN2_PASSWORD; ?></h4>
+                            <div class="dropdown-button agileits w3layouts">
+                                <input type="text" name="adminPassword" id="adminPassword" class="dropdown agileits w3layouts" required="" value="<?php echo $login2->getAdminPassword(); ?>">
+                            </div>
+                        </div>  
+                       
+                        <div class="submit wow agileits w3layouts slideInLeft">
+                            <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo PHASE1_VALIDATE; ?>">
+                        </div>
+                    </form>
                 </div>
+            </div>
             <?php endif; ?>
         </div>
     </div>
@@ -139,5 +147,3 @@
     // Template CSS
     $content = ob_get_clean();
     require 'views/template.php';
-
-

@@ -19,6 +19,7 @@
 <?php
     // Initialization of variables
     $msg = $this->vars['msg'];
+    $idProject = $this->vars['idProject'];
     $title = ADMIN_TITLE;
     
     // Template CSS
@@ -33,7 +34,7 @@
         <div class="grid_3 agileits w3layouts grid_5">
             <ol class="breadcrumb agileits w3layouts">
                 <li><a href="<?php echo URL_DIR.'login/sprojects'; ?>"><?php echo PROJECTS_PROJECT; ?></a></li>
-                <li class="active agileits w3layouts"><?php echo ADMIN_ARCHIVES; ?></li>
+                <li><a href="<?php echo URL_DIR.'login/archives'; ?>"><?php echo ADMIN_ARCHIVES; ?></a></li>
                 <li><a href="<?php echo URL_DIR.'login/access'; ?>"><?php echo ADMIN_ACCESS; ?></a></li>
             </ol>
         </div>
@@ -48,33 +49,41 @@
         <?php endif; ?>
         
         <div class="grid_3 agileits w3layouts grid_5">
-            <h3 class="hdg agileits w3layouts"><?php echo ADMIN_ARCHIVES; ?></h3>
+            <h3 class="hdg agileits w3layouts"><?php echo ADMIN_ARCHIVE; ?></h3>
             
             <?php 
-            $connect = $this->getLogin();
-            if ($connect) {
-                $archiveProjects = archivesController::getArchiveProjectsByIdTown($connect->getId());
-            }
+            $archiveProjects = archivesController::getArchiveProjectsByIdProject($idProject);
 
-            if (!empty($archiveProjects)): 
-                foreach ($archiveProjects as $project): ?>
-                    <div class="members wow agileits w3layouts slideInLeft">
-                        <div class="well agileits w3layouts">
-                            <h4><?php echo $project->getProjectName(); ?></h4>
-                            <p><?php echo $project->getProjectDescription(); ?></p>
-                            <hr/>
-                            <b><a href="<?php echo URL_DIR.'archives/project?id=' . $project->getProjectId(); ?>" style="color: #ffc107;"><?php echo PROJECT_ACCESS; ?> 
-                                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a></b>
-                            &nbsp;&nbsp;
-                            <b><a href="<?php echo URL_DIR.'archives/delete?id=' . $project->getProjectId(); ?>" style="color: #d9534f;"><?php echo PROJECTS_DELETE; ?> 
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></b>
-                        </div>
-                    </div>
-                <?php endforeach; 
-            else : ?>
+            if (!empty($archiveProjects)): ?>
                 <div class="members wow agileits w3layouts slideInLeft">
-                    <div class="alert agileits w3layouts alert-info" role="alert">
-                        <strong><?php echo MSG_INFO; ?></strong> <?php echo MSG_NO_ARCHIVES; ?>
+                    <div class="well agileits w3layouts">
+                        <h4><?php echo $archiveProjects[0]->getProjectName(); ?></h4>
+                        <p>
+                            <?php echo '<b>' . PHASE0_PROJECT_DESCRIPTION . ':</b> ' . $archiveProjects[0]->getProjectDescription(); ?>
+                            <br/>
+                            <?php echo '<b>' . ADMIN_PO . ':</b> ' . $archiveProjects[0]->getProjectPoLastname() . ' ' . $archiveProjects[0]->getProjectPoFirstname() ; ?>
+                        </p>
+                        <hr/>
+                        <?php foreach ($archiveProjects as $project): ?>
+                            <h5><?php echo PHASE1_QUESTION . ' ' . $project->getQuestionId(); ?></h5>
+                            <p>
+                                <?php echo '<b>' . PHASE1_QUESTION . ':</b> ' . $project->getQuestion(); ?>
+                            <br/>
+                                <?php echo '<b>' . ADMIN_QUESTIONCOMMENT . ':</b> ' . $project->getQuestionComment(); ?>
+                            </p>
+                            <p>
+                                <?php echo '<b>' . PHASE1_ANSWER . ':</b> ' . $project->getAnswer(); ?>
+                            <br/>
+                                <?php echo '<b>' . PHASE2_GRADE . ' 1:</b> ' . $project->getGrade1(); ?>
+                            <br/>
+                                <?php echo '<b>' . PHASE2_GRADE . ' 2:</b> ' . $project->getGrade2(); ?>
+                            <br/>
+                                <?php echo '<b>' . PHASE6_OPENQUESTION . ':</b> ' . $project->getOpenQuestion(); ?>
+                            <br/>
+                                <?php echo '<b>' . PHASE6_COMMENT . ':</b> ' . $project->getComment(); ?>
+                            </p>
+                            <hr/>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             <?php endif; ?>
