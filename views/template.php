@@ -76,6 +76,12 @@
                                 echo MENU_FRENCH . '</a>';
                             ?>
                             </li>
+                            <?php 
+                            $login2 = isset($_SESSION['login2']) ? $_SESSION['login2'] : null;
+                            if ($login2) {
+                                echo '<li><a href="' . URL_DIR . 'login/sprojects' . '">' . MENU_ADMIN . '</a></li>';
+                            }
+                            ?>
                             <li>
                             <?php
                                 $connect = $this->getLogin();

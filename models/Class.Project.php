@@ -219,6 +219,27 @@ class Project {
     }
     
     /**
+     // @method notDeleted()
+     // @desc Method that check if a project is deleted or not
+     // @param int $idProject
+     // @return boolean
+     */
+    public static function notDeleted($idProject) {
+        
+        $sql = SqlConnection::getInstance();
+        
+        $query = "SELECT * FROM project WHERE idProject='$idProject';";
+        
+        $result = $sql->selectDB($query);
+        $row = $result->fetch();
+        if(!$row) { 
+            return false;
+        }
+
+        return true;
+    }
+    
+    /**
      // @method deleteProject()
      // @desc Method that delete a project by its id
      // @param int $idProject

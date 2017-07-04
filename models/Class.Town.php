@@ -115,6 +115,26 @@ class Town {
 
         return $Towns;
     }
+    
+    /**
+     // @method getTownById()
+     // @desc Method that get a town by the id from the DB
+     // @param string $idTown
+     // @return $town
+     */
+    public static function getTownById($idTown) {
+        
+        $query = "SELECT * FROM town WHERE idTown='$idTown';";
+	$result = SqlConnection::getInstance()->selectDB($query);
+	$row = $result->fetch();
+	if (!$row) {
+            return false;
+        }
+
+        $town = new Town($row['idTown'], $row['name'], $row['password'], $row['electedPassword'], $row['adminPassword']);
+        
+        return $town;
+    }
 	
     /**
      // @method connect()

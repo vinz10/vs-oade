@@ -134,7 +134,7 @@ ob_start();
                 <?php
                 $i = 100;
                     
-                for($j = 0; $j < 4; $j++) : 
+                for($j = 0; $j < 9; $j++) : 
                     $i++; 
                     $idQuestion = '10.' . ($j+1);
                 ?>

@@ -18,14 +18,17 @@ define("TEMP_LOGOUT", "déconnexion");
 
 define("MENU_HOME", "ACCUEIL");
 define("MENU_PROJECT", "PROJETS");
-define("MENU_MANUAL", "PROCESSUS D'ÉVALUATION");
+define("MENU_MANUAL", "PROCESSUS");
 define("MENU_FRENCH", "FRANCAIS");
 define("MENU_DEUTSCH", "ALLEMAND");
+define("MENU_ADMIN", "ADMIN");
 
 // MESSAGES
 define("MSG_CONNECTION_FAIL", "Connection failed");
 define("MSG_SUCCESS", "Succès!");
 define("MSG_MODIF", "Modification effectuée correctement.");
+define("MSG_INSERT", "Project archivé correctement.");
+define("MSG_DELETE", "Suppression effectuée correctement.");
 define("MSG_ERROR", "Erreur!");
 define("MSG_INCORRECT_PWD", "Mot de passe incorrect.");
 define("MSG_WARNING", "Attention!");
@@ -34,6 +37,7 @@ define("MSG_NO_RIGHTS", "Vous n'avez pas les droits pour accéder à la page sou
 define("MSG_INFO", "Information!");
 define("MSG_CONNECT_TO_SHOW_PROJECTS", "Veuillez vous connecter sur une commune pour accéder à ses projets.");
 define("MSG_NO_PROJECT", "Il n'y a aucun projet existant sur cette commune.");
+define("MSG_NO_ARCHIVES", "Il n'y a aucune archive existante sur cette commune.");
 
 // HOME PAGE
 define("HOME_TITLE", "VS-OADE Accueil");
@@ -98,6 +102,8 @@ define("PROJECTS_PROJECT", "Projets");
 define("PROJECTS_NEW_PROJECT", "Nouveau Projet");
 define("PROJECTS_READ_MORE", "En Savoir Plus");
 define("PROJECTS_DELETE", "Supprimer");
+define("PROJECTS_SAVE", "Archiver");
+define("PROJECTS_SAVE_ACCESS", "Archives");
 define("PROJECTS_CONFIRM", "Confirmer");
 define("PROJECTS_CANCEL", "Annuler");
 define("PROJECTS_DELETE_QUESTION", "Voulez-vous supprimer définitivement ce projet?");
@@ -164,3 +170,8 @@ define("PHASE6_OPTIMIZATION", "Optimisation");
 define("PHASE6_OPENQUESTION", "Questions ouvertes");
 define("PHASE6_COMMENT", "Commentaire");
 define("PHASE6_QUESTION", "Question");
+
+// ADMIN
+define("ADMIN_TITLE", "VS-OADE Admin");
+define("ADMIN_ARCHIVES", "Archives");
+define("ADMIN_ACCESS", "Accès utilisateur");

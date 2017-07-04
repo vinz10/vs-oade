@@ -18,14 +18,17 @@ define("TEMP_LOGOUT", "Abschaltung");
 
 define("MENU_HOME", "STARTSEITE");
 define("MENU_PROJECT", "PROJEKTE");
-define("MENU_MANUAL", "BEWERTUNGSPROZESS");
+define("MENU_MANUAL", "PROZESS");
 define("MENU_FRENCH", "FRANZÖSISCH");
 define("MENU_DEUTSCH", "DEUTSCH");
+define("MENU_ADMIN", "ADMIN");
 
 // MESSAGES
 define("MSG_CONNECTION_FAIL", "Verbindung fehlgeschlagen");
 define("MSG_SUCCESS", "Erfolg!");
 define("MSG_MODIF", "Änderung korrekt.");
+define("MSG_INSERT", "Projekt erfolgreich archiviert.");
+define("MSG_DELETE", "Löschen erfolgreich.");
 define("MSG_ERROR", "Fehler!");
 define("MSG_INCORRECT_PWD", "Falsches Passwort.");
 define("MSG_WARNING", "Warnung!");
@@ -33,6 +36,7 @@ define("MSG_PROJECT_EXIST", "Das Projekt existiert bereits.");
 define("MSG_INFO", "Informationen!");
 define("MSG_CONNECT_TO_SHOW_PROJECTS", "Bitte melden Sie sich an, um gemeinsame Projekte zugreifen.");
 define("MSG_NO_PROJECT", "Es gibt kein existierendes Projekt in dieser Region.");
+define("MSG_NO_ARCHIVES", "Es gibt kein bestehendes Archiv in dieser Region.");
 
 // HOME PAGE
 define("HOME_TITLE", "VS-OADE Startseite");
@@ -97,6 +101,8 @@ define("PROJECTS_PROJECT", "Projekte");
 define("PROJECTS_NEW_PROJECT", "Neues Projekt");
 define("PROJECTS_READ_MORE", "Erfahren Sie mehr");
 define("PROJECTS_DELETE", "Entfernen");
+define("PROJECTS_SAVE", "Archivieren");
+define("PROJECTS_SAVE_ACCESS", "Archiv");
 define("PROJECTS_CONFIRM", "Bestätigen");
 define("PROJECTS_CANCEL", "Stornieren");
 
@@ -164,3 +170,8 @@ define("PHASE6_OPTIMIZATION", "Optimierung");
 define("PHASE6_OPENQUESTION", "offene Fragen");
 define("PHASE6_COMMENT", "Kommentar");
 define("PHASE6_QUESTION", "Frage");
+
+// ADMIN
+define("ADMIN_TITLE", "VS-OADE Admin");
+define("ADMIN_ARCHIVES", "Archiv");
+define("ADMIN_ACCESS", "Benutzerzugriff");

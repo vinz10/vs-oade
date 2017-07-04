@@ -367,6 +367,27 @@ class Survey {
     }
     
     /**
+     // @method getSurveysByProjectId()
+     // @desc Method that get all the surveys by the idProject from the DB
+     // @param int $idProject
+     // @return Surveys[]
+     */
+    public static function getSurveysByProjectId($idProject) {
+        $query = "SELECT * FROM survey WHERE project_idProject='$idProject';";
+        $result = SqlConnection::getInstance()->selectDB($query);
+        $Surveys = array();
+        $rows = $result->fetchAll();
+
+        foreach($rows as $row) {
+            $survey = new Survey($row['idSurvey'], $row['questionId'], $row['answer'], $row['grade1'], $row['grade2'], $row['openQuestion'], $row['comment'], $row['project_idProject']);
+    
+            $Surveys[] = $survey;
+        }
+
+        return $Surveys;
+    }
+    
+    /**
      // @method existSurvey()
      // @desc Method that check if a survey already exists
      // @param int $idQuestion

@@ -31,6 +31,26 @@ class projectsController extends Controller {
     } 
     
     /**
+    // @method getArchiveProjectsByIdTown()
+    // @desc Method that return all archive projects By townId
+    // @param int $idTown
+    // @return Projects
+    */
+    public static function getArchiveProjectsByIdTown($idTown) {
+        return Archive::getArchiveProjectsByIdTown($idTown);
+    } 
+    
+    /**
+     // @method notDeleted()
+     // @desc Method that check if a project is deleted or not
+     // @param int $idProject
+     // @return boolean
+     */
+    public static function notDeleted($idProject) {
+        return Project::notDeleted($idProject);
+    }
+    
+    /**
      // @method project()
      // @desc Method to load the project.php page with the right Project (by the id).
      */
@@ -502,7 +522,7 @@ class projectsController extends Controller {
         // Initialization of variables
         $i = 100;     
                     
-        for ($j = 0; $j < 4; $j++) :
+        for ($j = 0; $j < 9; $j++) :
         
             // Get data posted by the form
             $i++;
@@ -602,6 +622,6 @@ class projectsController extends Controller {
         
         Project::deleteProject($idProject);
         
-        $this->redirect('projects', 'projects');
+        $this->redirect('login', 'sprojects');
     }
 }

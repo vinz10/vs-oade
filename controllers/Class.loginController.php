@@ -152,11 +152,40 @@ class loginController extends Controller {
     }
     
     /**
+     // @method sprojects()
+     // @desc Method for the sprojects
+     */
+    function sprojects() {
+
+        // Initialization of variables
+        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+    }
+    
+    /**
+     // @method archives()
+     // @desc Method for the archives
+     */
+    function archives() {
+
+        // Initialization of variables
+        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+    }
+    
+    /**
     // @method getAllTowns()
     // @desc Method that return all Towns
     // @return Towns
     */
     public static function getAllTowns() {
         return Town::getAllTown();
+    } 
+    
+    /**
+    // @method existArchive()
+    // @desc Method that check if an archive already exists
+    // @return boolean
+    */
+    public static function existArchive($idProject) {
+        return Archive::existArchive($idProject);
     } 
 }
