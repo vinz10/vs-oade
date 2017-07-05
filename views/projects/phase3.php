@@ -96,10 +96,12 @@ ob_start();
 
                 <?php endforeach; ?>
 
+                <?php if ($app_questions) : ?>
                 <div class="submit wow agileits w3layouts slideInLeft">
                     <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo PHASE1_VALIDATE; ?>">
                     <input type="button" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href = '<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
                 </div>
+                <?php endif; ?>
             </form>
         </div>
     </div>
