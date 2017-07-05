@@ -1,12 +1,3 @@
-/*--
-        Author: W3Layouts
-        Author URL: http://w3layouts.com
-        License: Creative Commons Attribution 3.0 Unported
-        License URL: http://creativecommons.org/licenses/by/3.0/
---*/
-
-
-
 /*-- Reset-Code --*/
 
 body {
@@ -72,13 +63,7 @@ a:focus, a:hover {
 
 /*-- //Reset-Code --*/
 
-
-
-
-
 /*-- Index-Page-Styling --*/
-
-
 
 /*-- Navbar --*/
 
@@ -117,8 +102,6 @@ a:focus, a:hover {
 }
 
 /*-- //Navbar --*/
-
-
 
 /*-- Slider --*/
 
@@ -232,8 +215,6 @@ ul.callbacks_tabs li {
 }
 
 /*-- //Slider --*/
-
-
 
 /*-- Projects --*/
 
@@ -361,8 +342,6 @@ ul.callbacks_tabs li {
 
 /*-- //Projects --*/
 
-
-
 /*-- Services --*/
 
 .services {
@@ -434,8 +413,6 @@ ul.callbacks_tabs li {
 
 /*-- //Services --*/
 
-
-
 /*-- Awards --*/
 
 .awards {
@@ -488,8 +465,6 @@ ul.callbacks_tabs li {
 }
 
 /*-- //Awards --*/
-
-
 
 /*-- Principles --*/
 
@@ -652,8 +627,6 @@ ul.callbacks_tabs li {
 
 /*-- //Principles --*/
 
-
-
 /*-- Footer --*/
 
 .footer {
@@ -806,14 +779,9 @@ ul.social-icons li a.youtube:hover {
 
 /*-- Footer --*/
 
-
 /*--w3layouts--*/
 /*--agileits--*/
 /*-- //Index-Page-Styling --*/
-
-
-
-
 
 /*-- Inner-Pages-Navbar --*/
 
@@ -822,8 +790,6 @@ ul.social-icons li a.youtube:hover {
 }
 
 /*-- Inner-Pages-Navbar --*/
-
-
 
 /*-- Inner-Pages-Banner --*/
 
@@ -844,13 +810,7 @@ ul.social-icons li a.youtube:hover {
 
 /*-- //Inner-Pages-Banner --*/
 
-
-
-
-
 /*-- //About-Page-Styling --*/
-
-
 
 /*-- Gallery --*/
 
@@ -898,8 +858,6 @@ ul.social-icons li a.youtube:hover {
 }
 
 /*-- //Gallery --*/
-
-
 
 /*-- Details --*/
 
@@ -974,8 +932,6 @@ ul.social-icons li a.youtube:hover {
 
 /*-- //Details --*/
 
-
-
 /*-- Ventures --*/
 
 .ventures {
@@ -1029,8 +985,6 @@ ul.social-icons li a.youtube:hover {
 }
 
 /*-- //Ventures --*/
-
-
 
 /*-- Team --*/
 
@@ -1288,17 +1242,9 @@ figure.effect-zoe:hover ul.social-icons a:first-child {
 
 /*-- //Team --*/
 
-
-
 /*-- //About-Page-Styling --*/
 
-
-
-
-
 /*-- Cuisines-Page-Styling --*/
-
-
 
 /*-- Cuisines --*/
 
@@ -1322,8 +1268,6 @@ figure.effect-zoe:hover ul.social-icons a:first-child {
 }
 
 /*-- //Cuisines --*/
-
-
 
 /*-- Specials --*/
 
@@ -1351,8 +1295,6 @@ figure.effect-zoe:hover ul.social-icons a:first-child {
 }
 
 /*-- //Specials --*/
-
-
 
 /*-- Menu --*/
 
@@ -1617,17 +1559,9 @@ div#showLess:after {
 
 /*-- Menu --*/
 
-
-
 /*-- //Cuisines-Page-Styling --*/
 
-
-
-
-
 /*-- Portfolio-Page-Styling --*/
-
-
 
 /*-- Rooms --*/
 
@@ -1675,8 +1609,6 @@ div#showLess:after {
 }
 
 /*-- //Rooms --*/
-
-
 
 /*-- Portfolio --*/
 
@@ -1738,13 +1670,7 @@ figure.effect-apollo:hover figcaption::before {
 
 /*-- //Portfolio --*/
 
-
-
 /*-- //Portfolio-Page-Styling --*/
-
-
-
-
 
 /*-- Typography-Page-Styling --*/
 
@@ -2051,15 +1977,9 @@ h2.typoh2 {
 
 /*-- Typography-Page-Styling --*/
 
-
-
-
-
 /*-- Booking-&-Contact-Page-Styling --*/
 /*--w3layouts--*/
 /*--agileits--*/
-
-
 
 /*-- Location --*/
 
@@ -2081,8 +2001,6 @@ h2.typoh2 {
 }
 
 /*-- //Location --*/
-
-
 
 /*-- Booking --*/
 
@@ -2749,8 +2667,6 @@ button::-moz-focus-inner {
 
 /*-- //Booking --*/
 
-
-
 /*-- Contact --*/
 
 .contact {
@@ -2851,8 +2767,6 @@ p.contact-p {
 
 /*-- //Contact --*/
 
-
-
 /*-- Map --*/
 
 .map iframe {
@@ -2907,15 +2821,10 @@ p.contact-p {
 
 /*-- //Map --*/
 
-
-
 /*-- //Contact-Page-Styling --*/
-
-
 
 /*--w3layouts--*/
 /*--agileits--*/
-
 
 /*-- Go-To-Top-Button --*/
 
@@ -2935,18 +2844,7 @@ p.contact-p {
 
 /*-- //Go-To-Top-Button --*/
 
-
-
-
-
-
-
-
-
-
 /*-- Responsive Code --*/
-
-
 
 @media screen and (max-width: 1920px) {
     .caption {
@@ -3311,7 +3209,7 @@ p.contact-p {
         top: 42%;
     }
     .ventures-grid {
-        width: 50%;
+        width: 100%;
         float: left;
     }
     .ventures-grid-image, .ventures-grid-info {
@@ -3475,8 +3373,8 @@ p.contact-p {
     .projects p {
         font-size: 13px;
     }
-    .projects, .awards, .services, .manual, .gallery, .details, .ventures, .team, .cuisines, .specials, .rooms, .location, .reg, .contact {
-        padding: 75px 0;
+    .projects, .awards, .services, .manual, .gallery, .details, .ventures, .team, .cuisines, .specials, .rooms, .location, .reg, .contact, .typography {
+        padding: 150px 0 50px 0;
     }
     .projects h1, .awards h3, .services h2, .manual-grids1 h3, .location h3, .manual-grids2 h3, .gallery h2, .details h3, .ventures h3, .team h3, .cuisines h2, .specials h3, h3.title, .rooms h2, .reg h2, .contact h2 {
         font-size: 35px;
@@ -4202,7 +4100,7 @@ p.contact-p {
         line-height: 35px;
     }
     .projects, .awards, .services, .manual, .gallery, .details, .ventures, .team, .cuisines, .specials, .rooms, .location, .reg, .contact {
-        padding: 30px 0;
+        padding: 60px 0 30px 0;
     }
     .projects h1, .awards h3, .services h2, .manual-grids1 h3, .location h3, .manual-grids2 h3, .gallery h2, .details h3, .ventures h3, .team h3, .cuisines h2, .specials h3, h3.title, .rooms h2, .reg h2, .contact h2 {
         font-size: 27px;
@@ -4391,20 +4289,21 @@ p.contact-p {
     }
     .ventures-grid {
         width: 100%;
+        height: 250px;
     }
     .ventures-grid-info {
         padding-top: 0;
         margin: 0;
     }
     .ventures-grid-image, .ventures-grid-info {
-        margin-bottom: 0;
+        margin-bottom: 30px;
     }
     .ventures-grid-info {
         /*--w3layouts--*/
         /*--agileits--*/
         padding-bottom: 10px;
         margin-bottom: 30px;
-        height: 100%;
+        height: 40%;
     }
     .ventures-grid-info h4 {
         font-size: 20px;
@@ -4540,7 +4439,7 @@ p.contact-p {
 
 @media screen and (max-width: 360px) {
     .ventures-grid-info {
-        height: 100%;
+        height: 40%;
     }
     .team-grid {
         width: 90%;
@@ -4629,7 +4528,3 @@ p.contact-p {
         font-size: 14px;
     }
 }
-
-
-
-/*-- //Responsive Code --*/

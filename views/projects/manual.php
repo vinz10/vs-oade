@@ -59,7 +59,7 @@ ob_start();
         <h3><?php echo MANUAL_PHASES; ?></h3>
 
         <div class="ventures-grids agileits w3layouts">
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid1 ventures-grid-image wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid1 ventures-grid-image wow slideInUp">
                 <div class="portfolio-item agileits w3layouts wow zoomIn">
                     <a class="example-image-link agileits w3layouts" href="../images/phase1.png" data-lightbox="example-set" data-title="">
                         <div class="grid agileits w3layouts">
@@ -71,15 +71,15 @@ ob_start();
                     </a>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid2 ventures-grid-info wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid2 ventures-grid-info wow slideInUp">
                 <h4>Phase 1 - <?php echo PHASE1_SURVEY; ?></h4>
                 <p><?php echo MANUAL_PHASE1; ?></p>
             </div>
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid4 ventures-grid-info wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid4 ventures-grid-info wow slideInUp">
                 <h4>Phase 2 - <?php echo PHASE2_CAPITAL_GAIN; ?></h4>
                 <p><?php echo MANUAL_PHASE2; ?></p>
             </div>
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid1 ventures-grid-image wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid1 ventures-grid-image wow slideInUp">
                 <div class="portfolio-item agileits w3layouts wow zoomIn">
                     <a class="example-image-link agileits w3layouts" href="../images/phase2.png" data-lightbox="example-set" data-title="">
                         <div class="grid agileits w3layouts">
@@ -91,7 +91,7 @@ ob_start();
                     </a>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid5 ventures-grid-image wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid5 ventures-grid-image wow slideInUp">
                 <div class="portfolio-item agileits w3layouts wow zoomIn">
                     <a class="example-image-link agileits w3layouts" href="../images/phase3.png" data-lightbox="example-set" data-title="">
                         <div class="grid agileits w3layouts">
@@ -103,15 +103,15 @@ ob_start();
                     </a>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid6 ventures-grid-info wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid6 ventures-grid-info wow slideInUp">
                 <h4>Phase 3 - <?php echo PHASE3_CONFLICT; ?></h4>
                 <p><?php echo MANUAL_PHASE3; ?></p>
             </div>
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid8 ventures-grid-info wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid8 ventures-grid-info wow slideInUp">
                 <h4>Phase 4 - <?php echo PHASE4_WEIGHTING; ?></h4>
                 <p><?php echo MANUAL_PHASE4; ?></p>
             </div>
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid1 ventures-grid-image wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid1 ventures-grid-image wow slideInUp">
                 <div class="portfolio-item agileits w3layouts wow zoomIn">
                     <a class="example-image-link agileits w3layouts" href="../images/phase4.png" data-lightbox="example-set" data-title="">
                         <div class="grid agileits w3layouts">
@@ -123,7 +123,7 @@ ob_start();
                     </a>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid1 ventures-grid-image wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid1 ventures-grid-image wow slideInUp">
                 <div class="portfolio-item agileits w3layouts wow zoomIn">
                     <a class="example-image-link agileits w3layouts" href="../images/phase5.png" data-lightbox="example-set" data-title="">
                         <div class="grid agileits w3layouts">
@@ -135,15 +135,15 @@ ob_start();
                     </a>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid8 ventures-grid-info wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid8 ventures-grid-info wow slideInUp">
                 <h4>Phase 5 - <?php echo PHASE5_CONSISTENCY; ?></h4>
                 <p><?php echo MANUAL_PHASE5; ?></p>
             </div>
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid8 ventures-grid-info wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid8 ventures-grid-info wow slideInUp">
                 <h4>Phase 6 - <?php echo PHASE6_OPTIMIZATION_SUGGESTION; ?></h4>
                 <p><?php echo MANUAL_PHASE6; ?></p>
             </div>
-            <div class="col-md-6 col-sm-6 ventures-grid agileits w3layouts ventures-grid1 ventures-grid-image wow slideInUp">
+            <div class="col-md-6 col-sm-12 ventures-grid agileits w3layouts ventures-grid1 ventures-grid-image wow slideInUp">
                 <div class="portfolio-item agileits w3layouts wow zoomIn">
                     <a class="example-image-link agileits w3layouts" href="../images/phase6.png" data-lightbox="example-set" data-title="">
                         <div class="grid agileits w3layouts">
