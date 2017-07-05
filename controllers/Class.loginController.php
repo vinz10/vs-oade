@@ -15,8 +15,12 @@ class loginController extends Controller {
         $townName = $_POST['townName'];
         $password = $_POST['password'];
 
-        // Load login from DB if exists
-        $result = Town::connect($townName, $password);
+        try {
+            // Load login from DB if exists
+            $result = Town::connect($townName, $password);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
 
         // Put the login in the session if exists or return error msg
         if (!$result) {
@@ -38,8 +42,12 @@ class loginController extends Controller {
         $townName = $_POST['townName'];
         $password = $_POST['password'];
 
-        // Load login from DB if exists
-        $result = Town::connect1($townName, $password);
+        try {
+            // Load login from DB if exists
+            $result = Town::connect1($townName, $password);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
 
         // Put the login in the session if exists or return error msg
         if (!$result) {
@@ -61,8 +69,12 @@ class loginController extends Controller {
         $townName = $_POST['townName'];
         $password = $_POST['password'];
 
-        // Load login from DB if exists
-        $result = Town::connect2($townName, $password);
+        try {
+            // Load login from DB if exists
+            $result = Town::connect2($townName, $password);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
 
         // Put the login in the session if exists or return error msg
         if (!$result) {

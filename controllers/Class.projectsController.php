@@ -619,7 +619,11 @@ class projectsController extends Controller {
         if (isset($_GET['id'])) {
             $id_Project = intval($_GET['id']);
             if ($id_Project != 0) {
-                $project = Project::getProjectById($id_Project);
+                try {
+                    $project = Project::getProjectById($id_Project);
+                } catch (Exception $exc) {
+                    echo $exc->getTraceAsString();
+                }
                 if ($project) {
                     $this->data['idProject'] = $project->getId();
                     $this->data['name'] = $project->getName();

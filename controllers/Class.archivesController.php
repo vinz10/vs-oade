@@ -59,10 +59,15 @@ class archivesController extends Controller {
         $lang = $_SESSION['lang'];
 
         // Get the data
-        $project = Project::getProjectById($projectId);
-        $surveys = Survey::getSurveysByProjectId($projectId);
-        $townName = Town::getTownById($project->getTownId())->getTownName();
-        $townId = Town::getTownById($project->getTownId())->getId();
+        try {
+            $project = Project::getProjectById($projectId);
+            $surveys = Survey::getSurveysByProjectId($projectId);
+            $townName = Town::getTownById($project->getTownId())->getTownName();
+            $townId = Town::getTownById($project->getTownId())->getId();
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+
         $projectName = $project->getName();
         $projectDescription = $project->getDescription();
         $projectPoLastname = $project->getPoLastname();
