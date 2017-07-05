@@ -4,6 +4,7 @@
  * Class Archive
  */
 class Archive {
+
     private $idArchive;
     private $townName;
     private $projectName;
@@ -20,7 +21,7 @@ class Archive {
     private $townId;
     private $question;
     private $questionComment;
-    
+
     /**
      * Constructor
      * @param int $idArchive
@@ -40,8 +41,7 @@ class Archive {
      * @param string $question;
      * @param string $questionComment;
      */
-    public function __construct($idArchive = null, $townName, $projectName, $projectDescription, $projectPoLastname, $projectPoFirstname, 
-            $questionId, $answer, $grade1, $grade2, $openQuestion, $comment, $projectId, $townId, $question, $questionComment){
+    public function __construct($idArchive = null, $townName, $projectName, $projectDescription, $projectPoLastname, $projectPoFirstname, $questionId, $answer, $grade1, $grade2, $openQuestion, $comment, $projectId, $townId, $question, $questionComment) {
         $this->setId($idArchive);
         $this->setTownName($townName);
         $this->setProjectName($projectName);
@@ -58,239 +58,239 @@ class Archive {
         $this->setTownId($townId);
         $this->setQuestion($question);
         $this->setQuestionComment($questionComment);
-    }	
-	
+    }
+
     /**
      * @return idArchive
      */
-    public function getId(){
+    public function getId() {
         return $this->idArchive;
     }
 
     /**
      * @param int $idArchive
      */
-    public function setId($idArchive){
+    public function setId($idArchive) {
         $this->idArchive = $idArchive;
     }
-    
+
     /**
      * @return townName
      */
-    public function getTownName(){
+    public function getTownName() {
         return $this->townName;
     }
 
     /**
      * @param string $townName
      */
-    public function setTownName($townName){
+    public function setTownName($townName) {
         $this->townName = $townName;
     }
-    
+
     /**
      * @return projectName
      */
-    public function getProjectName(){
+    public function getProjectName() {
         return $this->projectName;
     }
 
     /**
      * @param string $projectName
      */
-    public function setProjectName($projectName){
+    public function setProjectName($projectName) {
         $this->projectName = $projectName;
     }
-	
+
     /**
      * @return projectDescription
      */
-    public function getProjectDescription(){
-            return $this->projectDescription;
+    public function getProjectDescription() {
+        return $this->projectDescription;
     }
 
     /**
      * @param int $projectDescription
      */
-    public function setProjectDescription($projectDescription){
+    public function setProjectDescription($projectDescription) {
         $this->projectDescription = $projectDescription;
     }
-    
+
     /**
      * @return projectPoLastname
      */
-    public function getProjectPoLastname(){
-            return $this->projectPoLastname;
+    public function getProjectPoLastname() {
+        return $this->projectPoLastname;
     }
 
     /**
      * @param int $projectPoLastname
      */
-    public function setProjectPoLastname($projectPoLastname){
+    public function setProjectPoLastname($projectPoLastname) {
         $this->projectPoLastname = $projectPoLastname;
     }
-    
+
     /**
      * @return projectPoFirstname
      */
-    public function getProjectPoFirstname(){
-            return $this->projectPoFirstname;
+    public function getProjectPoFirstname() {
+        return $this->projectPoFirstname;
     }
 
     /**
      * @param int $projectPoFirstname
      */
-    public function setProjectPoFirstname($projectPoFirstname){
+    public function setProjectPoFirstname($projectPoFirstname) {
         $this->projectPoFirstname = $projectPoFirstname;
     }
-	
+
     /**
      * @return questionId
      */
-    public function getQuestionId(){
+    public function getQuestionId() {
         return $this->questionId;
     }
 
     /**
      * @param string $questionId
      */
-    public function setQuestionId($questionId){
+    public function setQuestionId($questionId) {
         $this->questionId = $questionId;
     }
-    
+
     /**
      * @return answer
      */
-    public function getAnswer(){
+    public function getAnswer() {
         return $this->answer;
     }
 
     /**
      * @param string $answer
      */
-    public function setAnswer($answer){
+    public function setAnswer($answer) {
         $this->answer = $answer;
     }
-	
+
     /**
      * @return grade1
      */
-    public function getGrade1(){
-            return $this->grade1;
+    public function getGrade1() {
+        return $this->grade1;
     }
 
     /**
      * @param int $grade1
      */
-    public function setGrade1($grade1){
+    public function setGrade1($grade1) {
         $this->grade1 = $grade1;
     }
-    
+
     /**
      * @return grade2
      */
-    public function getGrade2(){
-            return $this->grade2;
+    public function getGrade2() {
+        return $this->grade2;
     }
 
     /**
      * @param int $grade2
      */
-    public function setGrade2($grade2){
+    public function setGrade2($grade2) {
         $this->grade2 = $grade2;
     }
-    
+
     /**
      * @return openQuestion
      */
-    public function getOpenQuestion(){
+    public function getOpenQuestion() {
         return $this->openQuestion;
     }
 
     /**
      * @param string $openQuestion
      */
-    public function setOpenQuestion($openQuestion){
+    public function setOpenQuestion($openQuestion) {
         $this->openQuestion = $openQuestion;
     }
-    
+
     /**
      * @return comment
      */
-    public function getComment(){
+    public function getComment() {
         return $this->comment;
     }
 
     /**
      * @param string $comment
      */
-    public function setComment($comment){
+    public function setComment($comment) {
         $this->comment = $comment;
     }
-    
+
     /**
      * @return projectId
      */
-    public function getProjectId(){
+    public function getProjectId() {
         return $this->projectId;
     }
 
     /**
      * @param int $projectId
      */
-    public function setProjectId($projectId){
+    public function setProjectId($projectId) {
         $this->projectId = $projectId;
     }
-    
+
     /**
      * @return townId
      */
-    public function getTownId(){
+    public function getTownId() {
         return $this->townId;
     }
 
     /**
      * @param int $townId
      */
-    public function setTownId($townId){
+    public function setTownId($townId) {
         $this->townId = $townId;
     }
-    
+
     /**
      * @return question
      */
-    public function getQuestion(){
+    public function getQuestion() {
         return $this->question;
     }
 
     /**
      * @param int $question
      */
-    public function setQuestion($question){
+    public function setQuestion($question) {
         $this->question = $question;
     }
-    
+
     /**
      * @return questionComment
      */
-    public function getQuestionComment(){
+    public function getQuestionComment() {
         return $this->questionComment;
     }
 
     /**
      * @param int $questionComment
      */
-    public function setQuestionComment($questionComment){
+    public function setQuestionComment($questionComment) {
         $this->questionComment = $questionComment;
     }
-    
+
     /**
-     // @method insertArchive()
-     // @desc Method that insert a new Archive into the DB
-     // @return PDOStatement
+      // @method insertArchive()
+      // @desc Method that insert a new Archive into the DB
+      // @return PDOStatement
      */
-    public function insertArchive(){
-        
+    public function insertArchive() {
+
         $sql = SqlConnection::getInstance();
 
         $query = "INSERT into archive(townName, projectName, projectDescription, projectPoLastname, projectPoFirstname, "
@@ -311,35 +311,35 @@ class Archive {
         $query .= $sql->getConn()->quote($this->question) . ', ';
         $query .= $sql->getConn()->quote($this->questionComment) . ');';
 
-        return  $sql->executeQuery($query);
+        return $sql->executeQuery($query);
     }
-    
+
     /**
-     // @method existArchive()
-     // @desc Method that check if an archive already exists
-     // @param int $idProject
-     // @return boolean
+      // @method existArchive()
+      // @desc Method that check if an archive already exists by idProject
+      // @param int $idProject
+      // @return boolean
      */
     public static function existArchive($idProject) {
-        
+
         $sql = SqlConnection::getInstance();
-        
+
         $query = "SELECT * FROM archive WHERE projectId='$idProject';";
-        
+
         $result = $sql->selectDB($query);
         $row = $result->fetch();
-        if(!$row) { 
+        if (!$row) {
             return false;
         }
 
         return true;
     }
-    
+
     /**
-     // @method getArchiveProjectsByIdTown()
-     // @desc Method that get all the archive projects by the idTown from the DB
-     // @param int $idTown
-     // @return Projects[]
+      // @method getArchiveProjectsByIdTown()
+      // @desc Method that get all the archive projects by the idTown from the DB
+      // @param int $idTown
+      // @return Projects[]
      */
     public static function getArchiveProjectsByIdTown($idTown) {
         $query = "SELECT DISTINCT * FROM archive WHERE townId='$idTown' GROUP BY projectId ORDER BY projectId DESC;";
@@ -347,22 +347,22 @@ class Archive {
         $Projects = array();
         $rows = $result->fetchAll();
 
-        foreach($rows as $row) {
+        foreach ($rows as $row) {
             $project = new Archive($row['idArchive'], $row['townName'], $row['projectName'], $row['projectDescription'], $row['projectPoLastname'], 
                     $row['projectPoFirstname'], $row['questionId'], $row['answer'], $row['grade1'], $row['grade2'], $row['openQuestion'], $row['comment'], 
                     $row['projectId'], $row['townId'], $row['question'], $row['questionComment']);
-                
+
             $Projects[] = $project;
         }
 
         return $Projects;
     }
-    
+
     /**
-     // @method getArchiveProjectsByIdTown()
-     // @desc Method that get all the archive projects by the idTown from the DB
-     // @param int $idProject
-     // @return Projects[]
+      // @method getArchiveProjectsByIdProject()
+      // @desc Method that get all the archive projects by the idProject from the DB
+      // @param int $idProject
+      // @return Projects[]
      */
     public static function getArchiveProjectsByIdProject($idProject) {
         $query = "SELECT * FROM archive WHERE projectId='$idProject';";
@@ -370,28 +370,26 @@ class Archive {
         $Projects = array();
         $rows = $result->fetchAll();
 
-        foreach($rows as $row) {
+        foreach ($rows as $row) {
             $project = new Archive($row['idArchive'], $row['townName'], $row['projectName'], $row['projectDescription'], $row['projectPoLastname'], 
                     $row['projectPoFirstname'], $row['questionId'], $row['answer'], $row['grade1'], $row['grade2'], $row['openQuestion'], $row['comment'], 
                     $row['projectId'], $row['townId'], $row['question'], $row['questionComment']);
-                
+
             $Projects[] = $project;
         }
 
         return $Projects;
     }
-    
+
     /**
-     // @method deleteArchive()
-     // @desc Method that delete archive by the idProject
-     // @param int $idProject
+      // @method deleteArchive()
+      // @desc Method that delete an archive by the idProject
+      // @param int $idProject
      */
     public static function deleteArchive($idProject) {
         $query = "DELETE FROM archive WHERE projectId='$idProject'";
 
         return SqlConnection::getInstance()->deleteDB($query);
     }
+
 }
-
-
-

@@ -20,7 +20,7 @@ $title = MANUAL_TITLE;
 ob_start();
 ?>
 
-<!-- MANUAL -->
+<!-- PROCESS -->
 <div class="cuisines agileits w3layouts">
     <div class="container">
 
@@ -45,7 +45,7 @@ ob_start();
         </div>
 
         <div class="clearfix"></div>
-        
+
         <div class="agileits w3layouts cuisines-grids-1 wow slideInLeft">
             <p><?php echo MANUAL_REMARK; ?></p>
         </div>
@@ -184,7 +184,7 @@ ob_start();
 <script src="../js/modernizr.custom.97074.js"></script>
 <script src="../js/jquery.chocolat.js"></script>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $('.portfolio-item a').Chocolat();
     });
 </script>
@@ -215,8 +215,6 @@ ob_start();
 </script>
 
 <?php
-
 // Template CSS
 $content = ob_get_clean();
 require 'views/template.php';
-

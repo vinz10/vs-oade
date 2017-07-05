@@ -1,6 +1,6 @@
 <!-- Custom-X-JavaScript -->
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        
+
 <!-- Custom-Stylesheet-Links --> 
 <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all">  
@@ -15,7 +15,7 @@
 // Initialization of variables
 $msg = $this->vars['msg'];
 $msgSuccess = $this->vars['msgSuccess'];
-$project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);	
+$project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);
 $title = $project->getName();
 $lang = $_SESSION['lang'];
 
@@ -27,10 +27,10 @@ ob_start();
 <div class="reg agileits w3layouts">
     <div class="container">
         <div class="register agileits w3layouts">
-         
+
             <!-- Menu -->
             <div class="submit wow agileits w3layouts">
-                <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
+                <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href = '<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
             </div>   
 
             <div class="register agileits w3layouts">
@@ -51,9 +51,9 @@ ob_start();
 
             <!-- Consistency -->
             <h2><?php echo PHASE5_CONSISTENCY; ?></h2>
-            
+
             <form action="<?php echo URL_DIR . 'projects/validatePhase5?id=' . $project->getId(); ?>" method="post">
-                
+
                 <!-- Alert Message -->
                 <?php if (!empty($msgSuccess)) : ?>
                     <div class="members wow agileits w3layouts slideInLeft">
@@ -62,150 +62,142 @@ ob_start();
                         </div>
                     </div>
                 <?php endif; ?>
-                
+
                 <h4 class="members wow agileits w3layouts slideInLeft"><?php echo PHASE5_SOCIAL; ?></h4>
                 <?php
                 $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=6');
                 $app_questions = json_decode($questions, true);
                 $i = 0;
-                
+
                 foreach ($app_questions as $question):
                     $i++;
                     $survey = surveyController::getAnswerByQuestionId($question["id"], $project->getId());
-                ?>
+                    ?>
 
-                <div class="members wow agileits w3layouts slideInLeft">
-                    <div class="adult agileits w3layouts">
-                        <h4><?php echo PHASE1_QUESTION . ' '. $question["id"] ?></h4>
-                        <div class="well agileits w3layouts">
-                            <?php if ($lang == 'fr') {
-                                echo $question["questionFR"]; 
-                            }
-                            elseif ($lang == 'de') {
-                                echo $question["questionDE"];
-                            }
-                            ?>
-                        </div>
-                        <select name="<?php echo 'answer' . $i; ?>" <?php echo ' id="answer' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
-                            <?php 
-                            if(!$survey) : ?>
-                                <option selected="selected" value="-1"><?php echo PHASE5_ANSWER; ?></option>
-                                <option value="1"><?php echo PHASE5_1; ?></option>
-                                <option value="2"><?php echo PHASE5_2; ?></option>
-                                <option value="3"><?php echo PHASE5_3; ?></option>
-                            <?php 
-                            else : 
-                                if($survey->getAnswer()==1) :
-                                    ?>
-                                    <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
-                                    <option selected="selected" value="1"><?php echo PHASE5_1; ?></option>
-                                    <option value="2"><?php echo PHASE5_2; ?></option>
-                                    <option value="3"><?php echo PHASE5_3; ?></option>
-                                    <?php
-                                elseif($survey->getAnswer()==2) :
-                                    ?>
-                                    <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
-                                    <option value="1"><?php echo PHASE5_1; ?></option>
-                                    <option selected="selected" value="2"><?php echo PHASE5_2; ?></option>
-                                    <option value="3"><?php echo PHASE5_3; ?></option>
-                                    <?php
-                                elseif($survey->getAnswer()==3) :
-                                    ?>
-                                    <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
-                                    <option value="1"><?php echo PHASE5_1; ?></option>
-                                    <option value="2"><?php echo PHASE5_2; ?></option>
-                                    <option selected="selected" value="3"><?php echo PHASE5_3; ?></option>
-                                    <?php
-                                else :
-                                    ?>
+                    <div class="members wow agileits w3layouts slideInLeft">
+                        <div class="adult agileits w3layouts">
+                            <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
+                            <div class="well agileits w3layouts">
+                                <?php
+                                if ($lang == 'fr') {
+                                    echo $question["questionFR"];
+                                } elseif ($lang == 'de') {
+                                    echo $question["questionDE"];
+                                }
+                                ?>
+                            </div>
+                            <select name="<?php echo 'answer' . $i; ?>" <?php echo ' id="answer' . $i . '" ' ?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                                <?php if (!$survey) : ?>
                                     <option selected="selected" value="-1"><?php echo PHASE5_ANSWER; ?></option>
                                     <option value="1"><?php echo PHASE5_1; ?></option>
                                     <option value="2"><?php echo PHASE5_2; ?></option>
                                     <option value="3"><?php echo PHASE5_3; ?></option>
                                     <?php
+                                else :
+                                    if ($survey->getAnswer() == 1) :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
+                                        <option selected="selected" value="1"><?php echo PHASE5_1; ?></option>
+                                        <option value="2"><?php echo PHASE5_2; ?></option>
+                                        <option value="3"><?php echo PHASE5_3; ?></option>
+                                        <?php
+                                    elseif ($survey->getAnswer() == 2) :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
+                                        <option value="1"><?php echo PHASE5_1; ?></option>
+                                        <option selected="selected" value="2"><?php echo PHASE5_2; ?></option>
+                                        <option value="3"><?php echo PHASE5_3; ?></option>
+                                        <?php
+                                    elseif ($survey->getAnswer() == 3) :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
+                                        <option value="1"><?php echo PHASE5_1; ?></option>
+                                        <option value="2"><?php echo PHASE5_2; ?></option>
+                                        <option selected="selected" value="3"><?php echo PHASE5_3; ?></option>
+                                        <?php
+                                    else :
+                                        ?>
+                                        <option selected="selected" value="-1"><?php echo PHASE5_ANSWER; ?></option>
+                                        <option value="1"><?php echo PHASE5_1; ?></option>
+                                        <option value="2"><?php echo PHASE5_2; ?></option>
+                                        <option value="3"><?php echo PHASE5_3; ?></option>
+                                    <?php
+                                    endif;
                                 endif;
-                            endif;
-                            ?>
-                        </select>
+                                ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
                 <?php endforeach; ?>
-                
+
                 <h4 class="members wow agileits w3layouts slideInLeft"><?php echo PHASE5_TERRITORY; ?></h4>
                 <?php
                 $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=7');
                 $app_questions = json_decode($questions, true);
                 $i = 50;
-                
+
                 foreach ($app_questions as $question):
-                   
+
                     $i++;
                     $survey = surveyController::getAnswerByQuestionId($question["id"], $project->getId());
-                ?>
+                    ?>
 
-                <div class="members wow agileits w3layouts slideInLeft">
-                    <div class="adult agileits w3layouts">
-                        <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
-                        <div class="well agileits w3layouts">
-                            <?php if ($lang == 'fr') {
-                                echo $question["questionFR"]; 
-                            }
-                            elseif ($lang == 'de') {
-                                echo $question["questionDE"];
-                            }
-                            ?>
-                        </div>
+                    <div class="members wow agileits w3layouts slideInLeft">
+                        <div class="adult agileits w3layouts">
+                            <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
+                            <div class="well agileits w3layouts">
+                                <?php
+                                if ($lang == 'fr') {
+                                    echo $question["questionFR"];
+                                } elseif ($lang == 'de') {
+                                    echo $question["questionDE"];
+                                }
+                                ?>
+                            </div>
 
-                        <select name="<?php echo 'answer' . $i; ?>" <?php echo ' id="answer' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
-                            <?php 
-                            if(!$survey) : ?>
-                                <option selected="selected" value="-1"><?php echo PHASE5_ANSWER; ?></option>
-                                <option value="1"><?php echo PHASE5_1; ?></option>
-                                <option value="2"><?php echo PHASE5_2; ?></option>
-                                <option value="3"><?php echo PHASE5_3; ?></option>
-                            <?php 
-                            else : 
-                                if($survey->getAnswer()==1) :
-                                    ?>
-                                    <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
-                                    <option selected="selected" value="1"><?php echo PHASE5_1; ?></option>
-                                    <option value="2"><?php echo PHASE5_2; ?></option>
-                                    <option value="3"><?php echo PHASE5_3; ?></option>
-                                    <?php
-                                elseif($survey->getAnswer()==2) :
-                                    ?>
-                                    <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
-                                    <option value="1"><?php echo PHASE5_1; ?></option>
-                                    <option selected="selected" value="2"><?php echo PHASE5_2; ?></option>
-                                    <option value="3"><?php echo PHASE5_3; ?></option>
-                                    <?php
-                                elseif($survey->getAnswer()==3) :
-                                    ?>
-                                    <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
-                                    <option value="1"><?php echo PHASE5_1; ?></option>
-                                    <option value="2"><?php echo PHASE5_2; ?></option>
-                                    <option selected="selected" value="3"><?php echo PHASE5_3; ?></option>
-                                    <?php
-                                else :
-                                    ?>
+                            <select name="<?php echo 'answer' . $i; ?>" <?php echo ' id="answer' . $i . '" ' ?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                                <?php if (!$survey) : ?>
                                     <option selected="selected" value="-1"><?php echo PHASE5_ANSWER; ?></option>
                                     <option value="1"><?php echo PHASE5_1; ?></option>
                                     <option value="2"><?php echo PHASE5_2; ?></option>
                                     <option value="3"><?php echo PHASE5_3; ?></option>
+                                <?php
+                                else :
+                                    if ($survey->getAnswer() == 1) : ?>
+                                        <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
+                                        <option selected="selected" value="1"><?php echo PHASE5_1; ?></option>
+                                        <option value="2"><?php echo PHASE5_2; ?></option>
+                                        <option value="3"><?php echo PHASE5_3; ?></option>
                                     <?php
-                                endif;
-                            endif;
-                            ?>
-                        </select>
-                    </div>  
-                </div>
-
+                                    elseif ($survey->getAnswer() == 2) : ?>
+                                        <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
+                                        <option value="1"><?php echo PHASE5_1; ?></option>
+                                        <option selected="selected" value="2"><?php echo PHASE5_2; ?></option>
+                                        <option value="3"><?php echo PHASE5_3; ?></option>
+                                    <?php
+                                    elseif ($survey->getAnswer() == 3) : ?>
+                                        <option value="-1"><?php echo PHASE5_ANSWER; ?></option>
+                                        <option value="1"><?php echo PHASE5_1; ?></option>
+                                        <option value="2"><?php echo PHASE5_2; ?></option>
+                                        <option selected="selected" value="3"><?php echo PHASE5_3; ?></option>
+                                    <?php
+                                    else : ?>
+                                        <option selected="selected" value="-1"><?php echo PHASE5_ANSWER; ?></option>
+                                        <option value="1"><?php echo PHASE5_1; ?></option>
+                                        <option value="2"><?php echo PHASE5_2; ?></option>
+                                        <option value="3"><?php echo PHASE5_3; ?></option>
+                                    <?php
+                                    endif;
+                                endif; ?>
+                            </select>
+                        </div>  
+                    </div>
                 <?php endforeach; ?>
 
                 <div class="submit wow agileits w3layouts slideInLeft">
                     <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo PHASE1_VALIDATE; ?>">
-                    <input type="button" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
+                    <input type="button" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href = '<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
                 </div>
             </form>
         </div>
@@ -234,14 +226,14 @@ ob_start();
 
 <!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         var defaults = {
             containerID: 'toTop', // fading element id
             containerHoverID: 'toTopHover', // fading element hover id
             scrollSpeed: 100,
             easingType: 'linear'
         };
-        $().UItoTop({ easingType: 'easeOutQuart' });
+        $().UItoTop({easingType: 'easeOutQuart'});
     });
 </script>
 <a href="#" id="toTop" class="agileits w3layouts" style="display: block;"> <span id="toTopHover" style="opacity: 0;"> </span></a>
@@ -250,9 +242,9 @@ ob_start();
 <script type="text/javascript" src="../js/move-top.js"></script>
 <script type="text/javascript" src="../js/easing.js"></script>
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $(".scroll, .navbar li a, .footer li a").click(function(event){
-            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+    jQuery(document).ready(function ($) {
+        $(".scroll, .navbar li a, .footer li a").click(function (event) {
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
         });
     });
 </script>

@@ -15,7 +15,7 @@
 // Initialization of variables
 $msg = $this->vars['msg'];
 $msgSuccess = $this->vars['msgSuccess'];
-$project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);	
+$project = new Project($this->data ['idProject'], $this->data ['name'], $this->data ['description'], $this->data ['poLastname'], $this->data ['poFirstname'], $this->data ['town_idTown']);
 $title = $project->getName();
 $lang = $_SESSION['lang'];
 
@@ -23,15 +23,14 @@ $lang = $_SESSION['lang'];
 ob_start();
 ?>
 
-
 <!-- Phase 1 - Preliminary questionnaire -->
 <div class="reg agileits w3layouts">
     <div class="container">
         <div class="register agileits w3layouts">
-        
+
             <!-- Menu -->
             <div class="submit wow agileits w3layouts">
-                <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
+                <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href = '<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
             </div>   
 
             <div class="register agileits w3layouts">
@@ -54,7 +53,7 @@ ob_start();
             <h2><?php echo PHASE1_SURVEY; ?></h2>
 
             <form action="<?php echo URL_DIR . 'projects/validatePhase1?id=' . $project->getId(); ?>" method="post">
-                
+
                 <!-- Alert Message -->
                 <?php if (!empty($msgSuccess)) : ?>
                     <div class="members wow agileits w3layouts slideInLeft">
@@ -69,36 +68,37 @@ ob_start();
                 $app_questions = json_decode($questions, true);
                 $i = 0;
 
-                foreach ($app_questions as $question): $i++; ?>
+                foreach ($app_questions as $question): $i++;
+                    ?>
 
-                <div class="members wow agileits w3layouts slideInLeft">
-                    <div class="adult agileits w3layouts">
-                        <h4><?php echo PHASE1_QUESTION . ' '. $question["id"] ?></h4>
-                        <div class="well agileits w3layouts">
-                            <?php if ($lang == 'fr') {
-                                echo $question["questionFR"]; 
-                            }
-                            elseif ($lang == 'de') {
-                                echo $question["questionDE"];
-                            }
-                            ?>
-                        </div>
-                        <div class="dropdown-button agileits w3layouts">
-                            <textarea name="<?php echo 'answer' . $i; ?>" <?php echo ' id="answer' . $i . '" '?> class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php 
-                                $survey = surveyController::getAnswerByQuestionId($question["id"], $project->getId());
-                                if($survey) {
-                                    echo $survey->getAnswer();
+                    <div class="members wow agileits w3layouts slideInLeft">
+                        <div class="adult agileits w3layouts">
+                            <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
+                            <div class="well agileits w3layouts">
+                                <?php
+                                if ($lang == 'fr') {
+                                    echo $question["questionFR"];
+                                } elseif ($lang == 'de') {
+                                    echo $question["questionDE"];
                                 }
-                            ?></textarea>
-                        </div>
-                    </div>  
-                </div>
+                                ?>
+                            </div>
+                            <div class="dropdown-button agileits w3layouts">
+                                <textarea name="<?php echo 'answer' . $i; ?>" <?php echo ' id="answer' . $i . '" ' ?> class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php
+                                    $survey = surveyController::getAnswerByQuestionId($question["id"], $project->getId());
+                                    if ($survey) {
+                                        echo $survey->getAnswer();
+                                    }
+                                    ?></textarea>
+                            </div>
+                        </div>  
+                    </div>
 
                 <?php endforeach; ?>
 
                 <div class="submit wow agileits w3layouts slideInLeft">
                     <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo PHASE1_VALIDATE; ?>">
-                    <input type="button" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
+                    <input type="button" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href = '<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
                 </div>
             </form>
 
@@ -128,14 +128,14 @@ ob_start();
 
 <!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         var defaults = {
             containerID: 'toTop', // fading element id
             containerHoverID: 'toTopHover', // fading element hover id
             scrollSpeed: 100,
             easingType: 'linear'
         };
-        $().UItoTop({ easingType: 'easeOutQuart' });
+        $().UItoTop({easingType: 'easeOutQuart'});
     });
 </script>
 <a href="#" id="toTop" class="agileits w3layouts" style="display: block;"> <span id="toTopHover" style="opacity: 0;"> </span></a>
@@ -144,9 +144,9 @@ ob_start();
 <script type="text/javascript" src="../js/move-top.js"></script>
 <script type="text/javascript" src="../js/easing.js"></script>
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $(".scroll, .navbar li a, .footer li a").click(function(event){
-            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+    jQuery(document).ready(function ($) {
+        $(".scroll, .navbar li a, .footer li a").click(function (event) {
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
         });
     });
 </script>

@@ -33,7 +33,7 @@ ob_start();
 
             <!-- Menu -->
             <div class="submit wow agileits w3layouts">
-                <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
+                <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href = '<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
             </div>   
 
             <div class="register agileits w3layouts">
@@ -54,7 +54,7 @@ ob_start();
 
             <!-- Capital Gain -->
             <h2><?php echo PHASE2_CAPITAL_GAIN; ?></h2>
-            
+
             <?php
             $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
             $app_questions = json_decode($questions, true);
@@ -62,15 +62,17 @@ ob_start();
 
             foreach ($app_questions as $question):
                 $grade = surveyController::getGrade1ByQuestionId($question["id"], $project->getId());
-                if($grade) : ?>
+                if ($grade) :
+                    ?>
                     <a href="" data-toggle="modal" data-target="#myModal">
                         <div class="members wow agileits w3layouts slideInRight" style="margin-bottom: 20px;" id='myChartPhase2'></div>
                     </a>
                 <?php endif;
-            endforeach;?>
+            endforeach;
+            ?>
 
             <form action="<?php echo URL_DIR . 'projects/validatePhase2?id=' . $project->getId(); ?>" method="post">
-                
+
                 <!-- Alert Message -->
                 <?php if (!empty($msgSuccess)) : ?>
                     <div class="members wow agileits w3layouts slideInLeft">
@@ -79,114 +81,113 @@ ob_start();
                         </div>
                     </div>
                 <?php endif; ?>
-                
+
                 <?php
                 $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
                 $app_questions = json_decode($questions, true);
                 $i = 0;
-                
-                foreach ($app_questions as $question): 
-                    $i++; 
+
+                foreach ($app_questions as $question):
+                    $i++;
                     $grade = surveyController::getGrade1ByQuestionId($question["id"], $project->getId());
-                ?>
+                    ?>
 
-                <div class="members wow agileits w3layouts slideInLeft">
-                    <div class="adult agileits w3layouts">
-                        <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
-                        <div class="well agileits w3layouts">
-                            <?php if ($lang == 'fr') {
-                                echo $question["questionFR"] . '</br><br/>';
-                            }
-                            elseif ($lang == 'de') {
-                                echo $question["questionDE"] . '</br><br/>';
-                            }
-                            ?>
-                            <?php echo '<b>' . PHASE1_ANSWER . '</b><br/>'; ?>
-                            <?php 
-                            $survey = surveyController::getAnswerByQuestionId($question["id"], $project->getId());
-                            if($survey) {
-                                echo $survey->getAnswer();
-                            }
-                            echo '<br/><br/>';
-                            ?>
-                            <?php echo PHASE1_PROJECT . '<br/>'; ?>
-                            <?php if ($lang == 'fr') {
-                                echo '<b>' . $question["questionCommentFR"] . '</b>';
-                            }
-                            elseif ($lang == 'de') {
-                                echo '<b>' . $question["questionCommentDE"] . '</b>';
-                            }
-                            ?>
-                        </div>
+                    <div class="members wow agileits w3layouts slideInLeft">
+                        <div class="adult agileits w3layouts">
+                            <h4><?php echo PHASE1_QUESTION . ' ' . $question["id"] ?></h4>
+                            <div class="well agileits w3layouts">
+                                <?php
+                                if ($lang == 'fr') {
+                                    echo $question["questionFR"] . '</br><br/>';
+                                } elseif ($lang == 'de') {
+                                    echo $question["questionDE"] . '</br><br/>';
+                                }
+                                ?>
+                                <?php echo '<b>' . PHASE1_ANSWER . '</b><br/>'; ?>
+                                <?php
+                                $survey = surveyController::getAnswerByQuestionId($question["id"], $project->getId());
+                                if ($survey) {
+                                    echo $survey->getAnswer();
+                                }
+                                echo '<br/><br/>';
+                                ?>
+                                <?php echo PHASE1_PROJECT . '<br/>'; ?>
+                                <?php
+                                if ($lang == 'fr') {
+                                    echo '<b>' . $question["questionCommentFR"] . '</b>';
+                                } elseif ($lang == 'de') {
+                                    echo '<b>' . $question["questionCommentDE"] . '</b>';
+                                }
+                                ?>
+                            </div>
 
-                        <select name="<?php echo 'grade' . $i; ?>" <?php echo ' id="grade' . $i . '" '?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
-                            <?php 
-                            if(!$grade) : ?>
-                                <option selected="selected" value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                <option value="4">4 <?php echo PHASE2_4; ?></option>
-                            <?php 
-                            else : 
-                                if($grade->getGrade1()==0) :
-                                    ?>
-                                    <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                    <option selected="selected" value="0">0 <?php echo PHASE2_0; ?></option>
-                                    <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                    <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                    <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                    <option value="4">4 <?php echo PHASE2_4; ?></option>
-                                    <?php
-                                elseif($grade->getGrade1()==1) :
-                                    ?>
-                                    <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                    <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                    <option selected="selected" value="1">1 <?php echo PHASE2_1; ?></option>
-                                    <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                    <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                    <option value="4">4 <?php echo PHASE2_4; ?></option>
-                                    <?php
-                                elseif($grade->getGrade1()==2) :
-                                    ?>
-                                    <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                    <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                    <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                    <option selected="selected" value="2">2 <?php echo PHASE2_2; ?></option>
-                                    <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                    <option value="4">4 <?php echo PHASE2_4; ?></option>
-                                    <?php
-                                elseif($grade->getGrade1()==3) :
-                                    ?>
-                                    <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                            <select name="<?php echo 'grade' . $i; ?>" <?php echo ' id="grade' . $i . '" ' ?> class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                                <?php if (!$grade) : ?>
+                                    <option selected="selected" value="-1"><?php echo PHASE2_GRADE; ?></option>
                                     <option value="0">0 <?php echo PHASE2_0; ?></option>
                                     <option value="1">1 <?php echo PHASE2_1; ?></option>
                                     <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                    <option selected="selected" value="3">3 <?php echo PHASE2_3; ?></option>
+                                    <option value="3">3 <?php echo PHASE2_3; ?></option>
                                     <option value="4">4 <?php echo PHASE2_4; ?></option>
                                     <?php
                                 else :
-                                    ?>
-                                    <option value="-1"><?php echo PHASE2_GRADE; ?></option>
-                                    <option value="0">0 <?php echo PHASE2_0; ?></option>
-                                    <option value="1">1 <?php echo PHASE2_1; ?></option>
-                                    <option value="2">2 <?php echo PHASE2_2; ?></option>
-                                    <option value="3">3 <?php echo PHASE2_3; ?></option>
-                                    <option selected="selected" value="4">4 <?php echo PHASE2_4; ?></option>
+                                    if ($grade->getGrade1() == 0) :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                        <option selected="selected" value="0">0 <?php echo PHASE2_0; ?></option>
+                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <?php
+                                    elseif ($grade->getGrade1() == 1) :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                        <option selected="selected" value="1">1 <?php echo PHASE2_1; ?></option>
+                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <?php
+                                    elseif ($grade->getGrade1() == 2) :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                        <option selected="selected" value="2">2 <?php echo PHASE2_2; ?></option>
+                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <?php
+                                    elseif ($grade->getGrade1() == 3) :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                        <option selected="selected" value="3">3 <?php echo PHASE2_3; ?></option>
+                                        <option value="4">4 <?php echo PHASE2_4; ?></option>
+                                        <?php
+                                    else :
+                                        ?>
+                                        <option value="-1"><?php echo PHASE2_GRADE; ?></option>
+                                        <option value="0">0 <?php echo PHASE2_0; ?></option>
+                                        <option value="1">1 <?php echo PHASE2_1; ?></option>
+                                        <option value="2">2 <?php echo PHASE2_2; ?></option>
+                                        <option value="3">3 <?php echo PHASE2_3; ?></option>
+                                        <option selected="selected" value="4">4 <?php echo PHASE2_4; ?></option>
                                     <?php
+                                    endif;
                                 endif;
-                            endif;
-                            ?>
-                        </select>
-                    </div>  
-                </div>
+                                ?>
+                            </select>
+                        </div>  
+                    </div>
 
                 <?php endforeach; ?>
 
                 <div class="submit wow agileits w3layouts slideInLeft">
                     <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo PHASE1_VALIDATE; ?>">
-                    <input type="button" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
+                    <input type="button" name="cancel" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href = '<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PHASE0_PROJECT_CANCEL; ?>">
                 </div>     
             </form>    
         </div>
@@ -209,7 +210,7 @@ ob_start();
         </div>
     </div>
 
-    <script> $('#myModal').modal(''); </script>
+    <script> $('#myModal').modal('');</script>
 </div>
 
 <?php
@@ -227,8 +228,18 @@ $nbrAxes = count($axes);
 $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
 $app_questions = json_decode($questions, true);
 $i = 0;
-$idAxe1 = 0; $idAxe2 = 0; $idAxe3 = 0; $idAxe4 = 0; $idAxe5 = 0; $idAxe6 = 0;
-$text1 = ""; $text2 = ""; $text3= ""; $text4 = ""; $text5 = ""; $text6 = "";
+$idAxe1 = 0;
+$idAxe2 = 0;
+$idAxe3 = 0;
+$idAxe4 = 0;
+$idAxe5 = 0;
+$idAxe6 = 0;
+$text1 = "";
+$text2 = "";
+$text3 = "";
+$text4 = "";
+$text5 = "";
+$text6 = "";
 
 foreach ($axes as $axe) {
     $i++;
@@ -237,8 +248,7 @@ foreach ($axes as $axe) {
             $idAxe1 = $axe["id"];
             if ($lang == 'fr') {
                 $text1 = $axe['nameFR'];
-            }
-            elseif ($lang == 'de') {
+            } elseif ($lang == 'de') {
                 $text1 = $axe['nameDE'];
             }
             break;
@@ -246,8 +256,7 @@ foreach ($axes as $axe) {
             $idAxe2 = $axe["id"];
             if ($lang == 'fr') {
                 $text2 = $axe['nameFR'];
-            }
-            elseif ($lang == 'de') {
+            } elseif ($lang == 'de') {
                 $text2 = $axe['nameDE'];
             }
             break;
@@ -255,8 +264,7 @@ foreach ($axes as $axe) {
             $idAxe3 = $axe["id"];
             if ($lang == 'fr') {
                 $text3 = $axe['nameFR'];
-            }
-            elseif ($lang == 'de') {
+            } elseif ($lang == 'de') {
                 $text3 = $axe['nameDE'];
             }
             break;
@@ -264,8 +272,7 @@ foreach ($axes as $axe) {
             $idAxe4 = $axe["id"];
             if ($lang == 'fr') {
                 $text4 = $axe['nameFR'];
-            }
-            elseif ($lang == 'de') {
+            } elseif ($lang == 'de') {
                 $text4 = $axe['nameDE'];
             }
             break;
@@ -273,8 +280,7 @@ foreach ($axes as $axe) {
             $idAxe5 = $axe["id"];
             if ($lang == 'fr') {
                 $text5 = $axe['nameFR'];
-            }
-            elseif ($lang == 'de') {
+            } elseif ($lang == 'de') {
                 $text5 = $axe['nameDE'];
             }
             break;
@@ -282,8 +288,7 @@ foreach ($axes as $axe) {
             $idAxe6 = $axe["id"];
             if ($lang == 'fr') {
                 $text6 = $axe['nameFR'];
-            }
-            elseif ($lang == 'de') {
+            } elseif ($lang == 'de') {
                 $text6 = $axe['nameDE'];
             }
             break;
@@ -298,12 +303,11 @@ foreach ($app_questions as $question):
     $i++;
     if ($lang == 'fr') {
         $labels[] = $question["questionCommentFR"];
-    }
-    elseif ($lang == 'de') {
+    } elseif ($lang == 'de') {
         $labels[] = $question["questionCommentDE"];
     }
     $grade = surveyController::getGrade1ByQuestionId($question["id"], $project->getId());
-    if($grade) {
+    if ($grade) {
         $idAxe = $question["axes_idAxe"];
         $allValues[] = $grade->getGrade1();
         switch ($idAxe) {
@@ -358,8 +362,7 @@ foreach ($app_questions as $question):
             default:
                 break;
         }
-    }
-    else {
+    } else {
         $allValues[] = null;
         $valuesAxe1[] = null;
         $valuesAxe2[] = null;
@@ -390,8 +393,8 @@ endforeach;
     var text5 = <?php echo json_encode($text5); ?>;
     var text6 = <?php echo json_encode($text6); ?>;
     var textState = <?php echo json_encode(PHASE2_STATE); ?>;
-    
-    for(var i = 0; i < nbrQuestions; i++) {
+
+    for (var i = 0; i < nbrQuestions; i++) {
         valuesAxe1[i] = parseInt(valuesAxe1[i]);
         valuesAxe2[i] = parseInt(valuesAxe2[i]);
         valuesAxe3[i] = parseInt(valuesAxe3[i]);
@@ -400,12 +403,12 @@ endforeach;
         valuesAxe6[i] = parseInt(valuesAxe6[i]);
         allValues[i] = parseInt(allValues[i]);
     }
-    
+
     var myConfigPhase2 = {
         "type": "radar",
-        "legend":{
-            "toggle-action":"remove",
-            "vertical-align":"bottom"
+        "legend": {
+            "toggle-action": "remove",
+            "vertical-align": "bottom"
         },
         "title": {
             "text": textState
@@ -419,14 +422,14 @@ endforeach;
                 "font-size": 8
             }
         },
-        "series": [ 
-            { "values": allValues, "aspect": "line", "text": textState },
-            { "values": valuesAxe1, "aspect": "dots", "text": text1, "marker": { "type": "circle" } },
-            { "values": valuesAxe2, "aspect": "dots", "text": text2, "marker": { "type": "rpoly4" } },
-            { "values": valuesAxe3, "aspect": "dots", "text": text3, "marker": { "type": "star7" } },
-            { "values": valuesAxe4, "aspect": "dots", "text": text4, "marker": { "type": "square" } },
-            { "values": valuesAxe5, "aspect": "dots", "text": text5, "marker": { "type": "triangle" } },
-            { "values": valuesAxe6, "aspect": "dots", "text": text6, "marker": { "type": "star4" } }  
+        "series": [
+            {"values": allValues, "aspect": "line", "text": textState},
+            {"values": valuesAxe1, "aspect": "dots", "text": text1, "marker": {"type": "circle"}},
+            {"values": valuesAxe2, "aspect": "dots", "text": text2, "marker": {"type": "rpoly4"}},
+            {"values": valuesAxe3, "aspect": "dots", "text": text3, "marker": {"type": "star7"}},
+            {"values": valuesAxe4, "aspect": "dots", "text": text4, "marker": {"type": "square"}},
+            {"values": valuesAxe5, "aspect": "dots", "text": text5, "marker": {"type": "triangle"}},
+            {"values": valuesAxe6, "aspect": "dots", "text": text6, "marker": {"type": "star4"}}
         ]
     };
 
@@ -436,13 +439,13 @@ endforeach;
         height: '50%',
         width: '100%'
     });
-    
+
     var myConfigPhase2Big = {
         "type": "radar",
-        "legend":{
-            "toggle-action":"remove",
+        "legend": {
+            "toggle-action": "remove",
             "align": "center",
-            "vertical-align":"top"
+            "vertical-align": "top"
         },
         "plot": {
             "aspect": "mixed"
@@ -450,17 +453,17 @@ endforeach;
         "scaleK": {
             "labels": labels,
         },
-        "series": [ 
-            { "values": allValues, "aspect": "line", "text": textState },
-            { "values": valuesAxe1, "aspect": "dots", "text": text1, "marker": { "type": "circle" } },
-            { "values": valuesAxe2, "aspect": "dots", "text": text2, "marker": { "type": "rpoly4" } },
-            { "values": valuesAxe3, "aspect": "dots", "text": text3, "marker": { "type": "star7" } },
-            { "values": valuesAxe4, "aspect": "dots", "text": text4, "marker": { "type": "square" } },
-            { "values": valuesAxe5, "aspect": "dots", "text": text5, "marker": { "type": "triangle" } },
-            { "values": valuesAxe6, "aspect": "dots", "text": text6, "marker": { "type": "star4" } }  
+        "series": [
+            {"values": allValues, "aspect": "line", "text": textState},
+            {"values": valuesAxe1, "aspect": "dots", "text": text1, "marker": {"type": "circle"}},
+            {"values": valuesAxe2, "aspect": "dots", "text": text2, "marker": {"type": "rpoly4"}},
+            {"values": valuesAxe3, "aspect": "dots", "text": text3, "marker": {"type": "star7"}},
+            {"values": valuesAxe4, "aspect": "dots", "text": text4, "marker": {"type": "square"}},
+            {"values": valuesAxe5, "aspect": "dots", "text": text5, "marker": {"type": "triangle"}},
+            {"values": valuesAxe6, "aspect": "dots", "text": text6, "marker": {"type": "star4"}}
         ]
     };
-    
+
     zingchart.render({
         id: 'myChartPhase2Big',
         data: myConfigPhase2Big,
@@ -522,6 +525,3 @@ unset($_SESSION['msgSuccess']);
 // Template CSS
 $content = ob_get_clean();
 require 'views/template.php';
-
-
-

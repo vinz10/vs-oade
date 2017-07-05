@@ -23,7 +23,6 @@ $login = $this->getLogin();
 ob_start();
 ?>
 
-
 <!-- Phase 0 - Project Information -->
 <div class="reg agileits w3layouts">
     <div class="container">
@@ -32,9 +31,9 @@ ob_start();
             <!-- Menu -->
             <?php if ($project->getId() != null) : ?>
                 <div class="submit wow agileits w3layouts">
-                    <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
+                    <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href = '<?php echo URL_DIR . 'projects/project?id=' . $project->getId(); ?>'" value="<?php echo PROJECT_PROJECT; ?>">
                 </div> 
-            
+
                 <div class="register agileits w3layouts">
                     <div class="page">
                         <ul class="pagination agileits w3layouts">
@@ -52,9 +51,9 @@ ob_start();
                 </div>
             <?php else : ?>
                 <div class="submit wow agileits w3layouts">
-                    <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href='<?php echo URL_DIR . 'projects/projects'; ?>'" value="<?php echo PROJECTS_PROJECT; ?>">
+                    <input type="button" name="back" class="popup-with-zoom-anim agileits w3layouts" onclick="location.href = '<?php echo URL_DIR . 'projects/projects'; ?>'" value="<?php echo PROJECTS_PROJECT; ?>">
                 </div> 
-                
+
                 <div class="register agileits w3layouts">
                     <div class="page">
                         <ul class="pagination agileits w3layouts">
@@ -157,15 +156,15 @@ ob_start();
 <!-- Slider-JavaScript -->
 <script src="../js/responsiveslides.min.js"></script>
 <script>
-    $(function () {
-        $("#slider1, #slider2, #slider3, #slider4").responsiveSlides({
-            auto: true,
-            nav: true,
-            speed: 1500,
-            namespace: "callbacks",
-            pager: true,
-        });
-    });
+                        $(function () {
+                            $("#slider1, #slider2, #slider3, #slider4").responsiveSlides({
+                                auto: true,
+                                nav: true,
+                                speed: 1500,
+                                namespace: "callbacks",
+                                pager: true,
+                            });
+                        });
 </script>
 
 <!-- Slide-To-Top JavaScript (No-Need-To-Change) -->

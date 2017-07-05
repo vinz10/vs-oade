@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Initialization title
 $title = HOME_TITLE;
 
@@ -7,18 +7,16 @@ $login1 = isset($_SESSION['login1']) ? $_SESSION['login1'] : null;
 $login2 = isset($_SESSION['login2']) ? $_SESSION['login2'] : null;
 
 // Template CSS
-ob_start(); 
+ob_start();
 ?>
 
-<!-- Manual -->
+<!-- PROCESS -->
 <div class="manual agileits w3layouts">
     <div class="container">
-
         <div class="col-md-6 col-sm-6 manual-grids manual-grids2 agileits w3layouts wow slideInRight">
 
             <h3><?php echo HOME_MANUAL; ?></h3>
 
-            <!-- Slider4 -->
             <div class="slider-4 agileits w3layouts">
                 <ul class="rslides agileits w3layouts" id="slider4">
                     <li>
@@ -47,7 +45,6 @@ ob_start();
                     </li>
                 </ul>
             </div>
-            <!-- //Slider4 -->
         </div>
 
         <div class="col-md-6 col-sm-6 manual-grids manual-grids1 agileits w3layouts wow slideInLeft">
@@ -113,17 +110,13 @@ ob_start();
             </div>
         </div>
         <div class="clearfix"></div>
-
     </div>
 </div>
 
-
-<!-- Projects -->
+<!-- PROJECTS -->
 <div class="projects agileits w3layouts">
     <div class="container">
-
         <div class="col-md-8 col-sm-8 projects-grid agileits w3layouts projects-grid1 wow slideInLeft">
-            <!-- Slider2 -->
             <div class="slider-2 agileits w3layouts">
                 <ul class="rslides agileits w3layouts" id="slider2">
                     <li>
@@ -143,9 +136,7 @@ ob_start();
                     </li>
                 </ul>
             </div>
-            <!-- //Slider2 -->
 
-            <!-- Slider3 -->
             <div class="slider-3 agileits w3layouts">
                 <ul class="rslides agileits w3layouts" id="slider3">
                     <li>
@@ -165,7 +156,6 @@ ob_start();
                     </li>
                 </ul>
             </div>
-            <!-- //Slider3 -->
         </div>
 
         <div class="col-md-4 col-sm-4 projects-grid agileits w3layouts projects-grid2 wow slideInRight">
@@ -175,7 +165,6 @@ ob_start();
             <p><?php echo HOME_PROJECTS_DESC; ?></p>
             <a class="agileits w3layoutswow slideInLeft" href="<?php echo URL_DIR . 'projects/projects'; ?>"><?php echo HOME_PROJECTS_ACCESS; ?><span class="glyphicon agileits w3layouts glyphicon-arrow-right" aria-hidden="true"></span></a>
         </div>
-
     </div>
 </div>
 
@@ -227,6 +216,6 @@ ob_start();
 <?php endif; ?>
 
 <?php
-    // Template CSS
-    $content = ob_get_clean(); 
-    require 'views/template.php';
+// Template CSS
+$content = ob_get_clean();
+require 'views/template.php';
