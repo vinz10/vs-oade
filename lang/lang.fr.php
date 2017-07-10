@@ -132,7 +132,7 @@ define("PHASE1_PROJECT", "Le projet...");
 
 // PROJECTS PHASE 2
 define("PHASE2_CAPITAL_GAIN", "Plus-value");
-define("PHASE2_STATE", "état d'analyse initiale");
+define("PHASE2_STATE", "état d'analyse initial");
 define("PHASE2_GRADE", "Note");
 define("PHASE2_0", "le projet est parfaitement dans la cible");
 define("PHASE2_1", "le projet est intéressant et s'approche de la cible");

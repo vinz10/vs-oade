@@ -650,6 +650,9 @@ endforeach;
         },
         "scaleK": {
             "labels": labels,
+            "item": {
+                "font-size": 16
+            }
         },
         "series": [
             {"values": allValues2, "aspect": "line", "text": textState},
@@ -717,6 +720,9 @@ endforeach;
         },
         "scaleK": {
             "labels": labels,
+            "item": {
+                "font-size": 16
+            }
         },
         "series": [
             {"values": allValues4, "aspect": "line", "text": textStateDesired},
@@ -814,6 +820,9 @@ endforeach;
         },
         scaleK: {
             labels: labels,
+            "item": {
+                "font-size": 15
+            },
             refLine: {
                 lineColor: '#c10000'
             },

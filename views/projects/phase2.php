@@ -454,6 +454,9 @@ endforeach;
         },
         "scaleK": {
             "labels": labels,
+            "item": {
+                "font-size": 16
+            }
         },
         "series": [
             {"values": allValues, "aspect": "line", "text": textState},

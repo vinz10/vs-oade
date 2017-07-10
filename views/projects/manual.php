@@ -15,7 +15,6 @@
 <?php
 // Initialization of variables
 $title = MANUAL_TITLE;
-
 // Template CSS
 ob_start();
 ?>

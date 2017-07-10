@@ -157,7 +157,10 @@ class loginController extends Controller {
     function logout() {
 
         // Destroy the session
-        session_destroy();
+        $_SESSION["login"] = null;
+        $_SESSION["login1"] = null;
+        $_SESSION["login2"] = null;
+        
         $this->redirect('', '');
     }
 

@@ -14,6 +14,7 @@
 // Initialization of variables
 $msg = $this->vars['msg'];
 $title = LOGIN_TITLE;
+$lang = $_SESSION['lang'];
 
 // Template CSS
 ob_start();
