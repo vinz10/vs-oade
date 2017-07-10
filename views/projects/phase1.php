@@ -83,6 +83,16 @@ ob_start();
                                 }
                                 ?>
                             </div>
+                            <h4><?php echo PHASE6_COMMENT; ?></h4>
+                            <div class="well agileits w3layouts">
+                                <?php
+                                if ($lang == 'fr') {
+                                    echo $question["questionCommentFR"];
+                                } elseif ($lang == 'de') {
+                                    echo $question["questionCommentDE"];
+                                }
+                                ?>
+                            </div>
                             <div class="dropdown-button agileits w3layouts">
                                 <textarea name="<?php echo 'answer' . $i; ?>" <?php echo ' id="answer' . $i . '" ' ?> class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php
                                     $survey = surveyController::getAnswerByQuestionId($question["id"], $project->getId());
