@@ -111,12 +111,11 @@ class projectsController extends Controller {
                 }
             } else {
                 // Upload file
-                /*$test = "C:/xampp/htdocs/vs-oade/"; // URL_DIR
-                $dir = $test . "uploads/" . $name;
+                $dir = "uploads/" . $name;
                 $target_file = basename($_FILES["file"]["name"]);
                 $file = $dir . '_file.' . pathinfo($target_file,PATHINFO_EXTENSION);
-                move_uploaded_file($_FILES["file"]["tmp_name"], $file);*/
-                
+                move_uploaded_file($_FILES["file"]["tmp_name"], $file);
+              
                 // Save new project into the db
                 $project->insertProject();
                 $this->redirect('projects', 'projects');
