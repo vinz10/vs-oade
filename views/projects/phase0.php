@@ -142,7 +142,7 @@ ob_start();
                     <div class="dropdown-button agileits w3layouts">
                         <h4><?php echo PHASE1_FILE; ?></h4>
                         <div class="dropdown-button agileits w3layouts">
-                            <input class="dropdown agileits w3layouts" type="file" name="file" id="file">
+                            <input class="dropdown agileits w3layouts" type="file" name="file" id="file" accept=".pdf">
                         </div>
                     </div>
                 </div>

@@ -94,6 +94,11 @@ class projectsController extends Controller {
             $idProject = null;
         }
 
+        // Get the data for the file
+        $dir = "uploads/" . $idProject;
+        $target_file = basename($_FILES["file"]["name"]);
+        $file = $dir . '_file.' . pathinfo($target_file,PATHINFO_EXTENSION);
+        
         // Create the new project
         $project = new Project($idProject, $name, $description, $poLastname, $poFirstname, $townId);
 
@@ -104,6 +109,11 @@ class projectsController extends Controller {
                     $_SESSION['msg'] = MSG_PROJECT_EXIST;
                     $this->redirect('projects', 'phase0');
                 } else {
+                    // Upload file
+                    if (pathinfo($target_file,PATHINFO_EXTENSION) == "pdf") {
+                        move_uploaded_file($_FILES["file"]["tmp_name"], $file);
+                    }
+                    
                     // Update the project
                     $project->updateProject($idProject);
                     $_SESSION['msgSuccess'] = MSG_MODIF;
@@ -111,9 +121,6 @@ class projectsController extends Controller {
                 }
             } else {
                 // Upload file
-                $dir = "uploads/" . $name;
-                $target_file = basename($_FILES["file"]["name"]);
-                $file = $dir . '_file.' . pathinfo($target_file,PATHINFO_EXTENSION);
                 if (pathinfo($target_file,PATHINFO_EXTENSION) == "pdf") {
                     move_uploaded_file($_FILES["file"]["tmp_name"], $file);
                 }
@@ -134,9 +141,7 @@ class projectsController extends Controller {
     function download() {
 
         $projectId = intval($_GET['id']);
-        $projectName = strval($_GET['name']);
-        
-        $file = $projectName . '_file.pdf';
+        $file = $projectId . '_file.pdf';
 
         ignore_user_abort(true);
         
@@ -149,6 +154,7 @@ class projectsController extends Controller {
         $dl_file = preg_replace("([^\w\s\d\-_~,;:\[\]\(\).]|[\.]{2,})", '', $file); 
         // Remove (more) invalid characters
         $dl_file = filter_var($dl_file, FILTER_SANITIZE_URL); 
+
         $fullPath = $path . $dl_file;
 
         if ($fd = fopen($fullPath, "r")) {
@@ -711,6 +717,10 @@ class projectsController extends Controller {
         // Get the project id
         $idProject = intval($_GET['id']);
 
+        $file = "uploads/" . $idProject . '_file.pdf';
+        
+        unlink($file);
+        
         try {
             Project::deleteProject($idProject);
         } catch (Exception $exc) {

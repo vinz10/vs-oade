@@ -113,6 +113,7 @@ define("PROJECTS_DELETE_QUESTION", "Voulez-vous supprimer définitivement ce pro
 // PROJECT PAGE
 define("PROJECT_ACCESS", "Accéder");
 define("PROJECT_PROJECT", "Projet");
+define("PROJECT_FILE_DOWNLOAD", "Télécharger fichier complémentaire");
 
 // PROJECTS PHASE 0
 define("PHASE0_TITLE", "VS-OADE Phase 0");

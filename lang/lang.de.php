@@ -38,6 +38,7 @@ define("MSG_INFO", "Informationen!");
 define("MSG_CONNECT_TO_SHOW_PROJECTS", "Bitte melden Sie sich an, um gemeinsame Projekte zugreifen.");
 define("MSG_NO_PROJECT", "Es gibt kein existierendes Projekt in dieser Region.");
 define("MSG_NO_ARCHIVES", "Es gibt kein bestehendes Archiv in dieser Region.");
+define("MSG_NO_RIGHTS", "Sie haben keine Berechtigung, um die gewünschte Seite zu gelangen.");
 
 // HOME PAGE
 define("HOME_TITLE", "VS-OADE Startseite");
@@ -111,7 +112,7 @@ define("PROJECTS_CANCEL", "Stornieren");
 // PROJECT PAGE
 define("PROJECT_ACCESS", "Zugang");
 define("PROJECT_PROJECT", "Projekt");
-define("MSG_NO_RIGHTS", "Sie haben keine Berechtigung, um die gewünschte Seite zu gelangen.");
+define("PROJECT_FILE_DOWNLOAD", "Laden Sie zusätzliche Datei");
 
 // PROJECTS PHASE 0
 define("PHASE0_TITLE", "VS-OADE Phase 0");
