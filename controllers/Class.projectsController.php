@@ -114,7 +114,9 @@ class projectsController extends Controller {
                 $dir = "uploads/" . $name;
                 $target_file = basename($_FILES["file"]["name"]);
                 $file = $dir . '_file.' . pathinfo($target_file,PATHINFO_EXTENSION);
-                move_uploaded_file($_FILES["file"]["tmp_name"], $file);
+                if (pathinfo($target_file,PATHINFO_EXTENSION) == "pdf") {
+                    move_uploaded_file($_FILES["file"]["tmp_name"], $file);
+                }
               
                 // Save new project into the db
                 $project->insertProject();
@@ -123,6 +125,56 @@ class projectsController extends Controller {
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
+    }
+    
+    /**
+      // @method download()
+      // @desc Method to download the complementary file.
+     */
+    function download() {
+
+        $projectId = intval($_GET['id']);
+        $projectName = strval($_GET['name']);
+        
+        $file = $projectName . '_file.pdf';
+
+        ignore_user_abort(true);
+        
+        // disable the time limit for this script
+        set_time_limit(0); 
+
+        $path = "uploads/";
+
+        // simple file name validation
+        $dl_file = preg_replace("([^\w\s\d\-_~,;:\[\]\(\).]|[\.]{2,})", '', $file); 
+        // Remove (more) invalid characters
+        $dl_file = filter_var($dl_file, FILTER_SANITIZE_URL); 
+        $fullPath = $path . $dl_file;
+
+        if ($fd = fopen($fullPath, "r")) {
+            $fsize = filesize($fullPath);
+            $path_parts = pathinfo($fullPath);
+            $ext = strtolower($path_parts["extension"]);
+            switch ($ext) {
+                case "pdf":
+                    header("Content-type: application/pdf");
+                    header("Content-Disposition: attachment; filename=\"" . $path_parts["basename"] . "\"");
+                    break;
+                default;
+                    header("Content-type: application/octet-stream");
+                    header("Content-Disposition: filename=\"" . $path_parts["basename"] . "\"");
+                    break;
+            }
+            header("Content-length: $fsize");
+            header("Cache-control: private");
+            while (!feof($fd)) {
+                $buffer = fread($fd, 2048);
+                echo $buffer;
+            }
+        }
+        fclose($fd);
+
+        $this->redirect('projects', 'project?id=' . $projectId);
     }
 
     /**
