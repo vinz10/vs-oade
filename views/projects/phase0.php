@@ -74,7 +74,7 @@ ob_start();
             <!-- Project Information -->
             <h2><?php echo PHASE0_PROJECT_INFO; ?></h2>
 
-            <form action="<?php echo URL_DIR . 'projects/validatePhase0?id=' . $project->getId(); ?>" method="post">
+            <form action="<?php echo URL_DIR . 'projects/validatePhase0?id=' . $project->getId(); ?>" method="post" enctype="multipart/form-data">
 
                 <!-- Alert Message -->
                 <?php if (!empty($msg)) : ?>
@@ -134,6 +134,15 @@ ob_start();
                         <h4><?php echo TOWNNAME; ?></h4>
                         <div class="dropdown-button agileits w3layouts">
                             <input type="text" name="townId" id="townId" class="dropdown agileits w3layouts" disabled="disabled" value="<?php echo $login->getTownName(); ?>" required="">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place wow agileits w3layouts slideInLeft">
+                    <div class="dropdown-button agileits w3layouts">
+                        <h4><?php echo PHASE1_FILE; ?></h4>
+                        <div class="dropdown-button agileits w3layouts">
+                            <input class="dropdown agileits w3layouts" type="file" name="file" id="file">
                         </div>
                     </div>
                 </div>

@@ -282,7 +282,7 @@ class Survey {
 
         return $survey;
     }
-
+    
     /**
       // @method getGrade2ByQuestionId()
       // @desc Method that get a survey by the idQuestion and idProject from the DB (Check Grade2)

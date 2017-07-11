@@ -67,6 +67,7 @@ ob_start();
                 $questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=1');
                 $app_questions = json_decode($questions, true);
                 $i = 0;
+                $question2 = 0;
 
                 foreach ($app_questions as $question): $i++;
                     ?>
@@ -94,6 +95,9 @@ ob_start();
                                 ?>
                             </div>
                             <div class="dropdown-button agileits w3layouts">
+                                <?php if (strpos($question["id"], "2.") !== false) {
+                                    echo PHASE1_MSG;
+                                } ?>
                                 <textarea name="<?php echo 'answer' . $i; ?>" <?php echo ' id="answer' . $i . '" ' ?> class="dropdown agileits w3layouts" placeholder="<?php echo PHASE1_ANSWER; ?>" required=""><?php
                                     $survey = surveyController::getAnswerByQuestionId($question["id"], $project->getId());
                                     if ($survey) {

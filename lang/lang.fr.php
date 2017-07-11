@@ -100,6 +100,7 @@ define("MANUAL_PHASE6", "Une partie annexe est proposée au conseil sous forme d
 // PROJECTS PAGE
 define("PROJECTS_TITLE", "VS-OADE Projets");
 define("PROJECTS_PROJECT", "Projets");
+define("PROJECTS_GRAPH", "Politique communale actuelle");
 define("PROJECTS_NEW_PROJECT", "Nouveau Projet");
 define("PROJECTS_READ_MORE", "En Savoir Plus");
 define("PROJECTS_DELETE", "Supprimer");
@@ -127,6 +128,8 @@ define("PHASE0_PROJECT_CANCEL", "Annuler");
 define("PHASE1_SURVEY", "Questionnaire préalable");
 define("PHASE1_VALIDATE", "Valider");
 define("PHASE1_QUESTION", "Question");
+define("PHASE1_FILE", "Fichier complémentaire");
+define("PHASE1_MSG", "Si la question n'est pas pertinente pour ce projet, veuillez répondre: Non pertinente!");
 define("PHASE1_ANSWER", "Réponse");
 define("PHASE1_PROJECT", "Le projet...");
 

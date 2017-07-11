@@ -5,6 +5,9 @@
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
 <link rel="stylesheet" href="../css/animate.css" type="text/css" media="all">
 
+<!-- Custom-JavaScript-File-Link-Graph -->
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
 <!-- Fonts -->
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" type="text/css">
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Cinzel+Decorative:400,900,700" type="text/css">
@@ -14,10 +17,44 @@
 // Initialization of variables
 $msg = $this->vars['msg'];
 $title = PROJECTS_TITLE;
+$lang = $_SESSION['lang'];
 
 // Template CSS
 ob_start();
 ?>
+
+<!-- GRAPH -->
+<div class="cuisines agileits w3layouts">
+    <div class="container">
+
+        <div class="agileits w3layouts cuisines-grids-1 wow slideInLeft">
+            <a href="" data-toggle="modal" data-target="#myModal">
+                <div class="members wow agileits w3layouts slideInUp" id='myChart'></div>
+            </a>
+            
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<!-- MODAL GRAPH -->
+<div class="tooltip-content agileits w3layouts">
+    <div class="modal fade agileits w3layouts details-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog agileits w3layouts modal-lg">
+            <div class="modal-content agileits w3layouts">
+                <div class="modal-header agileits w3layouts">
+                    <h4 class="modal-title agileits w3layouts"><?php echo PROJECTS_GRAPH; ?></h4>
+                    <button type="button" class="close agileits w3layouts" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body agileits w3layouts">
+                    <div id='myChartBig'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script> $('#myModal').modal('');</script>
+</div>
 
 <!-- PROJECTS -->
 <div class="services agileits w3layouts">
@@ -84,6 +121,22 @@ ob_start();
     </div>
 </div>
 
+<?php
+$labels = array();
+$questions = file_get_contents('http://localhost/API_vs-oade/vs-oade_api.php?action=get_questions&id=2');
+$app_questions = json_decode($questions, true);
+
+$i = 0;
+foreach ($app_questions as $question):
+    $i++;
+    if ($lang == 'fr') {
+        $labels[] = $question["questionCommentFR"];
+    } elseif ($lang == 'de') {
+        $labels[] = $question["questionCommentDE"];
+    }
+endforeach;
+?>
+
 <!-- Custom-JavaScript-File-Links -->	  
 <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -91,6 +144,71 @@ ob_start();
 <!-- Animate.CSS-JavaScript -->
 <script src="../js/wow.min.js"></script>
 <script>new WOW().init();</script>
+
+<script>
+    var labels = <?php echo json_encode($labels); ?>;
+    var textState = <?php echo json_encode(PROJECTS_GRAPH); ?>;
+
+    var myConfig = {
+        "type": "radar",
+        "legend": {
+            "toggle-action": "remove",
+            "vertical-align": "bottom"
+        },
+        "title": {
+            "text": textState
+        },
+        "plot": {
+            "aspect": "area"
+        },
+        "scaleK": {
+            "labels": labels,
+            "item": {
+                "font-size": 11
+            }
+        },
+        "series": [{
+            "values": [3, 1, 2, 3, 1, 2, 1, 4, 2],
+            "text": textState
+        }]
+    };
+
+    zingchart.render({
+        id: 'myChart',
+        data: myConfig,
+        height: '100%',
+        width: '100%'
+    });
+
+    var myConfigBig = {
+        "type": "radar",
+        "legend": {
+            "toggle-action": "remove",
+            "align": "center",
+            "vertical-align": "top"
+        },
+        "plot": {
+            "aspect": "area"
+        },
+        "scaleK": {
+            "labels": labels,
+            "item": {
+                "font-size": 16
+            }
+        },
+        "series": [{
+            "values": [3, 1, 2, 3, 1, 2, 1, 4, 2],
+            "text": textState
+        }]
+    };
+
+    zingchart.render({
+        id: 'myChartBig',
+        data: myConfigBig,
+        height: '100%',
+        width: '100%'
+    });
+</script>
 
 <!-- Slider-JavaScript -->
 <script src="../js/responsiveslides.min.js"></script>
