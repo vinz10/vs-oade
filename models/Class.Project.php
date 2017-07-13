@@ -171,6 +171,27 @@ class Project {
 
         return $project;
     }
+    
+    /**
+      // @method getProjectByNameIdTown()
+      // @desc Method that get a project by the name and idTown from the DB
+      // @param string $name
+      // @param int $idTown
+      // @return $project
+     */
+    public static function getProjectByNameIdTown($name, $idTown) {
+
+        $query = "SELECT * FROM project WHERE name='$name' AND town_idTown='$idTown';";
+        $result = SqlConnection::getInstance()->selectDB($query);
+        $row = $result->fetch();
+        if (!$row) {
+            return false;
+        }
+
+        $project = new Project($row['idProject'], $row['name'], $row['description'], $row['poLastname'], $row['poFirstname'], $row['town_idTown']);
+
+        return $project;
+    }
 
     /**
       // @method getProjectsByIdTown()

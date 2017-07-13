@@ -93,12 +93,10 @@ class projectsController extends Controller {
         } else {
             $idProject = null;
         }
-
-        // Get the data for the file
-        $dir = "uploads/" . $idProject;
-        $target_file = basename($_FILES["file"]["name"]);
-        $file = $dir . '_file.' . pathinfo($target_file,PATHINFO_EXTENSION);
         
+        // Get the data for the file
+        $target_file = basename($_FILES["file"]["name"]);
+                
         // Create the new project
         $project = new Project($idProject, $name, $description, $poLastname, $poFirstname, $townId);
 
@@ -109,6 +107,10 @@ class projectsController extends Controller {
                     $_SESSION['msg'] = MSG_PROJECT_EXIST;
                     $this->redirect('projects', 'phase0');
                 } else {
+                    // Get the data for the file
+                    $dir = "uploads/" . $idProject;
+                    $file = $dir . '_file.' . pathinfo($target_file,PATHINFO_EXTENSION);
+                    
                     // Upload file
                     if (pathinfo($target_file,PATHINFO_EXTENSION) == "pdf") {
                         move_uploaded_file($_FILES["file"]["tmp_name"], $file);
@@ -120,13 +122,21 @@ class projectsController extends Controller {
                     $this->redirect('projects', 'phase0?id=' . $idProject);
                 }
             } else {
+                // Save new project into the db
+                $project->insertProject();
+                
+                $id = Project::getProjectByNameIdTown($name, $townId)->getId();
+                
+                // Get the data for the file
+                $dir = "uploads/" . $id;
+                $file = $dir . '_file.' . pathinfo($target_file,PATHINFO_EXTENSION);
+                
                 // Upload file
                 if (pathinfo($target_file,PATHINFO_EXTENSION) == "pdf") {
                     move_uploaded_file($_FILES["file"]["tmp_name"], $file);
                 }
-              
-                // Save new project into the db
-                $project->insertProject();
+                
+                
                 $this->redirect('projects', 'projects');
             }
         } catch (Exception $exc) {
