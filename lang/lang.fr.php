@@ -38,6 +38,7 @@ define("MSG_NO_RIGHTS", "Vous n'avez pas les droits pour accéder à la page sou
 define("MSG_INFO", "Information!");
 define("MSG_CONNECT_TO_SHOW_PROJECTS", "Veuillez vous connecter sur une commune pour accéder à ses projets.");
 define("MSG_NO_PROJECT", "Il n'y a aucun projet existant sur cette commune.");
+define("MSG_NO_SURVEYS", "Il n'y a aucune question à archiver pour ce projet.");
 define("MSG_NO_ARCHIVES", "Il n'y a aucune archive existante sur cette commune.");
 
 // HOME PAGE

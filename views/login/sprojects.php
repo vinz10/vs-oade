@@ -13,6 +13,7 @@
 <?php
 // Initialization of variables
 $msg = $this->vars['msg'];
+$msgError = $this->vars['msgError'];
 $title = ADMIN_TITLE;
 
 // Template CSS
@@ -36,6 +37,14 @@ ob_start();
             <div class="members wow agileits w3layouts slideInLeft">
                 <div class="alert agileits w3layouts alert-success" role="alert">
                     <strong><?php echo MSG_SUCCESS; ?></strong> <?php echo ' ' . $msg; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+        
+        <?php if (!empty($msgError)) : ?>
+            <div class="members wow agileits w3layouts slideInLeft">
+                <div class="alert agileits w3layouts alert-info" role="alert">
+                    <strong><?php echo MSG_INFO; ?></strong> <?php echo ' ' . $msgError; ?>
                 </div>
             </div>
         <?php endif; ?>
@@ -169,6 +178,7 @@ ob_start();
 <?php
 // Unset variables
 unset($_SESSION['msg']);
+unset($_SESSION['msgError']);
 
 // Template CSS
 $content = ob_get_clean();

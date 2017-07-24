@@ -148,7 +148,7 @@ class Project {
         $query .= ', poLastname = ' . $sql->getConn()->quote($this->poLastname);
         $query .= ', poFirstname = ' . $sql->getConn()->quote($this->poFirstname);
         $query .= ', town_idTown = ' . $sql->getConn()->quote($this->town_idTown) . ' WHERE idProject = ' . $idProject . ';';
-
+        
         return $sql->executeQuery($query);
     }
 
@@ -181,7 +181,9 @@ class Project {
      */
     public static function getProjectByNameIdTown($name, $idTown) {
 
-        $query = "SELECT * FROM project WHERE name='$name' AND town_idTown='$idTown';";
+        $sql = SqlConnection::getInstance();
+        
+        $query = "SELECT * FROM project WHERE name=" . $sql->getConn()->quote($name) . " AND town_idTown='$idTown';";
         $result = SqlConnection::getInstance()->selectDB($query);
         $row = $result->fetch();
         if (!$row) {
@@ -229,7 +231,7 @@ class Project {
         if ($idProject != null) {
             $query = "SELECT * FROM project WHERE idProject='$idProject' AND town_idTown='$idTown';";
         } else {
-            $query = "SELECT * FROM project WHERE name='$name' AND town_idTown='$idTown';";
+            $query = "SELECT * FROM project WHERE name=" . $sql->getConn()->quote($name) . " AND town_idTown='$idTown';";
         }
 
         $result = $sql->selectDB($query);

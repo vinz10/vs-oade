@@ -73,37 +73,42 @@ class archivesController extends Controller {
         $projectPoLastname = $project->getPoLastname();
         $projectPoFirstname = $project->getPoFirstname();
 
-        foreach ($surveys as $survey) {
-            $questionId = $survey->getQuestionId();
-            $answer = $survey->getAnswer();
-            $grade1 = $survey->getGrade1();
-            $grade2 = $survey->getGrade2();
-            $openQuestion = $survey->getOpenQuestion();
-            $comment = $survey->getComment();
-            $questionAPI = json_decode(file_get_contents("http://localhost/API_vs-oade/vs-oade_api.php?action=get_question_by_id&id=$questionId"), true);
+        if($surveys) {
+            foreach ($surveys as $survey) {
+                $questionId = $survey->getQuestionId();
+                $answer = $survey->getAnswer();
+                $grade1 = $survey->getGrade1();
+                $grade2 = $survey->getGrade2();
+                $openQuestion = $survey->getOpenQuestion();
+                $comment = $survey->getComment();
+                $questionAPI = json_decode(file_get_contents("http://localhost/API_vs-oade/vs-oade_api.php?action=get_question_by_id&id=$questionId"), true);
 
-            if ($lang == 'fr') {
-                $question = $questionAPI['questionFR'];
-                $questionComment = $questionAPI['questionCommentFR'];
-            } elseif ($lang == 'de') {
-                $question = $questionAPI['questionDE'];
-                $questionComment = $questionAPI['questionCommentDE'];
-            }
+                if ($lang == 'fr') {
+                    $question = $questionAPI['questionFR'];
+                    $questionComment = $questionAPI['questionCommentFR'];
+                } elseif ($lang == 'de') {
+                    $question = $questionAPI['questionDE'];
+                    $questionComment = $questionAPI['questionCommentDE'];
+                }
 
-            // Create the new archive
-            $archive = new Archive(null, $townName, $projectName, $projectDescription, $projectPoLastname, $projectPoFirstname, 
-                    $questionId, $answer, $grade1, $grade2, $openQuestion, $comment, $projectId, $townId, $question, $questionComment);
+                // Create the new archive
+                $archive = new Archive(null, $townName, $projectName, $projectDescription, $projectPoLastname, $projectPoFirstname, 
+                        $questionId, $answer, $grade1, $grade2, $openQuestion, $comment, $projectId, $townId, $question, $questionComment);
 
-            try {
-                // Insert the new archive
-                $archive->insertArchive();
-            } catch (Exception $exc) {
-                echo $exc->getTraceAsString();
+                try {
+                    // Insert the new archive
+                    $archive->insertArchive();
+                    $_SESSION['msg'] = MSG_INSERT;
+                } catch (Exception $exc) {
+                    echo $exc->getTraceAsString();
+                    exit;
+                }
             }
         }
-
+        else {
+            $_SESSION['msgError'] = MSG_NO_SURVEYS;
+        }
         $this->redirect('login', 'sprojects');
-        $_SESSION['msg'] = MSG_INSERT;
     }
 
     /**

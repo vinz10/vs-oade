@@ -172,6 +172,7 @@ class loginController extends Controller {
 
         // Initialization of variables
         $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+        $this->vars['msgError'] = isset($_SESSION['msgError']) ? $_SESSION['msgError'] : '';
     }
 
     /**

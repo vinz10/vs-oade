@@ -729,7 +729,9 @@ class projectsController extends Controller {
 
         $file = "uploads/" . $idProject . '_file.pdf';
         
-        unlink($file);
+        if(file_exists($file)) {
+            unlink($file);
+        }
         
         try {
             Project::deleteProject($idProject);

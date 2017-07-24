@@ -38,6 +38,7 @@ define("MSG_INFO", "Informationen!");
 define("MSG_CONNECT_TO_SHOW_PROJECTS", "Bitte melden Sie sich an, um gemeinsame Projekte zugreifen.");
 define("MSG_NO_PROJECT", "Es gibt kein existierendes Projekt in dieser Region.");
 define("MSG_NO_ARCHIVES", "Es gibt kein bestehendes Archiv in dieser Region.");
+define("MSG_NO_SURVEYS", "Es ist keine Frage Archiv für dieses Projekt.");
 define("MSG_NO_RIGHTS", "Sie haben keine Berechtigung, um die gewünschte Seite zu gelangen.");
 
 // HOME PAGE
